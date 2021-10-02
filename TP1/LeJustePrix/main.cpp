@@ -16,17 +16,15 @@ int main(int argc, char *argv[])
     Joueur joueur;
     MaitreJeu maitreJeu;
 
-    // Qint???????????????????
-    QObject::connect(&joueur, SIGNAL(propose(int)),&maitreJeu, SLOT(evalue(int)));
-    QObject::connect(&maitreJeu, SIGNAL(evalue(int)), &maitreJeu, SLOT(incrementationCoups()))
+    QObject::connect(&joueur, SIGNAL(propose(unsigned int)),&maitreJeu, SLOT(evalue(unsigned int)));
     QObject::connect(&maitreJeu, SIGNAL(incrementeNbCoups()), &maitreJeu, SLOT(incrementationCoups()));
-    QObject::connect(&maitreJeu, SIGNAL(afficheCoups(QString)), &affichage, SLOT(affiche(QSTRING)));
+    QObject::connect(&maitreJeu, SIGNAL(afficheCoups(QString)), &affichage, SLOT(affiche(QString)));
     QObject::connect(&maitreJeu, SIGNAL(avis(QString)),&affichage, SLOT(affiche(QString)));
     QObject::connect(&maitreJeu, SIGNAL(victoire()),&joueur, SLOT(gagne()));
     QObject::connect(&joueur, SIGNAL(sortie()),&a,SLOT(quit()));
+    QObject::connect(&maitreJeu, SIGNAL(doitContinuer()),&joueur, SLOT(doitRejouer()));
 
-
-
+    joueur.joue();
 
     return a.exec();
 }

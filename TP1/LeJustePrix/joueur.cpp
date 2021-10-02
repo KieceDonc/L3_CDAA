@@ -2,7 +2,7 @@
 #include <iostream>
 
 Joueur::Joueur(QObject *parent) : QObject(parent){
-
+    this->running = true;
 }
 
 void Joueur::joue(){
@@ -15,4 +15,8 @@ void Joueur::joue(){
 void Joueur::gagne(){
     this->running = false;
     emit sortie();
+}
+
+void Joueur::doitRejouer(){
+    joue();
 }

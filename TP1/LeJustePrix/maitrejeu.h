@@ -20,10 +20,11 @@ signals:
     void incrementeNbCoups();
     void afficheCoups(QString);
     void victoire();
+    void doitContinuer();
 
 public slots:
     // reçoit et évalue la proposition du joueur
-    void evalue ( unsigned ) ;
+    void evalue(unsigned int);
 
     // ce slot peut être " private " car de MdJ à lui - même
     void incrementationCoups() ;

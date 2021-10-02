@@ -9,6 +9,7 @@ MaitreJeu::MaitreJeu(QObject *parent) : QObject(parent)
 
 void MaitreJeu::evalue(unsigned int value){
     QString toSend;
+    bool playerAsWin = 0;
 
     if(value < this->secret){
         toSend = "Plus grand frr";
@@ -16,13 +17,18 @@ void MaitreJeu::evalue(unsigned int value){
         toSend = "Plus petit frr";
     }else{
         toSend = "Bien joué fréro, du coup on sort de l'appli";
+        emit avis(toSend);
         emit victoire();
+        playerAsWin = 1;
     }
 
-    emit incrementeNbCoups();
-    QString coups;
-    emit afficheCoups(coups.setNum(nbcoups));
-    emit avis(toSend);
+    if(!playerAsWin){
+        emit incrementeNbCoups();
+        QString coups;
+        emit afficheCoups(coups.setNum(nbcoups));
+        emit avis(toSend);
+        emit doitContinuer();
+    }
 }
 
 void MaitreJeu::incrementationCoups(){

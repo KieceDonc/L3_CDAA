@@ -16,12 +16,13 @@ public:
     void joue();
 
 signals:
-    void propose(unsigned);
+    void propose(unsigned int);
     void sortie();
 
 public slots:
     //recoit le message du mdj et demande la sortie du jeu
     void gagne();
+    void doitRejouer();
 };
 
 #endif // JOUEUR_H
