@@ -1,8 +1,8 @@
 /* inspired and modified from http://www.cplusplus.com/forum/beginner/158359/ */
-
 class Date{
   
   private:
+    struct tm* d;
 	  int month, day, year;
 
     void setDay(const int day);
@@ -13,8 +13,9 @@ class Date{
 	  Date();
 	  Date(const int month,const int day,const int year);
 
-    ~Date(){}
+    ~Date();
 
     std::string getDebugValues();
 
+    bool operator==(const Date &toCompare);
 };

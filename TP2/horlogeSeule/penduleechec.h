@@ -13,8 +13,10 @@ private:
     horlogeSeule* horloge1;
 public:
     explicit PenduleEchec(QWidget *parent = nullptr);
+    ~PenduleEchec();
 
 public slots:
+    void onEndCount();
 };
 
 #endif // PENDULEECHEC_H
