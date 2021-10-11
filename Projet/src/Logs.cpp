@@ -1,14 +1,20 @@
-#include "../include/Logs.h"
+#include "../headers/Logs.h"
 
-#include <stdexcept>
 
+Logs::Logs(){
+  this->logs = new std::list<Log>();
+}
+
+Logs::~Logs(){
+  delete logs;
+}
 /**
  * @brief 
  * 
  * @param log 
  */
 void Logs::add(Log log){
-  this->logs.push_back(log);
+  this->logs->emplace_back(log);
 }
 
 /**
@@ -17,7 +23,7 @@ void Logs::add(Log log){
  * @return int 
  */
 int Logs::getSize(){
-  return this->logs.size();
+  return this->logs->size();
 }
 
 /**
@@ -31,7 +37,7 @@ Log Logs::get(int index){
   if(index>size){
     throw std::invalid_argument("Error in method getLog of class Logs :\n\narray index out of bound\n"+getDebugValues());
   }else{
-    std::list<Log>::iterator it = logs.begin();
+    std::list<Log>::iterator it = logs->begin();
     std::advance(it,index);
     return *it;
   }
@@ -45,7 +51,7 @@ Log Logs::get(int index){
  * @param dateOfAction 
  * @return Logs 
  */
-Logs Logs::get(Contact* contact, int ACTION_TYPE, Date dateOfAction){
+Logs Logs::get(Contact *contact, int ACTION_TYPE, Date dateOfAction){
   Logs foundedLogs = Logs();
   
   for(int x=0;x<this->getSize();x++){
@@ -56,4 +62,18 @@ Logs Logs::get(Contact* contact, int ACTION_TYPE, Date dateOfAction){
   }
 
   return foundedLogs;
+}
+
+/**
+ * @brief 
+ * 
+ * @return std::string 
+ */
+std::string Logs::getDebugValues(){
+  std::string toReturn = "Logs{\n";
+  for(int x=0;x<this->getSize();x++){
+    toReturn+=+"  "+this->get(x).getDebugValues()+"\n";
+  }
+  toReturn+="}";
+  return toReturn;
 }

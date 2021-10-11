@@ -1,16 +1,16 @@
 #ifndef CONTACT_H
 #define CONTACT_H
-
-#include "Date.h"
 #include "Photo.h"
+#include "Date.h"
 #include "Logs.h"
-#include <string>
 
+#include <string>
+#include <stdexcept>
 
 class Contact{
 
   private:
-    Logs* logs;
+    Logs * logs;
     std::string firstName;
     std::string lastName;
     std::string enterprise;
@@ -25,13 +25,12 @@ class Contact{
     void setDateOfCreation(const Date& dateOfCreation);
 
   public:
-    Contact(Logs* logs,const std::string& firstName, const std::string& lastName, const std::string& enterprise, const std::string& mail, const std::string& phone, const Photo& photo);
-
-    ~Contact();
+    Contact(Logs * logs,const std::string& firstName, const std::string& lastName, const std::string& enterprise, const std::string& mail, const std::string& phone, const Photo& photo);
     
     void setEnterprise(const std::string& enterprise);
     void setMail(const std::string& mail);
     void setPhone(const std::string& phone);
+    void setPhoto(const Photo& photo);
     
     std::string getFirstName();
     std::string getLastName();
@@ -41,8 +40,6 @@ class Contact{
     Photo getPhoto();
     Date getDateOfCreation();
     std::string getDebugValues();
-
-    void setPhoto(const Photo& photo);
 
     bool operator==(const Contact &toCompare);
 };

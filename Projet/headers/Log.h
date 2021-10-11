@@ -1,5 +1,12 @@
+#ifndef LOG_H
+#define LOG_H
+
 #include "Date.h"
-#include "Contact.h"
+
+#include <sstream>
+
+
+class Contact;
 
 class Log{
   
@@ -22,5 +29,9 @@ class Log{
     const static int ACTION_EDIT_PHONE = 4;
     const static int ACTION_SUPPRESSION_CONTACT = 5;
     
+    std::string getDebugValues();
+
     bool operator==(const Log &toCompare);
 };
+
+#endif

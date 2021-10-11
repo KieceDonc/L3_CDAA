@@ -1,9 +1,4 @@
-#include "../include/Contact.h"
-#include "../include/Date.h"
-#include "../include/Photo.h"
-
-#include <stdexcept>
-
+#include "../headers/Contact.h"
 
 /**
  * @brief Construct a new Contact:: Contact object
@@ -16,7 +11,7 @@
  * @param phone 
  * @param photo 
  */
-Contact::Contact(Logs* logs, const std::string& firstName, const std::string& lastName, const std::string& enterprise, const std::string& mail, const std::string& phone, const Photo& photo){
+Contact::Contact(Logs * logs, const std::string& firstName, const std::string& lastName, const std::string& enterprise, const std::string& mail, const std::string& phone, const Photo& photo){
   this->inConstructor = true;
   this->logs = logs;
   this->setFirstName(firstName);

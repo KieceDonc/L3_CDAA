@@ -1,3 +1,6 @@
+#ifndef PHOTO_H
+#define PHOTO_H
+
 #include <string>
 
 class Photo{
@@ -8,3 +11,5 @@ class Photo{
     bool operator==(const Photo &toCompare);
 
 };
+
+#endif

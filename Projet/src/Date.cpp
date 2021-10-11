@@ -1,9 +1,14 @@
 /* inspired and modified from http://www.cplusplus.com/forum/beginner/158359/ */
 
-#include "../include/Date.h"
+#include "../headers/Date.h"
 
-#include <stdexcept>
-#include <time.h>
+template<class T> 
+std::string toString(const T &value) {
+  // https://stackoverflow.com/questions/32140018/why-is-this-program-giving-an-error-to-string-is-not-a-member-of-std-why/32140400
+  std::ostringstream os;
+  os << value;
+  return os.str();
+}
 
 /**
  * @brief Default constructor of Date ( set the date when it was created )
@@ -17,9 +22,9 @@ Date::Date(){
 	int currentMonth = d->tm_mon+1;
 	int currentDay = d->tm_mday;
 	
-	this->setMonth(month);
-	this->setDay(day);
-	this->setYear(year);
+	this->setMonth(currentMonth);
+	this->setDay(currentDay);
+	this->setYear(currentYear);
 }
 
 /**
@@ -40,7 +45,7 @@ Date::Date(const int month,const int day,const int year){
  * 
  */
 Date::~Date(){
-	delete this->d;
+	//delete this->d;
 }
 
 /**
@@ -91,10 +96,10 @@ void Date::setYear(const int year){
  * @return std::string 
  */
 std::string Date::getDebugValues(){
-	return "\nDebug values :\nDate{\n	Month = "+
-	std::to_string(this->month)+"\n	Day = "+
-	std::to_string(this->day)+"\n	Year = "+
-	std::to_string(this->year)+"\n}\n";
+	return "Date{\n	Month = "+
+	toString(this->month)+"\n	Day = "+
+	toString(this->day)+"\n	Year = "+
+	toString(this->year)+"\n}\n";
 }
 
 bool Date::operator==(const Date &toCompare){

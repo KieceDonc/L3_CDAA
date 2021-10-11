@@ -1,4 +1,8 @@
-#include "../include/Photo.h"
+#include "../headers/Photo.h"
+
+std::string Photo::getDebugValues(){
+  return "";
+}
 
 /**
  * @brief 
