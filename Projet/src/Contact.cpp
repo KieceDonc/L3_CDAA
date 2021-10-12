@@ -199,7 +199,7 @@ std::string Contact::getDebugValues(){
 }
 
 /**
- * @brief 
+ * @brief Equal operator
  * 
  * @param toCompare 
  * @return true 
