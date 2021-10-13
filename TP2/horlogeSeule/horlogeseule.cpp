@@ -25,24 +25,29 @@ horlogeSeule::horlogeSeule(QWidget *parent): QWidget(parent){
     buttonsLayout -> addWidget(start);
     buttonsLayout -> addWidget(stop);
 
-    setLayout(mainLayout);
     mainLayout->addLayout(textLayout);
     mainLayout->addLayout(buttonsLayout);
 
-    connect(start,SIGNAL(clicked()),this,SLOT(onStartButtonClicked()));
-    connect(stop,SIGNAL(clicked()),this,SLOT(onStopCountdown()));
+    connect(start, SIGNAL(clicked()), this, SLOT(onStartButtonClicked()));
+    connect(stop, SIGNAL(clicked()), this, SLOT(stopCountdown()));
 }
 
 horlogeSeule::~horlogeSeule(){
-
+    free(texte);
+    free(valeur);
+    free(start);
+    free(stop);
+    free(timer);
 }
 
 void horlogeSeule::timerSlot(){
     if(canCount){
         this->compteur-=1;
         if(this->compteur <= 0){
+            this->canCount = false;
+            this->valeur->setNum(0);
             disconnect(timer,SIGNAL(timeout()),this,SLOT(timerSlot()));
-            this->close();
+            emit onEndCountSignal();
         }else{
             this->valeur->setNum((int)this->compteur);
         }
@@ -50,14 +55,14 @@ void horlogeSeule::timerSlot(){
 }
 
 void horlogeSeule::onStartButtonClicked(){
-    if(!canCount){ // we check if we're already counting
+    if(!canCount && this->compteur >0){ // we check if we're already counting
         canCount = true;
         connect(timer,SIGNAL(timeout()),this,SLOT(timerSlot()));
         timer->start(1000);
     }
 }
 
-void horlogeSeule::onStopCountdown(){
+void horlogeSeule::stopCountdown(){
     this->canCount = false;
     disconnect(timer,SIGNAL(timeout()),this,SLOT(timerSlot()));
 }

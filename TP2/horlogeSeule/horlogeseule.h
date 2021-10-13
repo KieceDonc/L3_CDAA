@@ -23,11 +23,12 @@ public:
 
 signals:
     void exitApp();
+    void onEndCountSignal();
 
 public slots:
     void timerSlot();
     void onStartButtonClicked();
-    void onStopCountdown();
+    void stopCountdown();
 };
 
 #endif // HORLOGESEULE_H

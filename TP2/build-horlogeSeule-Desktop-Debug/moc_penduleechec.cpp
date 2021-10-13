@@ -1,18 +1,18 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'mainwidget.h'
+** Meta object code from reading C++ file 'penduleechec.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.11.3)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.12.8)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../interactions0/mainwidget.h"
+#include "../horlogeSeule/penduleechec.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'mainwidget.h' doesn't include <QObject>."
+#error "The header file 'penduleechec.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.11.3. It"
+#error "This file was generated using the moc from 5.12.8. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,30 +20,30 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_mainWidget_t {
+struct qt_meta_stringdata_PenduleEchec_t {
     QByteArrayData data[3];
-    char stringdata0[32];
+    char stringdata0[25];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_mainWidget_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_PenduleEchec_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_mainWidget_t qt_meta_stringdata_mainWidget = {
+static const qt_meta_stringdata_PenduleEchec_t qt_meta_stringdata_PenduleEchec = {
     {
-QT_MOC_LITERAL(0, 0, 10), // "mainWidget"
-QT_MOC_LITERAL(1, 11, 19), // "toggleMouseTracking"
-QT_MOC_LITERAL(2, 31, 0) // ""
+QT_MOC_LITERAL(0, 0, 12), // "PenduleEchec"
+QT_MOC_LITERAL(1, 13, 10), // "onEndCount"
+QT_MOC_LITERAL(2, 24, 0) // ""
 
     },
-    "mainWidget\0toggleMouseTracking\0"
+    "PenduleEchec\0onEndCount\0"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_mainWidget[] = {
+static const uint qt_meta_data_PenduleEchec[] = {
 
  // content:
-       7,       // revision
+       8,       // revision
        0,       // classname
        0,    0, // classinfo
        1,   14, // methods
@@ -62,39 +62,43 @@ static const uint qt_meta_data_mainWidget[] = {
        0        // eod
 };
 
-void mainWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void PenduleEchec::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        mainWidget *_t = static_cast<mainWidget *>(_o);
+        auto *_t = static_cast<PenduleEchec *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->toggleMouseTracking(); break;
+        case 0: _t->onEndCount(); break;
         default: ;
         }
     }
     Q_UNUSED(_a);
 }
 
-QT_INIT_METAOBJECT const QMetaObject mainWidget::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_mainWidget.data,
-      qt_meta_data_mainWidget,  qt_static_metacall, nullptr, nullptr}
-};
+QT_INIT_METAOBJECT const QMetaObject PenduleEchec::staticMetaObject = { {
+    &QWidget::staticMetaObject,
+    qt_meta_stringdata_PenduleEchec.data,
+    qt_meta_data_PenduleEchec,
+    qt_static_metacall,
+    nullptr,
+    nullptr
+} };
 
 
-const QMetaObject *mainWidget::metaObject() const
+const QMetaObject *PenduleEchec::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *mainWidget::qt_metacast(const char *_clname)
+void *PenduleEchec::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_mainWidget.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_PenduleEchec.stringdata0))
         return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
 
-int mainWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int PenduleEchec::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)
