@@ -1,26 +1,23 @@
 #include "../headers/Todo.h"
 
 
-Todo::Todo(const tm&, std::string&) {
-    
+Todo::Todo(const Date& date, const std::string& content) {
+    this->setDate(date);
+    this->setContent(content);
 }
 
-Todo::~Todo() {
-    
+void Todo::setContent(const std::string& content) {
+    this->content = content;
 }
 
-void Todo::setContent(const std::string&) {
-    
-}
-
-void Todo::setDate(const tm&) {
-    
+void Todo::setDate(const Date& date) {
+    this->date = date;
 }
 
 std::string Todo::getContent() {
-    
+    return this->content;
 }
 
-tm * Todo::getDate() {
-    
+Date Todo::getDate() {
+    return this->date;
 }
