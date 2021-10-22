@@ -21,6 +21,7 @@ Contact::Contact(Logs * logs, const std::string& firstName, const std::string& l
   this->setPhone(phone);
   this->setDateOfCreation(Date());
   this->setPhoto(photo);
+  this->interactions = std::list<Interaction *>();
 
   logs->add(Log(this,Log::ACTION_CREATION_CONTACT));
   this->inConstructor = false;
@@ -122,6 +123,16 @@ void Contact::setPhoto(const Photo& photo){
 /**
  * @brief 
  * 
+ * @param Interaction *
+ */
+void Contact::addInteraction(Interaction * interaction){
+  this->getInteractions().push_back(interaction);
+}
+
+
+/**
+ * @brief 
+ * 
  * @return std::string 
  */
 std::string Contact::getFirstName(){
@@ -181,6 +192,14 @@ Photo Contact::getPhoto(){
 Date Contact::getDateOfCreation(){
   return this->dateOfCreation;
 }
+
+std::list<Interaction *> Contact::getInteractions(){
+  return this->interactions;
+}/**
+ * @brief 
+ * 
+ * @param photo 
+ */
 
 /**
  * @brief return string which contain Contact values ( firstname, lastname, mail ... ) and which is suitable for debugging

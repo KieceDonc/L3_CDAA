@@ -1,26 +1,23 @@
 #include "../headers/Interaction.h"
 
 
-Interaction::Interaction(const tm&, std::string&) {
-    
+Interaction::Interaction(const Date& date, const std::string& content) {
+    this->setDate(date);   
+    this->setContent(content); 
 }
 
-Interaction::~Interaction() {
-    
+void Interaction::setContent(const std::string& content) {
+    this->content = content;
 }
 
-void Interaction::setContent(const std::string&) {
-    
-}
-
-void Interaction::setDate(const tm&) {
-    
+void Interaction::setDate(const Date& date) {
+    this->date = date;
 }
 
 std::string Interaction::getContent() {
-    
+    return this->content;
 }
 
-tm * Interaction::getDate() {
-    
+Date Interaction::getDate() {
+    return this->date;
 }

@@ -1,20 +1,20 @@
 #include <iostream>
+#include "Date.h"
 
 class Todo{
 
     private:
         std::string content;
-        tm * date;
+        Date date;
 
     public:
         Todo();
-        Todo(const tm& , std::string&);
-        ~Todo();
+        Todo(const Date& , const std::string&);
 
         void setContent(const std::string&);
-        void setDate(const tm&);
+        void setDate(const Date&);
         std::string getContent();
-        tm * getDate();
+        Date getDate();
 
         friend std::ostream& operator<<(std::ostream& , const Todo&);
 

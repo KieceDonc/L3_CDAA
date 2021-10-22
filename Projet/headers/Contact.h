@@ -3,9 +3,11 @@
 #include "Photo.h"
 #include "Date.h"
 #include "Logs.h"
+#include "Interaction.h"
 
 #include <string>
 #include <stdexcept>
+#include <list>
 
 class Contact{
 
@@ -18,6 +20,8 @@ class Contact{
     std::string phone;
     Photo photo;
     Date dateOfCreation;
+    std::list<Interaction *> interactions;
+
     bool inConstructor; // tell if we're in constructor or not
 
     void setFirstName(const std::string& firstName);
@@ -31,6 +35,7 @@ class Contact{
     void setMail(const std::string& mail);
     void setPhone(const std::string& phone);
     void setPhoto(const Photo& photo);
+    void addInteraction(Interaction *);
     
     std::string getFirstName();
     std::string getLastName();
@@ -39,6 +44,7 @@ class Contact{
     std::string getPhone();
     Photo getPhoto();
     Date getDateOfCreation();
+    std::list<Interaction *> getInteractions();
     std::string getDebugValues();
 
     bool operator==(const Contact &toCompare);

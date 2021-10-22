@@ -10,11 +10,10 @@ class InteractionTodo{
 
     public:
         InteractionTodo();
-        InteractionTodo(const Todo& , const Interaction&);
-        ~InteractionTodo();
+        InteractionTodo(Todo *, Interaction *);
 
-        void setT(const Todo&) ;
-        void setI(const Interaction&) ;
+        void setT(Todo *) ;
+        void setI(Interaction *) ;
         Todo * getT() ;
         Interaction * getI() ;
         

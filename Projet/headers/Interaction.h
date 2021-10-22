@@ -1,20 +1,20 @@
 #include <iostream>
+#include "Date.h"
 
 class Interaction{
 
     private:
         std::string content;
-        tm * date;
+        Date date;
 
     public:
         Interaction();
-        Interaction(const tm& , std::string&);
-        ~Interaction();
+        Interaction(const Date& , const std::string&);
 
         void setContent(const std::string&);
-        void setDate(const tm&);
+        void setDate(const Date&);
         std::string getContent();
-        tm * getDate();
+        Date getDate();
 
         friend std::ostream& operator<<(std::ostream& , const Interaction&);
 };

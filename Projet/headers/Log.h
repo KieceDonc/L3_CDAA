@@ -27,7 +27,7 @@ class Log{
     const static int ACTION_EDIT_ENTERPRISE = 2;
     const static int ACTION_EDIT_MAIL = 3;
     const static int ACTION_EDIT_PHONE = 4;
-    const static int ACTION_SUPPRESSION_CONTACT = 5;
+    const static int ACTION_DELETE_CONTACT = 5;
     
     std::string getDebugValues();
 
