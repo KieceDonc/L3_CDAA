@@ -21,3 +21,13 @@ std::string Todo::getContent() {
 Date Todo::getDate() {
     return this->date;
 }
+
+std::string Todo::getDebugValues(){
+    return "Todo{\n  Date = "+
+    this->getDate().getDebugValues()+"\n Content = "+
+    this->getContent()+"\n}\n";
+}
+
+bool Todo::operator==(Todo &toCompare){
+    return this->getContent()==toCompare.getContent() && this->getDate()==toCompare.getDate();
+}

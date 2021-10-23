@@ -17,7 +17,9 @@ class InteractionTodo{
         Todo * getT() ;
         Interaction * getI() ;
         
-        static std::list<InteractionTodo> * listAllInteractionTodos(Interaction&) ;
-        
+        //static std::list<InteractionTodo> * listAllInteractionTodos(Interaction&);
 
+        std::string getDebugValues();
+
+        bool InteractionTodo::operator==(InteractionTodo& toCompare);
 };

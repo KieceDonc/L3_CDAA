@@ -16,5 +16,9 @@ class Interaction{
         std::string getContent();
         Date getDate();
 
+        std::string getDebugValues();
+
+        bool operator==(Interaction& toCompare);
         friend std::ostream& operator<<(std::ostream& , const Interaction&);
+
 };

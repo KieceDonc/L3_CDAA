@@ -16,7 +16,8 @@ class Todo{
         std::string getContent();
         Date getDate();
 
+        std::string getDebugValues();
+
+        bool operator==(Todo& toCompare);
         friend std::ostream& operator<<(std::ostream& , const Todo&);
-
-
 };
