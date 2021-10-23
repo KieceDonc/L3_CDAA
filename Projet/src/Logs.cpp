@@ -1,13 +1,21 @@
 #include "../headers/Logs.h"
 
-
+/**
+ * @brief Construct a new Logs:: Logs object
+ * 
+ */
 Logs::Logs(){
   this->logs = new std::list<Log>();
 }
 
+/**
+ * @brief Destroy the Logs:: Logs object
+ * 
+ */
 Logs::~Logs(){
   delete logs;
 }
+
 /**
  * @brief 
  * 
@@ -65,7 +73,7 @@ Logs Logs::get(Contact *contact, int ACTION_TYPE, Date dateOfAction){
 }
 
 /**
- * @brief 
+ * @brief return Logs values which is suitable for debugging
  * 
  * @return std::string 
  */

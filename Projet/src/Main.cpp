@@ -5,8 +5,8 @@
 
 int main(){
   Logs* logs = new Logs();
-  Contact* client0 = new Contact(logs,"Valentin","Verstracte","vvdev","valentinverst.developer@gmail.com","0102030405", Photo());
-  Contact* client1 = new Contact(logs,"Evan","Petit","EvanIndustry","evan.petit@ouawe.com","0689130218", Photo());
+  Contact* client0 = new Contact(logs,"Valentin","Verstracte","vvdev","valentinverst.developer@gmail.com","0102030405", Photo("oui"));
+  Contact* client1 = new Contact(logs,"Evan","Petit","EvanIndustry","evan.petit@ouawe.com","0689130218", Photo("oui"));
 
   client0->setEnterprise("ValentinIndustry");
   client0->setMail("valentin.verstracte@ValentinIndustry");

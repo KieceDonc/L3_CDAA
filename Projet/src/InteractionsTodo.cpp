@@ -1,10 +1,17 @@
 #include "../headers/InteractionsTodo.h"
 
-
+/**
+ * @brief Construct a new Interactions Todo:: Interactions Todo object
+ * 
+ */
 InteractionsTodo::InteractionsTodo(){
   this->interactionsTodo = new std::list<InteractionTodo>();
 }
 
+/**
+ * @brief Destroy the Interactions Todo:: Interactions Todo object
+ * 
+ */
 InteractionsTodo::~InteractionsTodo(){
   delete this->interactionsTodo;
 }
@@ -12,7 +19,7 @@ InteractionsTodo::~InteractionsTodo(){
 /**
  * @brief 
  * 
- * @param log 
+ * @param interactionTodo 
  */
 void InteractionsTodo::add(InteractionTodo interactionTodo){
   this->interactionsTodo->emplace_back(interactionTodo);

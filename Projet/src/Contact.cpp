@@ -3,7 +3,7 @@
 /**
  * @brief Construct a new Contact:: Contact object
  * 
- * @param logs
+ * @param logs will contains all actions / logs on this contact
  * @param firstName 
  * @param lastName 
  * @param enterprise 
@@ -193,16 +193,17 @@ Date Contact::getDateOfCreation(){
   return this->dateOfCreation;
 }
 
-std::list<Interaction *> Contact::getInteractions(){
-  return this->interactions;
-}/**
+/**
  * @brief 
  * 
- * @param photo 
+ * @return std::list<Interaction *> 
  */
+std::list<Interaction *> Contact::getInteractions(){
+  return this->interactions;
+}
 
 /**
- * @brief return string which contain Contact values ( firstname, lastname, mail ... ) and which is suitable for debugging
+ * @brief return Contact values ( firstname, lastname, mail ... ) and which is suitable for debugging
  * 
  * @return std::string 
  */
@@ -218,7 +219,7 @@ std::string Contact::getDebugValues(){
 }
 
 /**
- * @brief Equal operator
+ * @brief Compare contact object and determine if they're equal
  * 
  * @param toCompare 
  * @return true 

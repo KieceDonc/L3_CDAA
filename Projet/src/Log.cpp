@@ -1,6 +1,13 @@
 #include "../headers/Log.h"
 #include "../headers/Contact.h"
 
+/**
+ * @brief I don't really understand how it work but it fix my problem and I'm ok with that
+ * 
+ * @tparam T 
+ * @param value 
+ * @return std::string 
+ */
 template<class T> 
 std::string toString(const T &value) {
   // https://stackoverflow.com/questions/32140018/why-is-this-program-giving-an-error-to-string-is-not-a-member-of-std-why/32140400
@@ -50,7 +57,7 @@ int Log::getACTION_TYPE(){
 }
 
 /**
- * @brief 
+ * @brief return Log values ( date, contact ) which is suitable for debugging
  * 
  * @return std::string 
  */
@@ -62,12 +69,14 @@ std::string Log::getDebugValues(){
 }
 
 /**
- * @brief 
+ * @brief Compare log object and determine if they're equal
  * 
  * @param toCompare 
  * @return true 
  * @return false 
  */
 bool Log::operator==(const Log &toCompare){
+  // We check if contact and date are the same so we call their respect equal function
+  // We also check if it's the same action or not
   return &(this->contact) == &(toCompare.contact) && this->ACTION_TYPE == toCompare.ACTION_TYPE && this->dateOfAction == toCompare.dateOfAction;
 }

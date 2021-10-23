@@ -5,11 +5,17 @@
 
 class Photo{
 
+  private:
+    std::string uri;
+
   public:
+    Photo();
+    Photo(std::string uri);
+
+    std::string getUri();
     std::string getDebugValues();
 
-    bool operator==(const Photo &toCompare);
-
+    bool operator==(Photo toCompare);
 };
 
 #endif

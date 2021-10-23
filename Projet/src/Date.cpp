@@ -2,6 +2,13 @@
 
 #include "../headers/Date.h"
 
+/**
+ * @brief 
+ * 
+ * @tparam T 
+ * @param value 
+ * @return std::string 
+ */
 template<class T> 
 std::string toString(const T &value) {
   // https://stackoverflow.com/questions/32140018/why-is-this-program-giving-an-error-to-string-is-not-a-member-of-std-why/32140400
@@ -91,7 +98,7 @@ void Date::setYear(const int year){
 }
 
 /**
- * @brief contain date values ( month, day, year ) which is suitable for debugging
+ * @brief return Date values ( month, day, year ) which is suitable for debugging
  * 
  * @return std::string 
  */
@@ -102,6 +109,13 @@ std::string Date::getDebugValues(){
 	toString(this->year)+"\n}\n";
 }
 
+/**
+ * @brief Compare date object and determine if they're equal
+ * 
+ * @param toCompare 
+ * @return true 
+ * @return false 
+ */
 bool Date::operator==(const Date &toCompare){
 	return this->day == toCompare.day && this->month == toCompare.month && this->year == toCompare.year;
 }
