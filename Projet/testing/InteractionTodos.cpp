@@ -1,5 +1,5 @@
 #include "../headers/Contact.h"
-#include "../headers/InteractionTodo.h"
+#include "../headers/InteractionTodos.h"
 
 #include <stdexcept>
 #include <iostream>
@@ -11,14 +11,15 @@
  * @return int 0 = test passed
  */
 void testingInteraction(){
-  Interaction i = Interaction(Date(),"The quick brown fox @TODO jumps over @TODO the lazy dog");
-  std::list<InteractionTodo> it = std::list<InteractionTodo>();
-  InteractionTodo::listAllInteractionTodos(&i , &it);
+  Interaction * i = new Interaction(Date(),"The quick brown fox @TODO jumps over @TODO the lazy dog");
+  InteractionTodos * itL = new InteractionTodos();
+  itL->addInteraction(i);
+  //std::cout << *itL->getItList()->front().getT() << "\n";
   //std::cout << i << std::endl;
-  /*std::cout << "test";
-  for(std::list<InteractionTodo>::iterator iter = it.begin() ; iter != it.end() ; iter++ ){
-        std::cout << iter->getI() << std::endl ;
-    }*/
+  std::cout << "Interaction :\n\t" << *i << "\n\nMatching Todo(s) :\n\t";
+  for(std::list<InteractionTodo>::iterator iter = itL->getItList()->begin() ; iter != itL->getItList()->end() ; iter++ ){
+        std::cout << *iter->getT()<< "\n\t" ;
+    }
 }
 
 int main(){

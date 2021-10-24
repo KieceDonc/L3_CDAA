@@ -86,3 +86,8 @@ bool Todo::operator==(Todo &toCompare){
     // We call their respective equal function
     return this->getContent()==toCompare.getContent() && this->getDate()==toCompare.getDate();
 }
+
+std::ostream& operator<<(std::ostream& os , const Todo& todo){
+    os << "[" << todo.date << "] " << todo.content;
+    return os;
+}
