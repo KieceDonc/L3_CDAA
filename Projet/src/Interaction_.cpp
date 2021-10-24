@@ -53,10 +53,15 @@ Date Interaction::getDate() {
  * 
  * @return std::string 
  */
-std::string Interaction::getDebugValues(){
-    return "Interaction{\n  Date = "+
-    this->getDate().getDebugValues()+"\n Content = "+
-    this->getContent()+"\n}\n";
+std::string Interaction::getDebugValues(int nbTabulations){
+    std::string tabulations = "";
+    for(int x = 0;x<nbTabulations;x++){
+        tabulations+="  ";
+    }
+    return "\n"+tabulations+"Interaction{"+
+    "\n  "+tabulations+"Date = "+this->getDate().getDebugValues(nbTabulations+1)+
+    "\n  "+tabulations+"Content = "+this->getContent()+
+    "\n"+tabulations+"}\n";
 }
 
 /**

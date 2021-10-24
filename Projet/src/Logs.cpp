@@ -1,6 +1,21 @@
 #include "../headers/Logs.h"
 
 /**
+ * @brief I don't really understand how it work but it fix my problem and I'm ok with that
+ * 
+ * @tparam T 
+ * @param value 
+ * @return std::string 
+ */
+template<class T> 
+std::string toString(const T &value) {
+  // https://stackoverflow.com/questions/32140018/why-is-this-program-giving-an-error-to-string-is-not-a-member-of-std-why/32140400
+  std::ostringstream os;
+  os << value;
+  return os.str();
+}
+
+/**
  * @brief Construct a new Logs:: Logs object
  * 
  */
@@ -43,7 +58,7 @@ int Logs::getSize(){
 Log Logs::get(int index){
   int size = this->getSize();
   if(index>size){
-    throw std::invalid_argument("Error in method getLog of class Logs :\n\narray index out of bound\n"+getDebugValues());
+    throw std::invalid_argument("Error in method getLog of class Logs :\n\narray index out of bound\n"+getDebugValues(0));
   }else{
     std::list<Log>::iterator it = logs->begin();
     std::advance(it,index);
@@ -77,11 +92,15 @@ Logs Logs::get(Contact *contact, int ACTION_TYPE, Date dateOfAction){
  * 
  * @return std::string 
  */
-std::string Logs::getDebugValues(){
-  std::string toReturn = "Logs{\n";
-  for(int x=0;x<this->getSize();x++){
-    toReturn+=+"  "+this->get(x).getDebugValues()+"\n";
+std::string Logs::getDebugValues(int nbTabulations){
+  std::string tabulations = "";
+  for(int x = 0;x<nbTabulations;x++){
+      tabulations+="  ";
   }
-  toReturn+="}";
+  std::string toReturn ="\n"+tabulations+"Logs{";
+  for(int x=0;x<this->getSize();x++){
+    toReturn+="\n  "+tabulations+"Log n°"+toString(x)+" = "+this->get(x).getDebugValues(nbTabulations+1);
+  }
+  toReturn+="\n"+tabulations+"}\n";
   return toReturn;
 }

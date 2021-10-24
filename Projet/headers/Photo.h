@@ -13,7 +13,7 @@ class Photo{
     Photo(std::string uri);
 
     std::string getUri();
-    std::string getDebugValues();
+    std::string getDebugValues(int nbTabulations);
 
     bool operator==(Photo toCompare);
 };

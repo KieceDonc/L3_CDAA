@@ -63,10 +63,15 @@ Date Todo::getDate() {
  * 
  * @return std::string 
  */
-std::string Todo::getDebugValues(){
-    return "Todo{\n  Date = "+
-    this->getDate().getDebugValues()+"\n Content = "+
-    this->getContent()+"\n}\n";
+std::string Todo::getDebugValues(int nbTabulations){
+    std::string tabulations = "";
+    for(int x = 0;x<nbTabulations;x++){
+        tabulations+="  ";
+    }
+    return "\n"+tabulations+"Todo{"+
+    "\n  "+tabulations+"Date = "+this->getDate().getDebugValues(nbTabulations)+
+    "\n  "+tabulations+"Content = "+this->getContent()+
+    "\n"+tabulations+"}\n";
 }
 
 /**

@@ -16,7 +16,6 @@ std::string toString(const T &value) {
   return os.str();
 }
 
-
 /**
  * @brief Construct a new Log:: Log object
  * 
@@ -61,11 +60,16 @@ int Log::getACTION_TYPE(){
  * 
  * @return std::string 
  */
-std::string Log::getDebugValues(){
-	return "Log{\n  Contact = "+
-    this->contact->getDebugValues()+"\n Date of action = "+
-    this->dateOfAction.getDebugValues()+"\n ACTION_TYPE = "+
-    toString(this->ACTION_TYPE)+"\n}\n";
+std::string Log::getDebugValues(int nbTabulations){
+  std::string tabulations = "";
+  for(int x = 0;x<nbTabulations;x++){
+      tabulations+="  ";
+  }
+  return "\n"+tabulations+"Log{"+
+  "\n  "+tabulations+"Contact = "+this->contact->getDebugValues(nbTabulations+1)+
+  "\n  "+tabulations+"Date of action = "+this->dateOfAction.getDebugValues(nbTabulations+1)+
+  "\n  "+tabulations+"ACTION_TYPE = "+toString(this->ACTION_TYPE)+
+  "\n"+tabulations+"}\n";
 }
 
 /**

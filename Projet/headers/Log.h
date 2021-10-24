@@ -28,7 +28,7 @@ class Log{
     const static int ACTION_EDIT_PHONE = 4;
     const static int ACTION_DELETE_CONTACT = 5;
     
-    std::string getDebugValues();
+    std::string getDebugValues(int nbTabulations);
 
     bool operator==(const Log &toCompare);
 };
