@@ -45,7 +45,7 @@ class Contact{
     Photo getPhoto();
     Date getDateOfCreation();
     std::list<Interaction *> getInteractions();
-    std::string getDebugValues();
+    std::string getDebugValues(int nbTabulations);
 
     bool operator==(const Contact &toCompare);
 };

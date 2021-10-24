@@ -1,9 +1,8 @@
 /* inspired and modified from http://www.cplusplus.com/forum/beginner/158359/ */
-
 #include "../headers/Date.h"
 
 /**
- * @brief 
+ * @brief I don't really understand how it work but it fix my problem and I'm ok with that
  * 
  * @tparam T 
  * @param value 
@@ -63,7 +62,7 @@ Date::~Date(){
  */
 void Date::setDay(const int day){
 	if (day < 1 && day > 31){
-		throw std::invalid_argument("Error in method setDay of class Date :\n\nThe day is invalid\n"+getDebugValues());
+		throw std::invalid_argument("Error in method setDay of class Date :\n\nThe day is invalid\n"+getDebugValues(0));
 	}else{
 	  this->day = day;
   }
@@ -77,7 +76,7 @@ void Date::setDay(const int day){
  */
 void Date::setMonth(const int month){
 	if (month < 1 && month > 12){
-		throw std::invalid_argument("Error in method setMonth of class Date :\n\nThe day is invalid\n"+getDebugValues());
+		throw std::invalid_argument("Error in method setMonth of class Date :\n\nThe day is invalid\n"+getDebugValues(0));
   }else{
     this->month = month;
   }
@@ -91,7 +90,7 @@ void Date::setMonth(const int month){
  */
 void Date::setYear(const int year){
 	if (year < 1970){
-		throw std::invalid_argument("Error in method setYear of class Date :\n\nThe day is invalid\n"+getDebugValues());
+		throw std::invalid_argument("Error in method setYear of class Date :\n\nThe day is invalid\n"+getDebugValues(0));
 	}else{
 		this->year = year;
 	}
@@ -102,11 +101,16 @@ void Date::setYear(const int year){
  * 
  * @return std::string 
  */
-std::string Date::getDebugValues(){
-	return "Date{\n	Month = "+
-	toString(this->month)+"\n	Day = "+
-	toString(this->day)+"\n	Year = "+
-	toString(this->year)+"\n}\n";
+std::string Date::getDebugValues(int nbTabulations){
+	std::string tabulations = "";
+  for(int x = 0;x<nbTabulations;x++){
+    tabulations+="  ";
+  }
+	return "\n"+tabulations+"Date{"+
+  "\n  "+tabulations+"Day = "+toString(this->day)+
+  "\n  "+tabulations+"Month = "+toString(this->month)+
+  "\n  "+tabulations+"Year = "+toString(this->day)+
+  "\n"+tabulations+"}\n";
 }
 
 /**

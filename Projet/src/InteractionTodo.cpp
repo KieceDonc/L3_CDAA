@@ -51,10 +51,15 @@ Interaction * InteractionTodo::getI() {
  * 
  * @return std::string 
  */
-std::string InteractionTodo::getDebugValues(){
-    return "InteractionTodo{\n  Interaction = "+
-    this->getT()->getDebugValues()+"\n Todo = "+
-    this->getI()->getDebugValues()+"\n}\n";
+std::string InteractionTodo::getDebugValues(int nbTabulations){
+    std::string tabulations = "";
+    for(int x = 0;x<nbTabulations;x++){
+        tabulations+="  ";
+    }
+    return "\n"+tabulations+"InteractionTodo{"+
+    "\n  "+tabulations+"Interaction = "+this->getT()->getDebugValues(nbTabulations+1)+
+    "\n  "+tabulations+"Todo = "+this->getI()->getDebugValues(nbTabulations+1)+
+    "\n"+tabulations+"}\n";
 }
 
 /**

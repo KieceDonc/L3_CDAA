@@ -21,7 +21,7 @@ class InteractionTodo{
         Todo * getT() ;
         Interaction * getI() ;
 
-        std::string getDebugValues();
+        std::string getDebugValues(int nbTabulations);
 
         bool operator==(InteractionTodo& toCompare);
 

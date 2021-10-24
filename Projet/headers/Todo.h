@@ -20,7 +20,7 @@ class Todo{
         std::string getContent();
         Date getDate();
 
-        std::string getDebugValues();
+        std::string getDebugValues(int nbTabulations);
 
         bool operator==(Todo& toCompare);
         friend std::ostream& operator<<(std::ostream& , const Todo&);

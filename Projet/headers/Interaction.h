@@ -20,7 +20,7 @@ class Interaction{
         std::string getContent();
         Date getDate();
 
-        std::string getDebugValues();
+        std::string getDebugValues(int nbTabulations);
 
         bool operator==(Interaction& toCompare);
         friend std::ostream& operator<<(std::ostream& , const Interaction&);

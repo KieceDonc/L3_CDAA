@@ -34,7 +34,7 @@ Contact::Contact(Logs * logs, const std::string& firstName, const std::string& l
  */
 void Contact::setFirstName(const std::string& firstName){
   if(firstName.length() == 0){
-    throw std::invalid_argument("Error in method setFirstName of class Contact :\n\nfirstName is invalid\n"+getDebugValues());
+    throw std::invalid_argument("Error in method setFirstName of class Contact :\n\nfirstName is invalid\n"+this->getDebugValues(0));
   }else{
     this->firstName = firstName;
   }
@@ -47,7 +47,7 @@ void Contact::setFirstName(const std::string& firstName){
  */
 void Contact::setLastName(const std::string& lastName){
   if(lastName.length() == 0){
-    throw std::invalid_argument("Error in method setLastName of class Contact :\n\nlastName is invalid\n"+getDebugValues());
+    throw std::invalid_argument("Error in method setLastName of class Contact :\n\nlastName is invalid\n"+this->getDebugValues(0));
   }else{
     this->lastName = lastName;
   }
@@ -60,7 +60,7 @@ void Contact::setLastName(const std::string& lastName){
  */
 void Contact::setEnterprise(const std::string& enterprise){
   if(enterprise.length() == 0){
-    throw std::invalid_argument("Error in method setEnterprise of class Contact :\n\nenterprise is invalid\n"+getDebugValues());
+    throw std::invalid_argument("Error in method setEnterprise of class Contact :\n\nenterprise is invalid\n"+this->getDebugValues(0));
   }else{
     this->enterprise = enterprise;
   }
@@ -74,7 +74,7 @@ void Contact::setEnterprise(const std::string& enterprise){
 void Contact::setMail(const std::string& mail){
   if(mail.length() == 0 && !mail.find('@') && !mail.find('.')){
     // We check if mail isn't empty, if it contains an @ and a .
-    throw std::invalid_argument("Error in method setMail of class Contact :\n\nmail is invalid\n"+getDebugValues());
+    throw std::invalid_argument("Error in method setMail of class Contact :\n\nmail is invalid\n"+this->getDebugValues(0));
   }else{
     this->mail = mail;
     if(!this->inConstructor){
@@ -90,7 +90,7 @@ void Contact::setMail(const std::string& mail){
  */
 void Contact::setPhone(const std::string& phone){
   if(phone.length() == 0){
-    throw std::invalid_argument("Error in method setPhone of class Contact :\n\nphone is invalid\n"+getDebugValues());
+    throw std::invalid_argument("Error in method setPhone of class Contact :\n\nphone is invalid\n"+this->getDebugValues(0));
   }else{
     this->phone = phone;
     if(!this->inConstructor){
@@ -207,15 +207,20 @@ std::list<Interaction *> Contact::getInteractions(){
  * 
  * @return std::string 
  */
-std::string Contact::getDebugValues(){
-	return "\nDebug values :\nContact{\n	First name = "+
-	this->firstName+"\n	Last name = "+
-	this->lastName+"\n	Enterprise = "+
-	this->enterprise+"\n Mail = "+
-  this->mail+"\n	Phone = "+
-  this->phone+"\n	Date of creation = "+
-  this->dateOfCreation.getDebugValues()+"\n	Photo = "+
-  this->photo.getDebugValues()+"\n}\n";
+std::string Contact::getDebugValues(int nbTabulations){
+  std::string tabulations = "";
+  for(int x = 0;x<nbTabulations;x++){
+    tabulations+="  ";
+  }
+	return "\n"+tabulations+"Contact{"+
+  "\n  "+tabulations+"First name = "+this->firstName+
+  "\n  "+tabulations+"Last name = "+this->lastName+
+  "\n  "+tabulations+"Enterprise = "+this->enterprise+
+  "\n  "+tabulations+"Mail = "+this->mail+
+  "\n  "+tabulations+"Phone = "+this->phone+
+  "\n  "+tabulations+"Date of creation = "+this->dateOfCreation.getDebugValues(nbTabulations+1)+
+  "\n  "+tabulations+"Photo = "+this->photo.getDebugValues(nbTabulations+1)+
+  "\n"+tabulations+"}\n";
 }
 
 /**

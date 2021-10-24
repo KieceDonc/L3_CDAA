@@ -12,7 +12,7 @@ int main(){
   client0->setMail("valentin.verstracte@ValentinIndustry");
   client0->setPhone("5414315341");
 
-  std::cout << logs->getDebugValues();
+  std::cout << logs->getDebugValues(0);
 
   delete logs;
   delete client0;

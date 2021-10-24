@@ -31,9 +31,14 @@ std::string Photo::getUri(){
  * 
  * @return std::string 
  */
-std::string Photo::getDebugValues(){
-	return "Photo{\n  uri = "+
-    this->getUri()+"\n}\n";
+std::string Photo::getDebugValues(int nbTabulations){
+  std::string tabulations = "";
+  for(int x = 0;x<nbTabulations;x++){
+      tabulations+="  ";
+  }
+  return "\n"+tabulations+"Photo{"+
+  "\n  "+tabulations+"uri = "+this->getUri()+
+  "\n"+tabulations+"}\n";
 }
 
 /**

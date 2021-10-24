@@ -22,7 +22,7 @@ class Logs{
     Log get(int index);
     Logs get(Contact * contact, int ACTION_TYPE, Date dateOfAction);
 
-    std::string getDebugValues();
+    std::string getDebugValues(int nbTabulations);
 };
 
 #endif
