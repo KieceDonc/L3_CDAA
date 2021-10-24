@@ -44,6 +44,8 @@ int testingEquals(){
     throw "Invalid test. bool Contact::operator== return false or it should return true. Please check test function";
   }
 
+  
+
   delete logs0;
   delete logs1;
   return 0;
