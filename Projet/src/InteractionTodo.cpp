@@ -79,7 +79,8 @@ std::list<InteractionTodo> * InteractionTodo::listAllInteractionTodos(Interactio
     */
     
     // Return statement - The object we need to return is a list named out
-    std::list<InteractionTodo> out = std::list<InteractionTodo>();
+    std::list<InteractionTodo> * out;
+    *out = std::list<InteractionTodo>();
 
 
     // 1 - Let's split the interaction between the TODO tags and push the substrings in a list. For self-harm purposes, we will use regex and according smatch.
@@ -100,11 +101,13 @@ std::list<InteractionTodo> * InteractionTodo::listAllInteractionTodos(Interactio
 
     // 2 - If there is a comment, remove it
     if(!splits.front().find("@TODO") != std::string::npos)
-        out.pop_front();
+        out->pop_front();
 
     // 3 - Fill the InteractionTodo list with freshly created todos from the splits list (and an iterator)
     for(std::list<std::string>::iterator it = splits.begin() ; it != splits.end() ; it++ ){
         Todo todo = Todo(std::string(*it));
-        out.push_back(InteractionTodo(&todo , interaction));
+        out->push_back(InteractionTodo(&todo , interaction));
     }
+
+    return out;
 }

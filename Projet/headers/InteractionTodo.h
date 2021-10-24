@@ -1,3 +1,5 @@
+#ifndef INTERACTIONTODO_H
+#define INTERACTIONTODO_H
 #include "Interaction.h"
 #include "Todo.h"
 #include <list>
@@ -20,7 +22,9 @@ class InteractionTodo{
 
         std::string getDebugValues();
 
-        bool InteractionTodo::operator==(InteractionTodo& toCompare);
+        bool operator==(InteractionTodo& toCompare);
 
         static std::list<InteractionTodo> * listAllInteractionTodos(Interaction *);
 };
+
+#endif
