@@ -11,7 +11,7 @@
  * @return int 0 = test passed
  */
 void testingInteraction(){
-  Interaction * i = new Interaction(Date(),"The quick brown fox @TODO jumps over @TODO the lazy dog");
+  Interaction * i = new Interaction(Date(),"@TODO jumps over @TODO the lazy dog");
   InteractionTodos * itL = new InteractionTodos();
   itL->addInteraction(i);
   //std::cout << *itL->getItList()->front().getT() << "\n";
