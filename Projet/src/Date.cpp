@@ -18,7 +18,7 @@ std::string toString(const T &value) {
 }
 
 /**
- * @brief Default constructor of Date ( set the date when it was created )
+ * @brief Default constructor of Date ( initialized with current date )
  * 
  */
 Date::Date(){
@@ -110,7 +110,7 @@ std::string Date::getDebugValues(){
 }
 
 /**
- * @brief Compare date object and determine if they're equal
+ * @brief Compares Date objects and determines if they're equal
  * 
  * @param toCompare 
  * @return true 
