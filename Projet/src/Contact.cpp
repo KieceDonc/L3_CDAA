@@ -203,7 +203,7 @@ std::list<Interaction *> Contact::getInteractions(){
 }
 
 /**
- * @brief return Contact values ( firstname, lastname, mail ... ) and which is suitable for debugging
+ * @brief returns Contact object values ( firstname, lastname, mail ... ), which is suitable for debugging
  * 
  * @return std::string 
  */
@@ -219,7 +219,7 @@ std::string Contact::getDebugValues(){
 }
 
 /**
- * @brief Compare contact object and determine if they're equal
+ * @brief Compares Contact objects and determines if they're equal
  * 
  * @param toCompare 
  * @return true 

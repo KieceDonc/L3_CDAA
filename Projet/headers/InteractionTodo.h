@@ -1,6 +1,7 @@
 #include "Interaction.h"
 #include "Todo.h"
 #include <list>
+#include <string>
 
 class InteractionTodo{
 
@@ -16,10 +17,10 @@ class InteractionTodo{
         void setI(Interaction *) ;
         Todo * getT() ;
         Interaction * getI() ;
-        
-        //static std::list<InteractionTodo> * listAllInteractionTodos(Interaction&);
 
         std::string getDebugValues();
 
         bool InteractionTodo::operator==(InteractionTodo& toCompare);
+
+        static std::list<InteractionTodo> * listAllInteractionTodos(Interaction *);
 };

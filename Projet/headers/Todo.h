@@ -10,6 +10,7 @@ class Todo{
     public:
         Todo();
         Todo(const Date& , const std::string&);
+        Todo(const std::string&);
 
         void setContent(const std::string&);
         void setDate(const Date&);

@@ -12,6 +12,17 @@ Todo::Todo(const Date& date, const std::string& content) {
 }
 
 /**
+ * @brief Construct a new Todo:: Todo object
+ * 
+ * @param date 
+ * @param content 
+ */
+Todo::Todo(const std::string& content) {
+    this->setDate(Date());
+    this->setContent(content);
+}
+
+/**
  * @brief 
  * 
  * @param content 
