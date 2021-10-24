@@ -25,7 +25,7 @@ class InteractionTodo{
 
         bool operator==(InteractionTodo& toCompare);
 
-        static std::list<InteractionTodo> * listAllInteractionTodos(Interaction *);
+        static void listAllInteractionTodos(Interaction *, std::list<InteractionTodo> *);
 };
 
 #endif

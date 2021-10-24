@@ -69,7 +69,7 @@ bool InteractionTodo::operator==(InteractionTodo& toCompare){
 }
 
 
-std::list<InteractionTodo> * InteractionTodo::listAllInteractionTodos(Interaction * interaction) {
+void InteractionTodo::listAllInteractionTodos(Interaction * interaction, std::list<InteractionTodo> * out) {
     /* Static method returning the list of InteractionTodo of a given interaction
 
      The structure of an interaction is as follows ([] = optional ) :
@@ -78,9 +78,8 @@ std::list<InteractionTodo> * InteractionTodo::listAllInteractionTodos(Interactio
     */
     
     // Return statement - The object we need to return is a list named out
-    std::list<InteractionTodo> * out;
-    *out = std::list<InteractionTodo>();
-
+    /*std::list<InteractionTodo> * out;
+    *out = std::list<InteractionTodo>();*/
 
     // 1 - Let's split the interaction between the TODO tags and push the substrings in a list. For self-harm purposes, we will use regex and according smatch.
     std::list<std::string> splits = std::list<std::string>();
@@ -108,5 +107,5 @@ std::list<InteractionTodo> * InteractionTodo::listAllInteractionTodos(Interactio
         out->push_back(InteractionTodo(&todo , interaction));
     }
 
-    return out;
+    //return out;
 }

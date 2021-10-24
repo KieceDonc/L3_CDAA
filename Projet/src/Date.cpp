@@ -119,3 +119,8 @@ std::string Date::getDebugValues(){
 bool Date::operator==(const Date &toCompare){
 	return this->day == toCompare.day && this->month == toCompare.month && this->year == toCompare.year;
 }
+
+std::ostream& operator<<(std::ostream& os, const Date& date){
+	os << date.day << "/" << date.month << "/" << date.year;
+	return os;
+}

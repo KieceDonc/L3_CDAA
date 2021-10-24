@@ -26,6 +26,8 @@ class Date{
     std::string getDebugValues();
 
     bool operator==(const Date &toCompare);
+    friend std::ostream& operator<<(std::ostream& , const Date&);
+
 };
 
 #endif

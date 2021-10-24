@@ -1,3 +1,5 @@
+
+
 #include "../headers/Interaction.h"
 /**
  * @brief Construct a new Interaction:: Interaction object
@@ -68,4 +70,14 @@ bool Interaction::operator==(Interaction &toCompare){
     // We check if content object and date object are equals 
     // We call their respective equal function
     return this->getContent()==toCompare.getContent() && this->getDate()==toCompare.getDate();
+}
+
+/**
+ * @brief 
+ * 
+ * @return std::ostream& 
+ */
+std::ostream& operator<<(std::ostream& os, const Interaction& i){
+    os << "[" << i.date << "] " << i.content;
+    return os;
 }
