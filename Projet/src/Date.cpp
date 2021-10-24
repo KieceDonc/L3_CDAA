@@ -109,7 +109,7 @@ std::string Date::getDebugValues(int nbTabulations){
 	return "\n"+tabulations+"Date{"+
   "\n  "+tabulations+"Day = "+toString(this->day)+
   "\n  "+tabulations+"Month = "+toString(this->month)+
-  "\n  "+tabulations+"Year = "+toString(this->day)+
+  "\n  "+tabulations+"Year = "+toString(this->year)+
   "\n"+tabulations+"}\n";
 }
 
