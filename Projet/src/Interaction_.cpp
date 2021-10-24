@@ -1,5 +1,4 @@
 #include "../headers/Interaction.h"
-
 /**
  * @brief Construct a new Interaction:: Interaction object
  * 
@@ -57,7 +56,6 @@ std::string Interaction::getDebugValues(){
     this->getDate().getDebugValues()+"\n Content = "+
     this->getContent()+"\n}\n";
 }
-
 
 /**
  * @brief Compare interaction object and determine if they're equal
