@@ -14,12 +14,37 @@ Todo::Todo(const Date& date, const std::string& content) {
 /**
  * @brief Construct a new Todo:: Todo object
  * 
- * @param date 
  * @param content 
  */
-Todo::Todo(const std::string& content) {
-    this->setDate(Date());
+Todo::Todo(const std::string& content){
+
     this->setContent(content);
+    this->setDate(Date());
+
+    bool flag = false;
+    
+    std::string s = content;
+    std::string dateStr;
+    Date date;
+    const std::regex DATEPATTERN("^([0][1-9]|[1|2][0-9]|[3][0|1])[/]([0][1-9]|[1][0-2])[/]([1][9][7-9][0-9]|[2][0-2][0-9][0-9])$");
+
+    int match = s.find("@DATE");
+    if(match != std::string::npos){
+        s.erase(match,6);
+        dateStr = s.substr(match,10);
+        
+        if(std::regex_match(dateStr,DATEPATTERN)){
+            date = Date(std::stoi(dateStr.substr(0,2)),std::stoi(dateStr.substr(3,2)),std::stoi(dateStr.substr(6,4)));
+        } 
+        else flag = true;
+    
+        match = s.find("@DATE");
+        if(match == std::string::npos && !flag){
+            this->setContent(s);
+            this->setDate(date);
+        }
+    }
+
 }
 
 /**

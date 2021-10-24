@@ -36,13 +36,13 @@ Date::Date(){
 /**
  * @brief Constructor of date with parameters
  * 
- * @param month must be between 1 and 12 
  * @param day must be between 1 and 31 
+ * @param month must be between 1 and 12 
  * @param year must be higher than 1970
  */
-Date::Date(const int month,const int day,const int year){
-	this->setMonth(month);
+Date::Date(const int day,const int month,const int year){
 	this->setDay(day);
+	this->setMonth(month);
 	this->setYear(year);
 }
 
@@ -76,7 +76,7 @@ void Date::setDay(const int day){
  */
 void Date::setMonth(const int month){
 	if (month < 1 && month > 12){
-		throw std::invalid_argument("Error in method setMonth of class Date :\n\nThe day is invalid\n"+getDebugValues(0));
+		throw std::invalid_argument("Error in method setMonth of class Date :\n\nThe month is invalid\n"+getDebugValues(0));
   }else{
     this->month = month;
   }
@@ -90,7 +90,7 @@ void Date::setMonth(const int month){
  */
 void Date::setYear(const int year){
 	if (year < 1970){
-		throw std::invalid_argument("Error in method setYear of class Date :\n\nThe day is invalid\n"+getDebugValues(0));
+		throw std::invalid_argument("Error in method setYear of class Date :\n\nThe year is invalid\n"+getDebugValues(0));
 	}else{
 		this->year = year;
 	}

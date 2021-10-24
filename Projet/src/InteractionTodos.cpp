@@ -48,7 +48,7 @@ void InteractionTodos::addInteraction(Interaction * interaction) {
 
     // 3 - Fill the InteractionTodo list with freshly created todos from the splits list (and an iterator)
     for(std::list<std::string>::iterator it = splits.begin() ; it != splits.end() ; it++ ){
-        this->getItList()->push_back(InteractionTodo(new Todo(Date(),*it) , interaction));
+        this->getItList()->push_back(InteractionTodo(new Todo(*it) , interaction));
     }   
 }
 

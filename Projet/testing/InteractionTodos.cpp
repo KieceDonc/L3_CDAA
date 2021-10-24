@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <list>
+#include <regex>
 
 /**
  * @brief testing if adding Log class to Logs class work ( Logs contain a list of Log )
@@ -11,7 +12,7 @@
  * @return int 0 = test passed
  */
 void testingInteraction(){
-  Interaction * i = new Interaction(Date(),"Yo wtf the quick brown fox @TODO jumps over @TODO the lazy dog");
+  Interaction * i = new Interaction(Date(),"Yo wtf man @TODO the quick brown fox born in @DATE 25/05/2031 @TODO jumps over @TODO the lazy dog born in @DATE 22/05/1980");
   InteractionTodos * itL = new InteractionTodos();
   itL->addInteraction(i);
   //std::cout << *itL->getItList()->front().getT() << "\n";
@@ -20,6 +21,37 @@ void testingInteraction(){
   for(std::list<InteractionTodo>::iterator iter = itL->getItList()->begin() ; iter != itL->getItList()->end() ; iter++ ){
         std::cout << *iter->getT()<< "\n\t" ;
     }
+}
+
+void testRegex(){
+  std::string s = "The quick brown fox born in @DATE 25/05/2022 jumps over the lazy dog";
+  std::string dateStr;
+  Date date;
+  std::cout << "Todo :\n\t" << s << "\n\n" ;
+  int match = s.find("@DATE");
+  if(match != std::string::npos){
+    std::cout << "Date tag found at position " << match << std::endl << std::endl;
+    s.erase(match,6);
+    dateStr = s.substr(match,10);
+    std::cout << "Date supposée :\n\t" << dateStr << "\n\n" << "Todo sans tag : \n\t" << s << std::endl;
+    std::regex pattern("^([0][1-9]|[1|2][0-9]|[3][0|1])[/]([0][1-9]|[1][0-2])[/]([1][9][7-9][0-9]|[2][0-2][0-9][0-9])$");
+    if(std::regex_match(dateStr,pattern)){
+      date = Date(std::stoi(dateStr.substr(0,2)),std::stoi(dateStr.substr(3,2)),std::stoi(dateStr.substr(6,4)));
+      std::cout << "\n\t" <<date << "\n";
+    }
+
+    
+  }
+  else 
+    std::cout << "Date tag not found" << std::endl;
+
+
+}
+
+void testRegexInteraction(){
+  std::string s = "The quick brown fox born in @DATE asd5/05/2020 jumps over the lazy dog";
+  Todo * t = new Todo(s);
+  std::cout << "Todo :\n\t" << s << "\n\nMatching Todo :\n\t" << *t << std::endl;
 }
 
 int main(){
