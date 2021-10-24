@@ -3,6 +3,14 @@
 /**
  * @brief Construct a new Photo:: Photo object
  * 
+ */
+Photo::Photo(){
+  this->uri = "../assets/default.jpg";
+}
+
+/**
+ * @brief Construct a new Photo:: Photo object
+ * 
  * @param uri 
  */
 Photo::Photo(std::string uri){

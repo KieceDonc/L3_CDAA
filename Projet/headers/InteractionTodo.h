@@ -1,5 +1,6 @@
 #ifndef INTERACTIONTODO_H
 #define INTERACTIONTODO_H
+
 #include "Interaction.h"
 #include "Todo.h"
 #include <list>
@@ -8,8 +9,8 @@
 class InteractionTodo{
 
     private:
-        Todo * t ;
-        Interaction * i ;
+        Todo * t;
+        Interaction * i;
 
     public:
         InteractionTodo();

@@ -1,3 +1,6 @@
+#ifndef TODO_H
+#define TODO_H
+
 #include <iostream>
 #include "Date.h"
 
@@ -22,3 +25,5 @@ class Todo{
         bool operator==(Todo& toCompare);
         friend std::ostream& operator<<(std::ostream& , const Todo&);
 };
+
+#endif

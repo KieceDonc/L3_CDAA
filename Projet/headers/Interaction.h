@@ -1,3 +1,6 @@
+#ifndef INTERACTION_H
+#define INTERACTION_H
+
 #include <iostream>
 #include <regex>
 #include "Date.h"
@@ -23,3 +26,5 @@ class Interaction{
         friend std::ostream& operator<<(std::ostream& , const Interaction&);
 
 };
+
+#endif

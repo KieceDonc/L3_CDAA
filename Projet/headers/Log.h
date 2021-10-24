@@ -5,7 +5,6 @@
 
 #include <sstream>
 
-
 class Contact;
 
 class Log{

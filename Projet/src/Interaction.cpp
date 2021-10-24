@@ -58,6 +58,7 @@ std::string Interaction::getDebugValues(){
     this->getContent()+"\n}\n";
 }
 
+
 /**
  * @brief Compare interaction object and determine if they're equal
  * 

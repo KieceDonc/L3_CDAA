@@ -1,5 +1,4 @@
 #include "../headers/InteractionTodo.h"
-
 /**
  * @brief Construct a new Interaction Todo:: Interaction Todo object
  * 

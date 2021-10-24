@@ -16,7 +16,7 @@ int testingAdd(){
     throw "logs contain one/multiple log after initiate. Sus. Please checkout Logs testing";
   }
 
-  Contact * c0 = new Contact(logs0,"Valentin","Verstracte","vvdev","v@gmail.com","0102030405",Photo());
+  Contact * c0 = new Contact(logs0,"Valentin","Verstracte","vvdev","v@gmail.com","0102030405",Photo("tmp"));
 
   if(logs0->getSize()>0){
     throw "logs contain one/multiple log after initiate and adding them to a contact. Sus. Please checkout Logs testing";
@@ -42,7 +42,7 @@ int testingAdd(){
 int testingGet(){
   Logs * logs0 = new Logs();
 
-  Contact * c0 = new Contact(logs0,"Valentin","Verstracte","vvdev","v@gmail.com","0102030405",Photo());
+  Contact * c0 = new Contact(logs0,"Valentin","Verstracte","vvdev","v@gmail.com","0102030405",Photo("tmp"));
 
   logs0->add(Log(c0,Log::ACTION_EDIT_ENTERPRISE));
   
