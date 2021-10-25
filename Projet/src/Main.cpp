@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-/*! \mainpage Contact Management App with QT and SQLite! (Including : Not QT (yet) nor SQLite (sorry) )
+/*! \mainpage Contact Management App with QT and SQLite! (Including : Neither QT (yet) nor SQLite (sorry) )
  *
  * \section intro_sec Introduction
  *
