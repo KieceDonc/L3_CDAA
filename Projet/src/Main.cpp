@@ -7,9 +7,9 @@
  *
  * \section intro_sec Introduction
  *
- * 
- *
- * \section install_sec Installation
+ * Repository made by Valentin Verstracte and Evan Petit for an app development university project.
+ * The entirety of our work can be found on a public github repository :
+ * <a href="https://github.com/KieceDonc/L3_CDAA/tree/main">link text</a>
  *
  * \subsection step1 Step 1: Opening the box
  *
