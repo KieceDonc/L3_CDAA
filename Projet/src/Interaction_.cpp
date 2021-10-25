@@ -1,5 +1,4 @@
 
-
 #include "../headers/Interaction.h"
 /**
  * @brief Construct a new Interaction:: Interaction object
