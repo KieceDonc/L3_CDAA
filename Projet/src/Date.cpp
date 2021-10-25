@@ -2,7 +2,7 @@
 #include "../headers/Date.h"
 
 /**
- * @brief I don't really understand how it works but it fixes my problem and I'm ok with that
+ * @brief Our don't really understand how it works but it fixes out issues and I'm ok with that
  * 
  * @tparam T 
  * @param value 
