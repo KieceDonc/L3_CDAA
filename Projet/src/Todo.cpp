@@ -26,7 +26,7 @@ Todo::Todo(const std::string& content){
     std::string s = content;
     std::string dateStr;
     Date date;
-    const std::regex DATEPATTERN("^([0][1-9]|[1|2][0-9]|[3][0|1])[/]([0][1-9]|[1][0-2])[/]([1][9][7-9][0-9]|[2][0-2][0-9][0-9])$");
+    const std::regex DATEPATTERN("^([0-2][0-9]|[3][0|1])[/]([0][1-9]|[1][0-2])[/]([1][9][7-9][0-9]|[2][0-2][0-9][0-9])$");
 
     int match = s.find("@DATE");
     if(match != std::string::npos){
