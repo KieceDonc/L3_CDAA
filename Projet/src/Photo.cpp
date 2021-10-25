@@ -29,6 +29,7 @@ std::string Photo::getUri(){
 /**
  * @brief return Photo uri which is suitable for debugging
  * 
+ * @param nbTabulations
  * @return std::string 
  */
 std::string Photo::getDebugValues(int nbTabulations){

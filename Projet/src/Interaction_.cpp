@@ -51,6 +51,7 @@ Date Interaction::getDate() {
 /**
  * @brief return Interaction values ( date, content ) which is suitable for debugging
  * 
+ * @param nbTabulationss
  * @return std::string 
  */
 std::string Interaction::getDebugValues(int nbTabulations){

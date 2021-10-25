@@ -99,6 +99,7 @@ void Date::setYear(const int year){
 /**
  * @brief return Date values ( month, day, year ) which is suitable for debugging
  * 
+ * @param nbTabulations
  * @return std::string 
  */
 std::string Date::getDebugValues(int nbTabulations){
@@ -124,6 +125,13 @@ bool Date::operator==(const Date &toCompare){
 	return this->day == toCompare.day && this->month == toCompare.month && this->year == toCompare.year;
 }
 
+/**
+ * @brief 
+ * 
+ * @param os 
+ * @param date 
+ * @return std::ostream& 
+ */
 std::ostream& operator<<(std::ostream& os, const Date& date){
 	os << date.day << "/" << date.month << "/" << date.year;
 	return os;

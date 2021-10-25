@@ -205,6 +205,7 @@ std::list<Interaction *> Contact::getInteractions(){
 /**
  * @brief returns Contact object values ( firstname, lastname, mail ... ), which is suitable for debugging
  * 
+ * @param nbTabulations
  * @return std::string 
  */
 std::string Contact::getDebugValues(int nbTabulations){
