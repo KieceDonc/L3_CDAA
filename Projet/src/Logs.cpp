@@ -21,7 +21,7 @@ std::string toString(const T &value) {
 
 /**
  * @brief Construct a new Logs:: Logs object
- * 
+ * Initializes the list inside the container
  */
 Logs::Logs(){
   this->logs = new std::list<Log>();
@@ -29,7 +29,7 @@ Logs::Logs(){
 
 /**
  * @brief Destroy the Logs:: Logs object
- * Will destruct the list 
+ * Will destruct the list inside the container
  * 
  */
 Logs::~Logs(){
