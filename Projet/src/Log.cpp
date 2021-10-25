@@ -34,7 +34,7 @@ Log::Log(Contact* contact, const int ACTION_TYPE){
 }
 
 /**
- * @brief 
+ * @brief Return the contact which is concern by the action at a certain date
  * 
  * @return Contact* 
  */
@@ -43,7 +43,7 @@ Contact* Log::getContact(){
 }
 
 /**
- * @brief 
+ * @brief Return the day when the action happend on the contact.
  * 
  * @return Date 
  */
@@ -52,9 +52,14 @@ Date Log::getDateOfAction(){
 }
 
 /**
- * @brief 
+ * @brief Return the action done on the contact at certain date.
  * 
- * @return int 
+ * @return int = 0  Creation of Contact
+ * @return int = 1  Photo has been edited
+ * @return int = 2  Enterprise has been edited
+ * @return int = 3  Mail has been edited
+ * @return int = 4  Phone number has been edited
+ * @return int = 5  Contact has been deleted
  */
 int Log::getACTION_TYPE(){
   return this->ACTION_TYPE;

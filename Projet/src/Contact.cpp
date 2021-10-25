@@ -144,7 +144,7 @@ void Contact::addInteraction(Interaction * interaction){
 
 
 /**
- * @brief 
+ * @brief Return firstname of client
  * 
  * @return std::string 
  */
@@ -153,7 +153,7 @@ std::string Contact::getFirstName(){
 }
 
 /**
- * @brief 
+ * @brief Return lastname of client 
  * 
  * @return std::string 
  */
@@ -162,7 +162,7 @@ std::string Contact::getLastName(){
 }
 
 /**
- * @brief 
+ * @brief Return enterprise of client
  * 
  * @return std::string 
  */
@@ -171,7 +171,7 @@ std::string Contact::getEnterprise(){
 }
 
 /**
- * @brief 
+ * @brief Return mail of client
  * 
  * @return std::string 
  */
@@ -180,7 +180,7 @@ std::string Contact::getMail(){
 }
 
 /**
- * @brief 
+ * @brief Return the phone number of client
  * 
  * @return std::string 
  */
@@ -189,7 +189,7 @@ std::string Contact::getPhone(){
 }
 
 /**
- * @brief
+ * @brief Return Photo which contain path to real image
  * 
  * @return Photo 
  */
