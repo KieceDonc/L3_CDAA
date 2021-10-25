@@ -23,8 +23,8 @@ class InteractionTodos{
         void addInteraction(Interaction *);
 
         std::string getDebugValues(int nbTabulations);
-
-        bool operator==(InteractionTodos& toCompare);
+        
+        friend std::ostream& operator<<(std::ostream& , InteractionTodos&);
 
 };
 

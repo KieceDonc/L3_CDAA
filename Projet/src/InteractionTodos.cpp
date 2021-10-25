@@ -13,18 +13,16 @@ std::list<InteractionTodo> * InteractionTodos::getItList() {
     return this->itList;
 }
 
+
+/**
+ * @brief Method adding to the container the list of InteractionTodo objects from a given Interaction.<br>
+ * As in, the set of links between the given Interaction and all its todos. <br>
+ * 
+ * @param interaction The interaction to retrieve the Todos from.
+ */
 void InteractionTodos::addInteraction(Interaction * interaction) {
-    /* Static method returning the list of InteractionTodo of a given interaction
 
-     The structure of an interaction is as follows ([] = optional ) :
-            [COMMENT]
-            [@TODO todo description [@DATE dd/mm/yyyy]]      -> n times (n between 0 and infinity (please not))
-    */
-
-    //*out = std::list<InteractionTodo>();
     
-    
-
     // 1 - Let's split the interaction between the TODO tags and push the substrings in a list. For self-harm purposes, we will use regex and according smatch.
     std::list<std::string> splits = std::list<std::string>();
     std::string contenu = interaction->getContent();
@@ -42,8 +40,8 @@ void InteractionTodos::addInteraction(Interaction * interaction) {
     if(!contenu.empty())                                            // Adding the last todo element
         splits.push_back(contenu);
 
-    // 2 - If there is a comment, remove it
-    if(!splits.front().find("@TODO") != std::string::npos)
+    // 2 - If there is any text before the first TODO, remove it
+    if(!splits.front().find("@TODO") != std::string::npos)          //Checking for any list element that does not contain @TODO
         splits.pop_front();
 
     // 3 - Fill the InteractionTodo list with freshly created todos from the splits list (and an iterator)
@@ -53,24 +51,29 @@ void InteractionTodos::addInteraction(Interaction * interaction) {
 }
 
 /**
- * @brief 
+ * @brief returns the debug values.
  * 
- * @param nbTabulations Number of tabulations you want before showing informations. 
- * If you call outside of getDebugValues function you should set this value to 0. 
- * Also if you're inside DebugValues you should set this value to nbTabulations+1 for others getDebugsValues()
+ * @param nbTabulations Number of tabulations needed to show informations. 
+ * If called outside of getDebugValues function this value should be set to 0. 
+ * Inside DebugValue this value should be set to nbTabulations+1 for others getDebugsValues()
  * @return std::string 
  */
 std::string InteractionTodos::getDebugValues(int nbTabulations) {
-    return "ok";
+    return " ";
 }
 
 /**
- * @brief 
+* @brief Overloading of the << operator. Redirects the following string in the output stream :<br><br>
+ * [InteractionTodo]<br>[InteractionTodo]<br>. . . . .<br>[InteractionTodo]
  * 
- * @param toCompare 
- * @return true 
- * @return false 
+ * @param os The out stream
+ * @param it The InteractionTodo object to get values from
+ * @return std::ostream& 
  */
-bool InteractionTodos::operator==(InteractionTodos& toCompare) {
-    return true;
+std::ostream& operator<<(std::ostream& os, InteractionTodos& it){
+    for(std::list<InteractionTodo>::iterator iter = it.getItList()->begin() ; iter != it.getItList()->end() ; iter++ ){
+        os << *iter << "\n";
+    }
+    return os;
 }
+  

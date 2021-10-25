@@ -28,6 +28,7 @@ class InteractionTodo{
         std::string getDebugValues(int nbTabulations);
 
         bool operator==(InteractionTodo& toCompare);
+        friend std::ostream& operator<<(std::ostream& , const InteractionTodo&);
 
 };
 

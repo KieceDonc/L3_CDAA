@@ -1,6 +1,6 @@
 #include "../headers/InteractionTodo.h"
 /**
- * @brief Construct a new Interaction Todo:: Interaction Todo object
+ * @brief Constructs a new InteractionTodo object from pointers toward an Interaction and a Todo as parameters.
  * 
  * @param t 
  * @param i 
@@ -11,7 +11,7 @@ InteractionTodo::InteractionTodo(Todo * t, Interaction * i) {
 }
 
 /**
- * @brief 
+ * @brief Sets a pointer to the Todo
  * 
  * @param t 
  */
@@ -20,7 +20,7 @@ void InteractionTodo::setT(Todo * t) {
 }
 
 /**
- * @brief 
+ * @brief Sets a pointer to the Interaction
  * 
  * @param i 
  */
@@ -29,7 +29,7 @@ void InteractionTodo::setI(Interaction * i) {
 }
 
 /**
- * @brief 
+ * @brief Returns a pointer to the Todo
  * 
  * @return Todo* 
  */
@@ -38,7 +38,7 @@ Todo * InteractionTodo::getT() {
 }
 
 /**
- * @brief 
+ * @brief Returns a pointer to the Interaction
  * 
  * @return Interaction* 
  */
@@ -47,11 +47,11 @@ Interaction * InteractionTodo::getI() {
 }
 
 /**
- * @brief return InteractionTodo values ( interaction, todo ) which is suitable for debugging.
+ * @brief Returns InteractionTodo values ( interaction, todo ), suitable for debugging.
  * 
- * @param nbTabulations Number of tabulations you want before showing informations. 
- * If you call outside of getDebugValues function you should set this value to 0. 
- * Also if you're inside DebugValues you should set this value to nbTabulations+1 for others getDebugsValues()
+ * @param nbTabulations Number of tabulations needed to show informations. 
+ * If called outside of getDebugValues function this value should be set to 0. 
+ * Inside DebugValue this value should be set to nbTabulations+1 for others getDebugsValues()
  * @return std::string 
  */
 std::string InteractionTodo::getDebugValues(int nbTabulations){
@@ -66,7 +66,7 @@ std::string InteractionTodo::getDebugValues(int nbTabulations){
 }
 
 /**
- * @brief Compares InteractionTodo object and determine if they're equal.
+ * @brief Compares InteractionTodo object and determines if they're equal.
  * 
  * @param toCompare 
  * @return true 
@@ -76,4 +76,16 @@ bool InteractionTodo::operator==(InteractionTodo& toCompare){
     return this->getT()==toCompare.getT() && this->getI()==toCompare.getI();
 }
 
+/**
+ * @brief Overloading of the << operator. Redirects the following string in the output stream :<br><br>
+ * <i>Interaction :</i><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Interaction] </i><br><i>Is linked to the following TODO :</i><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Todo]
+ * 
+ * @param os The out stream
+ * @param it The InteractionTodo object to get values from
+ * @return std::ostream& 
+ */
+std::ostream& operator<<(std::ostream& os, const InteractionTodo& it){
+    os << "Interaction :\n\t" << *it.i << "\nIs linked to the following TODO :\n\t" << *it.t << std::endl;
+    return os;
+}
 

@@ -1,20 +1,24 @@
 #include "../headers/Contact.h"
 
 /**
- * @class 
- * 
+ * @class Contact
+ * A contact represents an entity akin to a person, a group of persons, a service, a company...<br>
+ * It is the main element of the class - Or at least the one that will be iterated onto the most along Interactions.<br>
+ * A contact stores all of its basic informations (names, mail, etc...), a list of interactions.<br>
  */
 
 /**
- * @brief Constructs a new Contact object from all its parameters. Because the Date() constructor is
+ * @brief Constructs a new Contact object from all its parameters. Because the Date() constructor allows it, it sets the creation date of the contact to the current date.
  * 
- * @param logs contains all actions / logs on this contact
+ * @param logs Contains all actions / logs applied on this contact
  * @param firstName 
  * @param lastName 
- * @param enterprise 
+ * @param entreprise 
  * @param mail 
  * @param phone 
+ * @param dateOfCreation 
  * @param photo 
+ * @param interactions The interaction list of the contact.
  */
 Contact::Contact(Logs * logs, const std::string& firstName, const std::string& lastName, const std::string& enterprise, const std::string& mail, const std::string& phone, const Photo& photo){
   this->inConstructor = true;
@@ -33,7 +37,7 @@ Contact::Contact(Logs * logs, const std::string& firstName, const std::string& l
 }
 
 /**
- * @brief set firstname of a contact. Must at least have one character
+ * @brief Sets the firstname of a contact. Must have at contain one character.
  * 
  * @throw invalid_argument firstname length must be higher than 0 
  * @param lastName
@@ -47,7 +51,7 @@ void Contact::setFirstName(const std::string& firstName){
 }
 
 /**
- * @brief set lastname of a contact. Must at least have one character
+ * @brief Sets the lastname of a contact. Must at least contain one character
  * 
  * @throw invalid_argument lastName length must be higher than 0 
  * @param lastName 
@@ -61,7 +65,7 @@ void Contact::setLastName(const std::string& lastName){
 }
 
 /**
- * @brief set enterprise of a contact. Must at least have one character
+ * @brief Sets the Company of a contact. Must at least have one character
  * 
  * @throw invalid_argument enterprise length must be higher than 0  
  * @param enterprise 
@@ -75,7 +79,7 @@ void Contact::setEnterprise(const std::string& enterprise){
 }
 
 /**
- * @brief set email of a contact. Must at least have one character, one @ and one "."
+ * @brief Sets the email of a contact. Must at least have one character, one @ and one "."
  * 
  * @throw invalid_argument enterprise length must be higher than 0 and one @ and one "."
  * @param mail 

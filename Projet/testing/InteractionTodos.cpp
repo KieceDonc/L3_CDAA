@@ -15,12 +15,7 @@ void testingInteraction(){
   Interaction * i = new Interaction(Date(),"Yo wtf man @TODO the quick brown fox born in @DATE 25/05/2031 @TODO jumps over @TODO the lazy dog born in @DATE 22/05/1980");
   InteractionTodos * itL = new InteractionTodos();
   itL->addInteraction(i);
-  //std::cout << *itL->getItList()->front().getT() << "\n";
-  //std::cout << i << std::endl;
-  std::cout << "Interaction :\n\t" << *i << "\n\nMatching Todo(s) :\n\t";
-  for(std::list<InteractionTodo>::iterator iter = itL->getItList()->begin() ; iter != itL->getItList()->end() ; iter++ ){
-        std::cout << *iter->getT()<< "\n\t" ;
-    }
+  std::cout << *itL << std::endl;
 }
 
 void testRegex(){

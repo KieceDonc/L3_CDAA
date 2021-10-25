@@ -2,14 +2,20 @@
 #include "../headers/Date.h"
 
 /**
- * @brief Our don't really understand how it works but it fixes out issues and I'm ok with that
+ * @class Date
+ * 
+ * Custom interface build from the tm struct<br>
+ * It allows easy date management of dates using only three parameters, day, month and year. 
+ */
+
+/**
+ * @brief This program won't compile using std::to_string - Therefore we need to build a function that works the same using a template and a stringstream.
  * 
  * @tparam T 
  * @param value 
  * @return std::string 
  */
-template<class T> 
-std::string toString(const T &value) {
+template<class T> std::string toString(const T &value) {
   // https://stackoverflow.com/questions/32140018/why-is-this-program-giving-an-error-to-string-is-not-a-member-of-std-why/32140400
   std::ostringstream os;
   os << value;
@@ -17,7 +23,7 @@ std::string toString(const T &value) {
 }
 
 /**
- * @brief Default constructor of Date ( initialized with current date )
+ * @brief Constructor of Date initialized with current date 
  * 
  */
 Date::Date(){

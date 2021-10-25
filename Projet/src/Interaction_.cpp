@@ -61,7 +61,7 @@ Date Interaction::getDate() {
 }
 
 /**
- * @brief return Interaction values ( date, content ) which is suitable for debugging
+ * @brief Returns Interaction values ( date, content ), suitable for debugging
  * 
  * @param nbTabulations Number of tabulations needed to show informations. 
  * If called outside of getDebugValues function this value should be set to 0. 

@@ -7,7 +7,7 @@
  */
 
 /**
- * @brief I don't really understand how it works but it fixes my problem and I'm ok with that
+ * @brief This program won't compile using std::to_string - Therefore we need to build a function that works the same using a template and a stringstream.
  * 
  * @tparam T 
  * @param value 
@@ -34,7 +34,7 @@ Log::Log(Contact* contact, const int ACTION_TYPE){
 }
 
 /**
- * @brief Return the contact which is concern by the action at a certain date
+ * @brief Returns the contact which is concerned by the action
  * 
  * @return Contact* 
  */
@@ -43,7 +43,7 @@ Contact* Log::getContact(){
 }
 
 /**
- * @brief Return the day when the action happend on the contact.
+ * @brief Returns the day at which the action happend on the contact.
  * 
  * @return Date 
  */
@@ -52,7 +52,7 @@ Date Log::getDateOfAction(){
 }
 
 /**
- * @brief Return the action done on the contact at certain date.
+ * @brief Returns an int corresponding to the action done on the contact.
  * 
  * @return int = 0  Creation of Contact
  * @return int = 1  Photo has been edited
@@ -66,11 +66,11 @@ int Log::getACTION_TYPE(){
 }
 
 /**
- * @brief return Log values ( date, contact ) which is suitable for debugging
+ * @brief Returns Log values ( date, contact ), suitable for debugging
  * 
- * @param nbTabulations Number of tabulations you want before showing informations. 
- * If you call outside of getDebugValues function you should set this value to 0. 
- * Also if you're inside DebugValues you should set this value to nbTabulations+1 for others getDebugsValues()
+ * @param nbTabulations Number of tabulations needed to show informations. 
+ * If called outside of getDebugValues function this value should be set to 0. 
+ * Inside DebugValue this value should be set to nbTabulations+1 for others getDebugsValues()
  * @return std::string 
  */
 std::string Log::getDebugValues(int nbTabulations){
@@ -86,11 +86,10 @@ std::string Log::getDebugValues(int nbTabulations){
 }
 
 /**
- * @brief Compare log object and determine if they're equal
+ * @brief Compares log object and determines if they're equal
  * 
  * @param toCompare 
- * @return true 
- * @return false 
+ * @return boolean
  */
 bool Log::operator==(const Log &toCompare){
   // We check if contact and date are the same so we call their respect equal function
