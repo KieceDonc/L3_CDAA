@@ -1,6 +1,4 @@
 Projet/.vscode
-<<<<<<< HEAD
 *.o
-=======
-*.o
->>>>>>> adding comments
+Project/doc/html
+Project/doc/latex

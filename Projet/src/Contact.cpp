@@ -57,6 +57,7 @@ void Contact::setLastName(const std::string& lastName){
 
 /**
  * @brief set enterprise of a contact. Must at least have one character
+ * 
  * @throw invalid_argument enterprise length must be higher than 0  
  * @param enterprise 
  */
@@ -69,8 +70,9 @@ void Contact::setEnterprise(const std::string& enterprise){
 }
 
 /**
- * @brief 
+ * @brief set email of a contact. Must at least have one character, one @ and one "."
  * 
+ * @throw invalid_argument enterprise length must be higher than 0 and one @ and one "."
  * @param mail 
  */
 void Contact::setMail(const std::string& mail){
@@ -207,13 +209,11 @@ std::list<Interaction *> Contact::getInteractions(){
 }
 
 /**
- * @brief returns Contact object values ( firstname, lastname, mail ... ), which is suitable for debugging
+ * @brief returns Contact values ( firstname, lastname, mail ... ), which is suitable for debugging
  * 
-<<<<<<< HEAD
- * @param nbTabulations
-=======
- * @param nbTabulations Number of tabulations you want before showing informations. If you call outside of getDebugValues you should call set this value to 0. Also if you're inside DebugValues you should call nbTabulations+1
->>>>>>> adding comments
+ * @param nbTabulations Number of tabulations you want before showing informations. 
+ * If you call outside of getDebugValues function you should set this value to 0. 
+ * Also if you're inside DebugValues you should set this value to nbTabulations+1 for others getDebugsValues()
  * @return std::string 
  */
 std::string Contact::getDebugValues(int nbTabulations){

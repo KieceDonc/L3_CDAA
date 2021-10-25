@@ -29,7 +29,9 @@ std::string Photo::getUri(){
 /**
  * @brief return Photo uri which is suitable for debugging
  * 
- * @param nbTabulations
+ * @param nbTabulations Number of tabulations you want before showing informations. 
+ * If you call outside of getDebugValues function you should set this value to 0. 
+ * Also if you're inside DebugValues you should set this value to nbTabulations+1 for others getDebugsValues()
  * @return std::string 
  */
 std::string Photo::getDebugValues(int nbTabulations){
