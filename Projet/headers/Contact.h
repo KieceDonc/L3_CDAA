@@ -26,7 +26,7 @@ class Contact{
 
     void setFirstName(const std::string& firstName);
     void setLastName(const std::string& lastName);
-    void setDateOfCreation(const Date& dateOfCreation);
+    void setDateOfCreation();
 
   public:
     Contact(Logs * logs,const std::string& firstName, const std::string& lastName, const std::string& enterprise, const std::string& mail, const std::string& phone, const Photo& photo);

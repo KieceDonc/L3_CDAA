@@ -21,8 +21,6 @@ class Date{
 	  Date();
 	  Date(const int month,const int day,const int year);
 
-    ~Date();
-
     std::string getDebugValues(int nbTabulations);
 
     bool operator==(const Date &toCompare);

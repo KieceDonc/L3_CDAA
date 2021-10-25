@@ -19,7 +19,7 @@ Contact::Contact(Logs * logs, const std::string& firstName, const std::string& l
   this->setEnterprise(enterprise);
   this->setMail(mail);
   this->setPhone(phone);
-  this->setDateOfCreation(Date());
+  this->setDateOfCreation();
   this->setPhoto(photo);
   this->interactions = std::list<Interaction *>();
 
@@ -82,6 +82,7 @@ void Contact::setMail(const std::string& mail){
   }else{
     this->mail = mail;
     if(!this->inConstructor){
+      // We check if we aren't in constructor so we know we edited mail of contact and add it to logs 
       logs->add(Log(this,Log::ACTION_EDIT_MAIL));
     }
   }
@@ -99,18 +100,19 @@ void Contact::setPhone(const std::string& phone){
   }else{
     this->phone = phone;
     if(!this->inConstructor){
+      // We check if we aren't in constructor so we know we edited phone number of contact and add it to logs 
       logs->add(Log(this,Log::ACTION_EDIT_PHONE));
     }
   }
 }
 
 /**
- * @brief 
+ * @brief Set the date of creation of the contact. Represent when he was created
  * 
  * @param dateOfCreation 
  */
-void Contact::setDateOfCreation(const Date& dateOfCreation){
-  this->dateOfCreation = dateOfCreation;
+void Contact::setDateOfCreation(){
+  this->dateOfCreation = Date();
 }
 
 /**
@@ -121,7 +123,7 @@ void Contact::setDateOfCreation(const Date& dateOfCreation){
 void Contact::setPhoto(const Photo& photo){
   this->photo = photo;
   if(!this->inConstructor){
-    // We check if we're in constructor so we know if we edited photo of contact or not
+    // We check if we aren't in constructor so we know we edited photo of contact and add it to logs 
     logs->add(Log(this,Log::ACTION_EDIT_PHOTO_CONTACT));
   }
 }
@@ -182,7 +184,7 @@ std::string Contact::getPhone(){
 }
 
 /**
- * @brief 
+ * @brief
  * 
  * @return Photo 
  */
@@ -191,7 +193,7 @@ Photo Contact::getPhoto(){
 }
 
 /**
- * @brief 
+ * @brief Return Date which represent when the contact was created
  * 
  * @return Date 
  */
@@ -233,7 +235,7 @@ std::string Contact::getDebugValues(int nbTabulations){
 }
 
 /**
- * @brief Compares Contact objects and determines if they're equal
+ * @brief Compares Contact and determines if they're equal
  * 
  * @param toCompare 
  * @return true 

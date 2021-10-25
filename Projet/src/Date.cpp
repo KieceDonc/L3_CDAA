@@ -2,7 +2,7 @@
 #include "../headers/Date.h"
 
 /**
- * @brief I don't really understand how it work but it fix my problem and I'm ok with that
+ * @brief I don't really understand how it works but it fixes my problem and I'm ok with that
  * 
  * @tparam T 
  * @param value 
@@ -44,14 +44,6 @@ Date::Date(const int day,const int month,const int year){
 	this->setDay(day);
 	this->setMonth(month);
 	this->setYear(year);
-}
-
-/**
- * @brief Destroy the Date:: Date object
- * 
- */
-Date::~Date(){
-	//delete this->d;
 }
 
 /**
