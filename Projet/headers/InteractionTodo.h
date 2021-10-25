@@ -6,6 +6,10 @@
 #include <list>
 #include <string>
 
+/**
+ * @brief An InteractionTodo objects serves the purpose of linking an Interaction object with a Todo object through their pointers. 
+ * 
+ */
 class InteractionTodo{
 
     private:
