@@ -6,9 +6,9 @@
  */
 
 /**
- * @brief Construct a new Contact:: Contact object
+ * @brief Constructs a new Contact object from all its parameters. Because the Date() constructor is
  * 
- * @param logs will contains all actions / logs on this contact
+ * @param logs contains all actions / logs on this contact
  * @param firstName 
  * @param lastName 
  * @param enterprise 
