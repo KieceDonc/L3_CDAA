@@ -1,0 +1,285 @@
+\hypertarget{class_contact}{}\doxysection{Contact Class Reference}
+\label{class_contact}\index{Contact@{Contact}}
+
+
+A contact object represent a client with their information.  
+
+
+
+
+{\ttfamily \#include $<$Contact.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_contact_aad9a605505447b84c3c44e7467ef3523}{Contact}} (\mbox{\hyperlink{class_logs}{Logs}} $\ast$logs, const std\+::string \&first\+Name, const std\+::string \&last\+Name, const std\+::string \&enterprise, const std\+::string \&mail, const std\+::string \&phone, const \mbox{\hyperlink{class_photo}{Photo}} \&photo)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_contact}{Contact}}\+:\+: \mbox{\hyperlink{class_contact}{Contact}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_contact_a61e04eacf2559135559010c879d84368}{set\+Enterprise}} (const std\+::string \&enterprise)
+\begin{DoxyCompactList}\small\item\em set enterprise of a contact. Must at least have one character \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_contact_aeae8d380505c9c71025229e95e69c535}{set\+Mail}} (const std\+::string \&mail)
+\begin{DoxyCompactList}\small\item\em set email of a contact. Must at least have one character, one @ and one \char`\"{}.\char`\"{} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_contact_a3efe1754c6d6fc83961a3aaa275da41a}{set\+Phone}} (const std\+::string \&phone)
+\begin{DoxyCompactList}\small\item\em set phone of a contact. Must at least have one character \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_contact_a2d43cb5ee49de3875a8946ba0158d05e}{set\+Photo}} (const \mbox{\hyperlink{class_photo}{Photo}} \&photo)
+\item 
+void \mbox{\hyperlink{class_contact_a78ad44e085d55393e0d8951a83770f4f}{add\+Interaction}} (\mbox{\hyperlink{class_interaction}{Interaction}} $\ast$)
+\item 
+std\+::string \mbox{\hyperlink{class_contact_aa68e1291ba33ad2f1389eeb6994581d5}{get\+First\+Name}} ()
+\item 
+std\+::string \mbox{\hyperlink{class_contact_a3de63ec253f8de8cf28a5b5de576347e}{get\+Last\+Name}} ()
+\item 
+std\+::string \mbox{\hyperlink{class_contact_ada2fbf5dfb1d3c7f0a8eefff29649807}{get\+Enterprise}} ()
+\item 
+std\+::string \mbox{\hyperlink{class_contact_aacca0e2619497d2965735ec4f803accd}{get\+Mail}} ()
+\item 
+std\+::string \mbox{\hyperlink{class_contact_a80c0a967fad8f6678968c2183d352229}{get\+Phone}} ()
+\item 
+\mbox{\hyperlink{class_photo}{Photo}} \mbox{\hyperlink{class_contact_a4930c379ff3c16ceb698f375f1ce1c98}{get\+Photo}} ()
+\item 
+\mbox{\hyperlink{class_date}{Date}} \mbox{\hyperlink{class_contact_a8c9d56b33b0b50503173d7be082fa8d2}{get\+Date\+Of\+Creation}} ()
+\begin{DoxyCompactList}\small\item\em Return \mbox{\hyperlink{class_date}{Date}} which represent when the contact was created. \end{DoxyCompactList}\item 
+std\+::list$<$ \mbox{\hyperlink{class_interaction}{Interaction}} $\ast$ $>$ \mbox{\hyperlink{class_contact_af51c51d01aca7d207bd78e164f05d1e4}{get\+Interactions}} ()
+\item 
+std\+::string \mbox{\hyperlink{class_contact_a89d83a50c0b013566fbffd734d2dc658}{get\+Debug\+Values}} (int nb\+Tabulations)
+\begin{DoxyCompactList}\small\item\em returns \mbox{\hyperlink{class_contact}{Contact}} values ( firstname, lastname, mail ... ), which is suitable for debugging \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_contact_aae9ab744bda05ce294790344340a440b}{operator==}} (const \mbox{\hyperlink{class_contact}{Contact}} \&to\+Compare)
+\begin{DoxyCompactList}\small\item\em Compares \mbox{\hyperlink{class_contact}{Contact}} and determines if they\textquotesingle{}re equal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A contact object represent a client with their information. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_contact_aad9a605505447b84c3c44e7467ef3523}\label{class_contact_aad9a605505447b84c3c44e7467ef3523}} 
+\index{Contact@{Contact}!Contact@{Contact}}
+\index{Contact@{Contact}!Contact@{Contact}}
+\doxysubsubsection{\texorpdfstring{Contact()}{Contact()}}
+{\footnotesize\ttfamily Contact\+::\+Contact (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_logs}{Logs}} $\ast$}]{logs,  }\item[{const std\+::string \&}]{first\+Name,  }\item[{const std\+::string \&}]{last\+Name,  }\item[{const std\+::string \&}]{enterprise,  }\item[{const std\+::string \&}]{mail,  }\item[{const std\+::string \&}]{phone,  }\item[{const \mbox{\hyperlink{class_photo}{Photo}} \&}]{photo }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_contact}{Contact}}\+:\+: \mbox{\hyperlink{class_contact}{Contact}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em logs} & will contains all actions / logs on this contact \\
+\hline
+{\em first\+Name} & \\
+\hline
+{\em last\+Name} & \\
+\hline
+{\em enterprise} & \\
+\hline
+{\em mail} & \\
+\hline
+{\em phone} & \\
+\hline
+{\em photo} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_contact_a78ad44e085d55393e0d8951a83770f4f}\label{class_contact_a78ad44e085d55393e0d8951a83770f4f}} 
+\index{Contact@{Contact}!addInteraction@{addInteraction}}
+\index{addInteraction@{addInteraction}!Contact@{Contact}}
+\doxysubsubsection{\texorpdfstring{addInteraction()}{addInteraction()}}
+{\footnotesize\ttfamily void Contact\+::add\+Interaction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_interaction}{Interaction}} $\ast$}]{interaction }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{class_interaction}{Interaction}}} & $\ast$ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_contact_a8c9d56b33b0b50503173d7be082fa8d2}\label{class_contact_a8c9d56b33b0b50503173d7be082fa8d2}} 
+\index{Contact@{Contact}!getDateOfCreation@{getDateOfCreation}}
+\index{getDateOfCreation@{getDateOfCreation}!Contact@{Contact}}
+\doxysubsubsection{\texorpdfstring{getDateOfCreation()}{getDateOfCreation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_date}{Date}} Contact\+::get\+Date\+Of\+Creation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return \mbox{\hyperlink{class_date}{Date}} which represent when the contact was created. 
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_date}{Date}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_contact_a89d83a50c0b013566fbffd734d2dc658}\label{class_contact_a89d83a50c0b013566fbffd734d2dc658}} 
+\index{Contact@{Contact}!getDebugValues@{getDebugValues}}
+\index{getDebugValues@{getDebugValues}!Contact@{Contact}}
+\doxysubsubsection{\texorpdfstring{getDebugValues()}{getDebugValues()}}
+{\footnotesize\ttfamily std\+::string Contact\+::get\+Debug\+Values (\begin{DoxyParamCaption}\item[{int}]{nb\+Tabulations }\end{DoxyParamCaption})}
+
+
+
+returns \mbox{\hyperlink{class_contact}{Contact}} values ( firstname, lastname, mail ... ), which is suitable for debugging 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nb\+Tabulations} & Number of tabulations you want before showing informations. If you call outside of get\+Debug\+Values function you should set this value to 0. Also if you\textquotesingle{}re inside Debug\+Values you should set this value to nb\+Tabulations+1 for others get\+Debugs\+Values() \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_contact_ada2fbf5dfb1d3c7f0a8eefff29649807}\label{class_contact_ada2fbf5dfb1d3c7f0a8eefff29649807}} 
+\index{Contact@{Contact}!getEnterprise@{getEnterprise}}
+\index{getEnterprise@{getEnterprise}!Contact@{Contact}}
+\doxysubsubsection{\texorpdfstring{getEnterprise()}{getEnterprise()}}
+{\footnotesize\ttfamily std\+::string Contact\+::get\+Enterprise (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+std\+::string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_contact_aa68e1291ba33ad2f1389eeb6994581d5}\label{class_contact_aa68e1291ba33ad2f1389eeb6994581d5}} 
+\index{Contact@{Contact}!getFirstName@{getFirstName}}
+\index{getFirstName@{getFirstName}!Contact@{Contact}}
+\doxysubsubsection{\texorpdfstring{getFirstName()}{getFirstName()}}
+{\footnotesize\ttfamily std\+::string Contact\+::get\+First\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+std\+::string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_contact_af51c51d01aca7d207bd78e164f05d1e4}\label{class_contact_af51c51d01aca7d207bd78e164f05d1e4}} 
+\index{Contact@{Contact}!getInteractions@{getInteractions}}
+\index{getInteractions@{getInteractions}!Contact@{Contact}}
+\doxysubsubsection{\texorpdfstring{getInteractions()}{getInteractions()}}
+{\footnotesize\ttfamily std\+::list$<$ \mbox{\hyperlink{class_interaction}{Interaction}} $\ast$ $>$ Contact\+::get\+Interactions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+std\+::list$<$\+Interaction $\ast$$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_contact_a3de63ec253f8de8cf28a5b5de576347e}\label{class_contact_a3de63ec253f8de8cf28a5b5de576347e}} 
+\index{Contact@{Contact}!getLastName@{getLastName}}
+\index{getLastName@{getLastName}!Contact@{Contact}}
+\doxysubsubsection{\texorpdfstring{getLastName()}{getLastName()}}
+{\footnotesize\ttfamily std\+::string Contact\+::get\+Last\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+std\+::string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_contact_aacca0e2619497d2965735ec4f803accd}\label{class_contact_aacca0e2619497d2965735ec4f803accd}} 
+\index{Contact@{Contact}!getMail@{getMail}}
+\index{getMail@{getMail}!Contact@{Contact}}
+\doxysubsubsection{\texorpdfstring{getMail()}{getMail()}}
+{\footnotesize\ttfamily std\+::string Contact\+::get\+Mail (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+std\+::string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_contact_a80c0a967fad8f6678968c2183d352229}\label{class_contact_a80c0a967fad8f6678968c2183d352229}} 
+\index{Contact@{Contact}!getPhone@{getPhone}}
+\index{getPhone@{getPhone}!Contact@{Contact}}
+\doxysubsubsection{\texorpdfstring{getPhone()}{getPhone()}}
+{\footnotesize\ttfamily std\+::string Contact\+::get\+Phone (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+std\+::string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_contact_a4930c379ff3c16ceb698f375f1ce1c98}\label{class_contact_a4930c379ff3c16ceb698f375f1ce1c98}} 
+\index{Contact@{Contact}!getPhoto@{getPhoto}}
+\index{getPhoto@{getPhoto}!Contact@{Contact}}
+\doxysubsubsection{\texorpdfstring{getPhoto()}{getPhoto()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_photo}{Photo}} Contact\+::get\+Photo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_photo}{Photo}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_contact_aae9ab744bda05ce294790344340a440b}\label{class_contact_aae9ab744bda05ce294790344340a440b}} 
+\index{Contact@{Contact}!operator==@{operator==}}
+\index{operator==@{operator==}!Contact@{Contact}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Contact\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_contact}{Contact}} \&}]{to\+Compare }\end{DoxyParamCaption})}
+
+
+
+Compares \mbox{\hyperlink{class_contact}{Contact}} and determines if they\textquotesingle{}re equal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em to\+Compare} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_contact_a61e04eacf2559135559010c879d84368}\label{class_contact_a61e04eacf2559135559010c879d84368}} 
+\index{Contact@{Contact}!setEnterprise@{setEnterprise}}
+\index{setEnterprise@{setEnterprise}!Contact@{Contact}}
+\doxysubsubsection{\texorpdfstring{setEnterprise()}{setEnterprise()}}
+{\footnotesize\ttfamily void Contact\+::set\+Enterprise (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{enterprise }\end{DoxyParamCaption})}
+
+
+
+set enterprise of a contact. Must at least have one character 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em invalid\+\_\+argument} & enterprise length must be higher than 0 ~\newline
+ \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em enterprise} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_contact_aeae8d380505c9c71025229e95e69c535}\label{class_contact_aeae8d380505c9c71025229e95e69c535}} 
+\index{Contact@{Contact}!setMail@{setMail}}
+\index{setMail@{setMail}!Contact@{Contact}}
+\doxysubsubsection{\texorpdfstring{setMail()}{setMail()}}
+{\footnotesize\ttfamily void Contact\+::set\+Mail (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{mail }\end{DoxyParamCaption})}
+
+
+
+set email of a contact. Must at least have one character, one @ and one \char`\"{}.\char`\"{} 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em invalid\+\_\+argument} & enterprise length must be higher than 0 and one @ and one \char`\"{}.\char`\"{} \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em mail} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_contact_a3efe1754c6d6fc83961a3aaa275da41a}\label{class_contact_a3efe1754c6d6fc83961a3aaa275da41a}} 
+\index{Contact@{Contact}!setPhone@{setPhone}}
+\index{setPhone@{setPhone}!Contact@{Contact}}
+\doxysubsubsection{\texorpdfstring{setPhone()}{setPhone()}}
+{\footnotesize\ttfamily void Contact\+::set\+Phone (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{phone }\end{DoxyParamCaption})}
+
+
+
+set phone of a contact. Must at least have one character 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em invalid\+\_\+argument} & phone length must be higher than 0 \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em last\+Name} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_contact_a2d43cb5ee49de3875a8946ba0158d05e}\label{class_contact_a2d43cb5ee49de3875a8946ba0158d05e}} 
+\index{Contact@{Contact}!setPhoto@{setPhoto}}
+\index{setPhoto@{setPhoto}!Contact@{Contact}}
+\doxysubsubsection{\texorpdfstring{setPhoto()}{setPhoto()}}
+{\footnotesize\ttfamily void Contact\+::set\+Photo (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_photo}{Photo}} \&}]{photo }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em photo} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/stinky/\+Documents/\+Cours/\+S5/\+Projets/\+CDAA/\+Projet/headers/Contact.\+h\item 
+/home/stinky/\+Documents/\+Cours/\+S5/\+Projets/\+CDAA/\+Projet/src/Contact.\+cpp\end{DoxyCompactItemize}

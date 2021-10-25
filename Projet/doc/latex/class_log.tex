@@ -1,0 +1,144 @@
+\hypertarget{class_log}{}\doxysection{Log Class Reference}
+\label{class_log}\index{Log@{Log}}
+
+
+A log will represent an action done on a contact at a certain date.  
+
+
+
+
+{\ttfamily \#include $<$Log.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_log_a710d31bc37e541d4b832ee0be5eea85b}{Log}} (\mbox{\hyperlink{class_contact}{Contact}} $\ast$contact, const int ACTION\+\_\+\+TYPE)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_log}{Log}}\+:\+: \mbox{\hyperlink{class_log}{Log}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_contact}{Contact}} $\ast$ \mbox{\hyperlink{class_log_ac7c459a57c3441692e283230b623ff4b}{get\+Contact}} ()
+\item 
+\mbox{\hyperlink{class_date}{Date}} \mbox{\hyperlink{class_log_ae082c3ef9193d5d3e03673f30a0c9e66}{get\+Date\+Of\+Action}} ()
+\item 
+int \mbox{\hyperlink{class_log_ae43955d765817e347c92d254cc6a60bf}{get\+ACTION\+\_\+\+TYPE}} ()
+\item 
+std\+::string \mbox{\hyperlink{class_log_ae495b3ba2d9a52a49a05c45422f0633a}{get\+Debug\+Values}} (int nb\+Tabulations)
+\begin{DoxyCompactList}\small\item\em return \mbox{\hyperlink{class_log}{Log}} values ( date, contact ) which is suitable for debugging \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_log_a81c4e05fcfabb14ee3504f3df59da185}{operator==}} (const \mbox{\hyperlink{class_log}{Log}} \&to\+Compare)
+\begin{DoxyCompactList}\small\item\em Compare log object and determine if they\textquotesingle{}re equal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_log_a3317b6ae01d5918f4d705533ad0250b9}\label{class_log_a3317b6ae01d5918f4d705533ad0250b9}} 
+static const int {\bfseries ACTION\+\_\+\+CREATION\+\_\+\+CONTACT} = 0
+\item 
+\mbox{\Hypertarget{class_log_aba42b4950df15e779c5992e7d368ad69}\label{class_log_aba42b4950df15e779c5992e7d368ad69}} 
+static const int {\bfseries ACTION\+\_\+\+EDIT\+\_\+\+PHOTO\+\_\+\+CONTACT} = 1
+\item 
+\mbox{\Hypertarget{class_log_a9d8cb773979ba2bfe520e4895f35df50}\label{class_log_a9d8cb773979ba2bfe520e4895f35df50}} 
+static const int {\bfseries ACTION\+\_\+\+EDIT\+\_\+\+ENTERPRISE} = 2
+\item 
+\mbox{\Hypertarget{class_log_ad92b1e3aa79bc3b771723c5689e17816}\label{class_log_ad92b1e3aa79bc3b771723c5689e17816}} 
+static const int {\bfseries ACTION\+\_\+\+EDIT\+\_\+\+MAIL} = 3
+\item 
+\mbox{\Hypertarget{class_log_ad5e012102a7044f81314e7c3089d5da5}\label{class_log_ad5e012102a7044f81314e7c3089d5da5}} 
+static const int {\bfseries ACTION\+\_\+\+EDIT\+\_\+\+PHONE} = 4
+\item 
+\mbox{\Hypertarget{class_log_a4bceacbdd3792bff6013fb474512b7a7}\label{class_log_a4bceacbdd3792bff6013fb474512b7a7}} 
+static const int {\bfseries ACTION\+\_\+\+DELETE\+\_\+\+CONTACT} = 5
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A log will represent an action done on a contact at a certain date. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_log_a710d31bc37e541d4b832ee0be5eea85b}\label{class_log_a710d31bc37e541d4b832ee0be5eea85b}} 
+\index{Log@{Log}!Log@{Log}}
+\index{Log@{Log}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{Log()}{Log()}}
+{\footnotesize\ttfamily Log\+::\+Log (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_contact}{Contact}} $\ast$}]{contact,  }\item[{const int}]{ACTION\+\_\+\+TYPE }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_log}{Log}}\+:\+: \mbox{\hyperlink{class_log}{Log}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contact} & \\
+\hline
+{\em ACTION\+\_\+\+TYPE} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_log_ae43955d765817e347c92d254cc6a60bf}\label{class_log_ae43955d765817e347c92d254cc6a60bf}} 
+\index{Log@{Log}!getACTION\_TYPE@{getACTION\_TYPE}}
+\index{getACTION\_TYPE@{getACTION\_TYPE}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{getACTION\_TYPE()}{getACTION\_TYPE()}}
+{\footnotesize\ttfamily int Log\+::get\+ACTION\+\_\+\+TYPE (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_log_ac7c459a57c3441692e283230b623ff4b}\label{class_log_ac7c459a57c3441692e283230b623ff4b}} 
+\index{Log@{Log}!getContact@{getContact}}
+\index{getContact@{getContact}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{getContact()}{getContact()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_contact}{Contact}} $\ast$ Log\+::get\+Contact (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Contact$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_log_ae082c3ef9193d5d3e03673f30a0c9e66}\label{class_log_ae082c3ef9193d5d3e03673f30a0c9e66}} 
+\index{Log@{Log}!getDateOfAction@{getDateOfAction}}
+\index{getDateOfAction@{getDateOfAction}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{getDateOfAction()}{getDateOfAction()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_date}{Date}} Log\+::get\+Date\+Of\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{class_date}{Date}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_log_ae495b3ba2d9a52a49a05c45422f0633a}\label{class_log_ae495b3ba2d9a52a49a05c45422f0633a}} 
+\index{Log@{Log}!getDebugValues@{getDebugValues}}
+\index{getDebugValues@{getDebugValues}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{getDebugValues()}{getDebugValues()}}
+{\footnotesize\ttfamily std\+::string Log\+::get\+Debug\+Values (\begin{DoxyParamCaption}\item[{int}]{nb\+Tabulations }\end{DoxyParamCaption})}
+
+
+
+return \mbox{\hyperlink{class_log}{Log}} values ( date, contact ) which is suitable for debugging 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nb\+Tabulations} & Number of tabulations you want before showing informations. If you call outside of get\+Debug\+Values function you should set this value to 0. Also if you\textquotesingle{}re inside Debug\+Values you should set this value to nb\+Tabulations+1 for others get\+Debugs\+Values() \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_log_a81c4e05fcfabb14ee3504f3df59da185}\label{class_log_a81c4e05fcfabb14ee3504f3df59da185}} 
+\index{Log@{Log}!operator==@{operator==}}
+\index{operator==@{operator==}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Log\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_log}{Log}} \&}]{to\+Compare }\end{DoxyParamCaption})}
+
+
+
+Compare log object and determine if they\textquotesingle{}re equal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em to\+Compare} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/stinky/\+Documents/\+Cours/\+S5/\+Projets/\+CDAA/\+Projet/headers/Log.\+h\item 
+/home/stinky/\+Documents/\+Cours/\+S5/\+Projets/\+CDAA/\+Projet/src/Log.\+cpp\end{DoxyCompactItemize}
