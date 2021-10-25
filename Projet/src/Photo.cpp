@@ -1,6 +1,11 @@
 #include "../headers/Photo.h"
 
 /**
+ * @class
+ * 
+ */
+
+/**
  * @brief Construct a new Photo:: Photo object
  * Sets a path which leads to a default image ( no image provided )
  * 

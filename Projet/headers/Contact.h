@@ -9,6 +9,10 @@
 #include <stdexcept>
 #include <list>
 
+/**
+ * @brief A contact object represent a client with their information
+ * 
+ */
 class Contact{
 
   private:

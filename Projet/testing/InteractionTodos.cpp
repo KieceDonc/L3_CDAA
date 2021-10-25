@@ -45,7 +45,6 @@ void testRegex(){
   else 
     std::cout << "Date tag not found" << std::endl;
 
-
 }
 
 void testRegexInteraction(){

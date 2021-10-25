@@ -3,6 +3,10 @@
 
 #include <string>
 
+/**
+ * @brief Contains path to the real image
+ * 
+ */
 class Photo{
 
   private:

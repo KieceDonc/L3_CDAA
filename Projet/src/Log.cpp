@@ -2,6 +2,11 @@
 #include "../headers/Contact.h"
 
 /**
+ * @class 
+ * 
+ */
+
+/**
  * @brief I don't really understand how it works but it fixes my problem and I'm ok with that
  * 
  * @tparam T 

@@ -9,6 +9,10 @@
 #include <list>
 #include <stdexcept>
 
+/**
+ * @brief Container for Log objects. 
+ * 
+ */
 class Logs{
   private:
     std::list<Log> * logs;

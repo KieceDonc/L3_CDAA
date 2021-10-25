@@ -1,6 +1,11 @@
 #include "../headers/Contact.h"
 
 /**
+ * @class 
+ * 
+ */
+
+/**
  * @brief Construct a new Contact:: Contact object
  * 
  * @param logs will contains all actions / logs on this contact

@@ -7,6 +7,10 @@
 
 class Contact;
 
+/**
+ * @brief A log will represent an action done on a contact at a certain date
+ * 
+ */
 class Log{
   
   private:
