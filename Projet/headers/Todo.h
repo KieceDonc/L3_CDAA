@@ -5,6 +5,10 @@
 #include <regex>
 #include "Date.h"
 
+/**
+ * @brief Represent a task for a contact. Linked to Interaction objects using an InteractionTodo object.
+ * 
+ */
 class Todo{
 
     private:

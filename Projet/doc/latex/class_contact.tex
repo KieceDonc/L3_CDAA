@@ -6,11 +6,11 @@
 \mbox{\hyperlink{class_contact_aad9a605505447b84c3c44e7467ef3523}{Contact}} (\mbox{\hyperlink{class_logs}{Logs}} $\ast$logs, const std\+::string \&first\+Name, const std\+::string \&last\+Name, const std\+::string \&enterprise, const std\+::string \&mail, const std\+::string \&phone, const \mbox{\hyperlink{class_photo}{Photo}} \&photo)
 \begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_contact}{Contact}}\+:\+: \mbox{\hyperlink{class_contact}{Contact}} object. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_contact_a61e04eacf2559135559010c879d84368}{set\+Enterprise}} (const std\+::string \&enterprise)
-\item 
+\begin{DoxyCompactList}\small\item\em set enterprise of a contact. Must at least have one character \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_contact_aeae8d380505c9c71025229e95e69c535}{set\+Mail}} (const std\+::string \&mail)
 \item 
 void \mbox{\hyperlink{class_contact_a3efe1754c6d6fc83961a3aaa275da41a}{set\+Phone}} (const std\+::string \&phone)
-\item 
+\begin{DoxyCompactList}\small\item\em set phone of a contact. Must at least have one character \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_contact_a2d43cb5ee49de3875a8946ba0158d05e}{set\+Photo}} (const \mbox{\hyperlink{class_photo}{Photo}} \&photo)
 \item 
 void \mbox{\hyperlink{class_contact_a78ad44e085d55393e0d8951a83770f4f}{add\+Interaction}} (\mbox{\hyperlink{class_interaction}{Interaction}} $\ast$)
@@ -98,9 +98,24 @@ Construct a new \mbox{\hyperlink{class_contact}{Contact}}\+:\+: \mbox{\hyperlink
 
 returns \mbox{\hyperlink{class_contact}{Contact}} object values ( firstname, lastname, mail ... ), which is suitable for debugging 
 
+$<$$<$$<$$<$$<$$<$$<$ HEAD \hypertarget{class_contact_autotoc_md0}{}\doxysubsection{@param nb\+Tabulations}\label{class_contact_autotoc_md0}
 
 \begin{DoxyParams}{Parameters}
-{\em nb\+Tabulations} & \\
+{\em nb\+Tabulations} & Number of tabulations you want before showing informations. If you call outside of get\+Debug\+Values you should call set this value to 0. Also if you\textquotesingle{}re inside Debug\+Values you should call nb\+Tabulations+1 \begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+\begin{quote}
+adding comments \end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\end{quote}
+\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -196,6 +211,16 @@ false
 {\footnotesize\ttfamily void Contact\+::set\+Enterprise (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{enterprise }\end{DoxyParamCaption})}
 
 
+
+set enterprise of a contact. Must at least have one character 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em invalid\+\_\+argument} & enterprise length must be higher than 0 ~\newline
+ \\
+\hline
+\end{DoxyExceptions}
+
 \begin{DoxyParams}{Parameters}
 {\em enterprise} & \\
 \hline
@@ -218,8 +243,17 @@ false
 {\footnotesize\ttfamily void Contact\+::set\+Phone (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{phone }\end{DoxyParamCaption})}
 
 
+
+set phone of a contact. Must at least have one character 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em invalid\+\_\+argument} & phone length must be higher than 0 \\
+\hline
+\end{DoxyExceptions}
+
 \begin{DoxyParams}{Parameters}
-{\em phone} & \\
+{\em last\+Name} & \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{class_contact_a2d43cb5ee49de3875a8946ba0158d05e}\label{class_contact_a2d43cb5ee49de3875a8946ba0158d05e}} 
@@ -237,5 +271,5 @@ false
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-headers/Contact.\+h\item 
-src/Contact.\+cpp\end{DoxyCompactItemize}
+/home/stinky/\+Documents/\+Cours/\+S5/\+Projets/\+CDAA/\+Projet/headers/Contact.\+h\item 
+/home/stinky/\+Documents/\+Cours/\+S5/\+Projets/\+CDAA/\+Projet/src/Contact.\+cpp\end{DoxyCompactItemize}

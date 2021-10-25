@@ -5,6 +5,10 @@
 #include <list>
 #include <string>
 
+/**
+ * @brief Container for InteractionTodo objects. 
+ * 
+ */
 class InteractionTodos{
 
     private:

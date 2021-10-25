@@ -70,11 +70,16 @@ $(function() {
 <div class="title">Interaction Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>AN interaction is a block of text. It can be tagged with @TODO and @DATE to indicate tasks and change the date of said todos. An interaction is always linked to its date of creation.  
+ <a href="class_interaction.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_interaction_8h_source.html">Interaction.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2c9aa6cf32e6bf0cb13ca0ec0f807c98"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interaction.html#a2c9aa6cf32e6bf0cb13ca0ec0f807c98">Interaction</a> (const <a class="el" href="class_date.html">Date</a> &amp;, const std::string &amp;)</td></tr>
-<tr class="memdesc:a2c9aa6cf32e6bf0cb13ca0ec0f807c98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_interaction.html">Interaction</a>:: <a class="el" href="class_interaction.html">Interaction</a> object.  <a href="class_interaction.html#a2c9aa6cf32e6bf0cb13ca0ec0f807c98">More...</a><br /></td></tr>
+<tr class="memdesc:a2c9aa6cf32e6bf0cb13ca0ec0f807c98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_interaction.html" title="AN interaction is a block of text. It can be tagged with @TODO and @DATE to indicate tasks and change...">Interaction</a>:: <a class="el" href="class_interaction.html" title="AN interaction is a block of text. It can be tagged with @TODO and @DATE to indicate tasks and change...">Interaction</a> object.  <a href="class_interaction.html#a2c9aa6cf32e6bf0cb13ca0ec0f807c98">More...</a><br /></td></tr>
 <tr class="separator:a2c9aa6cf32e6bf0cb13ca0ec0f807c98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c8ad6392855a3bed4a6d0525cc0acf9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interaction.html#a6c8ad6392855a3bed4a6d0525cc0acf9">setContent</a> (const std::string &amp;)</td></tr>
 <tr class="memdesc:a6c8ad6392855a3bed4a6d0525cc0acf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the content of an interaction  <a href="class_interaction.html#a6c8ad6392855a3bed4a6d0525cc0acf9">More...</a><br /></td></tr>
@@ -86,7 +91,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0ac11720a574538f946cd3ed1ffaf731"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_date.html">Date</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interaction.html#a0ac11720a574538f946cd3ed1ffaf731">getDate</a> ()</td></tr>
 <tr class="separator:a0ac11720a574538f946cd3ed1ffaf731"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b25bc53bfa15bffdee53640ac84cb69"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interaction.html#a1b25bc53bfa15bffdee53640ac84cb69">getDebugValues</a> (int nbTabulations)</td></tr>
-<tr class="memdesc:a1b25bc53bfa15bffdee53640ac84cb69"><td class="mdescLeft">&#160;</td><td class="mdescRight">return <a class="el" href="class_interaction.html">Interaction</a> values ( date, content ) which is suitable for debugging  <a href="class_interaction.html#a1b25bc53bfa15bffdee53640ac84cb69">More...</a><br /></td></tr>
+<tr class="memdesc:a1b25bc53bfa15bffdee53640ac84cb69"><td class="mdescLeft">&#160;</td><td class="mdescRight">return <a class="el" href="class_interaction.html" title="AN interaction is a block of text. It can be tagged with @TODO and @DATE to indicate tasks and change...">Interaction</a> values ( date, content ) which is suitable for debugging  <a href="class_interaction.html#a1b25bc53bfa15bffdee53640ac84cb69">More...</a><br /></td></tr>
 <tr class="separator:a1b25bc53bfa15bffdee53640ac84cb69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae01fd582657c679a7c57e2c3f7675692"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interaction.html#ae01fd582657c679a7c57e2c3f7675692">operator==</a> (<a class="el" href="class_interaction.html">Interaction</a> &amp;toCompare)</td></tr>
 <tr class="memdesc:ae01fd582657c679a7c57e2c3f7675692"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare interaction object and determine if they're equal.  <a href="class_interaction.html#ae01fd582657c679a7c57e2c3f7675692">More...</a><br /></td></tr>
@@ -97,7 +102,9 @@ Friends</h2></td></tr>
 <tr class="memitem:a60099cfbe5db8c8d2d10fb60e100e4bf"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_interaction.html#a60099cfbe5db8c8d2d10fb60e100e4bf">operator&lt;&lt;</a> (std::ostream &amp;, const <a class="el" href="class_interaction.html">Interaction</a> &amp;)</td></tr>
 <tr class="separator:a60099cfbe5db8c8d2d10fb60e100e4bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>AN interaction is a block of text. It can be tagged with @TODO and @DATE to indicate tasks and change the date of said todos. An interaction is always linked to its date of creation. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2c9aa6cf32e6bf0cb13ca0ec0f807c98"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2c9aa6cf32e6bf0cb13ca0ec0f807c98">&#9670;&nbsp;</a></span>Interaction()</h2>
 
@@ -124,7 +131,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="class_interaction.html">Interaction</a>:: <a class="el" href="class_interaction.html">Interaction</a> object. </p>
+<p>Construct a new <a class="el" href="class_interaction.html" title="AN interaction is a block of text. It can be tagged with @TODO and @DATE to indicate tasks and change...">Interaction</a>:: <a class="el" href="class_interaction.html" title="AN interaction is a block of text. It can be tagged with @TODO and @DATE to indicate tasks and change...">Interaction</a> object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">date</td><td></td></tr>
@@ -188,7 +195,7 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>return <a class="el" href="class_interaction.html">Interaction</a> values ( date, content ) which is suitable for debugging </p>
+<p>return <a class="el" href="class_interaction.html" title="AN interaction is a block of text. It can be tagged with @TODO and @DATE to indicate tasks and change...">Interaction</a> values ( date, content ) which is suitable for debugging </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">nbTabulationss</td><td></td></tr>
@@ -317,8 +324,8 @@ false </dd></dl>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>headers/<a class="el" href="_interaction_8h_source.html">Interaction.h</a></li>
-<li>src/Interaction_.cpp</li>
+<li>/home/stinky/Documents/Cours/S5/Projets/CDAA/Projet/headers/<a class="el" href="_interaction_8h_source.html">Interaction.h</a></li>
+<li>/home/stinky/Documents/Cours/S5/Projets/CDAA/Projet/src/Interaction_.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

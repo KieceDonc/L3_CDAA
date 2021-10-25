@@ -76,10 +76,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aad9a605505447b84c3c44e7467ef3523"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_contact.html">Contact</a>:: <a class="el" href="class_contact.html">Contact</a> object.  <a href="class_contact.html#aad9a605505447b84c3c44e7467ef3523">More...</a><br /></td></tr>
 <tr class="separator:aad9a605505447b84c3c44e7467ef3523"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61e04eacf2559135559010c879d84368"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_contact.html#a61e04eacf2559135559010c879d84368">setEnterprise</a> (const std::string &amp;enterprise)</td></tr>
+<tr class="memdesc:a61e04eacf2559135559010c879d84368"><td class="mdescLeft">&#160;</td><td class="mdescRight">set enterprise of a contact. Must at least have one character  <a href="class_contact.html#a61e04eacf2559135559010c879d84368">More...</a><br /></td></tr>
 <tr class="separator:a61e04eacf2559135559010c879d84368"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeae8d380505c9c71025229e95e69c535"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_contact.html#aeae8d380505c9c71025229e95e69c535">setMail</a> (const std::string &amp;mail)</td></tr>
 <tr class="separator:aeae8d380505c9c71025229e95e69c535"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3efe1754c6d6fc83961a3aaa275da41a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_contact.html#a3efe1754c6d6fc83961a3aaa275da41a">setPhone</a> (const std::string &amp;phone)</td></tr>
+<tr class="memdesc:a3efe1754c6d6fc83961a3aaa275da41a"><td class="mdescLeft">&#160;</td><td class="mdescRight">set phone of a contact. Must at least have one character  <a href="class_contact.html#a3efe1754c6d6fc83961a3aaa275da41a">More...</a><br /></td></tr>
 <tr class="separator:a3efe1754c6d6fc83961a3aaa275da41a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d43cb5ee49de3875a8946ba0158d05e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_contact.html#a2d43cb5ee49de3875a8946ba0158d05e">setPhoto</a> (const <a class="el" href="class_photo.html">Photo</a> &amp;photo)</td></tr>
 <tr class="separator:a2d43cb5ee49de3875a8946ba0158d05e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -199,7 +201,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="class_interaction.html">Interaction</a></td><td>* </td></tr>
+    <tr><td class="paramname"><a class="el" href="class_interaction.html" title="AN interaction is a block of text. It can be tagged with @TODO and @DATE to indicate tasks and change...">Interaction</a></td><td>* </td></tr>
   </table>
   </dd>
 </dl>
@@ -241,9 +243,27 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>returns <a class="el" href="class_contact.html">Contact</a> object values ( firstname, lastname, mail ... ), which is suitable for debugging </p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD </p>
+<h1><a class="anchor" id="autotoc_md0"></a>
+@param nbTabulations</h1>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">nbTabulations</td><td></td></tr>
+    <tr><td class="paramname">nbTabulations</td><td>Number of tabulations you want before showing informations. If you call outside of getDebugValues you should call set this value to 0. Also if you're inside DebugValues you should call nbTabulations+1 <blockquote class="doxtable">
+<blockquote class="doxtable">
+<blockquote class="doxtable">
+<blockquote class="doxtable">
+<blockquote class="doxtable">
+<blockquote class="doxtable">
+<blockquote class="doxtable">
+<p>adding comments </p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</td></tr>
   </table>
   </dd>
 </dl>
@@ -421,6 +441,15 @@ false </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>set enterprise of a contact. Must at least have one character </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">invalid_argument</td><td>enterprise length must be higher than 0 <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">enterprise</td><td></td></tr>
@@ -469,9 +498,17 @@ false </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>set phone of a contact. Must at least have one character </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">invalid_argument</td><td>phone length must be higher than 0 </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">phone</td><td></td></tr>
+    <tr><td class="paramname">lastName</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -503,8 +540,8 @@ false </dd></dl>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>headers/<a class="el" href="_contact_8h_source.html">Contact.h</a></li>
-<li>src/Contact.cpp</li>
+<li>/home/stinky/Documents/Cours/S5/Projets/CDAA/Projet/headers/<a class="el" href="_contact_8h_source.html">Contact.h</a></li>
+<li>/home/stinky/Documents/Cours/S5/Projets/CDAA/Projet/src/Contact.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
