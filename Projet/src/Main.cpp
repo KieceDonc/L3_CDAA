@@ -3,6 +3,19 @@
 
 #include <iostream>
 
+/*! \mainpage Contact Management App with QT! (Including : Not QT (yet) )
+ *
+ * \section intro_sec Introduction
+ *
+ * 
+ *
+ * \section install_sec Installation
+ *
+ * \subsection step1 Step 1: Opening the box
+ *
+ * etc...
+ */
+
 int main(){
   Logs* logs = new Logs();
   Contact* client0 = new Contact(logs,"Valentin","Verstracte","vvdev","valentinverst.developer@gmail.com","0102030405", Photo("oui"));
