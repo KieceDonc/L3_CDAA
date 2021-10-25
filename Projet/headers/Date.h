@@ -6,7 +6,11 @@
 #include <stdexcept>
 #include <time.h>
 
-/* inspired and modified from http://www.cplusplus.com/forum/beginner/158359/ */
+/**
+ * @brief Simplifies the usage of C++ tm struct to represents dates. Uses the dd/mm/yyyy format
+ * 
+ * 
+ */
 class Date{
   
   private:

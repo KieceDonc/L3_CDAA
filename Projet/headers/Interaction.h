@@ -6,11 +6,10 @@
 #include "Date.h"
 
 /**
- * @brief An interaction is a block of text. It can be tagged with @TODO and @DATE to indicate tasks and change the date of said todos. 
- * An interaction is always linked to its date of creation.
- * 
+ * @brief An interaction is a block of text tagged with @TODO and @DATE to indicate tasks and sets the date of said todos. 
  */
 class Interaction{
+
 
     private:
         std::string content;

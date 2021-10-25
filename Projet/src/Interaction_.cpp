@@ -1,5 +1,18 @@
 
 #include "../headers/Interaction.h"
+
+/**
+ * @class Interaction
+ * Class for an Interaction specifications. 
+ * An instance of Interaction will always contain a string (content) and its date of creation (date) through both its attributes.
+ * The content of an interaction will always be a single string - And the syntax of an Interaction is as follow :<br><br>
+ * <i>[Interaction comment]  [<b>@TODO</b> todo n°1 [<b>@DATE</b> dd/mm/yyyy]]  [<b>@TODO</b> todo n°2 [<b>@DATE</b> dd/mm/yyyy]] . . . . . [<b>@TODO</b> todo n°n [<b>@DATE</b> dd/mm/yyyy]]</i><br><br>
+ * With bracketed elements being optional<br>
+ * And n between 0 and inifinity (please don't do this)
+ * 
+ */
+
+
 /**
  * @brief Construct a new Interaction:: Interaction object
  * 
