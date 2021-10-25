@@ -3,17 +3,24 @@
 
 #include <iostream>
 
-/*! \mainpage Contact Management App with QT! (Including : Not QT (yet) )
+/*! \mainpage Contact Management App with QT and SQLite! (Including : Not QT (yet) nor SQLite (sorry) )
  *
  * \section intro_sec Introduction
  *
- * Repository made by Valentin Verstracte and Evan Petit for an app development university project.
- * The entirety of our work can be found on a public github repository :
- * <a href="https://github.com/KieceDonc/L3_CDAA/tree/main">link text</a>
+ * Documentation made by Valentin Verstracte and Evan Petit for an app development university project.
+ * The entirety of our work can be found on a public github repository :<br>
+ * <a href="https://github.com/KieceDonc/L3_CDAA/tree/prod/Projet">GitHub - L3_CDAA / Projet</a><br><br>
+ * 
+ * Valentin Verstracte : <a href="https://github.com/KieceDonc/">GitHub - KieceDonc</a><br>
+ * Evan Petit : <a href="https://github.com/RenardBOT/">GitHub - RenardBOT</a>
  *
- * \subsection step1 Step 1: Opening the box
+ * 
+ * \subsection runStep Running the app 
+ * 
+ * For now, the app works only in console. Please use<br>
+ * make build <br>
+ * In the build repertory.
  *
- * etc...
  */
 
 int main(){
