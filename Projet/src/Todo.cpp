@@ -86,6 +86,7 @@ Date Todo::getDate() {
 /**
  * @brief return Todo values( date, content ) which is suitable for debugging
  * 
+ * @param nbTabulations
  * @return std::string 
  */
 std::string Todo::getDebugValues(int nbTabulations){

@@ -49,6 +49,7 @@ Interaction * InteractionTodo::getI() {
 /**
  * @brief return InteractionTodo values ( interaction, todo ) which is suitable for debugging
  * 
+ * @param nbTabulations
  * @return std::string 
  */
 std::string InteractionTodo::getDebugValues(int nbTabulations){

@@ -90,6 +90,7 @@ Logs Logs::get(Contact *contact, int ACTION_TYPE, Date dateOfAction){
 /**
  * @brief return Logs values which is suitable for debugging
  * 
+ * @param nbTabulations
  * @return std::string 
  */
 std::string Logs::getDebugValues(int nbTabulations){

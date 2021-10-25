@@ -52,10 +52,23 @@ void InteractionTodos::addInteraction(Interaction * interaction) {
     }   
 }
 
+/**
+ * @brief 
+ * 
+ * @param nbTabulations 
+ * @return std::string 
+ */
 std::string InteractionTodos::getDebugValues(int nbTabulations) {
     return "ok";
 }
 
+/**
+ * @brief 
+ * 
+ * @param toCompare 
+ * @return true 
+ * @return false 
+ */
 bool InteractionTodos::operator==(InteractionTodos& toCompare) {
     return true;
 }

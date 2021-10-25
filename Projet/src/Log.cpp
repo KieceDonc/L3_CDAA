@@ -58,6 +58,7 @@ int Log::getACTION_TYPE(){
 /**
  * @brief return Log values ( date, contact ) which is suitable for debugging
  * 
+ * @param nbTabulations
  * @return std::string 
  */
 std::string Log::getDebugValues(int nbTabulations){
