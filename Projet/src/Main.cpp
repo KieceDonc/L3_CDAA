@@ -17,9 +17,9 @@
  * 
  * \subsection runStep Running the app 
  * 
- * For now, the app works only in console. Please use<br>
- * make build <br>
- * In the build repertory.
+ * For now, the app works only in console. The object files are in the build repertory.
+ * 
+ * 
  *
  */
 
