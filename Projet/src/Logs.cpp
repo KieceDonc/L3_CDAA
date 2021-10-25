@@ -1,7 +1,7 @@
 #include "../headers/Logs.h"
 
 /**
- * @brief I don't really understand how it work but it fix my problem and I'm ok with that
+ * @brief I don't really understand how it works but it fixes my problem and I'm ok with that
  * 
  * @tparam T 
  * @param value 
@@ -25,6 +25,7 @@ Logs::Logs(){
 
 /**
  * @brief Destroy the Logs:: Logs object
+ * Will destruct the list 
  * 
  */
 Logs::~Logs(){
@@ -32,7 +33,7 @@ Logs::~Logs(){
 }
 
 /**
- * @brief 
+ * @brief Add Log at the end of the list
  * 
  * @param log 
  */
@@ -41,7 +42,7 @@ void Logs::add(Log log){
 }
 
 /**
- * @brief 
+ * @brief Return the number of log 
  * 
  * @return int 
  */
@@ -50,7 +51,7 @@ int Logs::getSize(){
 }
 
 /**
- * @brief 
+ * @brief Return Log at position index
  * 
  * @param index 
  * @return Log 

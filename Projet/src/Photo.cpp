@@ -2,6 +2,7 @@
 
 /**
  * @brief Construct a new Photo:: Photo object
+ * Sets a path which leads to a default image ( no image provided )
  * 
  */
 Photo::Photo(){
@@ -10,6 +11,7 @@ Photo::Photo(){
 
 /**
  * @brief Construct a new Photo:: Photo object
+ * Sets a path which leads to contact photo
  * 
  * @param uri 
  */
@@ -18,7 +20,7 @@ Photo::Photo(std::string uri){
 }
 
 /**
- * @brief 
+ * @brief Return path to contact image
  * 
  * @return std::string 
  */
