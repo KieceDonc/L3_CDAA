@@ -47,7 +47,7 @@ Interaction * InteractionTodo::getI() {
 }
 
 /**
- * @brief return InteractionTodo values ( interaction, todo ) which is suitable for debugging
+ * @brief return InteractionTodo values ( interaction, todo ) which is suitable for debugging.
  * 
  * @return std::string 
  */
@@ -63,7 +63,7 @@ std::string InteractionTodo::getDebugValues(int nbTabulations){
 }
 
 /**
- * @brief Compares InteractionTodo object and determine if they're equal
+ * @brief Compares InteractionTodo object and determine if they're equal.
  * 
  * @param toCompare 
  * @return true 

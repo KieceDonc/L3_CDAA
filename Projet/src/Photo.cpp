@@ -42,7 +42,7 @@ std::string Photo::getDebugValues(int nbTabulations){
 }
 
 /**
- * @brief Compare photo object and determine if they're equal
+ * @brief Compares photo object and determines if they're equal
  * 
  * @param toCompare 
  * @return true 
