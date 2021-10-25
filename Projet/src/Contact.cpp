@@ -28,9 +28,10 @@ Contact::Contact(Logs * logs, const std::string& firstName, const std::string& l
 }
 
 /**
- * @brief 
+ * @brief set firstname of a contact. Must at least have one character
  * 
- * @param firstName 
+ * @throw invalid_argument firstname length must be higher than 0 
+ * @param lastName
  */
 void Contact::setFirstName(const std::string& firstName){
   if(firstName.length() == 0){
@@ -41,8 +42,9 @@ void Contact::setFirstName(const std::string& firstName){
 }
 
 /**
- * @brief 
+ * @brief set lastname of a contact. Must at least have one character
  * 
+ * @throw invalid_argument lastName length must be higher than 0 
  * @param lastName 
  */
 void Contact::setLastName(const std::string& lastName){
@@ -54,8 +56,8 @@ void Contact::setLastName(const std::string& lastName){
 }
 
 /**
- * @brief 
- * 
+ * @brief set enterprise of a contact. Must at least have one character
+ * @throw invalid_argument enterprise length must be higher than 0  
  * @param enterprise 
  */
 void Contact::setEnterprise(const std::string& enterprise){
@@ -83,10 +85,11 @@ void Contact::setMail(const std::string& mail){
   }
 }
 
-/**
- * @brief 
+/** 
+ * @brief set phone of a contact. Must at least have one character
  * 
- * @param phone 
+ * @throw invalid_argument phone length must be higher than 0 
+ * @param lastName
  */
 void Contact::setPhone(const std::string& phone){
   if(phone.length() == 0){
@@ -116,6 +119,7 @@ void Contact::setDateOfCreation(const Date& dateOfCreation){
 void Contact::setPhoto(const Photo& photo){
   this->photo = photo;
   if(!this->inConstructor){
+    // We check if we're in constructor so we know if we edited photo of contact or not
     logs->add(Log(this,Log::ACTION_EDIT_PHOTO_CONTACT));
   }
 }
@@ -205,7 +209,11 @@ std::list<Interaction *> Contact::getInteractions(){
 /**
  * @brief returns Contact object values ( firstname, lastname, mail ... ), which is suitable for debugging
  * 
+<<<<<<< HEAD
  * @param nbTabulations
+=======
+ * @param nbTabulations Number of tabulations you want before showing informations. If you call outside of getDebugValues you should call set this value to 0. Also if you're inside DebugValues you should call nbTabulations+1
+>>>>>>> adding comments
  * @return std::string 
  */
 std::string Contact::getDebugValues(int nbTabulations){
