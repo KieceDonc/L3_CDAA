@@ -13,7 +13,7 @@ Interaction::Interaction(const Date& date, const std::string& content) {
 }
 
 /**
- * @brief 
+ * @brief sets the content of an interaction
  * 
  * @param content 
  */
