@@ -11,14 +11,15 @@
  * 
  * @return int 0 = test passed
  */
-void testingInteraction(){
+bool testingInteraction(){
   Interaction * i = new Interaction(Date(),"Yo wtf man @TODO the quick brown fox born in @DATE 25/05/2031 @TODO jumps over @TODO the lazy dog born in @DATE 22/05/1980");
   InteractionTodos * itL = new InteractionTodos();
   itL->addInteraction(i);
   std::cout << *itL << std::endl;
+  return 0;
 }
 
-void testRegex(){
+bool testRegex(){
   std::string s = "The quick brown fox born in @DATE 25/05/2022 jumps over the lazy dog";
   std::string dateStr;
   Date date;
@@ -35,20 +36,20 @@ void testRegex(){
       std::cout << "\n\t" <<date << "\n";
     }
 
-    
+    return 0;
   }
   else 
     std::cout << "Date tag not found" << std::endl;
-
+    return 1;
 }
 
-void testRegexInteraction(){
+bool testRegexInteraction(){
   std::string s = "The quick brown fox born in @DATE asd5/05/2020 jumps over the lazy dog";
   Todo * t = new Todo(s);
   std::cout << "Todo :\n\t" << s << "\n\nMatching Todo :\n\t" << *t << std::endl;
+  return 0;
 }
 
 int main(){
-  testingInteraction();
-  return 0;
+  return testingInteraction() && testRegex() && testRegexInteraction();
 }

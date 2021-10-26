@@ -1,5 +1,6 @@
 SRC = ../src/
 INCL = ../include/
+DOC = ../doc/
 TEST = ../testing/
 
 build : test_Contact test_Logs test_InteractionTodos
@@ -16,3 +17,6 @@ test_InteractionTodos : $(TEST)InteractionTodos.cpp
 
 clear : 
 	rm *.o
+
+genDoc : $(DOC)Doxyfile
+	cd $(DOC) && doxygen Doxyfile
