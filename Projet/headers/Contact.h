@@ -10,7 +10,7 @@
 #include <list>
 
 /**
- * @brief A contact object represent a client with their information
+ * @brief A contact object represents an entity any user can interact with
  * 
  */
 class Contact{
@@ -34,6 +34,7 @@ class Contact{
 
   public:
     Contact(Logs * logs,const std::string& firstName, const std::string& lastName, const std::string& enterprise, const std::string& mail, const std::string& phone, const Photo& photo);
+    ~Contact();
     
     void setEnterprise(const std::string& enterprise);
     void setMail(const std::string& mail);
@@ -49,6 +50,8 @@ class Contact{
     Photo getPhoto();
     Date getDateOfCreation();
     std::list<Interaction *> getInteractions();
+
+    ///@private hiding the debug func from doxygen
     std::string getDebugValues(int nbTabulations);
 
     bool operator==(const Contact &toCompare);

@@ -48,6 +48,10 @@ void testRegexInteraction(){
   std::cout << "Todo :\n\t" << s << "\n\nMatching Todo :\n\t" << *t << std::endl;
 }
 
+void testDelete(){
+  
+}
+
 int main(){
   testingInteraction();
   return 0;
