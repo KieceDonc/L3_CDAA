@@ -1,11 +1,15 @@
 #include "../headers/Logs.h"
 /**
- * @class 
+ * @class Logs
+ * Logs is a container for Log objects. <br>
+ * The point of this class is nothing more than to make manipulating lists of logs more friendlier using add, get, etc... methods.
+ * Consider it equivalent to std::list<Log>
  * 
  */
 
 /**
- * @brief I don't really understand how it works but it fixes my problem and I'm ok with that
+ * @brief This program won't compile using std::to_string - Therefore we need to build a function that works the same using a template and a stringstream.<br>
+ * https://stackoverflow.com/questions/32140018/why-is-this-program-giving-an-error-to-string-is-not-a-member-of-std-why/32140400
  * 
  * @tparam T 
  * @param value 

@@ -56,6 +56,14 @@ InteractionTodos::InteractionTodos() {
 }
 
 /**
+ * @brief Destroys the Interaction Todos:: Interaction Todos object
+ * 
+ */
+InteractionTodos::~InteractionTodos(){
+    delete this->itList;
+}
+
+/**
  * @brief Sets itList with a pointer on a a list of Interaction Todo
  * 
  * @param itList 

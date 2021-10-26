@@ -16,6 +16,7 @@ class InteractionTodos{
 
     public:
         InteractionTodos();
+        ~InteractionTodos();
 
         std::list<InteractionTodo> * getItList() ;
         void setItList(std::list<InteractionTodo> *);

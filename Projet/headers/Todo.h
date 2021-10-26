@@ -16,7 +16,6 @@ class Todo{
         Date date;
 
     public:
-        Todo();
         Todo(const Date& , const std::string&);
         Todo(const std::string&);
 

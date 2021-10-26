@@ -8,7 +8,7 @@
 class Contact;
 
 /**
- * @brief A log will represent an action done on a contact at a certain date
+ * @brief A log represents an action done on a contact at a specific date
  * 
  */
 class Log{
@@ -31,6 +31,9 @@ class Log{
     const static int ACTION_EDIT_MAIL = 3;
     const static int ACTION_EDIT_PHONE = 4;
     const static int ACTION_DELETE_CONTACT = 5;
+    const static int ACTION_CREATION_INTERACTION = 6;
+    const static int ACTION_EDIT_INTERACTION = 7;
+    const static int ACTION_DELETE_INTERACTION = 8;
     
     ///@private hiding the debug func from doxygen
     std::string getDebugValues(int nbTabulations);

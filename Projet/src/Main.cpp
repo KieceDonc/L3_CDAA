@@ -1,5 +1,6 @@
 #include "../headers/Contact.h"
 #include "../headers/Logs.h"
+#include "../headers/InteractionTodos.h"
 
 #include <iostream>
 
@@ -14,28 +15,61 @@
  * Valentin Verstracte : <a href="https://github.com/KieceDonc/">GitHub - KieceDonc</a><br>
  * Evan Petit : <a href="https://github.com/RenardBOT/">GitHub - RenardBOT</a>
  *
+ * \subsection what What can I do with this?
+ * 
+ * Not much (yet)<br>
+ * It allows the manipulation of simple objects that will later be core to the application.<br>
+ *  - Creation, edition and deletion of contacts.<br>
+ *  - Creation, edition and deletion of Interactions.<br>
+ *  - Extracting Todos from Interactions.<br>
+ *  - Maintaining a conceptually correct link between Todos and Interactions.<br>
+ *  - Getting a complete log history of all the actions performed. <br><br>
+ * Although it is not implemented yet, it has been developped according to the principles of relational databases (here SQLite) :<br>
+ * Therefore the <b>ACID</b> database properties are here ascertained (the most important one being atomicity)
+ * 
+ * 
  * 
  * \subsection runStep Running the app 
  * 
- * For now, the app works only in console. The object files are in the build repertory.
+ * For now, the app works only in console. The object files are in the build repertory. Run them using the ./ command
  * 
  * 
  *
  */
 
 int main(){
+  
   Logs* logs = new Logs();
+  InteractionTodos* itList = new InteractionTodos();
   Contact* client0 = new Contact(logs,"Valentin","Verstracte","vvdev","valentinverst.developer@gmail.com","0102030405", Photo("oui"));
   Contact* client1 = new Contact(logs,"Evan","Petit","EvanIndustry","evan.petit@ouawe.com","0689130218", Photo("oui"));
+
+  Interaction* interaction1 = new Interaction(Date(),std::string("Groceries @TODO @DATE 30/08/2022 buy cheese"));
+  Interaction* interaction2 = new Interaction(Date(),std::string("Todoless interaction"));
+  Interaction* interaction3 = new Interaction(Date(),std::string("Important project to get done with @TODO brew some coffee @TODO play video games @TODO rush it last minute tomorrow (@DATE 27/10/2021)"));
+  
+
+  client0->getInteractions().push_back(interaction1);
+  client0->getInteractions().push_back(interaction2);
+  client1->getInteractions().push_back(interaction3);
+
+  itList->addInteraction(interaction1);
+  itList->addInteraction(interaction2);
+  itList->addInteraction(interaction3);
 
   client0->setEnterprise("ValentinIndustry");
   client0->setMail("valentin.verstracte@ValentinIndustry");
   client0->setPhone("5414315341");
 
   std::cout << logs->getDebugValues(0);
+  std::cout << *itList;
 
   delete logs;
   delete client0;
   delete client1;
+  delete itList;
+  delete interaction1;
+  delete interaction2;
+  delete interaction3;
   return 1;
 } 

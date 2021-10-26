@@ -3,7 +3,7 @@
 /**
  * @class Todo
  * 
- * A todo object conceptually represent a SINGLE task to do, ponctually, in an inderaction that can contain as many todos as it can.<br>
+ * A todo object conceptually represent a SINGLE task to do, ponctually, in an interaction that can contain as many todos as it needs.<br>
  * Todos are defined using <b>@TODO</b> tags in an interaction.<br>
  * Todos dates are defined using <b>@DATE</b> tags in a todo.<br>
  * If no date is defined, then it is implied to be the current date!<br>
@@ -29,7 +29,7 @@
  */
 
 /**
- * @brief Constructs a new Todo object from both parameters.
+ * @brief Constructs a new Todo object from both parameters. Does not parse any tags.
  * 
  * @param date 
  * @param content 
@@ -40,7 +40,8 @@ Todo::Todo(const Date& date, const std::string& content) {
 }
 
 /**
- * @brief Construct a new Todo object from its content. Looks for the first occurence of @DATE and checks if the following word is a date to the dd/mm/yyyy format with regex.<br>
+ * @brief Construct a new Todo object from its content. <b>PARSES @DATE TAGS.</b><br>
+ * Looks for the first occurence of @DATE and checks if the following word is a date to the dd/mm/yyyy format with regex.<br>
  * It then sets the todo date to that.<br>
  * If it doesn't match the regex, or there are multiple @DATE elements - Doesn't treat dates at all and sets the date to current date.
  * 
@@ -133,7 +134,7 @@ std::string Todo::getDebugValues(int nbTabulations){
 }
 
 /**
- * @brief Compare Todo object and determine if they're equal
+ * @brief Compares Todo objects and determines if they're equals
  * 
  * @param toCompare 
  * @return true 
@@ -145,7 +146,15 @@ bool Todo::operator==(Todo &toCompare){
     return this->getContent()==toCompare.getContent() && this->getDate()==toCompare.getDate();
 }
 
+/**
+ * @brief Overloading of the << operator. Redirects the following string in the output stream :
+ * <i> [ TODO : dd/mm/yyyy ] content </i>
+ * 
+ * @param os 
+ * @param todo 
+ * @return std::ostream& 
+ */
 std::ostream& operator<<(std::ostream& os , const Todo& todo){
-    os << "[" << todo.date << "] " << todo.content;
+    os << "[ TODO : " << todo.date << "] " << todo.content;
     return os;
 }

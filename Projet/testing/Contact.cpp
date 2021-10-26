@@ -44,8 +44,8 @@ int testingEquals(){
 
   
 
-  delete logs0;
-  delete logs1;
+  /*delete logs0;
+  delete logs1;*/
   return 0;
 }
 

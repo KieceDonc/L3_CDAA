@@ -34,7 +34,7 @@ class Contact{
 
   public:
     Contact(Logs * logs,const std::string& firstName, const std::string& lastName, const std::string& enterprise, const std::string& mail, const std::string& phone, const Photo& photo);
-    ~Contact();
+    
     
     void setEnterprise(const std::string& enterprise);
     void setMail(const std::string& mail);
@@ -55,6 +55,7 @@ class Contact{
     std::string getDebugValues(int nbTabulations);
 
     bool operator==(const Contact &toCompare);
+    
 };
 
 #endif
