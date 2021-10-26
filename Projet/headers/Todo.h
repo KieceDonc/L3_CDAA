@@ -6,7 +6,7 @@
 #include "Date.h"
 
 /**
- * @brief Represent a task for a contact. Linked to Interaction objects using an InteractionTodo object.
+ * @brief Represents a task from an interaction for a contact. Linked to Interaction objects using an InteractionTodo object.
  * 
  */
 class Todo{
@@ -25,6 +25,7 @@ class Todo{
         std::string getContent();
         Date getDate();
 
+        ///@private hiding the debug func from doxygen
         std::string getDebugValues(int nbTabulations);
 
         bool operator==(Todo& toCompare);

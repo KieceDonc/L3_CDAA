@@ -32,6 +32,7 @@ class Log{
     const static int ACTION_EDIT_PHONE = 4;
     const static int ACTION_DELETE_CONTACT = 5;
     
+    ///@private hiding the debug func from doxygen
     std::string getDebugValues(int nbTabulations);
 
     bool operator==(const Log &toCompare);

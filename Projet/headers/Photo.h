@@ -17,6 +17,8 @@ class Photo{
     Photo(std::string uri);
 
     std::string getUri();
+
+    ///@private hiding the debug func from doxygen
     std::string getDebugValues(int nbTabulations);
 
     bool operator==(Photo toCompare);

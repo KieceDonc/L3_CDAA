@@ -7,7 +7,7 @@
 #include <time.h>
 
 /**
- * @brief Simplifies the usage of C++ tm struct to represents dates. Uses the dd/mm/yyyy format
+ * @brief Simplifies the use of C++ tm struct to represent dates. Uses the dd/mm/yyyy format.
  * 
  * 
  */
@@ -25,6 +25,7 @@ class Date{
 	  Date();
 	  Date(const int month,const int day,const int year);
 
+    ///@private hiding the debug func from doxygen
     std::string getDebugValues(int nbTabulations);
 
     bool operator==(const Date &toCompare);

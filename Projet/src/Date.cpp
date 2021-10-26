@@ -4,19 +4,20 @@
 /**
  * @class Date
  * 
- * Custom interface build from the tm struct<br>
- * It allows easy date management of dates using only three parameters, day, month and year. 
+ * Custom interface built from the tm struct<br>
+ * It allows easy management of dates using only three parameters, day, month and year.<br>
+ * Therefore, the class is easily adjustable so we can later include hours, minutes, seconds if necessary.
  */
 
 /**
- * @brief This program won't compile using std::to_string - Therefore we need to build a function that works the same using a template and a stringstream.
+ * @brief This program won't compile using std::to_string - Therefore we need to build a function that works the same using a template and a stringstream.<br>
+ * https://stackoverflow.com/questions/32140018/why-is-this-program-giving-an-error-to-string-is-not-a-member-of-std-why/32140400
  * 
  * @tparam T 
  * @param value 
  * @return std::string 
  */
 template<class T> std::string toString(const T &value) {
-  // https://stackoverflow.com/questions/32140018/why-is-this-program-giving-an-error-to-string-is-not-a-member-of-std-why/32140400
   std::ostringstream os;
   os << value;
   return os.str();
@@ -116,11 +117,10 @@ std::string Date::getDebugValues(int nbTabulations){
 }
 
 /**
- * @brief Compares Date objects and determines if they're equal
+ * @brief Compares Date objects and determines if they're equals
  * 
  * @param toCompare 
- * @return true 
- * @return false 
+ * @return bool
  */
 bool Date::operator==(const Date &toCompare){
 	return this->day == toCompare.day && this->month == toCompare.month && this->year == toCompare.year;

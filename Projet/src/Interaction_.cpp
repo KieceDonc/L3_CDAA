@@ -4,17 +4,18 @@
 /**
  * @class Interaction
  * Class for an Interaction specifications. 
- * An instance of Interaction will always contain a string (content) and its date of creation (date) through both its attributes.
+ * An instance of Interaction will always contain a string (content) and its date of creation (date) through two attributes.
  * The content of an interaction will always be a single string - And the syntax of an Interaction is as follow :<br><br>
- * <i>[Interaction comment]  [<b>@TODO</b> todo n°1 [<b>@DATE</b> dd/mm/yyyy]]  [<b>@TODO</b> todo n°2 [<b>@DATE</b> dd/mm/yyyy]] . . . . . [<b>@TODO</b> todo n°n [<b>@DATE</b> dd/mm/yyyy]]</i><br><br>
+ * <i>[Interaction comment]  [<b>@TODO</b> todo n°1 [<b>@DATE</b> dd/mm/yyyy]]  [<b>@TODO</b> todo n°2 [<b>@DATE</b> dd/mm/yyyy]] . . . . . [<b>@TODO</b> todo n°k [<b>@DATE</b> dd/mm/yyyy]]</i><br><br>
  * With bracketed elements being optional<br>
- * And n between 0 and inifinity (please don't do this)
+ * And k between 0 and infinity (please don't do this)
+ * /!\ We do NOT treat the content line by line. 
  * 
  */
 
 
 /**
- * @brief Construct a new Interaction:: Interaction object with a date object and a string.
+ * @brief Construct a new Interaction object with a date object and a string.
  * 
  * @param date 
  * @param content 
@@ -61,6 +62,7 @@ Date Interaction::getDate() {
 }
 
 /**
+ * @private
  * @brief Returns Interaction values ( date, content ), suitable for debugging
  * 
  * @param nbTabulations Number of tabulations needed to show informations. 
@@ -80,14 +82,14 @@ std::string Interaction::getDebugValues(int nbTabulations){
 }
 
 /**
- * @brief Compares interaction object and determines if they're equal
+ * @brief Compares Interaction objects and determines if they're equals
  * 
  * @param toCompare 
  * @return bool
  */
 bool Interaction::operator==(Interaction &toCompare){
-    // We check if content object and date object are equals 
-    // We call their respective equal function
+    // Checks if content object and date object are equals
+    // Calls their corresponding equals function
     return this->getContent()==toCompare.getContent() && this->getDate()==toCompare.getDate();
 }
 

@@ -1,4 +1,21 @@
 #include "../headers/InteractionTodo.h"
+
+/**
+ * @class InteractionTodo
+ * An InteractionTodo object has for sole purpose to link a pointer on Todo and a pointer on Interaction.<br>
+ * It <b>conceptually means "Interaction i CONTAINS Todo t"</b><br>
+ * It is similar to the way a Relational Database works : Attributes are <b>Atomic</b> since we associate a single interaction with a single todo.<br>
+ * Somewhere in the program will be an InteractionTodos object that acts as a list of InteractionTodo (with a few useful methods to manipulate them) to store
+ * all the possible links between existing Interaction objects and Todo objects.
+ * 
+ * \subsection ex Example
+ * Here is an example of an InteractionTodo object with both its attributes :
+ * 
+ * <table><tr><td><b>attribute I</b></td><td><b>attribute T</b></td></tr><tr><td>new Interaction("Huge meeting @TODO call the boss")</td><td>new Todo("call the boss")</td></tr></table>
+ * 
+ * 
+ */
+
 /**
  * @brief Constructs a new InteractionTodo object from pointers toward an Interaction and a Todo as parameters.
  * 
@@ -11,7 +28,9 @@ InteractionTodo::InteractionTodo(Todo * t, Interaction * i) {
 }
 
 /**
- * @brief Sets a pointer to the Todo
+ * @brief Sets T to a pointer on Todo<br>
+ * A pointer is required here since we want a single object dynamically allocated in memory to represent a todo.<br>
+ * Two todos from two different interactions with the same content are <b> conceptually NOT equals</b> - Therefore we can use their pointer values (adress) to compare them.
  * 
  * @param t 
  */
@@ -20,7 +39,10 @@ void InteractionTodo::setT(Todo * t) {
 }
 
 /**
- * @brief Sets a pointer to the Interaction
+ * @brief Sets I to a pointer on Interaction
+ * A pointer is required here since we want a single object dynamically allocated in memory to represent a todo.<br>
+ * Two interactions with the same content are <b> conceptually NOT equals</b> - Therefore we can use their pointer values (adress) to compare them.
+ * 
  * 
  * @param i 
  */
@@ -29,7 +51,7 @@ void InteractionTodo::setI(Interaction * i) {
 }
 
 /**
- * @brief Returns a pointer to the Todo
+ * @brief Returns a pointer on Todo
  * 
  * @return Todo* 
  */
@@ -38,7 +60,7 @@ Todo * InteractionTodo::getT() {
 }
 
 /**
- * @brief Returns a pointer to the Interaction
+ * @brief Returns a pointer on Interaction
  * 
  * @return Interaction* 
  */
@@ -47,6 +69,7 @@ Interaction * InteractionTodo::getI() {
 }
 
 /**
+ * @private
  * @brief Returns InteractionTodo values ( interaction, todo ), suitable for debugging.
  * 
  * @param nbTabulations Number of tabulations needed to show informations. 
@@ -66,7 +89,7 @@ std::string InteractionTodo::getDebugValues(int nbTabulations){
 }
 
 /**
- * @brief Compares InteractionTodo object and determines if they're equal.
+ * @brief Compares InteractionTodo object and determines if they're equals.
  * 
  * @param toCompare 
  * @return true 

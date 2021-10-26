@@ -244,11 +244,10 @@ std::string Contact::getDebugValues(int nbTabulations){
 }
 
 /**
- * @brief Compares Contact and determines if they're equal
+ * @brief Compares Contact objects and determines if they're equals
  * 
  * @param toCompare 
- * @return true 
- * @return false 
+ * @return bool
  */
 bool Contact::operator==(const Contact &toCompare){
   return true

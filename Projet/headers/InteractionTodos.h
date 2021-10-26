@@ -22,6 +22,7 @@ class InteractionTodos{
 
         void addInteraction(Interaction *);
 
+        ///@private hiding the debug func from doxygen
         std::string getDebugValues(int nbTabulations);
         
         friend std::ostream& operator<<(std::ostream& , InteractionTodos&);
