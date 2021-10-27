@@ -137,13 +137,15 @@ void Contact::setPhoto(const Photo& photo){
   }
 }
 
+
 /**
- * @brief 
+ * @brief Adds an interaction to the list from a pointer. If the action is performed correctly, adds the creation to the logs.
  * 
  * @param Interaction *
  */
 void Contact::addInteraction(Interaction * interaction){
   this->getInteractions().push_back(interaction);
+  logs->add(Log(this,Log::ACTION_CREATION_INTERACTION));
 }
 
 
@@ -217,6 +219,20 @@ Date Contact::getDateOfCreation(){
  */
 std::list<Interaction *> Contact::getInteractions(){
   return this->interactions;
+}
+
+/**
+ * @brief Removes an interaction from its index in the list using iterators. If the action is performed correctly, adds the deletion to the logs.
+ * 
+ * @param i 
+ */
+void Contact::removeInteraction(int i){
+  if(i < this->getInteractions().size()){
+    std::list<Interaction *>::iterator index = this->getInteractions().begin();
+    std::advance(index,i);
+    index = this->getInteractions().erase(index);
+    logs->add(Log(this,Log::ACTION_DELETE_INTERACTION));
+  }
 }
 
 /**
