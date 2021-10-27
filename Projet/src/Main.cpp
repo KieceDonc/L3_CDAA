@@ -32,6 +32,7 @@
  * \subsection runStep Running the app 
  * 
  * For now, the app works only in console. The object files are in the build repertory. Run them using the ./ command
+ * The main will test basic functions : Creating two contacts, changing their logs, adding their todos, printing debug values, deleting everything and closing.
  * 
  * 
  *
@@ -41,8 +42,15 @@ int main(){
   
   Logs* logs = new Logs();
   InteractionTodos* itList = new InteractionTodos();
+
   Contact* client0 = new Contact(logs,"Valentin","Verstracte","vvdev","valentinverst.developer@gmail.com","0102030405", Photo("oui"));
   Contact* client1 = new Contact(logs,"Evan","Petit","EvanIndustry","evan.petit@ouawe.com","0689130218", Photo("oui"));
+
+  client0->setEnterprise("ValentinIndustry");
+  client0->setMail("valentin.verstracte@ValentinIndustry");
+  client0->setPhone("5414315341");
+
+  std::cout << logs->getDebugValues(0);
 
   Interaction* interaction1 = new Interaction(Date(),std::string("Groceries @TODO @DATE 30/08/2022 buy cheese"));
   Interaction* interaction2 = new Interaction(Date(),std::string("Todoless interaction"));
@@ -57,11 +65,6 @@ int main(){
   itList->addInteraction(interaction2);
   itList->addInteraction(interaction3);
 
-  client0->setEnterprise("ValentinIndustry");
-  client0->setMail("valentin.verstracte@ValentinIndustry");
-  client0->setPhone("5414315341");
-
-  std::cout << logs->getDebugValues(0);
   std::cout << *itList;
 
   delete logs;
