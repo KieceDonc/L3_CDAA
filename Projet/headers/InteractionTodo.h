@@ -25,9 +25,11 @@ class InteractionTodo{
         Todo * getT() ;
         Interaction * getI() ;
 
+        ///@private hiding the debug func from doxygen
         std::string getDebugValues(int nbTabulations);
 
         bool operator==(InteractionTodo& toCompare);
+        friend std::ostream& operator<<(std::ostream& , const InteractionTodo&);
 
 };
 

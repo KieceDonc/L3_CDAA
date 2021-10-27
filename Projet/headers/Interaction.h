@@ -24,6 +24,7 @@ class Interaction{
         std::string getContent();
         Date getDate();
 
+        ///@private hiding the debug func from doxygen
         std::string getDebugValues(int nbTabulations);
 
         bool operator==(Interaction& toCompare);

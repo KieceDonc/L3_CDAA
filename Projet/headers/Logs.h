@@ -24,6 +24,8 @@ class Logs{
 
     int getSize();
     Log get(int index);
+
+    ///@private hiding the debug func from doxygen
     Logs get(Contact * contact, int ACTION_TYPE, Date dateOfAction);
 
     std::string getDebugValues(int nbTabulations);

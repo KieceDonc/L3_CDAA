@@ -7,23 +7,20 @@
 #include <regex>
 
 /**
- * @brief testing if adding Log class to Logs class work ( Logs contain a list of Log )
- * 
- * @return int 0 = test passed
+ * @brief testing if all the different Interaction functions work
+ * @return int 0 = test succeed
  */
-void testingInteraction(){
+bool testingInteraction(){
   Interaction * i = new Interaction(Date(),"Yo wtf man @TODO the quick brown fox born in @DATE 25/05/2031 @TODO jumps over @TODO the lazy dog born in @DATE 22/05/1980");
   InteractionTodos * itL = new InteractionTodos();
   itL->addInteraction(i);
-  //std::cout << *itL->getItList()->front().getT() << "\n";
-  //std::cout << i << std::endl;
-  std::cout << "Interaction :\n\t" << *i << "\n\nMatching Todo(s) :\n\t";
-  for(std::list<InteractionTodo>::iterator iter = itL->getItList()->begin() ; iter != itL->getItList()->end() ; iter++ ){
-        std::cout << *iter->getT()<< "\n\t" ;
-    }
+  std::cout << *itL << std::endl;
+  delete itL;
+  std::cout << *i;
+  return 0;
 }
 
-void testRegex(){
+bool testRegex(){
   std::string s = "The quick brown fox born in @DATE 25/05/2022 jumps over the lazy dog";
   std::string dateStr;
   Date date;
@@ -40,20 +37,20 @@ void testRegex(){
       std::cout << "\n\t" <<date << "\n";
     }
 
-    
+    return 0;
   }
   else 
     std::cout << "Date tag not found" << std::endl;
-
+    return 1;
 }
 
-void testRegexInteraction(){
-  std::string s = "The quick brown fox born in @DATE asd5/05/2020 jumps over the lazy dog";
+bool testRegexInteraction(){
+  std::string s = "The quick brown fox born in @DATE 25/05/2020 jumps over the lazy dog";
   Todo * t = new Todo(s);
   std::cout << "Todo :\n\t" << s << "\n\nMatching Todo :\n\t" << *t << std::endl;
+  return 0;
 }
 
 int main(){
-  testingInteraction();
-  return 0;
+  return testingInteraction() && testRegex() && testRegexInteraction();
 }

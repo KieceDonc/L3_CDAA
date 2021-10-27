@@ -2,12 +2,26 @@
 #include "../headers/Contact.h"
 
 /**
- * @class 
+ * @class Log
+ * 
+ * \subsection actype Action types
+ * A static const int ACTION_TYPE defines the type of action that has been perfomed on the contact as follows :
+ * <table><tr><td><b>ACTION_TYPE</b><td><b>Integer value</b></td><td>Corresponding action</td></tr>
+ * <tr><td>ACTION_CREATION_CONTACT</td><td>0</td><td>The contact has been edited</td></tr>
+ * <tr><td>ACTION_EDIT_PHOTO_CONTACT</td><td>1</td><td>Photo attribute has been edited</td></tr>
+ * <tr><td>ACTION_EDIT_ENTERPRISE</td><td>2</td><td>Entreprise attribute has been edited</td></tr>
+ * <tr><td>ACTION_EDIT_MAIL</td><td>3</td><td>Mail attribute has been edited</td></tr>
+ * <tr><td>ACTION_EDIT_PHONT</td><td>4</td><td>Phone attribute has been edited</td></tr>
+ * <tr><td>ACTION_DELETE_CONTACT</td><td>5</td><td>Contact has been deleted</td></tr>
+ * <tr><td>ACTION_CREATION_INTERACTION</td><td>6</td><td>Interaction has been added</td></tr>
+ * <tr><td>ACTION_EDIT_INTERACTION</td><td>7</td><td>Interaction has been edited</td></tr>
+ * <tr><td>ACTION_DELETE_INTERACTION</td><td>8</td><td>Interaction has been deleted</td></tr>
+ * <table>
  * 
  */
 
 /**
- * @brief I don't really understand how it works but it fixes my problem and I'm ok with that
+ * @brief This program won't compile using std::to_string - Therefore we need to build a function that works the same using a template and a stringstream.
  * 
  * @tparam T 
  * @param value 
@@ -22,7 +36,7 @@ std::string toString(const T &value) {
 }
 
 /**
- * @brief Construct a new Log:: Log object
+ * @brief Constructs a new Log object
  * 
  * @param contact 
  * @param ACTION_TYPE 
@@ -34,7 +48,7 @@ Log::Log(Contact* contact, const int ACTION_TYPE){
 }
 
 /**
- * @brief Return the contact which is concern by the action at a certain date
+ * @brief Returns the contact concerned by the action
  * 
  * @return Contact* 
  */
@@ -43,7 +57,7 @@ Contact* Log::getContact(){
 }
 
 /**
- * @brief Return the day when the action happend on the contact.
+ * @brief Returns the day at which the action happaned
  * 
  * @return Date 
  */
@@ -52,25 +66,28 @@ Date Log::getDateOfAction(){
 }
 
 /**
- * @brief Return the action done on the contact at certain date.
+ * @brief Returns an int corresponding to the action done on the contact.
  * 
- * @return int = 0  Creation of Contact
+ * @return int = 0  Contact creation
  * @return int = 1  Photo has been edited
  * @return int = 2  Enterprise has been edited
  * @return int = 3  Mail has been edited
  * @return int = 4  Phone number has been edited
  * @return int = 5  Contact has been deleted
+ * @return int = 6  Interaction has been added
+ * @return int = 7  Interaction has been edited
+ * @return int = 8  Interaction has been deleted
  */
 int Log::getACTION_TYPE(){
   return this->ACTION_TYPE;
 }
 
 /**
- * @brief return Log values ( date, contact ) which is suitable for debugging
+ * @brief Returns Log values ( date, contact ), suitable for debugging
  * 
- * @param nbTabulations Number of tabulations you want before showing informations. 
- * If you call outside of getDebugValues function you should set this value to 0. 
- * Also if you're inside DebugValues you should set this value to nbTabulations+1 for others getDebugsValues()
+ * @param nbTabulations Number of tabulations needed to show informations. 
+ * If called outside of getDebugValues function this value should be set to 0. 
+ * Inside DebugValue this value should be set to nbTabulations+1 for others getDebugsValues()
  * @return std::string 
  */
 std::string Log::getDebugValues(int nbTabulations){
@@ -86,11 +103,10 @@ std::string Log::getDebugValues(int nbTabulations){
 }
 
 /**
- * @brief Compare log object and determine if they're equal
+ * @brief Compares log objects and determines if they're equals
  * 
  * @param toCompare 
- * @return true 
- * @return false 
+ * @return boolean
  */
 bool Log::operator==(const Log &toCompare){
   // We check if contact and date are the same so we call their respect equal function

@@ -1,11 +1,15 @@
 #include "../headers/Logs.h"
 /**
- * @class 
+ * @class Logs
+ * Logs is a container for Log objects. <br>
+ * The point of this class is nothing more than to make manipulating lists of logs more friendlier using add, get, etc... methods.
+ * Consider it equivalent to std::list<Log>
  * 
  */
 
 /**
- * @brief I don't really understand how it works but it fixes my problem and I'm ok with that
+ * @brief This program won't compile using std::to_string - Therefore we need to build a function that works the same using a template and a stringstream.<br>
+ * https://stackoverflow.com/questions/32140018/why-is-this-program-giving-an-error-to-string-is-not-a-member-of-std-why/32140400
  * 
  * @tparam T 
  * @param value 
@@ -20,7 +24,7 @@ std::string toString(const T &value) {
 }
 
 /**
- * @brief Construct a new Logs:: Logs object
+ * @brief Constructs a new Logs object
  * Initializes the list inside the container
  */
 Logs::Logs(){
@@ -28,7 +32,7 @@ Logs::Logs(){
 }
 
 /**
- * @brief Destroy the Logs:: Logs object
+ * @brief Destroys the Logs
  * Will destruct the list inside the container
  * 
  */
@@ -37,7 +41,7 @@ Logs::~Logs(){
 }
 
 /**
- * @brief Add Log at the end of the list
+ * @brief Adds a Log at the end of the list
  * 
  * @param log 
  */
@@ -46,7 +50,7 @@ void Logs::add(Log log){
 }
 
 /**
- * @brief Return the number of log 
+ * @brief Returns the amount of log in logs.
  * 
  * @return int 
  */
@@ -55,7 +59,7 @@ int Logs::getSize(){
 }
 
 /**
- * @brief Return Log at position index
+ * @brief Returns Log at a given index
  * 
  * @param index 
  * @return Log 
@@ -72,7 +76,7 @@ Log Logs::get(int index){
 }
 
 /**
- * @brief Sort logs from parameters (they can  be NULL , if they're NULL we consider that we don't need to sort from that parameter)
+ * @brief Sorts logs from its parameters (they can be NULL , if they're NULL we consider that we don't need to sort depending on that parameter)
  * 
  * @param contact 
  * @param ACTION_TYPE if ACTION_TYPE < 0 we consider that we don't need to sort from that parameter
@@ -93,11 +97,11 @@ Logs Logs::get(Contact *contact, int ACTION_TYPE, Date dateOfAction){
 }
 
 /**
- * @brief return Logs values which is suitable for debugging
+ * @brief Returns Logs values, suitable for debugging
  * 
- * @param nbTabulations Number of tabulations you want before showing informations. 
- * If you call outside of getDebugValues function you should set this value to 0. 
- * Also if you're inside DebugValues you should set this value to nbTabulations+1 for others getDebugsValues()
+ * @param nbTabulations Number of tabulations needed to show informations. 
+ * If called outside of getDebugValues function this value should be set to 0. 
+ * Inside DebugValue this value should be set to nbTabulations+1 for others getDebugsValues()
  * @return std::string 
  */
 std::string Logs::getDebugValues(int nbTabulations){
