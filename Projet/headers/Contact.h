@@ -51,6 +51,8 @@ class Contact{
     Date getDateOfCreation();
     std::list<Interaction *> getInteractions();
 
+    void removeInteraction(int);
+
     ///@private hiding the debug func from doxygen
     std::string getDebugValues(int nbTabulations);
 

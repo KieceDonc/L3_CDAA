@@ -50,21 +50,23 @@ int main(){
   client0->setMail("valentin.verstracte@ValentinIndustry");
   client0->setPhone("5414315341");
 
-  std::cout << logs->getDebugValues(0);
-
   Interaction* interaction1 = new Interaction(Date(),std::string("Groceries @TODO @DATE 30/08/2022 buy cheese"));
   Interaction* interaction2 = new Interaction(Date(),std::string("Todoless interaction"));
   Interaction* interaction3 = new Interaction(Date(),std::string("Important project to get done with @TODO brew some coffee @TODO play video games @TODO rush it last minute tomorrow (@DATE 27/10/2021)"));
   
 
-  client0->getInteractions().push_back(interaction1);
-  client0->getInteractions().push_back(interaction2);
-  client1->getInteractions().push_back(interaction3);
+  client0->addInteraction(interaction1);
+  client0->addInteraction(interaction2);
+  client1->addInteraction(interaction3);
+  client1->addInteraction(interaction2);
+
+  client1->removeInteraction(2);
 
   itList->addInteraction(interaction1);
   itList->addInteraction(interaction2);
   itList->addInteraction(interaction3);
 
+  std::cout << logs->getDebugValues(0);
   std::cout << *itList;
 
   delete logs;
