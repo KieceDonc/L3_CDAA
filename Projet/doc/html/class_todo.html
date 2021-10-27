@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -46,6 +50,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_todo.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,7 +81,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -71,42 +91,91 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Represent a task for a contact. Linked to <a class="el" href="class_interaction.html" title="An interaction is a block of text tagged with @TODO and @DATE to indicate tasks and sets the date of ...">Interaction</a> objects using an <a class="el" href="class_interaction_todo.html" title="An InteractionTodo objects serves the purpose of linking an Interaction object with a Todo object thr...">InteractionTodo</a> object.  
+<p>Represents a task from an interaction for a contact. Linked to <a class="el" href="class_interaction.html" title="An interaction is a block of text tagged with @TODO and @DATE to indicate tasks and sets the date of ...">Interaction</a> objects using an <a class="el" href="class_interaction_todo.html" title="An InteractionTodo objects serves the purpose of linking an Interaction object with a Todo object thr...">InteractionTodo</a> object.  
  <a href="class_todo.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_todo_8h_source.html">Todo.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for Todo:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_todo__coll__graph.svg" width="135" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1cc5d083fa330e1db2478d0d27510ec4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todo.html#a1cc5d083fa330e1db2478d0d27510ec4">Todo</a> (const <a class="el" href="class_date.html">Date</a> &amp;, const std::string &amp;)</td></tr>
-<tr class="memdesc:a1cc5d083fa330e1db2478d0d27510ec4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_todo.html" title="Represent a task for a contact. Linked to Interaction objects using an InteractionTodo object.">Todo</a>:: <a class="el" href="class_todo.html" title="Represent a task for a contact. Linked to Interaction objects using an InteractionTodo object.">Todo</a> object.  <a href="class_todo.html#a1cc5d083fa330e1db2478d0d27510ec4">More...</a><br /></td></tr>
+<tr class="memdesc:a1cc5d083fa330e1db2478d0d27510ec4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="class_todo.html" title="Represents a task from an interaction for a contact. Linked to Interaction objects using an Interacti...">Todo</a> object from both parameters. Does not parse any tags.  <a href="class_todo.html#a1cc5d083fa330e1db2478d0d27510ec4">More...</a><br /></td></tr>
 <tr class="separator:a1cc5d083fa330e1db2478d0d27510ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4ea9a51964af72cbfdd125d5591e413"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todo.html#af4ea9a51964af72cbfdd125d5591e413">Todo</a> (const std::string &amp;)</td></tr>
-<tr class="memdesc:af4ea9a51964af72cbfdd125d5591e413"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_todo.html" title="Represent a task for a contact. Linked to Interaction objects using an InteractionTodo object.">Todo</a>:: <a class="el" href="class_todo.html" title="Represent a task for a contact. Linked to Interaction objects using an InteractionTodo object.">Todo</a> object.  <a href="class_todo.html#af4ea9a51964af72cbfdd125d5591e413">More...</a><br /></td></tr>
+<tr class="memdesc:af4ea9a51964af72cbfdd125d5591e413"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_todo.html" title="Represents a task from an interaction for a contact. Linked to Interaction objects using an Interacti...">Todo</a> object from its content. <b>PARSES @DATE TAGS.</b><br  />
+ Looks for the first occurence of @DATE and checks if the following word is a date to the dd/mm/yyyy format with regex.<br  />
+ It then sets the todo date to that.<br  />
+ If it doesn't match the regex, or there are multiple @DATE elements - Doesn't treat dates at all and sets the date to current date.  <a href="class_todo.html#af4ea9a51964af72cbfdd125d5591e413">More...</a><br /></td></tr>
 <tr class="separator:af4ea9a51964af72cbfdd125d5591e413"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb6160d7214f19f370f048bf0d471a62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todo.html#abb6160d7214f19f370f048bf0d471a62">setContent</a> (const std::string &amp;)</td></tr>
+<tr class="memdesc:abb6160d7214f19f370f048bf0d471a62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the content of a todo without parsing any tags.  <a href="class_todo.html#abb6160d7214f19f370f048bf0d471a62">More...</a><br /></td></tr>
 <tr class="separator:abb6160d7214f19f370f048bf0d471a62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41cd469d85e697673ad1c143bc3c14c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todo.html#a41cd469d85e697673ad1c143bc3c14c8">setDate</a> (const <a class="el" href="class_date.html">Date</a> &amp;)</td></tr>
+<tr class="memdesc:a41cd469d85e697673ad1c143bc3c14c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the date using a date object. Must be valid.  <a href="class_todo.html#a41cd469d85e697673ad1c143bc3c14c8">More...</a><br /></td></tr>
 <tr class="separator:a41cd469d85e697673ad1c143bc3c14c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a141c2f86d0ce5d7c7244e0585533d9f8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todo.html#a141c2f86d0ce5d7c7244e0585533d9f8">getContent</a> ()</td></tr>
+<tr class="memdesc:a141c2f86d0ce5d7c7244e0585533d9f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the content of a todo as a string.  <a href="class_todo.html#a141c2f86d0ce5d7c7244e0585533d9f8">More...</a><br /></td></tr>
 <tr class="separator:a141c2f86d0ce5d7c7244e0585533d9f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2dca42275cbccafdccf2665ae18d9676"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_date.html">Date</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todo.html#a2dca42275cbccafdccf2665ae18d9676">getDate</a> ()</td></tr>
+<tr class="memdesc:a2dca42275cbccafdccf2665ae18d9676"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the date of the todo as a <a class="el" href="class_date.html" title="Simplifies the use of C++ tm struct to represent dates. Uses the dd/mm/yyyy format.">Date</a> object.  <a href="class_todo.html#a2dca42275cbccafdccf2665ae18d9676">More...</a><br /></td></tr>
 <tr class="separator:a2dca42275cbccafdccf2665ae18d9676"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a331136eeae4167219eeb9bad8e210cf3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todo.html#a331136eeae4167219eeb9bad8e210cf3">getDebugValues</a> (int nbTabulations)</td></tr>
-<tr class="memdesc:a331136eeae4167219eeb9bad8e210cf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">return <a class="el" href="class_todo.html" title="Represent a task for a contact. Linked to Interaction objects using an InteractionTodo object.">Todo</a> values( date, content ) which is suitable for debugging  <a href="class_todo.html#a331136eeae4167219eeb9bad8e210cf3">More...</a><br /></td></tr>
-<tr class="separator:a331136eeae4167219eeb9bad8e210cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a367a43a6421d7efe8caecedd75c3c6fd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todo.html#a367a43a6421d7efe8caecedd75c3c6fd">operator==</a> (<a class="el" href="class_todo.html">Todo</a> &amp;toCompare)</td></tr>
-<tr class="memdesc:a367a43a6421d7efe8caecedd75c3c6fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare <a class="el" href="class_todo.html" title="Represent a task for a contact. Linked to Interaction objects using an InteractionTodo object.">Todo</a> object and determine if they're equal.  <a href="class_todo.html#a367a43a6421d7efe8caecedd75c3c6fd">More...</a><br /></td></tr>
+<tr class="memdesc:a367a43a6421d7efe8caecedd75c3c6fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares <a class="el" href="class_todo.html" title="Represents a task from an interaction for a contact. Linked to Interaction objects using an Interacti...">Todo</a> objects and determines if they're equals.  <a href="class_todo.html#a367a43a6421d7efe8caecedd75c3c6fd">More...</a><br /></td></tr>
 <tr class="separator:a367a43a6421d7efe8caecedd75c3c6fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:adbad530f8aaeb15de3c96ab898a08efb"><td class="memItemLeft" align="right" valign="top"><a id="adbad530f8aaeb15de3c96ab898a08efb"></a>
-std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;, const <a class="el" href="class_todo.html">Todo</a> &amp;)</td></tr>
+<tr class="memitem:adbad530f8aaeb15de3c96ab898a08efb"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_todo.html#adbad530f8aaeb15de3c96ab898a08efb">operator&lt;&lt;</a> (std::ostream &amp;, const <a class="el" href="class_todo.html">Todo</a> &amp;)</td></tr>
+<tr class="memdesc:adbad530f8aaeb15de3c96ab898a08efb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overloading of the &lt;&lt; operator. Redirects the following string in the output stream : <em> [ TODO : dd/mm/yyyy ] content </em>  <a href="class_todo.html#adbad530f8aaeb15de3c96ab898a08efb">More...</a><br /></td></tr>
 <tr class="separator:adbad530f8aaeb15de3c96ab898a08efb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Represent a task for a contact. Linked to <a class="el" href="class_interaction.html" title="An interaction is a block of text tagged with @TODO and @DATE to indicate tasks and sets the date of ...">Interaction</a> objects using an <a class="el" href="class_interaction_todo.html" title="An InteractionTodo objects serves the purpose of linking an Interaction object with a Todo object thr...">InteractionTodo</a> object. </p>
+<div class="textblock"><p>Represents a task from an interaction for a contact. Linked to <a class="el" href="class_interaction.html" title="An interaction is a block of text tagged with @TODO and @DATE to indicate tasks and sets the date of ...">Interaction</a> objects using an <a class="el" href="class_interaction_todo.html" title="An InteractionTodo objects serves the purpose of linking an Interaction object with a Todo object thr...">InteractionTodo</a> object. </p>
+<p>A todo object conceptually represent a SINGLE task to do, ponctually, in an interaction that can contain as many todos as it needs.<br  />
+ Todos are defined using <b>@TODO</b> tags in an interaction.<br  />
+ Todos dates are defined using <b>@DATE</b> tags in a todo.<br  />
+ If no date is defined, then it is implied to be the current date!<br  />
+ When printing a todo object, we do not need the tags since they are only needed to retrieve them from interaction contents.</p>
+<h2><a class="anchor" id="ex"></a>
+Example</h2>
+<p>Consider the following interaction object :<br  />
+<br  />
+ </p><dl>
+<dt><a class="el" href="class_interaction.html" title="An interaction is a block of text tagged with @TODO and @DATE to indicate tasks and sets the date of ...">Interaction</a>{  </dt>
+<dd>content = "Please Valentin we really need to finish this school project. @TODO Brew some coffee @TODO Rush the remaining work tomorrow (the @DATE 26/10/2021)"<br  />
+ date = <a class="el" href="class_date.html" title="Simplifies the use of C++ tm struct to represent dates. Uses the dd/mm/yyyy format.">Date</a>(23/10/2021)<br  />
+}</dd>
+</dl>
+<p><br  />
+<br  />
+</p>
+<p>The todo objects we want to build here are :<br  />
+<br  />
+ </p><dl>
+<dt><a class="el" href="class_todo.html" title="Represents a task from an interaction for a contact. Linked to Interaction objects using an Interacti...">Todo</a>{  </dt>
+<dd>content = "Brew some coffee"<br  />
+ date = <a class="el" href="class_date.html" title="Simplifies the use of C++ tm struct to represent dates. Uses the dd/mm/yyyy format.">Date</a>(23/10/2021)<br  />
+}</dd>
+</dl>
+<p><br  />
+ </p><dl>
+<dt><a class="el" href="class_todo.html" title="Represents a task from an interaction for a contact. Linked to Interaction objects using an Interacti...">Todo</a>{  </dt>
+<dd>content = " Rush the remaining work tomorrow (the 26/10/2021)"<br  />
+ date = <a class="el" href="class_date.html" title="Simplifies the use of C++ tm struct to represent dates. Uses the dd/mm/yyyy format.">Date</a>(26/10/2021)<br  />
+}</dd>
+</dl>
+<p><br  />
+<br  />
+</p>
+<h2><a class="anchor" id="err"></a>
+Errors</h2>
+<p>There is only one error to manage here : Imputing a wrong date (incorrect format or whatever) - Or imputing two or more dates.<br  />
+ In both case, if there is an error, then the @DATE(S) will simply remain, not be treated, and the todo will be created at the current date </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1cc5d083fa330e1db2478d0d27510ec4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1cc5d083fa330e1db2478d0d27510ec4">&#9670;&nbsp;</a></span>Todo() <span class="overload">[1/2]</span></h2>
@@ -134,7 +203,7 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operato
       </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="class_todo.html" title="Represent a task for a contact. Linked to Interaction objects using an InteractionTodo object.">Todo</a>:: <a class="el" href="class_todo.html" title="Represent a task for a contact. Linked to Interaction objects using an InteractionTodo object.">Todo</a> object. </p>
+<p>Constructs a new <a class="el" href="class_todo.html" title="Represents a task from an interaction for a contact. Linked to Interaction objects using an Interacti...">Todo</a> object from both parameters. Does not parse any tags. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">date</td><td></td></tr>
@@ -142,6 +211,13 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operato
   </table>
   </dd>
 </dl>
+
+<p class="reference">References <a class="el" href="class_todo.html#abb6160d7214f19f370f048bf0d471a62">setContent()</a>, and <a class="el" href="class_todo.html#a41cd469d85e697673ad1c143bc3c14c8">setDate()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_todo_a1cc5d083fa330e1db2478d0d27510ec4_cgraph.svg" width="280" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -161,13 +237,23 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operato
       </table>
 </div><div class="memdoc">
 
-<p>Construct a new <a class="el" href="class_todo.html" title="Represent a task for a contact. Linked to Interaction objects using an InteractionTodo object.">Todo</a>:: <a class="el" href="class_todo.html" title="Represent a task for a contact. Linked to Interaction objects using an InteractionTodo object.">Todo</a> object. </p>
+<p>Construct a new <a class="el" href="class_todo.html" title="Represents a task from an interaction for a contact. Linked to Interaction objects using an Interacti...">Todo</a> object from its content. <b>PARSES @DATE TAGS.</b><br  />
+ Looks for the first occurence of @DATE and checks if the following word is a date to the dd/mm/yyyy format with regex.<br  />
+ It then sets the todo date to that.<br  />
+ If it doesn't match the regex, or there are multiple @DATE elements - Doesn't treat dates at all and sets the date to current date. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">content</td><td></td></tr>
+    <tr><td class="paramname">content</td><td>A string containing 0 or 1 "@DATE" </td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="reference">References <a class="el" href="class_todo.html#abb6160d7214f19f370f048bf0d471a62">setContent()</a>, and <a class="el" href="class_todo.html#a41cd469d85e697673ad1c143bc3c14c8">setDate()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_todo_af4ea9a51964af72cbfdd125d5591e413_cgraph.svg" width="280" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -186,6 +272,8 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operato
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Returns the content of a todo as a string. </p>
 <dl class="section return"><dt>Returns</dt><dd>std::string </dd></dl>
 
 </div>
@@ -204,34 +292,9 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operato
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_date.html" title="Simplifies the usage of C++ tm struct to represents dates. Uses the dd/mm/yyyy format.">Date</a> </dd></dl>
 
-</div>
-</div>
-<a id="a331136eeae4167219eeb9bad8e210cf3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a331136eeae4167219eeb9bad8e210cf3">&#9670;&nbsp;</a></span>getDebugValues()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string Todo::getDebugValues </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>nbTabulations</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>return <a class="el" href="class_todo.html" title="Represent a task for a contact. Linked to Interaction objects using an InteractionTodo object.">Todo</a> values( date, content ) which is suitable for debugging </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">nbTabulations</td><td>Number of tabulations you want before showing informations. If you call outside of getDebugValues function you should set this value to 0. Also if you're inside DebugValues you should set this value to nbTabulations+1 for others getDebugsValues() </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>std::string </dd></dl>
+<p>Returns the date of the todo as a <a class="el" href="class_date.html" title="Simplifies the use of C++ tm struct to represent dates. Uses the dd/mm/yyyy format.">Date</a> object. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_date.html" title="Simplifies the use of C++ tm struct to represent dates. Uses the dd/mm/yyyy format.">Date</a> </dd></dl>
 
 </div>
 </div>
@@ -251,7 +314,7 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operato
       </table>
 </div><div class="memdoc">
 
-<p>Compare <a class="el" href="class_todo.html" title="Represent a task for a contact. Linked to Interaction objects using an InteractionTodo object.">Todo</a> object and determine if they're equal. </p>
+<p>Compares <a class="el" href="class_todo.html" title="Represents a task from an interaction for a contact. Linked to Interaction objects using an Interacti...">Todo</a> objects and determines if they're equals. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">toCompare</td><td></td></tr>
@@ -261,6 +324,13 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operato
 <dl class="section return"><dt>Returns</dt><dd>true </dd>
 <dd>
 false </dd></dl>
+
+<p class="reference">References <a class="el" href="class_todo.html#a141c2f86d0ce5d7c7244e0585533d9f8">getContent()</a>, and <a class="el" href="class_todo.html#a2dca42275cbccafdccf2665ae18d9676">getDate()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_todo_a367a43a6421d7efe8caecedd75c3c6fd_cgraph.svg" width="328" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -279,6 +349,8 @@ false </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sets the content of a todo without parsing any tags. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">content</td><td></td></tr>
@@ -303,6 +375,8 @@ false </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sets the date using a date object. Must be valid. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">date</td><td></td></tr>
@@ -312,14 +386,65 @@ false </dd></dl>
 
 </div>
 </div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="adbad530f8aaeb15de3c96ab898a08efb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbad530f8aaeb15de3c96ab898a08efb">&#9670;&nbsp;</a></span>operator&lt;&lt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_todo.html">Todo</a> &amp;&#160;</td>
+          <td class="paramname"><em>todo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Overloading of the &lt;&lt; operator. Redirects the following string in the output stream : <em> [ TODO : dd/mm/yyyy ] content </em> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td></td></tr>
+    <tr><td class="paramname">todo</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::ostream&amp; </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/stinky/Documents/Cours/S5/Projets/CDAA/Projet/headers/<a class="el" href="_todo_8h_source.html">Todo.h</a></li>
-<li>/home/stinky/Documents/Cours/S5/Projets/CDAA/Projet/src/Todo.cpp</li>
+<li><a class="el" href="_todo_8h_source.html">Todo.h</a></li>
+<li><a class="el" href="_todo_8cpp.html">Todo.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_todo.html">Todo</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

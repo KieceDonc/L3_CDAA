@@ -2,25 +2,31 @@
 \label{class_date}\index{Date@{Date}}
 
 
-Simplifies the usage of C++ tm struct to represents dates. Uses the dd/mm/yyyy format.  
+Simplifies the use of C++ tm struct to represent dates. Uses the dd/mm/yyyy format.  
 
 
 
 
 {\ttfamily \#include $<$Date.\+h$>$}
 
+
+
+Collaboration diagram for Date\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{class_date__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_date_a4e59ed4ba66eec61c27460c5d09fa1bd}\label{class_date_a4e59ed4ba66eec61c27460c5d09fa1bd}} 
 \mbox{\hyperlink{class_date_a4e59ed4ba66eec61c27460c5d09fa1bd}{Date}} ()
-\begin{DoxyCompactList}\small\item\em Default constructor of \mbox{\hyperlink{class_date}{Date}} ( initialized with current date ) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructor of \mbox{\hyperlink{class_date}{Date}} initialized with current date. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_date_a49c4b0bf260d3278b7718e89c7814bca}{Date}} (const int month, const int day, const int year)
 \begin{DoxyCompactList}\small\item\em Constructor of date with parameters. \end{DoxyCompactList}\item 
-std\+::string \mbox{\hyperlink{class_date_ad777acd539d57083b9af0c184d902d7a}{get\+Debug\+Values}} (int nb\+Tabulations)
-\begin{DoxyCompactList}\small\item\em return \mbox{\hyperlink{class_date}{Date}} values ( month, day, year ) which is suitable for debugging \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_date_a3fe1b8fed179091af61611499f18fe31}{operator==}} (const \mbox{\hyperlink{class_date}{Date}} \&to\+Compare)
-\begin{DoxyCompactList}\small\item\em Compares \mbox{\hyperlink{class_date}{Date}} objects and determines if they\textquotesingle{}re equal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Compares \mbox{\hyperlink{class_date}{Date}} objects and determines if they\textquotesingle{}re equals. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
@@ -29,13 +35,27 @@ std\+::ostream \& \mbox{\hyperlink{class_date_a191ee8989894d19ac4c9a71e359210a1}
 
 
 \doxysubsection{Detailed Description}
-Simplifies the usage of C++ tm struct to represents dates. Uses the dd/mm/yyyy format. 
+Simplifies the use of C++ tm struct to represent dates. Uses the dd/mm/yyyy format. 
+
+Custom interface built from the tm struct~\newline
+ It allows easy management of dates using only three parameters, day, month and year.~\newline
+ Therefore, the class is easily adjustable so we can later include hours, minutes, seconds if necessary. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_date_a4e59ed4ba66eec61c27460c5d09fa1bd}\label{class_date_a4e59ed4ba66eec61c27460c5d09fa1bd}} 
+\index{Date@{Date}!Date@{Date}}
+\index{Date@{Date}!Date@{Date}}
+\doxysubsubsection{\texorpdfstring{Date()}{Date()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Date\+::\+Date (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor of \mbox{\hyperlink{class_date}{Date}} initialized with current date. 
+
 \mbox{\Hypertarget{class_date_a49c4b0bf260d3278b7718e89c7814bca}\label{class_date_a49c4b0bf260d3278b7718e89c7814bca}} 
 \index{Date@{Date}!Date@{Date}}
 \index{Date@{Date}!Date@{Date}}
-\doxysubsubsection{\texorpdfstring{Date()}{Date()}}
+\doxysubsubsection{\texorpdfstring{Date()}{Date()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Date\+::\+Date (\begin{DoxyParamCaption}\item[{const int}]{day,  }\item[{const int}]{month,  }\item[{const int}]{year }\end{DoxyParamCaption})}
 
 
@@ -54,24 +74,6 @@ Constructor of date with parameters.
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_date_ad777acd539d57083b9af0c184d902d7a}\label{class_date_ad777acd539d57083b9af0c184d902d7a}} 
-\index{Date@{Date}!getDebugValues@{getDebugValues}}
-\index{getDebugValues@{getDebugValues}!Date@{Date}}
-\doxysubsubsection{\texorpdfstring{getDebugValues()}{getDebugValues()}}
-{\footnotesize\ttfamily std\+::string Date\+::get\+Debug\+Values (\begin{DoxyParamCaption}\item[{int}]{nb\+Tabulations }\end{DoxyParamCaption})}
-
-
-
-return \mbox{\hyperlink{class_date}{Date}} values ( month, day, year ) which is suitable for debugging 
-
-
-\begin{DoxyParams}{Parameters}
-{\em nb\+Tabulations} & Number of tabulations you want before showing informations. If you call outside of get\+Debug\+Values function you should set this value to 0. Also if you\textquotesingle{}re inside Debug\+Values you should set this value to nb\+Tabulations+1 for others get\+Debugs\+Values() \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-std\+::string 
-\end{DoxyReturn}
 \mbox{\Hypertarget{class_date_a3fe1b8fed179091af61611499f18fe31}\label{class_date_a3fe1b8fed179091af61611499f18fe31}} 
 \index{Date@{Date}!operator==@{operator==}}
 \index{operator==@{operator==}!Date@{Date}}
@@ -80,7 +82,7 @@ std\+::string
 
 
 
-Compares \mbox{\hyperlink{class_date}{Date}} objects and determines if they\textquotesingle{}re equal. 
+Compares \mbox{\hyperlink{class_date}{Date}} objects and determines if they\textquotesingle{}re equals. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -88,9 +90,7 @@ Compares \mbox{\hyperlink{class_date}{Date}} objects and determines if they\text
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true 
-
-false 
+bool 
 \end{DoxyReturn}
 
 
@@ -115,5 +115,5 @@ std\+::ostream\&
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/stinky/\+Documents/\+Cours/\+S5/\+Projets/\+CDAA/\+Projet/headers/Date.\+h\item 
-/home/stinky/\+Documents/\+Cours/\+S5/\+Projets/\+CDAA/\+Projet/src/Date.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{_date_8h}{Date.\+h}}\item 
+\mbox{\hyperlink{_date_8cpp}{Date.\+cpp}}\end{DoxyCompactItemize}

@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -47,6 +51,22 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('functions_func.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -70,6 +90,7 @@ $(function() {
 </li>
 <li>addInteraction()
 : <a class="el" href="class_contact.html#a78ad44e085d55393e0d8951a83770f4f">Contact</a>
+, <a class="el" href="class_interaction_todos.html#a3247387c6222aef8c6428ccc18728e15">InteractionTodos</a>
 </li>
 </ul>
 
@@ -90,7 +111,7 @@ $(function() {
 
 <h3><a id="index_g"></a>- g -</h3><ul>
 <li>get()
-: <a class="el" href="class_logs.html#a4c8a95f81ca14624b2b4ac7e546bb95e">Logs</a>
+: <a class="el" href="class_logs.html#abeb42874bc41acbd1e6e62b0a51cee6b">Logs</a>
 </li>
 <li>getACTION_TYPE()
 : <a class="el" href="class_log.html#ae43955d765817e347c92d254cc6a60bf">Log</a>
@@ -113,15 +134,7 @@ $(function() {
 : <a class="el" href="class_contact.html#a8c9d56b33b0b50503173d7be082fa8d2">Contact</a>
 </li>
 <li>getDebugValues()
-: <a class="el" href="class_contact.html#a89d83a50c0b013566fbffd734d2dc658">Contact</a>
-, <a class="el" href="class_date.html#ad777acd539d57083b9af0c184d902d7a">Date</a>
-, <a class="el" href="class_interaction.html#a1b25bc53bfa15bffdee53640ac84cb69">Interaction</a>
-, <a class="el" href="class_interaction_todo.html#ac5f77465072fa99d46e051a65b57a2c8">InteractionTodo</a>
-, <a class="el" href="class_interaction_todos.html#a5abc2e7da06885ca5600ac9e84f724dd">InteractionTodos</a>
-, <a class="el" href="class_log.html#ae495b3ba2d9a52a49a05c45422f0633a">Log</a>
-, <a class="el" href="class_logs.html#acd1908ccfcad3cf044ccb9343bec2048">Logs</a>
-, <a class="el" href="class_photo.html#a991f006fe0a650da6cd6f7a963fe0936">Photo</a>
-, <a class="el" href="class_todo.html#a331136eeae4167219eeb9bad8e210cf3">Todo</a>
+: <a class="el" href="class_logs.html#acd1908ccfcad3cf044ccb9343bec2048">Logs</a>
 </li>
 <li>getEnterprise()
 : <a class="el" href="class_contact.html#ada2fbf5dfb1d3c7f0a8eefff29649807">Contact</a>
@@ -134,6 +147,9 @@ $(function() {
 </li>
 <li>getInteractions()
 : <a class="el" href="class_contact.html#af51c51d01aca7d207bd78e164f05d1e4">Contact</a>
+</li>
+<li>getItList()
+: <a class="el" href="class_interaction_todos.html#a97ff5e06c37b55c7564e67b557d51abb">InteractionTodos</a>
 </li>
 <li>getLastName()
 : <a class="el" href="class_contact.html#a3de63ec253f8de8cf28a5b5de576347e">Contact</a>
@@ -161,10 +177,13 @@ $(function() {
 
 <h3><a id="index_i"></a>- i -</h3><ul>
 <li>Interaction()
-: <a class="el" href="class_interaction.html#a2c9aa6cf32e6bf0cb13ca0ec0f807c98">Interaction</a>
+: <a class="el" href="class_interaction.html#aadfd0e254296043c26508d47090ace76">Interaction</a>
 </li>
 <li>InteractionTodo()
-: <a class="el" href="class_interaction_todo.html#a589086a29c80eb7d1e7531a9eb4daef6">InteractionTodo</a>
+: <a class="el" href="class_interaction_todo.html#a75e27d709fbd4bf2dfb95ac1ae6e0359">InteractionTodo</a>
+</li>
+<li>InteractionTodos()
+: <a class="el" href="class_interaction_todos.html#afeb2619ae8f9075d47e27e575bc26128">InteractionTodos</a>
 </li>
 </ul>
 
@@ -185,7 +204,6 @@ $(function() {
 , <a class="el" href="class_date.html#a3fe1b8fed179091af61611499f18fe31">Date</a>
 , <a class="el" href="class_interaction.html#ae01fd582657c679a7c57e2c3f7675692">Interaction</a>
 , <a class="el" href="class_interaction_todo.html#ac4a97359624090e6223a02196ba8822a">InteractionTodo</a>
-, <a class="el" href="class_interaction_todos.html#abe63d111acf5d9978f976f0ad4823ba1">InteractionTodos</a>
 , <a class="el" href="class_log.html#a81c4e05fcfabb14ee3504f3df59da185">Log</a>
 , <a class="el" href="class_photo.html#a6aed0dba9d4d947f02050c15890148ca">Photo</a>
 , <a class="el" href="class_todo.html#a367a43a6421d7efe8caecedd75c3c6fd">Todo</a>
@@ -215,6 +233,9 @@ $(function() {
 <li>setI()
 : <a class="el" href="class_interaction_todo.html#a89fb50d97dca067e930d0820ac44461e">InteractionTodo</a>
 </li>
+<li>setItList()
+: <a class="el" href="class_interaction_todos.html#a3322e32fdc41a5fea4d97534524e26ad">InteractionTodos</a>
+</li>
 <li>setMail()
 : <a class="el" href="class_contact.html#aeae8d380505c9c71025229e95e69c535">Contact</a>
 </li>
@@ -238,14 +259,20 @@ $(function() {
 
 
 <h3><a id="index__7E"></a>- ~ -</h3><ul>
+<li>~InteractionTodos()
+: <a class="el" href="class_interaction_todos.html#a8d77dbda7b79795b7d326fb02a745d34">InteractionTodos</a>
+</li>
 <li>~Logs()
 : <a class="el" href="class_logs.html#a6227976848fb64144ff93587479df43d">Logs</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

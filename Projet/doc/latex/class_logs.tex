@@ -9,29 +9,60 @@ Container for \mbox{\hyperlink{class_log}{Log}} objects.
 
 {\ttfamily \#include $<$Logs.\+h$>$}
 
+
+
+Collaboration diagram for Logs\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{class_logs__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_logs_a3da76c4660ef9d321b11fce0100c002e}\label{class_logs_a3da76c4660ef9d321b11fce0100c002e}} 
 \mbox{\hyperlink{class_logs_a3da76c4660ef9d321b11fce0100c002e}{Logs}} ()
-\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_logs}{Logs}}\+:\+: \mbox{\hyperlink{class_logs}{Logs}} object. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_logs_a6227976848fb64144ff93587479df43d}\label{class_logs_a6227976848fb64144ff93587479df43d}} 
+\begin{DoxyCompactList}\small\item\em Constructs a new \mbox{\hyperlink{class_logs}{Logs}} object Initializes the list inside the container. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_logs_a6227976848fb64144ff93587479df43d}{$\sim$\+Logs}} ()
-\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{class_logs}{Logs}}\+:\+: \mbox{\hyperlink{class_logs}{Logs}} object Will destruct the list. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Destroys the \mbox{\hyperlink{class_logs}{Logs}} Will destruct the list inside the container. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_logs_ac5514905e00e555c3fd0c6db344f7f7a}{add}} (\mbox{\hyperlink{class_log}{Log}} log)
-\begin{DoxyCompactList}\small\item\em Add \mbox{\hyperlink{class_log}{Log}} at the end of the list. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Adds a \mbox{\hyperlink{class_log}{Log}} at the end of the list. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_logs_ab668998a0c02b22f6e79cf566538d362}{get\+Size}} ()
-\begin{DoxyCompactList}\small\item\em Return the number of log. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the amount of log in logs. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_log}{Log}} \mbox{\hyperlink{class_logs_abeb42874bc41acbd1e6e62b0a51cee6b}{get}} (int index)
-\begin{DoxyCompactList}\small\item\em Return \mbox{\hyperlink{class_log}{Log}} at position index. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_logs}{Logs}} \mbox{\hyperlink{class_logs_a4c8a95f81ca14624b2b4ac7e546bb95e}{get}} (\mbox{\hyperlink{class_contact}{Contact}} $\ast$contact, int ACTION\+\_\+\+TYPE, \mbox{\hyperlink{class_date}{Date}} date\+Of\+Action)
-\begin{DoxyCompactList}\small\item\em Sort logs from parameters (they can be NULL , if they\textquotesingle{}re NULL we consider that we don\textquotesingle{}t need to sort from that parameter) \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns \mbox{\hyperlink{class_log}{Log}} at a given index. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{class_logs_acd1908ccfcad3cf044ccb9343bec2048}{get\+Debug\+Values}} (int nb\+Tabulations)
-\begin{DoxyCompactList}\small\item\em return \mbox{\hyperlink{class_logs}{Logs}} values which is suitable for debugging \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns \mbox{\hyperlink{class_logs}{Logs}} values, suitable for debugging. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Container for \mbox{\hyperlink{class_log}{Log}} objects. 
+
+\mbox{\hyperlink{class_logs}{Logs}} is a container for \mbox{\hyperlink{class_log}{Log}} objects. ~\newline
+ The point of this class is nothing more than to make manipulating lists of logs more friendlier using add, get, etc... methods. Consider it equivalent to std\+::list$<$\+Log$>$ 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_logs_a3da76c4660ef9d321b11fce0100c002e}\label{class_logs_a3da76c4660ef9d321b11fce0100c002e}} 
+\index{Logs@{Logs}!Logs@{Logs}}
+\index{Logs@{Logs}!Logs@{Logs}}
+\doxysubsubsection{\texorpdfstring{Logs()}{Logs()}}
+{\footnotesize\ttfamily Logs\+::\+Logs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructs a new \mbox{\hyperlink{class_logs}{Logs}} object Initializes the list inside the container. 
+
+\mbox{\Hypertarget{class_logs_a6227976848fb64144ff93587479df43d}\label{class_logs_a6227976848fb64144ff93587479df43d}} 
+\index{Logs@{Logs}!````~Logs@{$\sim$Logs}}
+\index{````~Logs@{$\sim$Logs}!Logs@{Logs}}
+\doxysubsubsection{\texorpdfstring{$\sim$Logs()}{~Logs()}}
+{\footnotesize\ttfamily Logs\+::$\sim$\+Logs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroys the \mbox{\hyperlink{class_logs}{Logs}} Will destruct the list inside the container. 
+
+
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{class_logs_ac5514905e00e555c3fd0c6db344f7f7a}\label{class_logs_ac5514905e00e555c3fd0c6db344f7f7a}} 
@@ -42,44 +73,22 @@ Container for \mbox{\hyperlink{class_log}{Log}} objects.
 
 
 
-Add \mbox{\hyperlink{class_log}{Log}} at the end of the list. 
+Adds a \mbox{\hyperlink{class_log}{Log}} at the end of the list. 
 
 
 \begin{DoxyParams}{Parameters}
 {\em log} & \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_logs_a4c8a95f81ca14624b2b4ac7e546bb95e}\label{class_logs_a4c8a95f81ca14624b2b4ac7e546bb95e}} 
-\index{Logs@{Logs}!get@{get}}
-\index{get@{get}!Logs@{Logs}}
-\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily \mbox{\hyperlink{class_logs}{Logs}} Logs\+::get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_contact}{Contact}} $\ast$}]{contact,  }\item[{int}]{ACTION\+\_\+\+TYPE,  }\item[{\mbox{\hyperlink{class_date}{Date}}}]{date\+Of\+Action }\end{DoxyParamCaption})}
-
-
-
-Sort logs from parameters (they can be NULL , if they\textquotesingle{}re NULL we consider that we don\textquotesingle{}t need to sort from that parameter) 
-
-
-\begin{DoxyParams}{Parameters}
-{\em contact} & \\
-\hline
-{\em ACTION\+\_\+\+TYPE} & if ACTION\+\_\+\+TYPE $<$ 0 we consider that we don\textquotesingle{}t need to sort from that parameter \\
-\hline
-{\em date\+Of\+Action} & \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{class_logs}{Logs}} 
-\end{DoxyReturn}
 \mbox{\Hypertarget{class_logs_abeb42874bc41acbd1e6e62b0a51cee6b}\label{class_logs_abeb42874bc41acbd1e6e62b0a51cee6b}} 
 \index{Logs@{Logs}!get@{get}}
 \index{get@{get}!Logs@{Logs}}
-\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_log}{Log}} Logs\+::get (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
 
 
 
-Return \mbox{\hyperlink{class_log}{Log}} at position index. 
+Returns \mbox{\hyperlink{class_log}{Log}} at a given index. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -89,6 +98,17 @@ Return \mbox{\hyperlink{class_log}{Log}} at position index.
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{class_log}{Log}} 
 \end{DoxyReturn}
+
+
+References get\+Debug\+Values(), and get\+Size().
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_logs_abeb42874bc41acbd1e6e62b0a51cee6b_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_logs_acd1908ccfcad3cf044ccb9343bec2048}\label{class_logs_acd1908ccfcad3cf044ccb9343bec2048}} 
 \index{Logs@{Logs}!getDebugValues@{getDebugValues}}
 \index{getDebugValues@{getDebugValues}!Logs@{Logs}}
@@ -97,16 +117,27 @@ Return \mbox{\hyperlink{class_log}{Log}} at position index.
 
 
 
-return \mbox{\hyperlink{class_logs}{Logs}} values which is suitable for debugging 
+Returns \mbox{\hyperlink{class_logs}{Logs}} values, suitable for debugging. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em nb\+Tabulations} & Number of tabulations you want before showing informations. If you call outside of get\+Debug\+Values function you should set this value to 0. Also if you\textquotesingle{}re inside Debug\+Values you should set this value to nb\+Tabulations+1 for others get\+Debugs\+Values() \\
+{\em nb\+Tabulations} & Number of tabulations needed to show informations. If called outside of get\+Debug\+Values function this value should be set to 0. Inside Debug\+Value this value should be set to nb\+Tabulations+1 for others get\+Debugs\+Values() \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 std\+::string 
 \end{DoxyReturn}
+
+
+References get(), get\+Size(), and to\+String().
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_logs_acd1908ccfcad3cf044ccb9343bec2048_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_logs_ab668998a0c02b22f6e79cf566538d362}\label{class_logs_ab668998a0c02b22f6e79cf566538d362}} 
 \index{Logs@{Logs}!getSize@{getSize}}
 \index{getSize@{getSize}!Logs@{Logs}}
@@ -115,7 +146,7 @@ std\+::string
 
 
 
-Return the number of log. 
+Returns the amount of log in logs. 
 
 \begin{DoxyReturn}{Returns}
 int 
@@ -124,5 +155,5 @@ int
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/stinky/\+Documents/\+Cours/\+S5/\+Projets/\+CDAA/\+Projet/headers/Logs.\+h\item 
-/home/stinky/\+Documents/\+Cours/\+S5/\+Projets/\+CDAA/\+Projet/src/Logs.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{_logs_8h}{Logs.\+h}}\item 
+\mbox{\hyperlink{src_2_logs_8cpp}{src/\+Logs.\+cpp}}\end{DoxyCompactItemize}

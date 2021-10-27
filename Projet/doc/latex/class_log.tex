@@ -2,53 +2,79 @@
 \label{class_log}\index{Log@{Log}}
 
 
-A log will represent an action done on a contact at a certain date.  
+A log represents an action done on a contact at a specific date.  
 
 
 
 
 {\ttfamily \#include $<$Log.\+h$>$}
 
+
+
+Collaboration diagram for Log\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{class_log__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_log_a710d31bc37e541d4b832ee0be5eea85b}{Log}} (\mbox{\hyperlink{class_contact}{Contact}} $\ast$contact, const int ACTION\+\_\+\+TYPE)
-\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_log}{Log}}\+:\+: \mbox{\hyperlink{class_log}{Log}} object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs a new \mbox{\hyperlink{class_log}{Log}} object. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_contact}{Contact}} $\ast$ \mbox{\hyperlink{class_log_ac7c459a57c3441692e283230b623ff4b}{get\+Contact}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the contact concerned by the action. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_date}{Date}} \mbox{\hyperlink{class_log_ae082c3ef9193d5d3e03673f30a0c9e66}{get\+Date\+Of\+Action}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the day at which the action happaned. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_log_ae43955d765817e347c92d254cc6a60bf}{get\+ACTION\+\_\+\+TYPE}} ()
-\item 
-std\+::string \mbox{\hyperlink{class_log_ae495b3ba2d9a52a49a05c45422f0633a}{get\+Debug\+Values}} (int nb\+Tabulations)
-\begin{DoxyCompactList}\small\item\em return \mbox{\hyperlink{class_log}{Log}} values ( date, contact ) which is suitable for debugging \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns an int corresponding to the action done on the contact. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_log_a81c4e05fcfabb14ee3504f3df59da185}{operator==}} (const \mbox{\hyperlink{class_log}{Log}} \&to\+Compare)
-\begin{DoxyCompactList}\small\item\em Compare log object and determine if they\textquotesingle{}re equal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Compares log objects and determines if they\textquotesingle{}re equals. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_log_a3317b6ae01d5918f4d705533ad0250b9}\label{class_log_a3317b6ae01d5918f4d705533ad0250b9}} 
-static const int {\bfseries ACTION\+\_\+\+CREATION\+\_\+\+CONTACT} = 0
+static const int \mbox{\hyperlink{class_log_a3317b6ae01d5918f4d705533ad0250b9}{ACTION\+\_\+\+CREATION\+\_\+\+CONTACT}} = 0
 \item 
-\mbox{\Hypertarget{class_log_aba42b4950df15e779c5992e7d368ad69}\label{class_log_aba42b4950df15e779c5992e7d368ad69}} 
-static const int {\bfseries ACTION\+\_\+\+EDIT\+\_\+\+PHOTO\+\_\+\+CONTACT} = 1
+static const int \mbox{\hyperlink{class_log_aba42b4950df15e779c5992e7d368ad69}{ACTION\+\_\+\+EDIT\+\_\+\+PHOTO\+\_\+\+CONTACT}} = 1
 \item 
-\mbox{\Hypertarget{class_log_a9d8cb773979ba2bfe520e4895f35df50}\label{class_log_a9d8cb773979ba2bfe520e4895f35df50}} 
-static const int {\bfseries ACTION\+\_\+\+EDIT\+\_\+\+ENTERPRISE} = 2
+static const int \mbox{\hyperlink{class_log_a9d8cb773979ba2bfe520e4895f35df50}{ACTION\+\_\+\+EDIT\+\_\+\+ENTERPRISE}} = 2
 \item 
-\mbox{\Hypertarget{class_log_ad92b1e3aa79bc3b771723c5689e17816}\label{class_log_ad92b1e3aa79bc3b771723c5689e17816}} 
-static const int {\bfseries ACTION\+\_\+\+EDIT\+\_\+\+MAIL} = 3
+static const int \mbox{\hyperlink{class_log_ad92b1e3aa79bc3b771723c5689e17816}{ACTION\+\_\+\+EDIT\+\_\+\+MAIL}} = 3
 \item 
-\mbox{\Hypertarget{class_log_ad5e012102a7044f81314e7c3089d5da5}\label{class_log_ad5e012102a7044f81314e7c3089d5da5}} 
-static const int {\bfseries ACTION\+\_\+\+EDIT\+\_\+\+PHONE} = 4
+static const int \mbox{\hyperlink{class_log_ad5e012102a7044f81314e7c3089d5da5}{ACTION\+\_\+\+EDIT\+\_\+\+PHONE}} = 4
 \item 
-\mbox{\Hypertarget{class_log_a4bceacbdd3792bff6013fb474512b7a7}\label{class_log_a4bceacbdd3792bff6013fb474512b7a7}} 
-static const int {\bfseries ACTION\+\_\+\+DELETE\+\_\+\+CONTACT} = 5
+static const int \mbox{\hyperlink{class_log_a4bceacbdd3792bff6013fb474512b7a7}{ACTION\+\_\+\+DELETE\+\_\+\+CONTACT}} = 5
+\item 
+static const int \mbox{\hyperlink{class_log_a420805792d554be805d9aad827500f07}{ACTION\+\_\+\+CREATION\+\_\+\+INTERACTION}} = 6
+\item 
+static const int \mbox{\hyperlink{class_log_a5faa76ffc31e89ee6103a1ad3a00663d}{ACTION\+\_\+\+EDIT\+\_\+\+INTERACTION}} = 7
+\item 
+static const int \mbox{\hyperlink{class_log_a2f0719b5250b06dfdb5ae2c5b63361d3}{ACTION\+\_\+\+DELETE\+\_\+\+INTERACTION}} = 8
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-A log will represent an action done on a contact at a certain date. 
+A log represents an action done on a contact at a specific date. 
+
+\hypertarget{class_log_actype}{}\doxysubsubsection{Action types}\label{class_log_actype}
+A static const int ACTION\+\_\+\+TYPE defines the type of action that has been perfomed on the contact as follows \+: \tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+{\bfseries{ACTION\+\_\+\+TYPE}}&{\bfseries{Integer value}}&Corresponding action \\\cline{1-3}
+ACTION\+\_\+\+CREATION\+\_\+\+CONTACT&0&The contact has been edited \\\cline{1-3}
+ACTION\+\_\+\+EDIT\+\_\+\+PHOTO\+\_\+\+CONTACT&1&\mbox{\hyperlink{class_photo}{Photo}} attribute has been edited \\\cline{1-3}
+ACTION\+\_\+\+EDIT\+\_\+\+ENTERPRISE&2&Entreprise attribute has been edited \\\cline{1-3}
+ACTION\+\_\+\+EDIT\+\_\+\+MAIL&3&Mail attribute has been edited \\\cline{1-3}
+ACTION\+\_\+\+EDIT\+\_\+\+PHONT&4&Phone attribute has been edited \\\cline{1-3}
+ACTION\+\_\+\+DELETE\+\_\+\+CONTACT&5&\mbox{\hyperlink{class_contact}{Contact}} has been deleted \\\cline{1-3}
+ACTION\+\_\+\+CREATION\+\_\+\+INTERACTION&6&\mbox{\hyperlink{class_interaction}{Interaction}} has been added \\\cline{1-3}
+ACTION\+\_\+\+EDIT\+\_\+\+INTERACTION&7&\mbox{\hyperlink{class_interaction}{Interaction}} has been edited \\\cline{1-3}
+ACTION\+\_\+\+DELETE\+\_\+\+INTERACTION&8&\mbox{\hyperlink{class_interaction}{Interaction}} has been deleted {\begin{tabularx}{\linewidth}{|*{0}{>{\raggedright\arraybackslash}X|}}\hline
+\end{tabularx}}
+\\\cline{1-3}
+\end{longtabu}
+
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_log_a710d31bc37e541d4b832ee0be5eea85b}\label{class_log_a710d31bc37e541d4b832ee0be5eea85b}} 
@@ -59,7 +85,7 @@ A log will represent an action done on a contact at a certain date.
 
 
 
-Construct a new \mbox{\hyperlink{class_log}{Log}}\+:\+: \mbox{\hyperlink{class_log}{Log}} object. 
+Constructs a new \mbox{\hyperlink{class_log}{Log}} object. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -77,14 +103,38 @@ Construct a new \mbox{\hyperlink{class_log}{Log}}\+:\+: \mbox{\hyperlink{class_l
 \doxysubsubsection{\texorpdfstring{getACTION\_TYPE()}{getACTION\_TYPE()}}
 {\footnotesize\ttfamily int Log\+::get\+ACTION\+\_\+\+TYPE (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Returns an int corresponding to the action done on the contact. 
+
 \begin{DoxyReturn}{Returns}
-int 
+int = 0 \mbox{\hyperlink{class_contact}{Contact}} creation 
+
+int = 1 \mbox{\hyperlink{class_photo}{Photo}} has been edited 
+
+int = 2 Enterprise has been edited 
+
+int = 3 Mail has been edited 
+
+int = 4 Phone number has been edited 
+
+int = 5 \mbox{\hyperlink{class_contact}{Contact}} has been deleted 
+
+int = 6 \mbox{\hyperlink{class_interaction}{Interaction}} has been added 
+
+int = 7 \mbox{\hyperlink{class_interaction}{Interaction}} has been edited 
+
+int = 8 \mbox{\hyperlink{class_interaction}{Interaction}} has been deleted 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_log_ac7c459a57c3441692e283230b623ff4b}\label{class_log_ac7c459a57c3441692e283230b623ff4b}} 
 \index{Log@{Log}!getContact@{getContact}}
 \index{getContact@{getContact}!Log@{Log}}
 \doxysubsubsection{\texorpdfstring{getContact()}{getContact()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_contact}{Contact}} $\ast$ Log\+::get\+Contact (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the contact concerned by the action. 
 
 \begin{DoxyReturn}{Returns}
 Contact$\ast$ 
@@ -95,26 +145,12 @@ Contact$\ast$
 \doxysubsubsection{\texorpdfstring{getDateOfAction()}{getDateOfAction()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_date}{Date}} Log\+::get\+Date\+Of\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Returns the day at which the action happaned. 
+
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{class_date}{Date}} 
-\end{DoxyReturn}
-\mbox{\Hypertarget{class_log_ae495b3ba2d9a52a49a05c45422f0633a}\label{class_log_ae495b3ba2d9a52a49a05c45422f0633a}} 
-\index{Log@{Log}!getDebugValues@{getDebugValues}}
-\index{getDebugValues@{getDebugValues}!Log@{Log}}
-\doxysubsubsection{\texorpdfstring{getDebugValues()}{getDebugValues()}}
-{\footnotesize\ttfamily std\+::string Log\+::get\+Debug\+Values (\begin{DoxyParamCaption}\item[{int}]{nb\+Tabulations }\end{DoxyParamCaption})}
-
-
-
-return \mbox{\hyperlink{class_log}{Log}} values ( date, contact ) which is suitable for debugging 
-
-
-\begin{DoxyParams}{Parameters}
-{\em nb\+Tabulations} & Number of tabulations you want before showing informations. If you call outside of get\+Debug\+Values function you should set this value to 0. Also if you\textquotesingle{}re inside Debug\+Values you should set this value to nb\+Tabulations+1 for others get\+Debugs\+Values() \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-std\+::string 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_log_a81c4e05fcfabb14ee3504f3df59da185}\label{class_log_a81c4e05fcfabb14ee3504f3df59da185}} 
 \index{Log@{Log}!operator==@{operator==}}
@@ -124,7 +160,7 @@ std\+::string
 
 
 
-Compare log object and determine if they\textquotesingle{}re equal. 
+Compares log objects and determines if they\textquotesingle{}re equals. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -132,13 +168,68 @@ Compare log object and determine if they\textquotesingle{}re equal.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true 
-
-false 
+boolean 
 \end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_log_a3317b6ae01d5918f4d705533ad0250b9}\label{class_log_a3317b6ae01d5918f4d705533ad0250b9}} 
+\index{Log@{Log}!ACTION\_CREATION\_CONTACT@{ACTION\_CREATION\_CONTACT}}
+\index{ACTION\_CREATION\_CONTACT@{ACTION\_CREATION\_CONTACT}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{ACTION\_CREATION\_CONTACT}{ACTION\_CREATION\_CONTACT}}
+{\footnotesize\ttfamily const int Log\+::\+ACTION\+\_\+\+CREATION\+\_\+\+CONTACT = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_log_a420805792d554be805d9aad827500f07}\label{class_log_a420805792d554be805d9aad827500f07}} 
+\index{Log@{Log}!ACTION\_CREATION\_INTERACTION@{ACTION\_CREATION\_INTERACTION}}
+\index{ACTION\_CREATION\_INTERACTION@{ACTION\_CREATION\_INTERACTION}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{ACTION\_CREATION\_INTERACTION}{ACTION\_CREATION\_INTERACTION}}
+{\footnotesize\ttfamily const int Log\+::\+ACTION\+\_\+\+CREATION\+\_\+\+INTERACTION = 6\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_log_a4bceacbdd3792bff6013fb474512b7a7}\label{class_log_a4bceacbdd3792bff6013fb474512b7a7}} 
+\index{Log@{Log}!ACTION\_DELETE\_CONTACT@{ACTION\_DELETE\_CONTACT}}
+\index{ACTION\_DELETE\_CONTACT@{ACTION\_DELETE\_CONTACT}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{ACTION\_DELETE\_CONTACT}{ACTION\_DELETE\_CONTACT}}
+{\footnotesize\ttfamily const int Log\+::\+ACTION\+\_\+\+DELETE\+\_\+\+CONTACT = 5\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_log_a2f0719b5250b06dfdb5ae2c5b63361d3}\label{class_log_a2f0719b5250b06dfdb5ae2c5b63361d3}} 
+\index{Log@{Log}!ACTION\_DELETE\_INTERACTION@{ACTION\_DELETE\_INTERACTION}}
+\index{ACTION\_DELETE\_INTERACTION@{ACTION\_DELETE\_INTERACTION}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{ACTION\_DELETE\_INTERACTION}{ACTION\_DELETE\_INTERACTION}}
+{\footnotesize\ttfamily const int Log\+::\+ACTION\+\_\+\+DELETE\+\_\+\+INTERACTION = 8\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_log_a9d8cb773979ba2bfe520e4895f35df50}\label{class_log_a9d8cb773979ba2bfe520e4895f35df50}} 
+\index{Log@{Log}!ACTION\_EDIT\_ENTERPRISE@{ACTION\_EDIT\_ENTERPRISE}}
+\index{ACTION\_EDIT\_ENTERPRISE@{ACTION\_EDIT\_ENTERPRISE}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{ACTION\_EDIT\_ENTERPRISE}{ACTION\_EDIT\_ENTERPRISE}}
+{\footnotesize\ttfamily const int Log\+::\+ACTION\+\_\+\+EDIT\+\_\+\+ENTERPRISE = 2\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_log_a5faa76ffc31e89ee6103a1ad3a00663d}\label{class_log_a5faa76ffc31e89ee6103a1ad3a00663d}} 
+\index{Log@{Log}!ACTION\_EDIT\_INTERACTION@{ACTION\_EDIT\_INTERACTION}}
+\index{ACTION\_EDIT\_INTERACTION@{ACTION\_EDIT\_INTERACTION}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{ACTION\_EDIT\_INTERACTION}{ACTION\_EDIT\_INTERACTION}}
+{\footnotesize\ttfamily const int Log\+::\+ACTION\+\_\+\+EDIT\+\_\+\+INTERACTION = 7\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_log_ad92b1e3aa79bc3b771723c5689e17816}\label{class_log_ad92b1e3aa79bc3b771723c5689e17816}} 
+\index{Log@{Log}!ACTION\_EDIT\_MAIL@{ACTION\_EDIT\_MAIL}}
+\index{ACTION\_EDIT\_MAIL@{ACTION\_EDIT\_MAIL}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{ACTION\_EDIT\_MAIL}{ACTION\_EDIT\_MAIL}}
+{\footnotesize\ttfamily const int Log\+::\+ACTION\+\_\+\+EDIT\+\_\+\+MAIL = 3\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_log_ad5e012102a7044f81314e7c3089d5da5}\label{class_log_ad5e012102a7044f81314e7c3089d5da5}} 
+\index{Log@{Log}!ACTION\_EDIT\_PHONE@{ACTION\_EDIT\_PHONE}}
+\index{ACTION\_EDIT\_PHONE@{ACTION\_EDIT\_PHONE}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{ACTION\_EDIT\_PHONE}{ACTION\_EDIT\_PHONE}}
+{\footnotesize\ttfamily const int Log\+::\+ACTION\+\_\+\+EDIT\+\_\+\+PHONE = 4\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{class_log_aba42b4950df15e779c5992e7d368ad69}\label{class_log_aba42b4950df15e779c5992e7d368ad69}} 
+\index{Log@{Log}!ACTION\_EDIT\_PHOTO\_CONTACT@{ACTION\_EDIT\_PHOTO\_CONTACT}}
+\index{ACTION\_EDIT\_PHOTO\_CONTACT@{ACTION\_EDIT\_PHOTO\_CONTACT}!Log@{Log}}
+\doxysubsubsection{\texorpdfstring{ACTION\_EDIT\_PHOTO\_CONTACT}{ACTION\_EDIT\_PHOTO\_CONTACT}}
+{\footnotesize\ttfamily const int Log\+::\+ACTION\+\_\+\+EDIT\+\_\+\+PHOTO\+\_\+\+CONTACT = 1\hspace{0.3cm}{\ttfamily [static]}}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/stinky/\+Documents/\+Cours/\+S5/\+Projets/\+CDAA/\+Projet/headers/Log.\+h\item 
-/home/stinky/\+Documents/\+Cours/\+S5/\+Projets/\+CDAA/\+Projet/src/Log.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{_log_8h}{Log.\+h}}\item 
+\mbox{\hyperlink{_log_8cpp}{Log.\+cpp}}\end{DoxyCompactItemize}

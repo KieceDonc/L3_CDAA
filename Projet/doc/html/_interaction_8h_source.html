@@ -5,10 +5,14 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>CDAA: /home/stinky/Documents/Cours/S5/Projets/CDAA/Projet/headers/Interaction.h Source File</title>
+<title>CDAA: Interaction.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -46,6 +50,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_interaction_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,22 +81,17 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_7f57b1e41c5acd0e859ae5f3a2b075a9.html">headers</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">Interaction.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef INTERACTION_H</span></div>
+<a href="_interaction_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef INTERACTION_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define INTERACTION_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;regex&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;Date.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_date_8h.html">Date.h</a>&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_interaction.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_interaction.html">Interaction</a>{</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
@@ -85,35 +101,40 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="class_date.html">Date</a> date;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="class_interaction.html">Interaction</a>();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="class_interaction.html">Interaction</a>(<span class="keyword">const</span> <a class="code" href="class_date.html">Date</a>&amp; , <span class="keyword">const</span> std::string&amp;);</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_interaction.html#aadfd0e254296043c26508d47090ace76">   19</a></span>&#160;        <a class="code" href="class_interaction.html#aadfd0e254296043c26508d47090ace76">Interaction</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="class_interaction.html#aadfd0e254296043c26508d47090ace76">Interaction</a>(<span class="keyword">const</span> <a class="code" href="class_date.html">Date</a>&amp; , <span class="keyword">const</span> std::string&amp;);</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_interaction.html#a6c8ad6392855a3bed4a6d0525cc0acf9">setContent</a>(<span class="keyword">const</span> std::string&amp;);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_interaction.html#a78ab3582f37b88498eab85b71c248bb0">setDate</a>(<span class="keyword">const</span> <a class="code" href="class_date.html">Date</a>&amp;);</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        std::string <a class="code" href="class_interaction.html#a9937a7802af038ad6ae4a949b75b00c0">getContent</a>();</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="class_date.html">Date</a> <a class="code" href="class_interaction.html#a0ac11720a574538f946cd3ed1ffaf731">getDate</a>();</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        std::string <a class="code" href="class_interaction.html#a1b25bc53bfa15bffdee53640ac84cb69">getDebugValues</a>(<span class="keywordtype">int</span> nbTabulations);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_interaction.html#ae01fd582657c679a7c57e2c3f7675692">operator==</a>(<a class="code" href="class_interaction.html">Interaction</a>&amp; toCompare);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">friend</span> std::ostream&amp; <a class="code" href="class_interaction.html#a60099cfbe5db8c8d2d10fb60e100e4bf">operator&lt;&lt;</a>(std::ostream&amp; , <span class="keyword">const</span> <a class="code" href="class_interaction.html">Interaction</a>&amp;);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_date_html"><div class="ttname"><a href="class_date.html">Date</a></div><div class="ttdoc">Simplifies the usage of C++ tm struct to represents dates. Uses the dd/mm/yyyy format.</div><div class="ttdef"><b>Definition:</b> Date.h:14</div></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        std::string getDebugValues(<span class="keywordtype">int</span> nbTabulations);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_interaction.html#ae01fd582657c679a7c57e2c3f7675692">operator==</a>(<a class="code" href="class_interaction.html">Interaction</a>&amp; toCompare);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">friend</span> std::ostream&amp; <a class="code" href="class_interaction.html#a60099cfbe5db8c8d2d10fb60e100e4bf">operator&lt;&lt;</a>(std::ostream&amp; , <span class="keyword">const</span> <a class="code" href="class_interaction.html">Interaction</a>&amp;);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;};</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a_date_8h_html"><div class="ttname"><a href="_date_8h.html">Date.h</a></div></div>
+<div class="ttc" id="aclass_date_html"><div class="ttname"><a href="class_date.html">Date</a></div><div class="ttdoc">Simplifies the use of C++ tm struct to represent dates. Uses the dd/mm/yyyy format.</div><div class="ttdef"><b>Definition:</b> Date.h:14</div></div>
 <div class="ttc" id="aclass_interaction_html"><div class="ttname"><a href="class_interaction.html">Interaction</a></div><div class="ttdoc">An interaction is a block of text tagged with @TODO and @DATE to indicate tasks and sets the date of ...</div><div class="ttdef"><b>Definition:</b> Interaction.h:11</div></div>
-<div class="ttc" id="aclass_interaction_html_a0ac11720a574538f946cd3ed1ffaf731"><div class="ttname"><a href="class_interaction.html#a0ac11720a574538f946cd3ed1ffaf731">Interaction::getDate</a></div><div class="ttdeci">Date getDate()</div><div class="ttdoc">The date of an interaction - Conceptually always equals its date of creation.</div><div class="ttdef"><b>Definition:</b> Interaction_.cpp:59</div></div>
-<div class="ttc" id="aclass_interaction_html_a1b25bc53bfa15bffdee53640ac84cb69"><div class="ttname"><a href="class_interaction.html#a1b25bc53bfa15bffdee53640ac84cb69">Interaction::getDebugValues</a></div><div class="ttdeci">std::string getDebugValues(int nbTabulations)</div><div class="ttdoc">return Interaction values ( date, content ) which is suitable for debugging</div><div class="ttdef"><b>Definition:</b> Interaction_.cpp:71</div></div>
-<div class="ttc" id="aclass_interaction_html_a60099cfbe5db8c8d2d10fb60e100e4bf"><div class="ttname"><a href="class_interaction.html#a60099cfbe5db8c8d2d10fb60e100e4bf">Interaction::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;, const Interaction &amp;)</div><div class="ttdoc">Overloading of the &lt;&lt; operator. Redirects the following string in the output stream :  [ dd/mm/yyyy ]...</div><div class="ttdef"><b>Definition:</b> Interaction_.cpp:100</div></div>
-<div class="ttc" id="aclass_interaction_html_a6c8ad6392855a3bed4a6d0525cc0acf9"><div class="ttname"><a href="class_interaction.html#a6c8ad6392855a3bed4a6d0525cc0acf9">Interaction::setContent</a></div><div class="ttdeci">void setContent(const std::string &amp;)</div><div class="ttdoc">Sets the content of an interaction.</div><div class="ttdef"><b>Definition:</b> Interaction_.cpp:32</div></div>
-<div class="ttc" id="aclass_interaction_html_a78ab3582f37b88498eab85b71c248bb0"><div class="ttname"><a href="class_interaction.html#a78ab3582f37b88498eab85b71c248bb0">Interaction::setDate</a></div><div class="ttdeci">void setDate(const Date &amp;)</div><div class="ttdoc">Sets the date of an interaction - Day, Month and Year needed.</div><div class="ttdef"><b>Definition:</b> Interaction_.cpp:41</div></div>
-<div class="ttc" id="aclass_interaction_html_a9937a7802af038ad6ae4a949b75b00c0"><div class="ttname"><a href="class_interaction.html#a9937a7802af038ad6ae4a949b75b00c0">Interaction::getContent</a></div><div class="ttdeci">std::string getContent()</div><div class="ttdoc">The content of an interaction - Will always return a string, be it empty or not.</div><div class="ttdef"><b>Definition:</b> Interaction_.cpp:50</div></div>
-<div class="ttc" id="aclass_interaction_html_ae01fd582657c679a7c57e2c3f7675692"><div class="ttname"><a href="class_interaction.html#ae01fd582657c679a7c57e2c3f7675692">Interaction::operator==</a></div><div class="ttdeci">bool operator==(Interaction &amp;toCompare)</div><div class="ttdoc">Compares interaction object and determines if they're equal.</div><div class="ttdef"><b>Definition:</b> Interaction_.cpp:88</div></div>
+<div class="ttc" id="aclass_interaction_html_a0ac11720a574538f946cd3ed1ffaf731"><div class="ttname"><a href="class_interaction.html#a0ac11720a574538f946cd3ed1ffaf731">Interaction::getDate</a></div><div class="ttdeci">Date getDate()</div><div class="ttdoc">The date of an interaction - Conceptually always equals its date of creation.</div><div class="ttdef"><b>Definition:</b> Interaction_.cpp:60</div></div>
+<div class="ttc" id="aclass_interaction_html_a60099cfbe5db8c8d2d10fb60e100e4bf"><div class="ttname"><a href="class_interaction.html#a60099cfbe5db8c8d2d10fb60e100e4bf">Interaction::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;, const Interaction &amp;)</div><div class="ttdoc">Overloading of the &lt;&lt; operator. Redirects the following string in the output stream :  [ dd/mm/yyyy ]...</div><div class="ttdef"><b>Definition:</b> Interaction_.cpp:102</div></div>
+<div class="ttc" id="aclass_interaction_html_a6c8ad6392855a3bed4a6d0525cc0acf9"><div class="ttname"><a href="class_interaction.html#a6c8ad6392855a3bed4a6d0525cc0acf9">Interaction::setContent</a></div><div class="ttdeci">void setContent(const std::string &amp;)</div><div class="ttdoc">Sets the content of an interaction.</div><div class="ttdef"><b>Definition:</b> Interaction_.cpp:33</div></div>
+<div class="ttc" id="aclass_interaction_html_a78ab3582f37b88498eab85b71c248bb0"><div class="ttname"><a href="class_interaction.html#a78ab3582f37b88498eab85b71c248bb0">Interaction::setDate</a></div><div class="ttdeci">void setDate(const Date &amp;)</div><div class="ttdoc">Sets the date of an interaction - Day, Month and Year needed.</div><div class="ttdef"><b>Definition:</b> Interaction_.cpp:42</div></div>
+<div class="ttc" id="aclass_interaction_html_a9937a7802af038ad6ae4a949b75b00c0"><div class="ttname"><a href="class_interaction.html#a9937a7802af038ad6ae4a949b75b00c0">Interaction::getContent</a></div><div class="ttdeci">std::string getContent()</div><div class="ttdoc">The content of an interaction - Will always return a string, be it empty or not.</div><div class="ttdef"><b>Definition:</b> Interaction_.cpp:51</div></div>
+<div class="ttc" id="aclass_interaction_html_aadfd0e254296043c26508d47090ace76"><div class="ttname"><a href="class_interaction.html#aadfd0e254296043c26508d47090ace76">Interaction::Interaction</a></div><div class="ttdeci">Interaction()</div></div>
+<div class="ttc" id="aclass_interaction_html_ae01fd582657c679a7c57e2c3f7675692"><div class="ttname"><a href="class_interaction.html#ae01fd582657c679a7c57e2c3f7675692">Interaction::operator==</a></div><div class="ttdeci">bool operator==(Interaction &amp;toCompare)</div><div class="ttdoc">Compares Interaction objects and determines if they're equals.</div><div class="ttdef"><b>Definition:</b> Interaction_.cpp:90</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_7f57b1e41c5acd0e859ae5f3a2b075a9.html">headers</a></li><li class="navelem"><a class="el" href="_interaction_8h.html">Interaction.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

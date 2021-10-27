@@ -9,61 +9,231 @@ Container for \mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} objec
 
 {\ttfamily \#include $<$Interaction\+Todos.\+h$>$}
 
+
+
+Collaboration diagram for Interaction\+Todos\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{class_interaction_todos__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_interaction_todos_a97ff5e06c37b55c7564e67b557d51abb}\label{class_interaction_todos_a97ff5e06c37b55c7564e67b557d51abb}} 
-std\+::list$<$ \mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} $>$ $\ast$ {\bfseries get\+It\+List} ()
+\mbox{\hyperlink{class_interaction_todos_afeb2619ae8f9075d47e27e575bc26128}{Interaction\+Todos}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a new \mbox{\hyperlink{class_interaction_todos}{Interaction\+Todos}} object with an empty list of \mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} objects. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_interaction_todos_a8d77dbda7b79795b7d326fb02a745d34}{$\sim$\+Interaction\+Todos}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the \mbox{\hyperlink{class_interaction}{Interaction}} Todos\+:\+: \mbox{\hyperlink{class_interaction}{Interaction}} Todos object. \end{DoxyCompactList}\item 
+std\+::list$<$ \mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} $>$ $\ast$ \mbox{\hyperlink{class_interaction_todos_a97ff5e06c37b55c7564e67b557d51abb}{get\+It\+List}} ()
+\begin{DoxyCompactList}\small\item\em Returns a pointer on the list of \mbox{\hyperlink{class_interaction_todos}{Interaction\+Todos}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_interaction_todos_a3322e32fdc41a5fea4d97534524e26ad}{set\+It\+List}} (std\+::list$<$ \mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} $>$ $\ast$)
+\begin{DoxyCompactList}\small\item\em Sets it\+List with a pointer on a a list of \mbox{\hyperlink{class_interaction}{Interaction}} \mbox{\hyperlink{class_todo}{Todo}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_interaction_todos_a3247387c6222aef8c6428ccc18728e15}{add\+Interaction}} (\mbox{\hyperlink{class_interaction}{Interaction}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Method adding to the container the list of \mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} objects from a given \mbox{\hyperlink{class_interaction}{Interaction}}.~\newline
+ As in, the set of links between the given \mbox{\hyperlink{class_interaction}{Interaction}} and all its todos. ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_interaction_todos_a3322e32fdc41a5fea4d97534524e26ad}\label{class_interaction_todos_a3322e32fdc41a5fea4d97534524e26ad}} 
-void {\bfseries set\+It\+List} (std\+::list$<$ \mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} $>$ $\ast$)
-\item 
-\mbox{\Hypertarget{class_interaction_todos_a3247387c6222aef8c6428ccc18728e15}\label{class_interaction_todos_a3247387c6222aef8c6428ccc18728e15}} 
-void {\bfseries add\+Interaction} (\mbox{\hyperlink{class_interaction}{Interaction}} $\ast$)
-\item 
-std\+::string \mbox{\hyperlink{class_interaction_todos_a5abc2e7da06885ca5600ac9e84f724dd}{get\+Debug\+Values}} (int nb\+Tabulations)
-\item 
-bool \mbox{\hyperlink{class_interaction_todos_abe63d111acf5d9978f976f0ad4823ba1}{operator==}} (\mbox{\hyperlink{class_interaction_todos}{Interaction\+Todos}} \&to\+Compare)
-\end{DoxyCompactItemize}
+std\+::ostream \& \mbox{\hyperlink{class_interaction_todos_a7e2e0a66228469558cc74e3e67e19215}{operator$<$$<$}} (std\+::ostream \&, \mbox{\hyperlink{class_interaction_todos}{Interaction\+Todos}} \&)
+\begin{DoxyCompactList}\small\item\em Overloading of the $<$$<$ operator. Redirects the following string in the output stream \+:~\newline
+~\newline
+ \mbox{[}\mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}}\mbox{]}~\newline
+\mbox{[}\mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}}\mbox{]}~\newline
+. . . . .~\newline
+\mbox{[}\mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}}\mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Container for \mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} objects. 
 
+A container class for \mbox{\hyperlink{class_interaction_todos}{Interaction\+Todos}}. Represents the idea that a Relational Database only has {\bfseries{atomic values}}~\newline
+ It is not a list of pointers because an \mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} has no reason to exist out of this list. Therefore every time there is the need to use an element of this list, a pointer towards it has to be created.\hypertarget{class_todo_ex}{}\doxysubsubsection{Example}\label{class_todo_ex}
+Here is an example of the it\+List attribute of an \mbox{\hyperlink{class_interaction_todos}{Interaction\+Todos}} object with the following interaction \+:~\newline
+ \mbox{\hyperlink{class_interaction}{Interaction}} $\ast$ i = new \mbox{\hyperlink{class_interaction}{Interaction}}(\char`\"{}\+Please Valentin we really need to finish this school project. @\+TODO Brew some coffee @\+TODO Rush the remaining work\char`\"{})
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\multicolumn{2}{|l|}{{\bfseries{1st element of it\+List (\mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} type)}} }\\\cline{1-2}
+{\bfseries{attribute I}}&{\bfseries{attribute T}}\\\cline{1-2}
+i&new \mbox{\hyperlink{class_todo}{Todo}}(\char`\"{}\+Brew some coffee\char`\"{}) \\\cline{1-2}
+\multicolumn{2}{|l|}{{\bfseries{2nd element of it\+List (\mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} type)}} }\\\cline{1-2}
+{\bfseries{attribute I}}&{\bfseries{attribute T}}\\\cline{1-2}
+i&new \mbox{\hyperlink{class_todo}{Todo}}(\char`\"{}\+Rush the remaining work\char`\"{})\\\cline{1-2}
+\end{longtabu}
+~\newline
+~\newline
+\hypertarget{class_interaction_todos_db}{}\doxysubsubsection{Relational Database point of view}\label{class_interaction_todos_db}
+The whole point of this hard work is to be able to easily work with the database. The previous {\bfseries{example}} easily translates into a Relational Database table \+:~\newline
+ \tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\multicolumn{2}{|l|}{{\bfseries{\mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} Relation}} }\\\cline{1-2}
+{\bfseries{Interaction\+\_\+\+ID}}&{\bfseries{Todo\+\_\+\+ID}} \\\cline{1-2}
+. . .&. . . \\\cline{1-2}
+548&24 \\\cline{1-2}
+548&25 \\\cline{1-2}
+. . .&. . . \\\cline{1-2}
+\end{longtabu}
+~\newline
+
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\multicolumn{2}{|l|}{{\bfseries{\mbox{\hyperlink{class_interaction}{Interaction}} Relation}} }\\\cline{1-2}
+{\bfseries{Interaction\+\_\+\+ID}}&{\bfseries{Interaction\+\_\+\+Content}} \\\cline{1-2}
+547&. . . \\\cline{1-2}
+548&Please Valentin we really need to finish this school project. @\+TODO Brew some coffee @\+TODO Rush the remaining work \\\cline{1-2}
+549&. . . \\\cline{1-2}
+\end{longtabu}
+~\newline
+
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\multicolumn{2}{|l|}{{\bfseries{\mbox{\hyperlink{class_todo}{Todo}} Relation}} }\\\cline{1-2}
+{\bfseries{Todo\+\_\+\+ID}}&{\bfseries{Todo\+\_\+\+Content}} \\\cline{1-2}
+23&. . . \\\cline{1-2}
+24&Brew some coffee \\\cline{1-2}
+25&Rush the remaining work \\\cline{1-2}
+26&. . . \\\cline{1-2}
+\end{longtabu}
+~\newline
+ {\itshape /!\textbackslash{} In those tables, dates are not taken into account!!!} 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_interaction_todos_afeb2619ae8f9075d47e27e575bc26128}\label{class_interaction_todos_afeb2619ae8f9075d47e27e575bc26128}} 
+\index{InteractionTodos@{InteractionTodos}!InteractionTodos@{InteractionTodos}}
+\index{InteractionTodos@{InteractionTodos}!InteractionTodos@{InteractionTodos}}
+\doxysubsubsection{\texorpdfstring{InteractionTodos()}{InteractionTodos()}}
+{\footnotesize\ttfamily Interaction\+Todos\+::\+Interaction\+Todos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructs a new \mbox{\hyperlink{class_interaction_todos}{Interaction\+Todos}} object with an empty list of \mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} objects. 
+
+
+
+References set\+It\+List().
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_interaction_todos_afeb2619ae8f9075d47e27e575bc26128_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_interaction_todos_a8d77dbda7b79795b7d326fb02a745d34}\label{class_interaction_todos_a8d77dbda7b79795b7d326fb02a745d34}} 
+\index{InteractionTodos@{InteractionTodos}!````~InteractionTodos@{$\sim$InteractionTodos}}
+\index{````~InteractionTodos@{$\sim$InteractionTodos}!InteractionTodos@{InteractionTodos}}
+\doxysubsubsection{\texorpdfstring{$\sim$InteractionTodos()}{~InteractionTodos()}}
+{\footnotesize\ttfamily Interaction\+Todos\+::$\sim$\+Interaction\+Todos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroys the \mbox{\hyperlink{class_interaction}{Interaction}} Todos\+:\+: \mbox{\hyperlink{class_interaction}{Interaction}} Todos object. 
+
+
+
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_interaction_todos_a5abc2e7da06885ca5600ac9e84f724dd}\label{class_interaction_todos_a5abc2e7da06885ca5600ac9e84f724dd}} 
-\index{InteractionTodos@{InteractionTodos}!getDebugValues@{getDebugValues}}
-\index{getDebugValues@{getDebugValues}!InteractionTodos@{InteractionTodos}}
-\doxysubsubsection{\texorpdfstring{getDebugValues()}{getDebugValues()}}
-{\footnotesize\ttfamily std\+::string Interaction\+Todos\+::get\+Debug\+Values (\begin{DoxyParamCaption}\item[{int}]{nb\+Tabulations }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{class_interaction_todos_a3247387c6222aef8c6428ccc18728e15}\label{class_interaction_todos_a3247387c6222aef8c6428ccc18728e15}} 
+\index{InteractionTodos@{InteractionTodos}!addInteraction@{addInteraction}}
+\index{addInteraction@{addInteraction}!InteractionTodos@{InteractionTodos}}
+\doxysubsubsection{\texorpdfstring{addInteraction()}{addInteraction()}}
+{\footnotesize\ttfamily void Interaction\+Todos\+::add\+Interaction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_interaction}{Interaction}} $\ast$}]{interaction }\end{DoxyParamCaption})}
+
+
+
+Method adding to the container the list of \mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} objects from a given \mbox{\hyperlink{class_interaction}{Interaction}}.~\newline
+ As in, the set of links between the given \mbox{\hyperlink{class_interaction}{Interaction}} and all its todos. ~\newline
+ 
+
+\hypertarget{class_todo_ex}{}\doxysubsubsection{Example}\label{class_todo_ex}
+\mbox{\hyperlink{class_interaction}{Interaction}} $\ast$ i new \mbox{\hyperlink{class_interaction}{Interaction}}(\char`\"{}\+The quick brown fox @\+TODO jumps over @\+TODO the lazy dog\char`\"{});~\newline
+ add\+Interaction(i);~\newline
+~\newline
+ Should add two elements to the list \+:~\newline
+ new \mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}}(i,new \mbox{\hyperlink{class_todo}{Todo}}(\char`\"{}jumps over\char`\"{})) and new \mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}}(i,new \mbox{\hyperlink{class_todo}{Todo}}(\char`\"{}the lazy dog\char`\"{}))
 
 
 \begin{DoxyParams}{Parameters}
-{\em nb\+Tabulations} & Number of tabulations you want before showing informations. If you call outside of get\+Debug\+Values function you should set this value to 0. Also if you\textquotesingle{}re inside Debug\+Values you should set this value to nb\+Tabulations+1 for others get\+Debugs\+Values() \\
+{\em interaction} & The interaction to retrieve the Todos from. \\
 \hline
 \end{DoxyParams}
+
+
+References Interaction\+::get\+Content(), and get\+It\+List().
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_interaction_todos_a3247387c6222aef8c6428ccc18728e15_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_interaction_todos_a97ff5e06c37b55c7564e67b557d51abb}\label{class_interaction_todos_a97ff5e06c37b55c7564e67b557d51abb}} 
+\index{InteractionTodos@{InteractionTodos}!getItList@{getItList}}
+\index{getItList@{getItList}!InteractionTodos@{InteractionTodos}}
+\doxysubsubsection{\texorpdfstring{getItList()}{getItList()}}
+{\footnotesize\ttfamily std\+::list$<$ \mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} $>$ $\ast$ Interaction\+Todos\+::get\+It\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a pointer on the list of \mbox{\hyperlink{class_interaction_todos}{Interaction\+Todos}}. 
+
 \begin{DoxyReturn}{Returns}
-std\+::string 
+std\+::list$<$\+Interaction\+Todo$>$$\ast$ 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_interaction_todos_abe63d111acf5d9978f976f0ad4823ba1}\label{class_interaction_todos_abe63d111acf5d9978f976f0ad4823ba1}} 
-\index{InteractionTodos@{InteractionTodos}!operator==@{operator==}}
-\index{operator==@{operator==}!InteractionTodos@{InteractionTodos}}
-\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
-{\footnotesize\ttfamily bool Interaction\+Todos\+::operator== (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_interaction_todos}{Interaction\+Todos}} \&}]{to\+Compare }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{class_interaction_todos_a3322e32fdc41a5fea4d97534524e26ad}\label{class_interaction_todos_a3322e32fdc41a5fea4d97534524e26ad}} 
+\index{InteractionTodos@{InteractionTodos}!setItList@{setItList}}
+\index{setItList@{setItList}!InteractionTodos@{InteractionTodos}}
+\doxysubsubsection{\texorpdfstring{setItList()}{setItList()}}
+{\footnotesize\ttfamily void Interaction\+Todos\+::set\+It\+List (\begin{DoxyParamCaption}\item[{std\+::list$<$ \mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} $>$ $\ast$}]{it\+List }\end{DoxyParamCaption})}
+
+
+
+Sets it\+List with a pointer on a a list of \mbox{\hyperlink{class_interaction}{Interaction}} \mbox{\hyperlink{class_todo}{Todo}}. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em to\+Compare} & \\
+{\em it\+List} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_interaction_todos_a7e2e0a66228469558cc74e3e67e19215}\label{class_interaction_todos_a7e2e0a66228469558cc74e3e67e19215}} 
+\index{InteractionTodos@{InteractionTodos}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!InteractionTodos@{InteractionTodos}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{\mbox{\hyperlink{class_interaction_todos}{Interaction\+Todos}} \&}]{it }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overloading of the $<$$<$ operator. Redirects the following string in the output stream \+:~\newline
+~\newline
+ \mbox{[}\mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}}\mbox{]}~\newline
+\mbox{[}\mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}}\mbox{]}~\newline
+. . . . .~\newline
+\mbox{[}\mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}}\mbox{]}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The out stream \\
+\hline
+{\em it} & The \mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} object to get values from \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-true 
-
-false 
+std\+::ostream\& 
 \end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/stinky/\+Documents/\+Cours/\+S5/\+Projets/\+CDAA/\+Projet/headers/Interaction\+Todos.\+h\item 
-/home/stinky/\+Documents/\+Cours/\+S5/\+Projets/\+CDAA/\+Projet/src/Interaction\+Todos.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{_interaction_todos_8h}{Interaction\+Todos.\+h}}\item 
+\mbox{\hyperlink{src_2_interaction_todos_8cpp}{src/\+Interaction\+Todos.\+cpp}}\end{DoxyCompactItemize}

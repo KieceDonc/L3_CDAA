@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -46,6 +50,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_logs.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,7 +81,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -70,40 +90,81 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Container for <a class="el" href="class_log.html" title="A log will represent an action done on a contact at a certain date.">Log</a> objects.  
+<p>Container for <a class="el" href="class_log.html" title="A log represents an action done on a contact at a specific date.">Log</a> objects.  
  <a href="class_logs.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_logs_8h_source.html">Logs.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for Logs:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_logs__coll__graph.svg" width="164" height="162"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3da76c4660ef9d321b11fce0100c002e"><td class="memItemLeft" align="right" valign="top"><a id="a3da76c4660ef9d321b11fce0100c002e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logs.html#a3da76c4660ef9d321b11fce0100c002e">Logs</a> ()</td></tr>
-<tr class="memdesc:a3da76c4660ef9d321b11fce0100c002e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="class_logs.html" title="Container for Log objects.">Logs</a>:: <a class="el" href="class_logs.html" title="Container for Log objects.">Logs</a> object. <br /></td></tr>
+<tr class="memitem:a3da76c4660ef9d321b11fce0100c002e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logs.html#a3da76c4660ef9d321b11fce0100c002e">Logs</a> ()</td></tr>
+<tr class="memdesc:a3da76c4660ef9d321b11fce0100c002e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="class_logs.html" title="Container for Log objects.">Logs</a> object Initializes the list inside the container.  <a href="class_logs.html#a3da76c4660ef9d321b11fce0100c002e">More...</a><br /></td></tr>
 <tr class="separator:a3da76c4660ef9d321b11fce0100c002e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6227976848fb64144ff93587479df43d"><td class="memItemLeft" align="right" valign="top"><a id="a6227976848fb64144ff93587479df43d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logs.html#a6227976848fb64144ff93587479df43d">~Logs</a> ()</td></tr>
-<tr class="memdesc:a6227976848fb64144ff93587479df43d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_logs.html" title="Container for Log objects.">Logs</a>:: <a class="el" href="class_logs.html" title="Container for Log objects.">Logs</a> object Will destruct the list. <br /></td></tr>
+<tr class="memitem:a6227976848fb64144ff93587479df43d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logs.html#a6227976848fb64144ff93587479df43d">~Logs</a> ()</td></tr>
+<tr class="memdesc:a6227976848fb64144ff93587479df43d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="class_logs.html" title="Container for Log objects.">Logs</a> Will destruct the list inside the container.  <a href="class_logs.html#a6227976848fb64144ff93587479df43d">More...</a><br /></td></tr>
 <tr class="separator:a6227976848fb64144ff93587479df43d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5514905e00e555c3fd0c6db344f7f7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logs.html#ac5514905e00e555c3fd0c6db344f7f7a">add</a> (<a class="el" href="class_log.html">Log</a> log)</td></tr>
-<tr class="memdesc:ac5514905e00e555c3fd0c6db344f7f7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add <a class="el" href="class_log.html" title="A log will represent an action done on a contact at a certain date.">Log</a> at the end of the list.  <a href="class_logs.html#ac5514905e00e555c3fd0c6db344f7f7a">More...</a><br /></td></tr>
+<tr class="memdesc:ac5514905e00e555c3fd0c6db344f7f7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a <a class="el" href="class_log.html" title="A log represents an action done on a contact at a specific date.">Log</a> at the end of the list.  <a href="class_logs.html#ac5514905e00e555c3fd0c6db344f7f7a">More...</a><br /></td></tr>
 <tr class="separator:ac5514905e00e555c3fd0c6db344f7f7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab668998a0c02b22f6e79cf566538d362"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logs.html#ab668998a0c02b22f6e79cf566538d362">getSize</a> ()</td></tr>
-<tr class="memdesc:ab668998a0c02b22f6e79cf566538d362"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of log.  <a href="class_logs.html#ab668998a0c02b22f6e79cf566538d362">More...</a><br /></td></tr>
+<tr class="memdesc:ab668998a0c02b22f6e79cf566538d362"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the amount of log in logs.  <a href="class_logs.html#ab668998a0c02b22f6e79cf566538d362">More...</a><br /></td></tr>
 <tr class="separator:ab668998a0c02b22f6e79cf566538d362"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abeb42874bc41acbd1e6e62b0a51cee6b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_log.html">Log</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logs.html#abeb42874bc41acbd1e6e62b0a51cee6b">get</a> (int index)</td></tr>
-<tr class="memdesc:abeb42874bc41acbd1e6e62b0a51cee6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return <a class="el" href="class_log.html" title="A log will represent an action done on a contact at a certain date.">Log</a> at position index.  <a href="class_logs.html#abeb42874bc41acbd1e6e62b0a51cee6b">More...</a><br /></td></tr>
+<tr class="memdesc:abeb42874bc41acbd1e6e62b0a51cee6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <a class="el" href="class_log.html" title="A log represents an action done on a contact at a specific date.">Log</a> at a given index.  <a href="class_logs.html#abeb42874bc41acbd1e6e62b0a51cee6b">More...</a><br /></td></tr>
 <tr class="separator:abeb42874bc41acbd1e6e62b0a51cee6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c8a95f81ca14624b2b4ac7e546bb95e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_logs.html">Logs</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logs.html#a4c8a95f81ca14624b2b4ac7e546bb95e">get</a> (<a class="el" href="class_contact.html">Contact</a> *contact, int ACTION_TYPE, <a class="el" href="class_date.html">Date</a> dateOfAction)</td></tr>
-<tr class="memdesc:a4c8a95f81ca14624b2b4ac7e546bb95e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sort logs from parameters (they can be NULL , if they're NULL we consider that we don't need to sort from that parameter)  <a href="class_logs.html#a4c8a95f81ca14624b2b4ac7e546bb95e">More...</a><br /></td></tr>
-<tr class="separator:a4c8a95f81ca14624b2b4ac7e546bb95e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd1908ccfcad3cf044ccb9343bec2048"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logs.html#acd1908ccfcad3cf044ccb9343bec2048">getDebugValues</a> (int nbTabulations)</td></tr>
-<tr class="memdesc:acd1908ccfcad3cf044ccb9343bec2048"><td class="mdescLeft">&#160;</td><td class="mdescRight">return <a class="el" href="class_logs.html" title="Container for Log objects.">Logs</a> values which is suitable for debugging  <a href="class_logs.html#acd1908ccfcad3cf044ccb9343bec2048">More...</a><br /></td></tr>
+<tr class="memdesc:acd1908ccfcad3cf044ccb9343bec2048"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <a class="el" href="class_logs.html" title="Container for Log objects.">Logs</a> values, suitable for debugging.  <a href="class_logs.html#acd1908ccfcad3cf044ccb9343bec2048">More...</a><br /></td></tr>
 <tr class="separator:acd1908ccfcad3cf044ccb9343bec2048"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Container for <a class="el" href="class_log.html" title="A log will represent an action done on a contact at a certain date.">Log</a> objects. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<div class="textblock"><p>Container for <a class="el" href="class_log.html" title="A log represents an action done on a contact at a specific date.">Log</a> objects. </p>
+<p><a class="el" href="class_logs.html" title="Container for Log objects.">Logs</a> is a container for <a class="el" href="class_log.html" title="A log represents an action done on a contact at a specific date.">Log</a> objects. <br  />
+ The point of this class is nothing more than to make manipulating lists of logs more friendlier using add, get, etc... methods. Consider it equivalent to std::list&lt;Log&gt; </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a3da76c4660ef9d321b11fce0100c002e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3da76c4660ef9d321b11fce0100c002e">&#9670;&nbsp;</a></span>Logs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Logs::Logs </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a new <a class="el" href="class_logs.html" title="Container for Log objects.">Logs</a> object Initializes the list inside the container. </p>
+
+</div>
+</div>
+<a id="a6227976848fb64144ff93587479df43d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6227976848fb64144ff93587479df43d">&#9670;&nbsp;</a></span>~Logs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Logs::~Logs </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destroys the <a class="el" href="class_logs.html" title="Container for Log objects.">Logs</a> Will destruct the list inside the container. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="ac5514905e00e555c3fd0c6db344f7f7a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac5514905e00e555c3fd0c6db344f7f7a">&#9670;&nbsp;</a></span>add()</h2>
 
@@ -120,7 +181,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Add <a class="el" href="class_log.html" title="A log will represent an action done on a contact at a certain date.">Log</a> at the end of the list. </p>
+<p>Adds a <a class="el" href="class_log.html" title="A log represents an action done on a contact at a specific date.">Log</a> at the end of the list. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">log</td><td></td></tr>
@@ -130,53 +191,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a4c8a95f81ca14624b2b4ac7e546bb95e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c8a95f81ca14624b2b4ac7e546bb95e">&#9670;&nbsp;</a></span>get() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_logs.html">Logs</a> Logs::get </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_contact.html">Contact</a> *&#160;</td>
-          <td class="paramname"><em>contact</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>ACTION_TYPE</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_date.html">Date</a>&#160;</td>
-          <td class="paramname"><em>dateOfAction</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sort logs from parameters (they can be NULL , if they're NULL we consider that we don't need to sort from that parameter) </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">contact</td><td></td></tr>
-    <tr><td class="paramname">ACTION_TYPE</td><td>if ACTION_TYPE &lt; 0 we consider that we don't need to sort from that parameter </td></tr>
-    <tr><td class="paramname">dateOfAction</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_logs.html" title="Container for Log objects.">Logs</a> </dd></dl>
-
-</div>
-</div>
 <a id="abeb42874bc41acbd1e6e62b0a51cee6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abeb42874bc41acbd1e6e62b0a51cee6b">&#9670;&nbsp;</a></span>get() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#abeb42874bc41acbd1e6e62b0a51cee6b">&#9670;&nbsp;</a></span>get()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -191,14 +207,21 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Return <a class="el" href="class_log.html" title="A log will represent an action done on a contact at a certain date.">Log</a> at position index. </p>
+<p>Returns <a class="el" href="class_log.html" title="A log represents an action done on a contact at a specific date.">Log</a> at a given index. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">index</td><td></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_log.html" title="A log will represent an action done on a contact at a certain date.">Log</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_log.html" title="A log represents an action done on a contact at a specific date.">Log</a> </dd></dl>
+
+<p class="reference">References <a class="el" href="class_logs.html#acd1908ccfcad3cf044ccb9343bec2048">getDebugValues()</a>, and <a class="el" href="class_logs.html#ab668998a0c02b22f6e79cf566538d362">getSize()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_logs_abeb42874bc41acbd1e6e62b0a51cee6b_cgraph.svg" width="463" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -218,14 +241,21 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>return <a class="el" href="class_logs.html" title="Container for Log objects.">Logs</a> values which is suitable for debugging </p>
+<p>Returns <a class="el" href="class_logs.html" title="Container for Log objects.">Logs</a> values, suitable for debugging. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">nbTabulations</td><td>Number of tabulations you want before showing informations. If you call outside of getDebugValues function you should set this value to 0. Also if you're inside DebugValues you should set this value to nbTabulations+1 for others getDebugsValues() </td></tr>
+    <tr><td class="paramname">nbTabulations</td><td>Number of tabulations needed to show informations. If called outside of getDebugValues function this value should be set to 0. Inside DebugValue this value should be set to nbTabulations+1 for others getDebugsValues() </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>std::string </dd></dl>
+
+<p class="reference">References <a class="el" href="class_logs.html#abeb42874bc41acbd1e6e62b0a51cee6b">get()</a>, <a class="el" href="class_logs.html#ab668998a0c02b22f6e79cf566538d362">getSize()</a>, and <a class="el" href="src_2_logs_8cpp.html#a1e803cea7d2670ece91f5465281446ba">toString()</a>.</p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_logs_acd1908ccfcad3cf044ccb9343bec2048_cgraph.svg" width="463" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 
 </div>
 </div>
@@ -244,19 +274,23 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Return the number of log. </p>
+<p>Returns the amount of log in logs. </p>
 <dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/stinky/Documents/Cours/S5/Projets/CDAA/Projet/headers/<a class="el" href="_logs_8h_source.html">Logs.h</a></li>
-<li>/home/stinky/Documents/Cours/S5/Projets/CDAA/Projet/src/Logs.cpp</li>
+<li><a class="el" href="_logs_8h_source.html">Logs.h</a></li>
+<li><a class="el" href="src_2_logs_8cpp.html">src/Logs.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_logs.html">Logs</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
 </body>
 </html>

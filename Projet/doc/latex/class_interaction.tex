@@ -9,11 +9,22 @@ An interaction is a block of text tagged with @\+TODO and @\+DATE to indicate ta
 
 {\ttfamily \#include $<$Interaction.\+h$>$}
 
+
+
+Collaboration diagram for Interaction\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{class_interaction__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{class_interaction_aadfd0e254296043c26508d47090ace76}{Interaction}} ()
+\item 
 \mbox{\hyperlink{class_interaction_a2c9aa6cf32e6bf0cb13ca0ec0f807c98}{Interaction}} (const \mbox{\hyperlink{class_date}{Date}} \&, const std\+::string \&)
-\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_interaction}{Interaction}}\+:\+: \mbox{\hyperlink{class_interaction}{Interaction}} object with a date object and a string. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_interaction}{Interaction}} object with a date object and a string. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_interaction_a6c8ad6392855a3bed4a6d0525cc0acf9}{set\+Content}} (const std\+::string \&)
 \begin{DoxyCompactList}\small\item\em Sets the content of an interaction. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_interaction_a78ab3582f37b88498eab85b71c248bb0}{set\+Date}} (const \mbox{\hyperlink{class_date}{Date}} \&)
@@ -22,10 +33,8 @@ std\+::string \mbox{\hyperlink{class_interaction_a9937a7802af038ad6ae4a949b75b00
 \begin{DoxyCompactList}\small\item\em The content of an interaction -\/ Will always return a string, be it empty or not. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_date}{Date}} \mbox{\hyperlink{class_interaction_a0ac11720a574538f946cd3ed1ffaf731}{get\+Date}} ()
 \begin{DoxyCompactList}\small\item\em The date of an interaction -\/ Conceptually always equals its date of creation. \end{DoxyCompactList}\item 
-std\+::string \mbox{\hyperlink{class_interaction_a1b25bc53bfa15bffdee53640ac84cb69}{get\+Debug\+Values}} (int nb\+Tabulations)
-\begin{DoxyCompactList}\small\item\em return \mbox{\hyperlink{class_interaction}{Interaction}} values ( date, content ) which is suitable for debugging \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_interaction_ae01fd582657c679a7c57e2c3f7675692}{operator==}} (\mbox{\hyperlink{class_interaction}{Interaction}} \&to\+Compare)
-\begin{DoxyCompactList}\small\item\em Compares interaction object and determines if they\textquotesingle{}re equal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Compares \mbox{\hyperlink{class_interaction}{Interaction}} objects and determines if they\textquotesingle{}re equals. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
@@ -36,23 +45,29 @@ std\+::ostream \& \mbox{\hyperlink{class_interaction_a60099cfbe5db8c8d2d10fb60e1
 \doxysubsection{Detailed Description}
 An interaction is a block of text tagged with @\+TODO and @\+DATE to indicate tasks and sets the date of said todos. 
 
-Class for an \mbox{\hyperlink{class_interaction}{Interaction}} specifications. An instance of \mbox{\hyperlink{class_interaction}{Interaction}} will always contain a string (content) and its date of creation (date) through both its attributes. The content of an interaction will always be a single string -\/ And the syntax of an \mbox{\hyperlink{class_interaction}{Interaction}} is as follow \+:~\newline
+Class for an \mbox{\hyperlink{class_interaction}{Interaction}} specifications. An instance of \mbox{\hyperlink{class_interaction}{Interaction}} will always contain a string (content) and its date of creation (date) through two attributes. The content of an interaction will always be a single string -\/ And the syntax of an \mbox{\hyperlink{class_interaction}{Interaction}} is as follow \+:~\newline
 ~\newline
- {\itshape \mbox{[}\mbox{\hyperlink{class_interaction}{Interaction}} comment\mbox{]} \mbox{[}{\bfseries{@\+TODO}} todo n°1 \mbox{[}{\bfseries{@\+DATE}} dd/mm/yyyy\mbox{]}\mbox{]} \mbox{[}{\bfseries{@\+TODO}} todo n°2 \mbox{[}{\bfseries{@\+DATE}} dd/mm/yyyy\mbox{]}\mbox{]} . . . . . \mbox{[}{\bfseries{@\+TODO}} todo n°n \mbox{[}{\bfseries{@\+DATE}} dd/mm/yyyy\mbox{]}\mbox{]}}~\newline
+ {\itshape \mbox{[}\mbox{\hyperlink{class_interaction}{Interaction}} comment\mbox{]} \mbox{[}{\bfseries{@\+TODO}} todo n°1 \mbox{[}{\bfseries{@\+DATE}} dd/mm/yyyy\mbox{]}\mbox{]} \mbox{[}{\bfseries{@\+TODO}} todo n°2 \mbox{[}{\bfseries{@\+DATE}} dd/mm/yyyy\mbox{]}\mbox{]} . . . . . \mbox{[}{\bfseries{@\+TODO}} todo n°k \mbox{[}{\bfseries{@\+DATE}} dd/mm/yyyy\mbox{]}\mbox{]}}~\newline
 ~\newline
  With bracketed elements being optional~\newline
- And n between 0 and inifinity (please don\textquotesingle{}t do this) 
+ And k between 0 and infinity (please don\textquotesingle{}t do this) /!\textbackslash{} We do NOT treat the content line by line. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_interaction_aadfd0e254296043c26508d47090ace76}\label{class_interaction_aadfd0e254296043c26508d47090ace76}} 
+\index{Interaction@{Interaction}!Interaction@{Interaction}}
+\index{Interaction@{Interaction}!Interaction@{Interaction}}
+\doxysubsubsection{\texorpdfstring{Interaction()}{Interaction()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Interaction\+::\+Interaction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{class_interaction_a2c9aa6cf32e6bf0cb13ca0ec0f807c98}\label{class_interaction_a2c9aa6cf32e6bf0cb13ca0ec0f807c98}} 
 \index{Interaction@{Interaction}!Interaction@{Interaction}}
 \index{Interaction@{Interaction}!Interaction@{Interaction}}
-\doxysubsubsection{\texorpdfstring{Interaction()}{Interaction()}}
+\doxysubsubsection{\texorpdfstring{Interaction()}{Interaction()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily Interaction\+::\+Interaction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_date}{Date}} \&}]{date,  }\item[{const std\+::string \&}]{content }\end{DoxyParamCaption})}
 
 
 
-Construct a new \mbox{\hyperlink{class_interaction}{Interaction}}\+:\+: \mbox{\hyperlink{class_interaction}{Interaction}} object with a date object and a string. 
+Construct a new \mbox{\hyperlink{class_interaction}{Interaction}} object with a date object and a string. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -61,6 +76,17 @@ Construct a new \mbox{\hyperlink{class_interaction}{Interaction}}\+:\+: \mbox{\h
 {\em content} & \\
 \hline
 \end{DoxyParams}
+
+
+References set\+Content(), and set\+Date().
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_interaction_a2c9aa6cf32e6bf0cb13ca0ec0f807c98_cgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Member Function Documentation}
@@ -90,24 +116,6 @@ The date of an interaction -\/ Conceptually always equals its date of creation.
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{class_date}{Date}} 
 \end{DoxyReturn}
-\mbox{\Hypertarget{class_interaction_a1b25bc53bfa15bffdee53640ac84cb69}\label{class_interaction_a1b25bc53bfa15bffdee53640ac84cb69}} 
-\index{Interaction@{Interaction}!getDebugValues@{getDebugValues}}
-\index{getDebugValues@{getDebugValues}!Interaction@{Interaction}}
-\doxysubsubsection{\texorpdfstring{getDebugValues()}{getDebugValues()}}
-{\footnotesize\ttfamily std\+::string Interaction\+::get\+Debug\+Values (\begin{DoxyParamCaption}\item[{int}]{nb\+Tabulations }\end{DoxyParamCaption})}
-
-
-
-return \mbox{\hyperlink{class_interaction}{Interaction}} values ( date, content ) which is suitable for debugging 
-
-
-\begin{DoxyParams}{Parameters}
-{\em nb\+Tabulations} & Number of tabulations needed to show informations. If called outside of get\+Debug\+Values function this value should be set to 0. Inside Debug\+Value this value should be set to nb\+Tabulations+1 for others get\+Debugs\+Values() \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-std\+::string 
-\end{DoxyReturn}
 \mbox{\Hypertarget{class_interaction_ae01fd582657c679a7c57e2c3f7675692}\label{class_interaction_ae01fd582657c679a7c57e2c3f7675692}} 
 \index{Interaction@{Interaction}!operator==@{operator==}}
 \index{operator==@{operator==}!Interaction@{Interaction}}
@@ -116,7 +124,7 @@ std\+::string
 
 
 
-Compares interaction object and determines if they\textquotesingle{}re equal. 
+Compares \mbox{\hyperlink{class_interaction}{Interaction}} objects and determines if they\textquotesingle{}re equals. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -126,6 +134,17 @@ Compares interaction object and determines if they\textquotesingle{}re equal.
 \begin{DoxyReturn}{Returns}
 bool 
 \end{DoxyReturn}
+
+
+References get\+Content(), and get\+Date().
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_interaction_ae01fd582657c679a7c57e2c3f7675692_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_interaction_a6c8ad6392855a3bed4a6d0525cc0acf9}\label{class_interaction_a6c8ad6392855a3bed4a6d0525cc0acf9}} 
 \index{Interaction@{Interaction}!setContent@{setContent}}
 \index{setContent@{setContent}!Interaction@{Interaction}}
@@ -176,5 +195,5 @@ std\+::ostream\&
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/stinky/\+Documents/\+Cours/\+S5/\+Projets/\+CDAA/\+Projet/headers/Interaction.\+h\item 
-/home/stinky/\+Documents/\+Cours/\+S5/\+Projets/\+CDAA/\+Projet/src/Interaction\+\_\+.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{_interaction_8h}{Interaction.\+h}}\item 
+\mbox{\hyperlink{_interaction___8cpp}{Interaction\+\_\+.\+cpp}}\end{DoxyCompactItemize}

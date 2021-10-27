@@ -5,7 +5,22 @@ Documentation made by Valentin Verstracte and Evan Petit for an app development 
 
 
 Valentin Verstracte \+: \href{https://github.com/KieceDonc/}{\texttt{ Git\+Hub -\/ Kiece\+Donc}}~\newline
- Evan Petit \+: \href{https://github.com/RenardBOT/}{\texttt{ Git\+Hub -\/ Renard\+BOT}}\hypertarget{index_runStep}{}\doxysubsection{Running the app}\label{index_runStep}
-For now, the app works only in console. Please use~\newline
- make build ~\newline
- In the build repertory. 
+ Evan Petit \+: \href{https://github.com/RenardBOT/}{\texttt{ Git\+Hub -\/ Renard\+BOT}}\hypertarget{index_what}{}\doxysubsection{What can I do with this?}\label{index_what}
+Not much (yet)~\newline
+ It allows the manipulation of simple objects that will later be core to the application.~\newline
+
+\begin{DoxyItemize}
+\item Creation, edition and deletion of contacts.~\newline
+
+\item Creation, edition and deletion of Interactions.~\newline
+
+\item Extracting Todos from Interactions.~\newline
+
+\item Maintaining a conceptually correct link between Todos and Interactions.~\newline
+
+\item Getting a complete log history of all the actions performed. ~\newline
+~\newline
+ Although it is not implemented yet, it has been developped according to the principles of relational databases (here SQLite) \+:~\newline
+ Therefore the {\bfseries{ACID}} database properties are here ascertained (the most important one being atomicity)
+\end{DoxyItemize}\hypertarget{index_runStep}{}\doxysubsection{Running the app}\label{index_runStep}
+For now, the app works only in console. The object files are in the build repertory. Run them using the ./ command The main will test basic functions \+: Creating two contacts, changing their logs, adding their todos, printing debug values, deleting everything and closing. 

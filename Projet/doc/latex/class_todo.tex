@@ -2,42 +2,86 @@
 \label{class_todo}\index{Todo@{Todo}}
 
 
-Represent a task for a contact. Linked to \mbox{\hyperlink{class_interaction}{Interaction}} objects using an \mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} object.  
+Represents a task from an interaction for a contact. Linked to \mbox{\hyperlink{class_interaction}{Interaction}} objects using an \mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} object.  
 
 
 
 
 {\ttfamily \#include $<$Todo.\+h$>$}
 
+
+
+Collaboration diagram for Todo\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{class_todo__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_todo_a1cc5d083fa330e1db2478d0d27510ec4}{Todo}} (const \mbox{\hyperlink{class_date}{Date}} \&, const std\+::string \&)
-\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_todo}{Todo}}\+:\+: \mbox{\hyperlink{class_todo}{Todo}} object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Constructs a new \mbox{\hyperlink{class_todo}{Todo}} object from both parameters. Does not parse any tags. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_todo_af4ea9a51964af72cbfdd125d5591e413}{Todo}} (const std\+::string \&)
-\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_todo}{Todo}}\+:\+: \mbox{\hyperlink{class_todo}{Todo}} object. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_todo}{Todo}} object from its content. {\bfseries{PARSES @\+DATE TAGS.}}~\newline
+ Looks for the first occurence of @\+DATE and checks if the following word is a date to the dd/mm/yyyy format with regex.~\newline
+ It then sets the todo date to that.~\newline
+ If it doesn\textquotesingle{}t match the regex, or there are multiple @\+DATE elements -\/ Doesn\textquotesingle{}t treat dates at all and sets the date to current date. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_todo_abb6160d7214f19f370f048bf0d471a62}{set\+Content}} (const std\+::string \&)
-\item 
+\begin{DoxyCompactList}\small\item\em Sets the content of a todo without parsing any tags. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_todo_a41cd469d85e697673ad1c143bc3c14c8}{set\+Date}} (const \mbox{\hyperlink{class_date}{Date}} \&)
-\item 
+\begin{DoxyCompactList}\small\item\em Sets the date using a date object. Must be valid. \end{DoxyCompactList}\item 
 std\+::string \mbox{\hyperlink{class_todo_a141c2f86d0ce5d7c7244e0585533d9f8}{get\+Content}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the content of a todo as a string. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_date}{Date}} \mbox{\hyperlink{class_todo_a2dca42275cbccafdccf2665ae18d9676}{get\+Date}} ()
-\item 
-std\+::string \mbox{\hyperlink{class_todo_a331136eeae4167219eeb9bad8e210cf3}{get\+Debug\+Values}} (int nb\+Tabulations)
-\begin{DoxyCompactList}\small\item\em return \mbox{\hyperlink{class_todo}{Todo}} values( date, content ) which is suitable for debugging \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Returns the date of the todo as a \mbox{\hyperlink{class_date}{Date}} object. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_todo_a367a43a6421d7efe8caecedd75c3c6fd}{operator==}} (\mbox{\hyperlink{class_todo}{Todo}} \&to\+Compare)
-\begin{DoxyCompactList}\small\item\em Compare \mbox{\hyperlink{class_todo}{Todo}} object and determine if they\textquotesingle{}re equal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Compares \mbox{\hyperlink{class_todo}{Todo}} objects and determines if they\textquotesingle{}re equals. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_todo_adbad530f8aaeb15de3c96ab898a08efb}\label{class_todo_adbad530f8aaeb15de3c96ab898a08efb}} 
-std\+::ostream \& {\bfseries operator$<$$<$} (std\+::ostream \&, const \mbox{\hyperlink{class_todo}{Todo}} \&)
-\end{DoxyCompactItemize}
+std\+::ostream \& \mbox{\hyperlink{class_todo_adbad530f8aaeb15de3c96ab898a08efb}{operator$<$$<$}} (std\+::ostream \&, const \mbox{\hyperlink{class_todo}{Todo}} \&)
+\begin{DoxyCompactList}\small\item\em Overloading of the $<$$<$ operator. Redirects the following string in the output stream \+: {\itshape  \mbox{[} TODO \+: dd/mm/yyyy \mbox{]} content } \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Represent a task for a contact. Linked to \mbox{\hyperlink{class_interaction}{Interaction}} objects using an \mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} object. 
+Represents a task from an interaction for a contact. Linked to \mbox{\hyperlink{class_interaction}{Interaction}} objects using an \mbox{\hyperlink{class_interaction_todo}{Interaction\+Todo}} object. 
+
+A todo object conceptually represent a SINGLE task to do, ponctually, in an interaction that can contain as many todos as it needs.~\newline
+ Todos are defined using {\bfseries{@\+TODO}} tags in an interaction.~\newline
+ Todos dates are defined using {\bfseries{@\+DATE}} tags in a todo.~\newline
+ If no date is defined, then it is implied to be the current date!~\newline
+ When printing a todo object, we do not need the tags since they are only needed to retrieve them from interaction contents.\hypertarget{class_todo_ex}{}\doxysubsubsection{Example}\label{class_todo_ex}
+Consider the following interaction object \+:~\newline
+~\newline
+ 
+\begin{DoxyDescription}
+\item[\mbox{\hyperlink{class_interaction}{Interaction}}\{  ]content = \char`\"{}\+Please Valentin we really need to finish this school project. @\+TODO Brew some coffee @\+TODO Rush the remaining work tomorrow (the @\+DATE 26/10/2021)\char`\"{}~\newline
+ date = \mbox{\hyperlink{class_date}{Date}}(23/10/2021)~\newline
+\}
+\end{DoxyDescription}~\newline
+~\newline
+
+
+The todo objects we want to build here are \+:~\newline
+~\newline
+ 
+\begin{DoxyDescription}
+\item[\mbox{\hyperlink{class_todo}{Todo}}\{  ]content = \char`\"{}\+Brew some coffee\char`\"{}~\newline
+ date = \mbox{\hyperlink{class_date}{Date}}(23/10/2021)~\newline
+\}
+\end{DoxyDescription}~\newline
+ 
+\begin{DoxyDescription}
+\item[\mbox{\hyperlink{class_todo}{Todo}}\{  ]content = \char`\"{} Rush the remaining work tomorrow (the 26/10/2021)\char`\"{}~\newline
+ date = \mbox{\hyperlink{class_date}{Date}}(26/10/2021)~\newline
+\}
+\end{DoxyDescription}~\newline
+~\newline
+\hypertarget{class_todo_err}{}\doxysubsubsection{Errors}\label{class_todo_err}
+There is only one error to manage here \+: Imputing a wrong date (incorrect format or whatever) -\/ Or imputing two or more dates.~\newline
+ In both case, if there is an error, then the @\+DATE(S) will simply remain, not be treated, and the todo will be created at the current date 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \mbox{\Hypertarget{class_todo_a1cc5d083fa330e1db2478d0d27510ec4}\label{class_todo_a1cc5d083fa330e1db2478d0d27510ec4}} 
@@ -48,7 +92,7 @@ Represent a task for a contact. Linked to \mbox{\hyperlink{class_interaction}{In
 
 
 
-Construct a new \mbox{\hyperlink{class_todo}{Todo}}\+:\+: \mbox{\hyperlink{class_todo}{Todo}} object. 
+Constructs a new \mbox{\hyperlink{class_todo}{Todo}} object from both parameters. Does not parse any tags. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -57,6 +101,17 @@ Construct a new \mbox{\hyperlink{class_todo}{Todo}}\+:\+: \mbox{\hyperlink{class
 {\em content} & \\
 \hline
 \end{DoxyParams}
+
+
+References set\+Content(), and set\+Date().
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{class_todo_a1cc5d083fa330e1db2478d0d27510ec4_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_todo_af4ea9a51964af72cbfdd125d5591e413}\label{class_todo_af4ea9a51964af72cbfdd125d5591e413}} 
 \index{Todo@{Todo}!Todo@{Todo}}
 \index{Todo@{Todo}!Todo@{Todo}}
@@ -65,13 +120,27 @@ Construct a new \mbox{\hyperlink{class_todo}{Todo}}\+:\+: \mbox{\hyperlink{class
 
 
 
-Construct a new \mbox{\hyperlink{class_todo}{Todo}}\+:\+: \mbox{\hyperlink{class_todo}{Todo}} object. 
+Construct a new \mbox{\hyperlink{class_todo}{Todo}} object from its content. {\bfseries{PARSES @\+DATE TAGS.}}~\newline
+ Looks for the first occurence of @\+DATE and checks if the following word is a date to the dd/mm/yyyy format with regex.~\newline
+ It then sets the todo date to that.~\newline
+ If it doesn\textquotesingle{}t match the regex, or there are multiple @\+DATE elements -\/ Doesn\textquotesingle{}t treat dates at all and sets the date to current date. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em content} & \\
+{\em content} & A string containing 0 or 1 \char`\"{}@\+DATE\char`\"{} \\
 \hline
 \end{DoxyParams}
+
+
+References set\+Content(), and set\+Date().
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{class_todo_af4ea9a51964af72cbfdd125d5591e413_cgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Member Function Documentation}
@@ -80,6 +149,10 @@ Construct a new \mbox{\hyperlink{class_todo}{Todo}}\+:\+: \mbox{\hyperlink{class
 \index{getContent@{getContent}!Todo@{Todo}}
 \doxysubsubsection{\texorpdfstring{getContent()}{getContent()}}
 {\footnotesize\ttfamily std\+::string Todo\+::get\+Content (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the content of a todo as a string. 
 
 \begin{DoxyReturn}{Returns}
 std\+::string 
@@ -90,26 +163,12 @@ std\+::string
 \doxysubsubsection{\texorpdfstring{getDate()}{getDate()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{class_date}{Date}} Todo\+::get\+Date (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Returns the date of the todo as a \mbox{\hyperlink{class_date}{Date}} object. 
+
 \begin{DoxyReturn}{Returns}
 \mbox{\hyperlink{class_date}{Date}} 
-\end{DoxyReturn}
-\mbox{\Hypertarget{class_todo_a331136eeae4167219eeb9bad8e210cf3}\label{class_todo_a331136eeae4167219eeb9bad8e210cf3}} 
-\index{Todo@{Todo}!getDebugValues@{getDebugValues}}
-\index{getDebugValues@{getDebugValues}!Todo@{Todo}}
-\doxysubsubsection{\texorpdfstring{getDebugValues()}{getDebugValues()}}
-{\footnotesize\ttfamily std\+::string Todo\+::get\+Debug\+Values (\begin{DoxyParamCaption}\item[{int}]{nb\+Tabulations }\end{DoxyParamCaption})}
-
-
-
-return \mbox{\hyperlink{class_todo}{Todo}} values( date, content ) which is suitable for debugging 
-
-
-\begin{DoxyParams}{Parameters}
-{\em nb\+Tabulations} & Number of tabulations you want before showing informations. If you call outside of get\+Debug\+Values function you should set this value to 0. Also if you\textquotesingle{}re inside Debug\+Values you should set this value to nb\+Tabulations+1 for others get\+Debugs\+Values() \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-std\+::string 
 \end{DoxyReturn}
 \mbox{\Hypertarget{class_todo_a367a43a6421d7efe8caecedd75c3c6fd}\label{class_todo_a367a43a6421d7efe8caecedd75c3c6fd}} 
 \index{Todo@{Todo}!operator==@{operator==}}
@@ -119,7 +178,7 @@ std\+::string
 
 
 
-Compare \mbox{\hyperlink{class_todo}{Todo}} object and determine if they\textquotesingle{}re equal. 
+Compares \mbox{\hyperlink{class_todo}{Todo}} objects and determines if they\textquotesingle{}re equals. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -131,11 +190,26 @@ true
 
 false 
 \end{DoxyReturn}
+
+
+References get\+Content(), and get\+Date().
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{class_todo_a367a43a6421d7efe8caecedd75c3c6fd_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{class_todo_abb6160d7214f19f370f048bf0d471a62}\label{class_todo_abb6160d7214f19f370f048bf0d471a62}} 
 \index{Todo@{Todo}!setContent@{setContent}}
 \index{setContent@{setContent}!Todo@{Todo}}
 \doxysubsubsection{\texorpdfstring{setContent()}{setContent()}}
 {\footnotesize\ttfamily void Todo\+::set\+Content (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{content }\end{DoxyParamCaption})}
+
+
+
+Sets the content of a todo without parsing any tags. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -149,13 +223,40 @@ false
 {\footnotesize\ttfamily void Todo\+::set\+Date (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_date}{Date}} \&}]{date }\end{DoxyParamCaption})}
 
 
+
+Sets the date using a date object. Must be valid. 
+
+
 \begin{DoxyParams}{Parameters}
 {\em date} & \\
 \hline
 \end{DoxyParams}
 
 
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_todo_adbad530f8aaeb15de3c96ab898a08efb}\label{class_todo_adbad530f8aaeb15de3c96ab898a08efb}} 
+\index{Todo@{Todo}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Todo@{Todo}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{class_todo}{Todo}} \&}]{todo }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overloading of the $<$$<$ operator. Redirects the following string in the output stream \+: {\itshape  \mbox{[} TODO \+: dd/mm/yyyy \mbox{]} content } 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & \\
+\hline
+{\em todo} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::ostream\& 
+\end{DoxyReturn}
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/stinky/\+Documents/\+Cours/\+S5/\+Projets/\+CDAA/\+Projet/headers/Todo.\+h\item 
-/home/stinky/\+Documents/\+Cours/\+S5/\+Projets/\+CDAA/\+Projet/src/Todo.\+cpp\end{DoxyCompactItemize}
+\mbox{\hyperlink{_todo_8h}{Todo.\+h}}\item 
+\mbox{\hyperlink{_todo_8cpp}{Todo.\+cpp}}\end{DoxyCompactItemize}
