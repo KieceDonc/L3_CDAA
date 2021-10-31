@@ -39,7 +39,7 @@
  */
 
 int main(){
-  
+  /*
   Logs* logs = new Logs();
   InteractionTodos* itList = new InteractionTodos();
 
@@ -75,6 +75,14 @@ int main(){
   delete itList;
   delete interaction1;
   delete interaction2;
-  delete interaction3;
+  delete interaction3;*/
+  Date d;
+  try{
+    d = Date(05,52,2000);
+  }
+  catch(std::invalid_argument &err){
+    std::cout << err.what();
+  }
+
   return 1;
 } 

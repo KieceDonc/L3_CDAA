@@ -49,6 +49,7 @@ Todo::Todo(const Date& date, const std::string& content) {
  */
 Todo::Todo(const std::string& content){
 
+    // Content is set to content, Date is set to date.
     this->setContent(content);
     this->setDate(Date());
 

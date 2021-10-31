@@ -60,7 +60,7 @@ Date::Date(const int day,const int month,const int year){
  * @throw invalid_argument day isn't between 1 and 31
  */
 void Date::setDay(const int day){
-	if (day < 1 && day > 31){
+	if (day < 1 || day > 31){
 		throw std::invalid_argument("Error in method setDay of class Date :\n\nThe day is invalid\n"+getDebugValues(0));
 	}else{
 	  this->day = day;
@@ -74,7 +74,7 @@ void Date::setDay(const int day){
  * @throw invalid_argument month isn't between 1 and 12
  */
 void Date::setMonth(const int month){
-	if (month < 1 && month > 12){
+	if (month < 1 || month > 12){
 		throw std::invalid_argument("Error in method setMonth of class Date :\n\nThe month is invalid\n"+getDebugValues(0));
   }else{
     this->month = month;
@@ -85,7 +85,7 @@ void Date::setMonth(const int month){
  * @brief 
  * 
  * @param year must be higher than 1970
- * @throw invalid_argument year isn't between 1970 
+ * @throw invalid_argument year before 1970 
  */
 void Date::setYear(const int year){
 	if (year < 1970){

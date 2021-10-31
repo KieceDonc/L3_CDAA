@@ -6,6 +6,9 @@ TEST = ../testing/
 build : test_Contact test_Logs test_InteractionTodos
 				./test_* && g++ -o build.o $(SRC)*.cpp
 
+main :
+	g++ -o build.o $(SRC)*.cpp
+
 test_Contact : $(TEST)Contact.cpp	
 	g++ -o test_Contact.o $(TEST)Contact.cpp $(SRC)*[!Main].cpp 
 
