@@ -1,17 +1,22 @@
 #ifndef IHM_H
 #define IHM_H
 
-#include <QWidget>
+#include <QMainWindow>
 
-class IHM : public QWidget
+namespace Ui {
+class ihm;
+}
+
+class ihm : public QMainWindow
 {
     Q_OBJECT
+
 public:
-    explicit IHM(QWidget *parent = nullptr);
+    explicit ihm(QWidget *parent = nullptr);
+    ~ihm();
 
-signals:
-
-public slots:
+private:
+    Ui::ihm *ui;
 };
 
 #endif // IHM_H
