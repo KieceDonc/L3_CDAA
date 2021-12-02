@@ -3,15 +3,20 @@
 
 #include <QWidget>
 
-class IHM : public QWidget
+namespace Ui {
+class ihm;
+}
+
+class ihm : public QWidget
 {
     Q_OBJECT
+
 public:
-    explicit IHM(QWidget *parent = nullptr);
+    explicit ihm(QWidget *parent = nullptr);
+    ~ihm();
 
-signals:
-
-public slots:
+private:
+    Ui::ihm *ui;
 };
 
 #endif // IHM_H
