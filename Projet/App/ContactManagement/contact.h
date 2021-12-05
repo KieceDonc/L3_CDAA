@@ -16,7 +16,6 @@
 class Contact{
 
   private:
-    Logs * logs;
     std::string firstName;
     std::string lastName;
     std::string enterprise;
@@ -25,22 +24,18 @@ class Contact{
     Photo photo;
     Date dateOfCreation;
     std::list<Interaction *> interactions;
-
-    bool inConstructor; // tell if we're in constructor or not
-
-    void setFirstName(const std::string& firstName);
-    void setLastName(const std::string& lastName);
     void setDateOfCreation();
 
   public:
-    Contact(Logs * logs,const std::string& firstName, const std::string& lastName, const std::string& enterprise, const std::string& mail, const std::string& phone, const Photo& photo);
+    Contact(const std::string&, const std::string&, const std::string&, const std::string&, const std::string&, const Photo&, Logs * = nullptr);
 
+    void setFirstName(const std::string&, Logs * = nullptr);
+    void setLastName(const std::string&, Logs * = nullptr);
+    void setEnterprise(const std::string&, Logs * = nullptr);
+    void setMail(const std::string&, Logs * = nullptr);
+    void setPhone(const std::string&, Logs * = nullptr);
+    void setPhoto(const Photo&, Logs * = nullptr);
 
-    void setEnterprise(const std::string& enterprise);
-    void setMail(const std::string& mail);
-    void setPhone(const std::string& phone);
-    void setPhoto(const Photo& photo);
-    void addInteraction(Interaction *);
 
     std::string getFirstName();
     std::string getLastName();
@@ -51,7 +46,8 @@ class Contact{
     Date getDateOfCreation();
     std::list<Interaction *> getInteractions();
 
-    void removeInteraction(int);
+    void addInteraction(Interaction*, Logs * = nullptr);
+    void removeInteraction(int, Logs * = nullptr);
 
     ///@private hiding the debug func from doxygen
     std::string getDebugValues(int nbTabulations);

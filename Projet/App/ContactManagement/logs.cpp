@@ -111,8 +111,23 @@ std::string Logs::getDebugValues(int nbTabulations){
   }
   std::string toReturn ="\n"+tabulations+"Logs{";
   for(int x=0;x<this->getSize();x++){
-    toReturn+="\n  "+tabulations+"Log n°"+toString(x)+" = "+this->get(x).getDebugValues(nbTabulations+1);
+    toReturn+="\n  "+tabulations+"Log n°"+std::to_string(x)+" = "+this->get(x).getDebugValues(nbTabulations+1);
   }
   toReturn+="\n"+tabulations+"}\n";
   return toReturn;
+}
+
+std::string Logs::toString()
+{
+    std::string out;
+    std::list<Log>::iterator it;
+    for (it = this->logs->begin(); it != this->logs->end(); ++it){
+        out+=it->toString()+"\n";
+    }
+    return out;
+}
+
+std::ostream& operator<<(std::ostream& os, Logs& logs ){
+    os << logs.toString() << std::endl;
+    return os;
 }

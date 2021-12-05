@@ -5,6 +5,8 @@
 #include <QDebug>
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
+#include <contact.h>
+#include <contactID.h>
 
 /**
  * @brief The SQLInterface class allows interactions between the user and the database using QObjects
@@ -24,6 +26,8 @@ private:
 public:
     explicit SQLInterface(QObject *parent = nullptr);
     ~SQLInterface();
+
+    void getAllContacts(std::list<ContactID>&);
 
 signals:
 

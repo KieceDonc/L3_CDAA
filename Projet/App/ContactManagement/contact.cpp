@@ -20,9 +20,7 @@
  * @param photo
  * @param interactions The interaction list of the contact.
  */
-Contact::Contact(Logs * logs, const std::string& firstName, const std::string& lastName, const std::string& enterprise, const std::string& mail, const std::string& phone, const Photo& photo){
-  this->inConstructor = true;
-  this->logs = logs;
+Contact::Contact(const std::string& firstName, const std::string& lastName, const std::string& enterprise, const std::string& mail, const std::string& phone, const Photo& photo, Logs * logs){
   this->setFirstName(firstName);
   this->setLastName(lastName);
   this->setEnterprise(enterprise);
@@ -31,9 +29,8 @@ Contact::Contact(Logs * logs, const std::string& firstName, const std::string& l
   this->setDateOfCreation();
   this->setPhoto(photo);
   this->interactions = std::list<Interaction *>();
-
-  logs->add(Log(this,Log::ACTION_CREATION_CONTACT));
-  this->inConstructor = false;
+  if(logs != nullptr)
+    logs->add(Log(this,Log::CREATION_CONTACT));
 }
 
 /**
@@ -42,12 +39,14 @@ Contact::Contact(Logs * logs, const std::string& firstName, const std::string& l
  * @throw invalid_argument firstname length must be higher than 0
  * @param lastName
  */
-void Contact::setFirstName(const std::string& firstName){
-  if(firstName.length() == 0){
-    throw std::invalid_argument("Error in method setFirstName of class Contact :\n\nfirstName is invalid\n"+this->getDebugValues(0));
-  }else{
-    this->firstName = firstName;
-  }
+void Contact::setFirstName(const std::string& firstName, Logs * logs){
+    if(firstName.length() == 0)
+        throw std::invalid_argument("Error in method setFirstName of class Contact :\n\nfirstName is invalid\n"+this->getDebugValues(0));
+    else{
+        this->firstName = firstName;
+        if(logs != nullptr)
+            logs->add(Log(this,Log::EDIT_FIRST_NAME));
+    }
 }
 
 /**
@@ -56,12 +55,14 @@ void Contact::setFirstName(const std::string& firstName){
  * @throw invalid_argument lastName length must be higher than 0
  * @param lastName
  */
-void Contact::setLastName(const std::string& lastName){
-  if(lastName.length() == 0){
-    throw std::invalid_argument("Error in method setLastName of class Contact :\n\nlastName is invalid\n"+this->getDebugValues(0));
-  }else{
-    this->lastName = lastName;
-  }
+void Contact::setLastName(const std::string& lastName, Logs * logs){
+    if(lastName.length() == 0)
+        throw std::invalid_argument("Error in method setLastName of class Contact :\n\nlastName is invalid\n"+this->getDebugValues(0));
+    else{
+        this->lastName = lastName;
+        if(logs != nullptr)
+            logs->add(Log(this,Log::EDIT_LAST_NAME));
+    }
 }
 
 /**
@@ -70,12 +71,14 @@ void Contact::setLastName(const std::string& lastName){
  * @throw invalid_argument enterprise length must be higher than 0
  * @param enterprise
  */
-void Contact::setEnterprise(const std::string& enterprise){
-  if(enterprise.length() == 0){
-    throw std::invalid_argument("Error in method setEnterprise of class Contact :\n\nenterprise is invalid\n"+this->getDebugValues(0));
-  }else{
-    this->enterprise = enterprise;
-  }
+void Contact::setEnterprise(const std::string& enterprise, Logs * logs){
+    if(enterprise.length() == 0)
+        throw std::invalid_argument("Error in method setEnterprise of class Contact :\n\nenterprise is invalid\n"+this->getDebugValues(0));
+    else{
+        this->enterprise = enterprise;
+        if(logs != nullptr)
+            logs->add(Log(this,Log::EDIT_ENTREPRISE));
+    }
 }
 
 /**
@@ -84,17 +87,15 @@ void Contact::setEnterprise(const std::string& enterprise){
  * @throw invalid_argument enterprise length must be higher than 0 and one @ and one "."
  * @param mail
  */
-void Contact::setMail(const std::string& mail){
-  if(mail.length() == 0 && !mail.find('@') && !mail.find('.')){
-    // We check if mail isn't empty, if it contains an @ and a .
-    throw std::invalid_argument("Error in method setMail of class Contact :\n\nmail is invalid\n"+this->getDebugValues(0));
-  }else{
-    this->mail = mail;
-    if(!this->inConstructor){
-      // We check if we aren't in constructor so we know we edited mail of contact and add it to logs
-      logs->add(Log(this,Log::ACTION_EDIT_MAIL));
+void Contact::setMail(const std::string& mail, Logs * logs){
+    if(mail.length() == 0 && !mail.find('@') && !mail.find('.'))
+        // We check if mail isn't empty, if it contains an @ and a .
+        throw std::invalid_argument("Error in method setMail of class Contact :\n\nmail is invalid\n"+this->getDebugValues(0));
+    else{
+        this->mail = mail;
+        if(logs != nullptr)
+          logs->add(Log(this,Log::EDIT_MAIL));
     }
-  }
 }
 
 /**
@@ -103,16 +104,14 @@ void Contact::setMail(const std::string& mail){
  * @throw invalid_argument phone length must be higher than 0
  * @param lastName
  */
-void Contact::setPhone(const std::string& phone){
-  if(phone.length() == 0){
-    throw std::invalid_argument("Error in method setPhone of class Contact :\n\nphone is invalid\n"+this->getDebugValues(0));
-  }else{
-    this->phone = phone;
-    if(!this->inConstructor){
-      // We check if we aren't in constructor so we know we edited phone number of contact and add it to logs
-      logs->add(Log(this,Log::ACTION_EDIT_PHONE));
+void Contact::setPhone(const std::string& phone, Logs * logs){
+    if(phone.length() == 0)
+        throw std::invalid_argument("Error in method setPhone of class Contact :\n\nphone is invalid\n"+this->getDebugValues(0));
+    else{
+        this->phone = phone;
+        if(logs != nullptr)
+            logs->add(Log(this,Log::EDIT_PHONE));
     }
-  }
 }
 
 /**
@@ -129,23 +128,10 @@ void Contact::setDateOfCreation(){
  *
  * @param photo
  */
-void Contact::setPhoto(const Photo& photo){
-  this->photo = photo;
-  if(!this->inConstructor){
-    // We check if we aren't in constructor so we know we edited photo of contact and add it to logs
-    logs->add(Log(this,Log::ACTION_EDIT_PHOTO_CONTACT));
-  }
-}
-
-
-/**
- * @brief Adds an interaction to the list from a pointer. If the action is performed correctly, adds the creation to the logs.
- *
- * @param Interaction *
- */
-void Contact::addInteraction(Interaction * interaction){
-  this->getInteractions().push_back(interaction);
-  logs->add(Log(this,Log::ACTION_CREATION_INTERACTION));
+void Contact::setPhoto(const Photo& photo, Logs * logs){
+    this->photo = photo;
+    if(logs != nullptr)
+        logs->add(Log(this,Log::EDIT_PHOTO));
 }
 
 
@@ -222,16 +208,28 @@ std::list<Interaction *> Contact::getInteractions(){
 }
 
 /**
+ * @brief Adds an interaction to the list from a pointer. If the action is performed correctly, adds the creation to the logs.
+ *
+ * @param Interaction *
+ */
+void Contact::addInteraction(Interaction * interaction, Logs * logs){
+    this->getInteractions().push_back(interaction);
+    if(logs != nullptr)
+        logs->add(Log(this,Log::ADD_INTERACTION));
+}
+
+/**
  * @brief Removes an interaction from its index in the list using iterators. If the action is performed correctly, adds the deletion to the logs.
  *
  * @param i
  */
-void Contact::removeInteraction(int i){
-  if(i < this->getInteractions().size()){
+void Contact::removeInteraction(int i, Logs * logs){
+  if(i < (int)this->getInteractions().size()){
     std::list<Interaction *>::iterator index = this->getInteractions().begin();
     std::advance(index,i);
     index = this->getInteractions().erase(index);
-    logs->add(Log(this,Log::ACTION_DELETE_INTERACTION));
+    if(logs != nullptr)
+        logs->add(Log(this,Log::REMOVE_INTERACTION));
   }
 }
 

@@ -42,33 +42,35 @@
  *
  */
 
-int main(int argc, char *argv[])
+int main()
 {
+
+
     /* a(argc, argv);
     MainWindow w;
     w.show();
-    return a.exec();
+    return a.exec();*/
 
 
     Logs* logs = new Logs();
     InteractionTodos* itList = new InteractionTodos();
 
-    Contact* client0 = new Contact(logs,"Valentin","Verstracte","vvdev","valentinverst.developer@gmail.com","0102030405", Photo("oui"));
-    Contact* client1 = new Contact(logs,"Evan","Petit","EvanIndustry","evan.petit@ouawe.com","0689130218", Photo("oui"));
+    Contact* client0 = new Contact("Valentin","Verstracte","vvdev","valentinverst.developer@gmail.com","0102030405", Photo("oui"),logs);
+    Contact* client1 = new Contact("Evan","Petit","EvanIndustry","evan.petit@ouawe.com","0689130218", Photo("oui"),logs);
 
-    client0->setEnterprise("ValentinIndustry");
-    client0->setMail("valentin.verstracte@ValentinIndustry");
-    client0->setPhone("5414315341");
+    client0->setEnterprise("ValentinIndustry",logs);
+    client0->setMail("valentin.verstracte@ValentinIndustry",logs);
+    client0->setPhone("5414315341",logs);
 
     Interaction* interaction1 = new Interaction(Date(),std::string("Groceries @TODO @DATE 30/08/2022 buy cheese"));
     Interaction* interaction2 = new Interaction(Date(),std::string("Todoless interaction"));
     Interaction* interaction3 = new Interaction(Date(),std::string("Important project to get done with @TODO brew some coffee @TODO play video games @TODO rush it last minute tomorrow (@DATE 27/10/2021)"));
 
 
-    client0->addInteraction(interaction1);
-    client0->addInteraction(interaction2);
-    client1->addInteraction(interaction3);
-    client1->addInteraction(interaction2);
+    client0->addInteraction(interaction1,logs);
+    client0->addInteraction(interaction2,logs);
+    client1->addInteraction(interaction3,logs);
+    client1->addInteraction(interaction2,logs);
 
     client1->removeInteraction(2);
 
@@ -76,27 +78,21 @@ int main(int argc, char *argv[])
     itList->addInteraction(interaction2);
     itList->addInteraction(interaction3);
 
-    std::cout << logs->getDebugValues(0);
-    std::cout << *itList;
+    std::cout << *logs << std::endl;
+    std::cout << "ok" << std::endl;
+
 
     delete logs;
     delete client0;
     delete client1;
     delete itList;
-    delete interaction1;
-    delete interaction2;
-    delete interaction3;
-    Date d;
-    try{
-      d = Date(05,11,2000);
-    }
-    catch(std::invalid_argument &err){
-      std::cout << err.what();
-    }
-*/
-    std::cout << "Cool" << std::endl;
+    //delete interaction1;
+    //delete interaction2;
+    //delete interaction3;
 
-    SQLInterface sqli;
+
+
+
 
     return 1;
   }

@@ -13,32 +13,39 @@ class Contact;
  */
 class Log{
 
-  private:
-    Contact* contact;
-    Date dateOfAction;
-    int ACTION_TYPE;
+      public:
 
-  public:
-    Log(Contact* contact, const int ACTION_TYPE);
+        enum ActionType{
+            CREATION_CONTACT,
+            EDIT_FIRST_NAME,
+            EDIT_LAST_NAME,
+            EDIT_PHOTO,
+            EDIT_ENTREPRISE,
+            EDIT_MAIL,
+            EDIT_PHONE,
+            DELETE_CONTACT,
+            REMOVE_INTERACTION,
+            ADD_INTERACTION,
+            EDIT_INTERACTION
+        };
 
-    Contact* getContact();
-    Date getDateOfAction();
-    int getACTION_TYPE();
+        Log(Contact*, const ActionType);
 
-    const static int ACTION_CREATION_CONTACT = 0;
-    const static int ACTION_EDIT_PHOTO_CONTACT = 1;
-    const static int ACTION_EDIT_ENTERPRISE = 2;
-    const static int ACTION_EDIT_MAIL = 3;
-    const static int ACTION_EDIT_PHONE = 4;
-    const static int ACTION_DELETE_CONTACT = 5;
-    const static int ACTION_CREATION_INTERACTION = 6;
-    const static int ACTION_EDIT_INTERACTION = 7;
-    const static int ACTION_DELETE_INTERACTION = 8;
+        Contact* getContact();
+        Date getDateOfAction();
+        ActionType getACTION_TYPE();
+        std::string toString();
 
-    ///@private hiding the debug func from doxygen
-    std::string getDebugValues(int nbTabulations);
+        bool operator==(const Log &toCompare);
+        ///@private hiding the debug func from doxygen
+        friend std::ostream& operator<<(std::ostream& , Log&);
 
-    bool operator==(const Log &toCompare);
+        std::string getDebugValues(int nbTabulations);
+
+    private:
+      Contact* contact;
+      Date dateOfAction;
+      ActionType ACTION_TYPE;
 };
 
 #endif

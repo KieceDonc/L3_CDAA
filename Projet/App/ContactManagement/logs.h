@@ -27,8 +27,10 @@ class Logs{
 
     ///@private hiding the debug func from doxygen
     Logs get(Contact * contact, int ACTION_TYPE, Date dateOfAction);
-
     std::string getDebugValues(int nbTabulations);
+    std::string toString();
+
+    friend std::ostream& operator<<(std::ostream& , Logs&);
 };
 
 #endif

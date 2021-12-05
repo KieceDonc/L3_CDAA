@@ -25,6 +25,7 @@ SOURCES += \
 
 HEADERS += \
     contact.h \
+    contactID.h \
     date.h \
     interaction.h \
     interactiontodo.h \

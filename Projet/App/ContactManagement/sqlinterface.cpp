@@ -1,7 +1,10 @@
 #include "sqlinterface.h"
+#include "contactID.h"
+
 #include <QtSql/QSqlDatabase>
 #include <QDebug>
 #include <QtSql/QSqlQuery>
+
 
 /**
  * @class SQLInterface
@@ -14,7 +17,7 @@ SQLInterface::SQLInterface(QObject *parent) : QObject(parent)
 {
     this->DBOpen = false;
     QString DBPath = "../Database/ContactManagementDB.sqlite" ;
-    connectDB(DBPath) ;
+    connectDB(DBPath);
 }
 
 void SQLInterface::connectDB(const QString & uri)
@@ -34,6 +37,30 @@ void SQLInterface::connectDB(const QString & uri)
 SQLInterface::~SQLInterface(){
     database.close();
     DBOpen = false;
+}
+
+/**
+ * @brief Fills an empty contact list with all the contacts from the DB. EMPTIES THE LIST!
+ * @param lst a list of contacts
+ */
+void SQLInterface::getAllContacts(std::list<ContactID> & lst){
+
+    lst.clear();
+
+    if(DBOpen){
+        QString queryString = "SELECT * FROM contact";
+        QSqlQuery query(queryString);
+        if(!query.exec()){
+            qDebug() << "Requête impossible : " << queryString;
+        }
+        else{
+            qDebug() << "Requête réussie : " << queryString;
+
+
+
+        }
+    }
+
 }
 
 
