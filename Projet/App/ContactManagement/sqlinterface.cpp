@@ -47,6 +47,7 @@ void SQLInterface::getAllContacts(std::list<ContactID> & lst){
 
     lst.clear();
 
+
     if(DBOpen){
         QString queryString = "SELECT * FROM contact";
         QSqlQuery query(queryString);
@@ -55,9 +56,15 @@ void SQLInterface::getAllContacts(std::list<ContactID> & lst){
         }
         else{
             qDebug() << "Requête réussie : " << queryString;
-
-
-
+            while(query.next()){
+                Contact * c = new Contact(query.value(1).toString().toStdString(),
+                                          query.value(2).toString().toStdString(),
+                                          query.value(3).toString().toStdString(),
+                                          query.value(4).toString().toStdString(),
+                                          query.value(5).toString().toStdString(),
+                                          Photo());
+                lst.push_back(ContactID{query.value(0).toInt(),c});
+            }
         }
     }
 

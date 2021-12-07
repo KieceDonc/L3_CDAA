@@ -53,6 +53,7 @@ class Contact{
     std::string getDebugValues(int nbTabulations);
 
     bool operator==(const Contact &toCompare);
+    friend std::ostream& operator<<(std::ostream& , Contact&);
 
 };
 

@@ -21,16 +21,16 @@
  * @param interactions The interaction list of the contact.
  */
 Contact::Contact(const std::string& firstName, const std::string& lastName, const std::string& enterprise, const std::string& mail, const std::string& phone, const Photo& photo, Logs * logs){
-  this->setFirstName(firstName);
-  this->setLastName(lastName);
-  this->setEnterprise(enterprise);
-  this->setMail(mail);
-  this->setPhone(phone);
-  this->setDateOfCreation();
-  this->setPhoto(photo);
-  this->interactions = std::list<Interaction *>();
-  if(logs != nullptr)
-    logs->add(Log(this,Log::CREATION_CONTACT));
+    this->setFirstName(firstName);
+    this->setLastName(lastName);
+    this->setEnterprise(enterprise);
+    this->setMail(mail);
+    this->setPhone(phone);
+    this->setDateOfCreation();
+    this->setPhoto(photo);
+    this->interactions = std::list<Interaction *>();
+    if(logs != nullptr)
+        logs->add(Log(this,Log::CREATION_CONTACT));
 }
 
 /**
@@ -273,3 +273,8 @@ bool Contact::operator==(const Contact &toCompare){
   && this->photo == toCompare.photo
   && this->dateOfCreation == toCompare.dateOfCreation;
 }
+
+std::ostream& operator<<(std::ostream& os, Contact& c){
+    os << c.getDebugValues(0);
+}
+

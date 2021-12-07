@@ -5,7 +5,7 @@
 
 struct ContactID{
     int id;
-    Contact contact;
+    Contact * contact;
 };
 
 #endif // CONTACTID_H
