@@ -1,35 +1,46 @@
-# Created by and for Qt Creator This file was created for editing the project sources only.
-# You may attempt to use it for building too, by modifying this file here.
+QT       += core gui
+QT       += sql
 
-#TARGET = ContactManagement
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-QT = core gui widgets
+CONFIG += c++11
 
-HEADERS = \
-   $$PWD/headers/Contact.h \
-   $$PWD/headers/Date.h \
-   $$PWD/headers/Interaction.h \
-   $$PWD/headers/InteractionTodo.h \
-   $$PWD/headers/InteractionTodos.h \
-   $$PWD/headers/Log.h \
-   $$PWD/headers/Logs.h \
-   $$PWD/headers/Photo.h \
-   $$PWD/headers/Todo.h
+# You can make your code fail to compile if it uses deprecated APIs.
+# In order to do so, uncomment the following line.
+#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-SOURCES = \
-   $$PWD/src/Contact.cpp \
-   $$PWD/src/Date.cpp \
-   $$PWD/src/Interaction_.cpp \
-   $$PWD/src/InteractionTodo.cpp \
-   $$PWD/src/InteractionTodos.cpp \
-   $$PWD/src/Log.cpp \
-   $$PWD/src/Logs.cpp \
-   $$PWD/src/Main.cpp \
-   $$PWD/src/Photo.cpp \
-   $$PWD/src/Todo.cpp \
+SOURCES += \
+    contact.cpp \
+    date.cpp \
+    interaction.cpp \
+    interactiontodo.cpp \
+    interactiontodos.cpp \
+    log.cpp \
+    logs.cpp \
+    main.cpp \
+    mainwindow.cpp \
+    photo.cpp \
+    sqlinterface.cpp \
+    todo.cpp
 
-INCLUDEPATH = \
-    $$PWD/headers
+HEADERS += \
+    contact.h \
+    contactID.h \
+    date.h \
+    interaction.h \
+    interactiontodo.h \
+    interactiontodos.h \
+    log.h \
+    logs.h \
+    mainwindow.h \
+    photo.h \
+    sqlinterface.h \
+    todo.h
 
-#DEFINES = 
+FORMS += \
+    mainwindow.ui
 
+# Default rules for deployment.
+qnx: target.path = /tmp/$${TARGET}/bin
+else: unix:!android: target.path = /opt/$${TARGET}/bin
+!isEmpty(target.path): INSTALLS += target
