@@ -2,5 +2,4 @@ Projet/.vscode/
 *.o
 Projet/doc/html/
 Projet/doc/latex/
-*.pro
-Projet/App/build-ContactManagement-Desktop-Debug/
+Projet/build-ContactManagement-Desktop-Debug/
