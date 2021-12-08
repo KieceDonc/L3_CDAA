@@ -11,6 +11,7 @@ CONFIG += c++11
 
 SOURCES += \
     contact.cpp \
+    customform.cpp \
     date.cpp \
     interaction.cpp \
     interactiontodo.cpp \
@@ -26,6 +27,7 @@ SOURCES += \
 HEADERS += \
     contact.h \
     contactID.h \
+    customform.h \
     date.h \
     interaction.h \
     interactiontodo.h \

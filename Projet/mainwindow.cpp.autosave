@@ -33,7 +33,6 @@ void MainWindow::onQActionContactClicked(){
     connect(this->contactForm,SIGNAL(onDataReady()),this,SLOT(onContactFormComplete()));
     this->contactForm->init({"Prénom","Nom","Entreprise","Email","Téléphone","Photo"});
 
-    //this->setCentralWidget(this->contactForm);
     this->currentForm = this->contactForm;
 }
 

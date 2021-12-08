@@ -42,17 +42,16 @@
  *
  */
 
-int main()
-{
+int main(int argc, char *argv[]){
 
+    bool withUI = true;
 
-    /* a(argc, argv);
+    QApplication a(argc, argv);
     MainWindow w;
     w.show();
-    return a.exec();*/
 
-
-    /*Logs* logs = new Logs();
+    /*
+    Logs* logs = new Logs();
     InteractionTodos* itList = new InteractionTodos();
 
     Contact* client0 = new Contact("Valentin","Verstracte","vvdev","valentinverst.developer@gmail.com","0102030405", Photo("oui"),logs);
@@ -85,24 +84,25 @@ int main()
     delete logs;
     delete client0;
     delete client1;
-    delete itList;*/
-    //delete interaction1;
-    //delete interaction2;
-    //delete interaction3;
+    delete itList;
+    delete interaction1;
+    delete interaction2;
+    delete interaction3;
+    */
 
     std::list<ContactID> lst;
     SQLInterface db;
     db.getAllContacts(lst);
 
-//    std::cout << lst.front().contact->getDebugValues(0);
+    // std::cout << lst.front().contact->getDebugValues(0);
     std::list<ContactID>::iterator it;
     for (it = lst.begin(); it != lst.end(); ++it){
         std::cout << it->contact->getFirstName() << std::endl;
     }
 
-
-
-
-
-    return 1;
-  }
+    if(withUI){
+        return a.exec();
+    }else{
+        return 1;
+    }
+}

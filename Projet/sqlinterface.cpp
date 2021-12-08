@@ -16,7 +16,7 @@
 SQLInterface::SQLInterface(QObject *parent) : QObject(parent)
 {
     this->DBOpen = false;
-    QString DBPath = "./Database/ContactManagementDB.sqlite" ;
+    QString DBPath = "../Projet/Database/ContactManagementDB.sqlite" ;
     connectDB(DBPath);
 }
 

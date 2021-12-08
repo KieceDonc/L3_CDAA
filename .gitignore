@@ -2,4 +2,5 @@ Projet/.vscode/
 *.o
 Projet/doc/html/
 Projet/doc/latex/
-Projet/build-ContactManagement-Desktop-Debug/
+TP6_2/TP6_2.pro.user
+build-*
