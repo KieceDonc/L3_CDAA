@@ -35,6 +35,7 @@ class Contact{
     void setMail(const std::string&, Logs * = nullptr);
     void setPhone(const std::string&, Logs * = nullptr);
     void setPhoto(const Photo&, Logs * = nullptr);
+    void setInteractions(std::list<Interaction *>);
 
 
     std::string getFirstName();

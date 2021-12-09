@@ -110,10 +110,14 @@ std::string Date::getDebugValues(int nbTabulations){
     tabulations+="  ";
   }
     return "\n"+tabulations+"Date{"+
-  "\n  "+tabulations+"Day = "+toString(this->day)+
-  "\n  "+tabulations+"Month = "+toString(this->month)+
-  "\n  "+tabulations+"Year = "+toString(this->year)+
+  "\n  "+tabulations+"Day = "+std::to_string(this->day)+
+  "\n  "+tabulations+"Month = "+std::to_string(this->month)+
+  "\n  "+tabulations+"Year = "+std::to_string(this->year)+
   "\n"+tabulations+"}\n";
+}
+
+std::string Date::toString(){
+    return std::to_string(this->day)+"-"+std::to_string(this->month)+"-"+std::to_string(this->year);
 }
 
 /**
@@ -133,7 +137,7 @@ bool Date::operator==(const Date &toCompare){
  * @param date
  * @return std::ostream&
  */
-std::ostream& operator<<(std::ostream& os, const Date& date){
-    os << date.day << "/" << date.month << "/" << date.year;
+std::ostream& operator<<(std::ostream& os, Date date){
+    os << date.toString();
     return os;
 }

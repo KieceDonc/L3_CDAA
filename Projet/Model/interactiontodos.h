@@ -22,6 +22,7 @@ class InteractionTodos{
         void setItList(std::list<InteractionTodo> *);
 
         void addInteraction(Interaction *);
+        void addInteractionTodo(Interaction *);
 
         ///@private hiding the debug func from doxygen
         std::string getDebugValues(int nbTabulations);

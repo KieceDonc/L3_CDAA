@@ -1,10 +1,10 @@
-#include "mainwindow.h"
+#include "./View/mainwindow.h"
 
 #include <QApplication>
 #include "contact.h"
 #include "logs.h"
 #include "interactiontodos.h"
-#include "./SQL/sqlinterface.h"
+#include "./Others/sqlinterface.h"
 
 #include <iostream>
 
@@ -90,15 +90,6 @@ int main(int argc, char *argv[]){
     delete interaction3;
     */
 
-    std::list<ContactID> lst;
-    SQLInterface db;
-    db.getAllContacts(lst);
-
-    // std::cout << lst.front().contact->getDebugValues(0);
-    std::list<ContactID>::iterator it;
-    for (it = lst.begin(); it != lst.end(); ++it){
-        std::cout << it->contact->getFirstName() << std::endl;
-    }
 
     if(withUI){
         return a.exec();

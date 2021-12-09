@@ -1,5 +1,5 @@
 #include "sqlinterface.h"
-#include "../Model/contactID.h"
+#include "../Model/structID.h"
 
 #include <QtSql/QSqlDatabase>
 #include <QDebug>
@@ -52,10 +52,10 @@ void SQLInterface::getAllContacts(std::list<ContactID> & lst){
         QString queryString = "SELECT * FROM contact";
         QSqlQuery query(queryString);
         if(!query.exec()){
-            qDebug() << "Requête impossible : " << queryString;
+            qDebug() << "Requête de lecture impossible : " << queryString;
         }
         else{
-            qDebug() << "Requête réussie : " << queryString;
+            qDebug() << "Requête de lecture réussie : " << queryString;
             while(query.next()){
                 Contact * c = new Contact(query.value(1).toString().toStdString(),
                                           query.value(2).toString().toStdString(),
@@ -67,8 +67,30 @@ void SQLInterface::getAllContacts(std::list<ContactID> & lst){
             }
         }
     }
+}
+
+void SQLInterface::insertContact(Contact & c){
+
+    if(DBOpen){
+        QString queryString = "INSERT INTO contact (firstname,lastname,entreprise,mail,phone,dateofcreation,photo) VALUES (:fn,:ln,:entr,:mail,:phone,:doc,NULL)";
+        QSqlQuery query;
+        query.prepare(queryString);
+        query.bindValue(":fn",QString::fromStdString(c.getFirstName()));
+        query.bindValue(":ln",QString::fromStdString(c.getLastName()));
+        query.bindValue(":entr",QString::fromStdString(c.getEnterprise()));
+        query.bindValue(":mail",QString::fromStdString(c.getMail()));
+        query.bindValue(":phone",QString::fromStdString(c.getPhone()));
+        query.bindValue(":doc",QString::fromStdString(c.getDateOfCreation().toString()));
+
+        if(!query.exec())
+            qDebug()<<"Requête d'insertion impossible";
+        else
+            qDebug()<<"Requête d'insertion réussie";
+    }
+
 
 }
+
 
 
 

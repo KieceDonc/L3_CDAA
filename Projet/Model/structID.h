@@ -1,5 +1,5 @@
-#ifndef CONTACTID_H
-#define CONTACTID_H
+#ifndef STRUCTID_H
+#define STRUCTID_H
 
 #include "contact.h"
 
@@ -8,4 +8,4 @@ struct ContactID{
     Contact * contact;
 };
 
-#endif // CONTACTID_H
+#endif // STRUCTID_H

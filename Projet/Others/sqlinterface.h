@@ -7,7 +7,7 @@
 #include <QtSql/QSqlQuery>
 
 #include "../Model/contact.h"
-#include "../Model/contactID.h"
+#include "../Model/structID.h"
 
 /**
  * @brief The SQLInterface class allows interactions between the user and the database using QObjects
@@ -29,6 +29,7 @@ public:
     ~SQLInterface();
 
     void getAllContacts(std::list<ContactID>&);
+    void insertContact(Contact & c);
 
 signals:
 

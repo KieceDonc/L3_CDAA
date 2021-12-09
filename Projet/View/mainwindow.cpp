@@ -3,8 +3,14 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow){
     ui->setupUi(this);
+
+    // Initialisation de la liste de contacts et de l'interface sql
+    this->loadedContacts = std::list<ContactID>();
+
     connect(this->ui->actionContact,SIGNAL(triggered()),this,SLOT(onQActionContactClicked()));
     connect(this->ui->actionInteraction,SIGNAL(triggered()),this,SLOT(onQActionInteractionClicked()));
+
+    this->loadContacts();
 }
 
 void MainWindow::onContactFormComplete(){
@@ -48,6 +54,15 @@ void MainWindow::onQActionInteractionClicked(){
     this->interactionForm->init({"Date","Contenu"});
 
     this->currentForm = this->interactionForm;
+}
+
+void MainWindow::loadContacts(){
+    this->sqli.getAllContacts(this->loadedContacts);
+    this->ui->contactList->clear();
+    for(std::list<ContactID>::iterator it = loadedContacts.begin() ; it != loadedContacts.end() ; it++ )
+        this->ui->contactList->addItem(QString::fromStdString(it->contact->getLastName()+" "+it->contact->getFirstName()));
+
+
 }
 
 MainWindow::~MainWindow(){

@@ -4,10 +4,11 @@
 #include <QMainWindow>
 #include <QWidget>
 #include <QDebug>
-
 #include <map>
 
 #include "customform.h"
+#include "./Model/structid.h"
+#include "./Others/sqlinterface.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -24,6 +25,10 @@ public:
     CustomForm* interactionForm;
     CustomForm* currentForm;
 
+    std::list<ContactID> loadedContacts;
+    SQLInterface sqli;
+
+
 
 private:
     Ui::MainWindow *ui;
@@ -35,6 +40,8 @@ public slots:
 
     void onQActionContactClicked();
     void onQActionInteractionClicked();
+
+    void loadContacts();
 };
 
 #endif // MAINWINDOW_H
