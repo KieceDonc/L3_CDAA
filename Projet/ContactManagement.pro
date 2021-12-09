@@ -10,37 +10,42 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    contact.cpp \
-    customform.cpp \
-    date.cpp \
-    interaction.cpp \
-    interactiontodo.cpp \
-    interactiontodos.cpp \
-    log.cpp \
-    logs.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    photo.cpp \
-    sqlinterface.cpp \
-    todo.cpp
+    Model/contactid.cpp \
+    Model/main.cpp \
+    Model/log.cpp \
+    Model/logs.cpp \
+    Model/todo.cpp \
+    Model/photo.cpp \
+    Model/contact.cpp \
+    Model/findcontact.cpp \
+    Model/interaction.cpp \
+    Model/interactiontodo.cpp \
+    Model/interactiontodos.cpp \
+    Model/date.cpp \
+    View/customform.cpp \
+    View/mainwindow.cpp \
+    Others/sqlinterface.cpp
+
 
 HEADERS += \
-    contact.h \
-    contactID.h \
-    customform.h \
-    date.h \
-    interaction.h \
-    interactiontodo.h \
-    interactiontodos.h \
-    log.h \
-    logs.h \
-    mainwindow.h \
-    photo.h \
-    sqlinterface.h \
-    todo.h
+    Model/contactid.h \
+    Model/log.h \
+    Model/logs.h \
+    Model/todo.h \
+    Model/photo.h \
+    Model/contact.h \
+    Model/contactID.h \
+    Model/findcontact.h \
+    Model/interaction.h \
+    Model/interactiontodo.h \
+    Model/interactiontodos.h \
+    Model/date.h \
+    View/customform.h \
+    View/mainwindow.h \
+    Others/sqlinterface.h
 
 FORMS += \
-    mainwindow.ui
+    View/mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

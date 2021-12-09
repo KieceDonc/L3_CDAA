@@ -4,7 +4,7 @@
 #include "contact.h"
 #include "logs.h"
 #include "interactiontodos.h"
-#include "sqlinterface.h"
+#include "./SQL/sqlinterface.h"
 
 #include <iostream>
 

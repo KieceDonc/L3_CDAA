@@ -7,7 +7,7 @@
 
 #include <map>
 
-#include <customform.h>
+#include "customform.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

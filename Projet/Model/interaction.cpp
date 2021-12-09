@@ -1,4 +1,3 @@
-
 #include "interaction.h"
 
 /**

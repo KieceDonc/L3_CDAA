@@ -5,8 +5,9 @@
 #include <QDebug>
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
-#include <contact.h>
-#include <contactID.h>
+
+#include "../Model/contact.h"
+#include "../Model/contactID.h"
 
 /**
  * @brief The SQLInterface class allows interactions between the user and the database using QObjects

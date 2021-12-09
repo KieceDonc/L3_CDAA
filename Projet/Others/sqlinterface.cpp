@@ -1,5 +1,5 @@
 #include "sqlinterface.h"
-#include "contactID.h"
+#include "../Model/contactID.h"
 
 #include <QtSql/QSqlDatabase>
 #include <QDebug>

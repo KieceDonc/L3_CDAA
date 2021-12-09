@@ -24,6 +24,7 @@ void MainWindow::onInteractionFormComplete(){
     QString contactFirstName = data.at("Date");
 
 }
+
 void MainWindow::onQActionContactClicked(){
     if(!this->contactForm){
         delete this->contactForm;
@@ -33,6 +34,7 @@ void MainWindow::onQActionContactClicked(){
     connect(this->contactForm,SIGNAL(onDataReady()),this,SLOT(onContactFormComplete()));
     this->contactForm->init({"Prénom","Nom","Entreprise","Email","Téléphone","Photo"});
 
+    //this->setCentralWidget(this->contactForm);
     this->currentForm = this->contactForm;
 }
 
