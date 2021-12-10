@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(this->ui->actionInteraction,SIGNAL(triggered()),this,SLOT(onQActionInteractionClicked()));
 
     this->loadContacts();
+    this->refreshContactList();
 }
 
 void MainWindow::onContactFormComplete(){
@@ -22,6 +23,10 @@ void MainWindow::onContactFormComplete(){
     QString contactEmail = data.at("Email");
     QString contactPhone = data.at("Téléphone");
     QString contactPhoto = data.at("Photo");
+
+    Contact c(contactFirstName.toStdString(),contactLastName.toStdString(),contactEntreprise.toStdString(),contactEmail.toStdString(),contactPhone.toStdString(),Photo());
+    this->sqli.insertContact(c,&(this->loadedContacts));
+    this->refreshContactList();
 }
 
 void MainWindow::onInteractionFormComplete(){
@@ -58,12 +63,13 @@ void MainWindow::onQActionInteractionClicked(){
 
 void MainWindow::loadContacts(){
     this->sqli.getAllContacts(this->loadedContacts);
+}
+
+void MainWindow::refreshContactList(){
     this->ui->contactList->clear();
     for(std::list<ContactID>::iterator it = loadedContacts.begin() ; it != loadedContacts.end() ; it++ )
         this->ui->contactList->addItem(QString::fromStdString(it->contact->getLastName()+" "+it->contact->getFirstName()));
-
-
-}
+};
 
 MainWindow::~MainWindow(){
     delete ui;

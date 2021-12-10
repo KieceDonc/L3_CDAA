@@ -46,6 +46,7 @@ void CustomForm::init(std::vector<QString> fieldNameList){
 
     this->show();
 }
+
 std::map<QString,QString> CustomForm::getData(){
     return this->data;
 }

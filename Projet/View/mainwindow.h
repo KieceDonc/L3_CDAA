@@ -42,6 +42,7 @@ public slots:
     void onQActionInteractionClicked();
 
     void loadContacts();
+    void refreshContactList();
 };
 
 #endif // MAINWINDOW_H

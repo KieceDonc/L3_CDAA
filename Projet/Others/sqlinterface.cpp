@@ -69,7 +69,7 @@ void SQLInterface::getAllContacts(std::list<ContactID> & lst){
     }
 }
 
-void SQLInterface::insertContact(Contact & c){
+void SQLInterface::insertContact(Contact & c, std::list<ContactID> * lst){
 
     if(DBOpen){
         QString queryString = "INSERT INTO contact (firstname,lastname,entreprise,mail,phone,dateofcreation,photo) VALUES (:fn,:ln,:entr,:mail,:phone,:doc,NULL)";
@@ -86,6 +86,16 @@ void SQLInterface::insertContact(Contact & c){
             qDebug()<<"Requête d'insertion impossible";
         else
             qDebug()<<"Requête d'insertion réussie";
+    }
+
+    // To add a contact in the ContactID list, we need its ID, which is the most recent record in the contact table
+    if(lst != nullptr){
+        QSqlQuery query("SELECT contactid FROM contact ORDER BY contactid DESC LIMIT 1;");
+        int id = -1;
+        while(query.next()){
+            id = query.value(0).toInt();
+        }
+        lst->push_back(ContactID{id,&c});
     }
 
 
