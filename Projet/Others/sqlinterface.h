@@ -31,7 +31,7 @@ public:
     Contact* getContactFromQuery(const QSqlQuery& query);
 
     void getAllContacts(std::list<ContactID>&);
-    void insertContact(Contact & c);
+    void insertContact(Contact & c, std::list<ContactID> * = nullptr);
 
 signals:
 
