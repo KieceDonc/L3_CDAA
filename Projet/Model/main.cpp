@@ -5,6 +5,7 @@
 #include "logs.h"
 #include "interactiontodos.h"
 #include "./Others/sqlinterface.h"
+#include "./View/findcontact.h"
 
 #include <iostream>
 
@@ -49,6 +50,10 @@ int main(int argc, char *argv[]){
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
+
+    FindContact zz;
+    zz.show();
+
 
     /*
     Logs* logs = new Logs();

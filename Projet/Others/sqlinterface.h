@@ -28,6 +28,8 @@ public:
     explicit SQLInterface(QObject *parent = nullptr);
     ~SQLInterface();
 
+    Contact* getContactFromQuery(const QSqlQuery& query);
+
     void getAllContacts(std::list<ContactID>&);
     void insertContact(Contact & c);
 

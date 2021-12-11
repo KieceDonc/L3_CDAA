@@ -16,12 +16,12 @@ SOURCES += \
     Model/todo.cpp \
     Model/photo.cpp \
     Model/contact.cpp \
-    Model/findcontact.cpp \
     Model/interaction.cpp \
     Model/interactiontodo.cpp \
     Model/interactiontodos.cpp \
     Model/date.cpp \
     View/customform.cpp \
+    View/findcontact.cpp \
     View/mainwindow.cpp \
     Others/sqlinterface.cpp
 
@@ -33,16 +33,17 @@ HEADERS += \
     Model/todo.h \
     Model/photo.h \
     Model/contact.h \
-    Model/findcontact.h \
     Model/interaction.h \
     Model/interactiontodo.h \
     Model/interactiontodos.h \
     Model/date.h \
     View/customform.h \
+    View/findcontact.h \
     View/mainwindow.h \
     Others/sqlinterface.h
 
 FORMS += \
+    View/findcontact.ui \
     View/mainwindow.ui
 
 # Default rules for deployment.
