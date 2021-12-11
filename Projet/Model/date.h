@@ -24,6 +24,7 @@ class Date{
   public:
       Date();
       Date(const int month,const int day,const int year);
+      Date(const std::string&);
 
     ///@private hiding the debug func from doxygen
     std::string getDebugValues(int nbTabulations);

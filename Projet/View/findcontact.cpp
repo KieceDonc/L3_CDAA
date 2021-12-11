@@ -3,17 +3,27 @@
 
 FindContact::FindContact(QWidget *parent) : QWidget(parent), ui(new Ui::FindContact){
     this->ui->setupUi(this);
-    this->ui->findByComboBox->addItem("Sans options");
-    this->ui->findByComboBox->addItem("Prénom");
-    this->ui->findByComboBox->addItem("Nom");
+
+    // Sorting combobox creation
+    this->ui->findByComboBox->addItem("No option");
+    this->ui->findByComboBox->addItem("First Name");
+    this->ui->findByComboBox->addItem("Last Name");
     this->ui->findByComboBox->addItem("Entreprise");
     this->ui->findByComboBox->addItem("Mail");
-    this->ui->findByComboBox->addItem("Téléphone");
+    this->ui->findByComboBox->addItem("Phone");
     this->ui->findByComboBox->addItem("Date");
+
+    // Setting tableview behaviour
     this->ui->resultView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    this->ui->resultView->setSelectionBehavior( QAbstractItemView::SelectRows );
+    this->ui->resultView->setSelectionMode( QAbstractItemView::SingleSelection );
+    this->ui->resultView->verticalHeader()->hide();
     connect(this->ui->findByComboBox,SIGNAL(currentIndexChanged(QString)),this,SLOT(onComboBoxItemChanged()));
     connect(this->ui->userInput,SIGNAL(textChanged(QString)),this,SLOT(onInputChanged()));
+    connect(this->ui->resultView,SIGNAL(clicked(const QModelIndex &)),this,SLOT(onResultViewClicked(const QModelIndex &)));
+    connect(this->ui->buttonClear,SIGNAL(clicked()),this,SLOT(onClearClicked()));
 
+    // Setting calendar widget to pickdates
     qc = new QCalendarWidget();
     this->ui->lineDate1->setText("01-01-1970");
     this->ui->lineDate2->setText("31-12-2500");
@@ -21,25 +31,35 @@ FindContact::FindContact(QWidget *parent) : QWidget(parent), ui(new Ui::FindCont
     connect(this->ui->buttonDate2,SIGNAL(clicked()),this,SLOT(pickDateEnd()));
     connect(qc,SIGNAL(selectionChanged()),this,SLOT(setDate()));
 
+    // Setting sorting system
     this->model = new QStandardItemModel();
     this->ui->resultView->setModel(model);
     this->ui->resultView->setSortingEnabled(true);
 
+    // Disabling more info button
+    this->ui->buttonInfo->setEnabled(false);
+
+    // More information button connect
+    connect(this->ui->buttonInfo,SIGNAL(clicked()),this,SLOT(onMoreInfoClicked()));
 
     this->currentAttribute=0;
+
     loadListOfContact();
     updateResultView();
+
 }
 
 void FindContact::updateResultView(){
     this->model->clear();
 
-    this->model->setHorizontalHeaderItem(0, new QStandardItem("Prénom"));
-    this->model->setHorizontalHeaderItem(1, new QStandardItem("Nom"));
+    this->model->setHorizontalHeaderItem(0, new QStandardItem("First Name"));
+    this->model->setHorizontalHeaderItem(1, new QStandardItem("Last Name"));
     this->model->setHorizontalHeaderItem(2, new QStandardItem("Entreprise"));
     this->model->setHorizontalHeaderItem(3, new QStandardItem("Mail"));
-    this->model->setHorizontalHeaderItem(4, new QStandardItem("Téléphone"));
+    this->model->setHorizontalHeaderItem(4, new QStandardItem("Phone"));
     this->model->setHorizontalHeaderItem(5, new QStandardItem("Date"));
+    this->model->setHorizontalHeaderItem(6, new QStandardItem("ID"));
+    this->ui->resultView->hideColumn(6);
 
     QList<QStandardItem*> rowData;
     std::list<ContactID>::iterator it;
@@ -49,6 +69,7 @@ void FindContact::updateResultView(){
 
     for (it = this->loadedContacts.begin(); it != this->loadedContacts.end(); ++it){
         Contact* contact = it->contact;
+        int id = it->id;
 
         bool shouldBeShow = false;
 
@@ -113,6 +134,7 @@ void FindContact::updateResultView(){
             rowData << new QStandardItem(QString::fromUtf8(contact->getMail().c_str()));
             rowData << new QStandardItem(QString::fromUtf8(contact->getPhone().c_str()));
             rowData << new QStandardItem(QString::fromUtf8(contact->getDateOfCreation().toString().c_str()));
+            rowData << new QStandardItem(QString::number(id));
             model->appendRow(rowData);
         }
     }
@@ -126,6 +148,8 @@ void FindContact::onContactListUpdate(){
 
 void FindContact::pickDateBegin()
 {
+    qc->setMinimumDate( QDate::fromString("01-01-1970",QString("dd-MM-yyyy") ) );
+    qc->setMaximumDate( QDate::fromString("31-12-2500",QString("dd-MM-yyyy") ) );
     currentQLE = this->ui->lineDate1;
     qc->show();
 }
@@ -148,6 +172,35 @@ void FindContact::setDate()
         this->ui->lineDate2->setText(this->ui->lineDate1->text());
 
     updateResultView();
+}
+
+void FindContact::onResultViewClicked(const QModelIndex &index)
+{
+    QString cellText = index.data().toString();
+    QAbstractItemModel *model = ui->resultView->model();
+    int i = model->index(index.row(), 6).data().toString().toInt();
+    std::list<ContactID>::iterator it;
+
+    for (it = this->loadedContacts.begin(); it != this->loadedContacts.end(); ++it) {
+        if(it->id == i){
+            selectedContact = it->contact;
+            break;
+        }
+    }
+    this->ui->buttonInfo->setEnabled(true);
+}
+
+void FindContact::onClearClicked()
+{
+    this->ui->resultView->clearSelection();
+    this->selectedContact = nullptr;
+    this->ui->buttonInfo->setEnabled(false);
+}
+
+void FindContact::onMoreInfoClicked()
+{
+    InfoContact * ic = new InfoContact(nullptr,this->selectedContact);
+    ic->show();
 }
 
 void FindContact::onComboBoxItemChanged(){

@@ -21,6 +21,7 @@ SOURCES += \
     Model/date.cpp \
     View/customform.cpp \
     View/findcontact.cpp \
+    View/infocontact.cpp \
     View/mainwindow.cpp \
     Others/main.cpp \
     Others/sqlinterface.cpp
@@ -39,11 +40,13 @@ HEADERS += \
     Model/date.h \
     View/customform.h \
     View/findcontact.h \
+    View/infocontact.h \
     View/mainwindow.h \
     Others/sqlinterface.h
 
 FORMS += \
     View/findcontact.ui \
+    View/infocontact.ui \
     View/mainwindow.ui
 
 # Default rules for deployment.

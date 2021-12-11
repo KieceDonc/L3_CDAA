@@ -20,13 +20,13 @@
  * @param photo
  * @param interactions The interaction list of the contact.
  */
-Contact::Contact(const std::string& firstName, const std::string& lastName, const std::string& enterprise, const std::string& mail, const std::string& phone, const Photo& photo, Logs * logs){
+Contact::Contact(const std::string& firstName, const std::string& lastName, const std::string& enterprise, const std::string& mail, const std::string& phone, const Photo& photo, const Date& date, Logs * logs){
     this->setFirstName(firstName);
     this->setLastName(lastName);
     this->setEnterprise(enterprise);
     this->setMail(mail);
     this->setPhone(phone);
-    this->setDateOfCreation();
+    this->setDateOfCreation(date);
     this->setPhoto(photo);
     this->interactions = std::list<Interaction *>();
     if(logs != nullptr)
@@ -119,8 +119,8 @@ void Contact::setPhone(const std::string& phone, Logs * logs){
  *
  * @param dateOfCreation
  */
-void Contact::setDateOfCreation(){
-  this->dateOfCreation = Date();
+void Contact::setDateOfCreation(const Date& date){
+  this->dateOfCreation = date;
 }
 
 /**

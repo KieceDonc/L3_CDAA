@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     this->loadContacts();
     //this->refreshContactList();
 
-    findcontact = new FindContact();
+    findcontact = new FindContact(this);
     this->ui->middleLayout->addWidget(findcontact);
 
 
@@ -35,6 +35,7 @@ void MainWindow::onContactFormComplete(){
 
     Contact c(contactFirstName.toStdString(),contactLastName.toStdString(),contactEntreprise.toStdString(),contactEmail.toStdString(),contactPhone.toStdString(),Photo());
     this->sqli.insertContact(c,&(this->loadedContacts));
+    this->findcontact->onContactListUpdate();
     //this->refreshContactList();
 }
 

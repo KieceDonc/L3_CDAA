@@ -1,6 +1,8 @@
 /* inspired and modified from http://www.cplusplus.com/forum/beginner/158359/ */
 #include "date.h"
 
+#include <regex>
+
 /**
  * @class Date
  *
@@ -51,6 +53,15 @@ Date::Date(const int day,const int month,const int year){
     this->setDay(day);
     this->setMonth(month);
     this->setYear(year);
+}
+
+Date::Date(const std::string & date){
+    const std::regex DATEPATTERN("^([0-2][0-9]|[3][0|1])[-/]([0][1-9]|[1][0-2])[-/]([1][9][7-9][0-9]|[2][0-2][0-9][0-9])$");
+    if(std::regex_match(date,DATEPATTERN)){
+        this->setDay(std::stoi(date.substr(0,2)));
+        this->setMonth(std::stoi(date.substr(3,2)));
+        this->setYear(std::stoi(date.substr(6,4)));
+    }
 }
 
 /**

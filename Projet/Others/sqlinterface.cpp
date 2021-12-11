@@ -1,5 +1,6 @@
 #include "sqlinterface.h"
 #include "../Model/structID.h"
+#include "../Model/date.h"
 
 #include <QtSql/QSqlDatabase>
 #include <QDebug>
@@ -45,12 +46,14 @@ SQLInterface::~SQLInterface(){
  * @return Contact*
  */
 Contact* SQLInterface::getContactFromQuery(const QSqlQuery& query){
+
     return new Contact(query.value(1).toString().toStdString(),
                        query.value(2).toString().toStdString(),
                        query.value(3).toString().toStdString(),
                        query.value(4).toString().toStdString(),
                        query.value(5).toString().toStdString(),
-                       Photo());
+                       Photo(),
+                       Date(query.value(6).toString().toStdString()));
 }
 
 /**

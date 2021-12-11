@@ -9,6 +9,7 @@
 
 #include "../Model/structID.h"
 #include "../Others/sqlinterface.h"
+#include "../View/infocontact.h"
 
 namespace Ui {
     class FindContact;
@@ -29,28 +30,30 @@ class FindContact : public QWidget{
         void pickDateBegin();
         void pickDateEnd();
         void setDate();
+        void onResultViewClicked(const QModelIndex &index);
+        void onClearClicked();
+        void onMoreInfoClicked();
 
 
     private:
         Ui::FindContact *ui;
         QStandardItemModel* model;
         QList<QStandardItem*> rowData;
-
         QCalendarWidget * qc;
+        InfoContact * ic;
         QLineEdit * currentQLE;
-
         SQLInterface sqli;
-
         std::list<ContactID> loadedContacts;
-
         int currentAttribute;
         std::string currentAttributeValue;
+        Contact * selectedContact;
 
 
 
-        void updateResultView();
+
         void loadListOfContact();
         void deleteContact();
+        void updateResultView();
 
 
 };

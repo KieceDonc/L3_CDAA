@@ -27,7 +27,7 @@ class Contact{
     void setDateOfCreation();
 
   public:
-    Contact(const std::string&, const std::string&, const std::string&, const std::string&, const std::string&, const Photo&, Logs * = nullptr);
+    Contact(const std::string&, const std::string&, const std::string&, const std::string&, const std::string&, const Photo&, const Date& = Date(), Logs * = nullptr);
 
     void setFirstName(const std::string&, Logs * = nullptr);
     void setLastName(const std::string&, Logs * = nullptr);
@@ -35,6 +35,7 @@ class Contact{
     void setMail(const std::string&, Logs * = nullptr);
     void setPhone(const std::string&, Logs * = nullptr);
     void setPhoto(const Photo&, Logs * = nullptr);
+    void setDateOfCreation(const Date& = Date());
     void setInteractions(std::list<Interaction *>);
 
 

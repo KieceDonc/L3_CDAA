@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>510</width>
-    <height>433</height>
+    <height>689</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -36,7 +36,7 @@
        <item row="1" column="0">
         <widget class="QLabel" name="findByLabel">
          <property name="text">
-          <string>Rechercher par</string>
+          <string>Criteria :</string>
          </property>
         </widget>
        </item>
@@ -49,7 +49,7 @@
        <item row="0" column="0">
         <widget class="QLabel" name="keyWordLabel">
          <property name="text">
-          <string>Mot-clé:</string>
+          <string>Keyword :</string>
          </property>
         </widget>
        </item>
@@ -76,14 +76,14 @@
      <item row="0" column="0">
       <widget class="QPushButton" name="buttonDate1">
        <property name="text">
-        <string>De :</string>
+        <string>From :</string>
        </property>
       </widget>
      </item>
      <item row="1" column="0">
       <widget class="QPushButton" name="buttonDate2">
        <property name="text">
-        <string>A :</string>
+        <string>To :</string>
        </property>
       </widget>
      </item>
@@ -114,6 +114,24 @@
        <attribute name="verticalHeaderStretchLastSection">
         <bool>false</bool>
        </attribute>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="buttonInfo">
+       <property name="text">
+        <string>Plus d'informations</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonClear">
+       <property name="text">
+        <string>Clear Selection</string>
+       </property>
       </widget>
      </item>
     </layout>
