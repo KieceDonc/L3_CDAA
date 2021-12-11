@@ -3,7 +3,6 @@
 
 FindContact::FindContact(QWidget *parent) : QWidget(parent), ui(new Ui::FindContact){
     this->ui->setupUi(this);
-
     this->ui->findByComboBox->addItem("Sans options");
     this->ui->findByComboBox->addItem("Prénom");
     this->ui->findByComboBox->addItem("Nom");
@@ -11,6 +10,7 @@ FindContact::FindContact(QWidget *parent) : QWidget(parent), ui(new Ui::FindCont
     this->ui->findByComboBox->addItem("Mail");
     this->ui->findByComboBox->addItem("Téléphone");
     this->ui->findByComboBox->addItem("Date");
+    this->ui->resultView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     connect(this->ui->findByComboBox,SIGNAL(currentIndexChanged(QString)),this,SLOT(onComboBoxItemChanged()));
     connect(this->ui->userInput,SIGNAL(textChanged(QString)),this,SLOT(onInputChanged()));
 
