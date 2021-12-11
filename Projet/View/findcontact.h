@@ -4,6 +4,8 @@
 #include <QDebug>
 #include <QWidget>
 #include <QStandardItem>
+#include <QCalendarWidget>
+#include <QLineEdit>
 
 #include "../Model/structID.h"
 #include "../Others/sqlinterface.h"
@@ -24,12 +26,18 @@ class FindContact : public QWidget{
         void onComboBoxItemChanged();
         void onInputChanged();
         void onContactListUpdate();
+        void pickDateBegin();
+        void pickDateEnd();
+        void setDate();
+
 
     private:
         Ui::FindContact *ui;
         QStandardItemModel* model;
         QList<QStandardItem*> rowData;
 
+        QCalendarWidget * qc;
+        QLineEdit * currentQLE;
 
         SQLInterface sqli;
 
@@ -43,6 +51,7 @@ class FindContact : public QWidget{
         void updateResultView();
         void loadListOfContact();
         void deleteContact();
+
 
 };
 

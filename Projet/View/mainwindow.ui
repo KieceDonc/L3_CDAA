@@ -16,11 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_4">
     <item>
-     <layout class="QVBoxLayout" name="middleLayout">
-      <item>
-       <widget class="QListWidget" name="contactList"/>
-      </item>
-     </layout>
+     <layout class="QVBoxLayout" name="middleLayout"/>
     </item>
     <item>
      <widget class="QPushButton" name="findContact">

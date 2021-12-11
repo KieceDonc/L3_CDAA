@@ -5,10 +5,12 @@
 #include <QWidget>
 #include <QDebug>
 #include <map>
+#include <QCalendarWidget>
 
 #include "customform.h"
 #include "./Model/structid.h"
 #include "./Others/sqlinterface.h"
+#include "findcontact.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -24,6 +26,7 @@ public:
     CustomForm* contactForm;
     CustomForm* interactionForm;
     CustomForm* currentForm;
+    FindContact* findcontact;
 
     std::list<ContactID> loadedContacts;
     SQLInterface sqli;
@@ -42,7 +45,7 @@ public slots:
     void onQActionInteractionClicked();
 
     void loadContacts();
-    void refreshContactList();
+    //void refreshContactList();
 };
 
 #endif // MAINWINDOW_H

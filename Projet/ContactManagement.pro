@@ -19,7 +19,6 @@ SOURCES += \
     Model/interactiontodo.cpp \
     Model/interactiontodos.cpp \
     Model/date.cpp \
-    View/contactform.cpp \
     View/customform.cpp \
     View/findcontact.cpp \
     View/mainwindow.cpp \
@@ -38,14 +37,13 @@ HEADERS += \
     Model/interactiontodo.h \
     Model/interactiontodos.h \
     Model/date.h \
-    View/contactform.h \
     View/customform.h \
     View/findcontact.h \
     View/mainwindow.h \
     Others/sqlinterface.h
 
 FORMS += \
-    View/contactform.ui \
+    View/findcontact.ui \
     View/mainwindow.ui
 
 # Default rules for deployment.

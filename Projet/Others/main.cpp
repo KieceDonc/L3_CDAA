@@ -1,11 +1,13 @@
 #include "./View/mainwindow.h"
 
 #include <QApplication>
-#include "contact.h"
-#include "logs.h"
-#include "interactiontodos.h"
+#include "./Model/contact.h"
+#include "./Model/logs.h"
+#include "./Model/interactiontodos.h"
 #include "./Others/sqlinterface.h"
 #include "./View/findcontact.h"
+
+
 
 #include <iostream>
 
@@ -45,14 +47,19 @@
 
 int main(int argc, char *argv[]){
 
+    QString s = "dd-MM-yyyy";
+    QDate d(QDate::fromString("25-05-2000",s));
+    std::cout<< d.toString().toStdString() << std::endl;
+
+
     bool withUI = true;
 
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
 
-    FindContact zz;
-    zz.show();
+    //FindContact zz;
+    //zz.show();
 
 
     /*

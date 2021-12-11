@@ -1,8 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "findcontact.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow){
     ui->setupUi(this);
+
 
     // Initialisation de la liste de contacts et de l'interface sql
     this->loadedContacts = std::list<ContactID>();
@@ -10,8 +12,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(this->ui->actionContact,SIGNAL(triggered()),this,SLOT(onQActionContactClicked()));
     connect(this->ui->actionInteraction,SIGNAL(triggered()),this,SLOT(onQActionInteractionClicked()));
 
+
+
     this->loadContacts();
-    this->refreshContactList();
+    //this->refreshContactList();
+
+    findcontact = new FindContact();
+    this->ui->middleLayout->addWidget(findcontact);
+
+
 }
 
 void MainWindow::onContactFormComplete(){
@@ -26,7 +35,7 @@ void MainWindow::onContactFormComplete(){
 
     Contact c(contactFirstName.toStdString(),contactLastName.toStdString(),contactEntreprise.toStdString(),contactEmail.toStdString(),contactPhone.toStdString(),Photo());
     this->sqli.insertContact(c,&(this->loadedContacts));
-    this->refreshContactList();
+    //this->refreshContactList();
 }
 
 void MainWindow::onInteractionFormComplete(){
@@ -63,14 +72,15 @@ void MainWindow::onQActionInteractionClicked(){
 
 void MainWindow::loadContacts(){
     this->sqli.getAllContacts(this->loadedContacts);
+
 }
 
-void MainWindow::refreshContactList(){
+/*void MainWindow::refreshContactList(){
     this->ui->contactList->clear();
     for(std::list<ContactID>::iterator it = loadedContacts.begin() ; it != loadedContacts.end() ; it++ )
         this->ui->contactList->addItem(QString::fromStdString(it->contact->getLastName()+" "+it->contact->getFirstName()));
 
-}
+}*/
 
 MainWindow::~MainWindow(){
     delete ui;
