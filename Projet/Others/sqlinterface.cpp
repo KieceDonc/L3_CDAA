@@ -40,11 +40,24 @@ SQLInterface::~SQLInterface(){
 }
 
 /**
+ * @brief Create a pointer of contact from query. Don't forget to delete it
+ * @param query
+ * @return Contact*
+ */
+Contact* SQLInterface::getContactFromQuery(const QSqlQuery& query){
+    return new Contact(query.value(1).toString().toStdString(),
+                       query.value(2).toString().toStdString(),
+                       query.value(3).toString().toStdString(),
+                       query.value(4).toString().toStdString(),
+                       query.value(5).toString().toStdString(),
+                       Photo());
+}
+
+/**
  * @brief Fills an empty contact list with all the contacts from the DB. EMPTIES THE LIST!
  * @param lst a list of contacts
  */
 void SQLInterface::getAllContacts(std::list<ContactID> & lst){
-
     lst.clear();
 
 
@@ -57,13 +70,7 @@ void SQLInterface::getAllContacts(std::list<ContactID> & lst){
         else{
             qDebug() << "Requête de lecture réussie : " << queryString;
             while(query.next()){
-                Contact * c = new Contact(query.value(1).toString().toStdString(),
-                                          query.value(2).toString().toStdString(),
-                                          query.value(3).toString().toStdString(),
-                                          query.value(4).toString().toStdString(),
-                                          query.value(5).toString().toStdString(),
-                                          Photo());
-                lst.push_back(ContactID{query.value(0).toInt(),c});
+                lst.push_back(ContactID{query.value(0).toInt(),getContactFromQuery(query)});
             }
         }
     }
@@ -102,8 +109,6 @@ void SQLInterface::insertContact(Contact & c, std::list<ContactID> * lst){
 
 
 }
-
-
 
 
 

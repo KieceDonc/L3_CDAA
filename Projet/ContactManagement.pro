@@ -10,20 +10,20 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Model/main.cpp \
     Model/log.cpp \
     Model/logs.cpp \
     Model/todo.cpp \
     Model/photo.cpp \
     Model/contact.cpp \
-    Model/findcontact.cpp \
     Model/interaction.cpp \
     Model/interactiontodo.cpp \
     Model/interactiontodos.cpp \
     Model/date.cpp \
     View/contactform.cpp \
     View/customform.cpp \
+    View/findcontact.cpp \
     View/mainwindow.cpp \
+    Others/main.cpp \
     Others/sqlinterface.cpp
 
 
@@ -34,13 +34,13 @@ HEADERS += \
     Model/todo.h \
     Model/photo.h \
     Model/contact.h \
-    Model/findcontact.h \
     Model/interaction.h \
     Model/interactiontodo.h \
     Model/interactiontodos.h \
     Model/date.h \
     View/contactform.h \
     View/customform.h \
+    View/findcontact.h \
     View/mainwindow.h \
     Others/sqlinterface.h
 

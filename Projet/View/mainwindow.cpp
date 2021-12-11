@@ -69,7 +69,8 @@ void MainWindow::refreshContactList(){
     this->ui->contactList->clear();
     for(std::list<ContactID>::iterator it = loadedContacts.begin() ; it != loadedContacts.end() ; it++ )
         this->ui->contactList->addItem(QString::fromStdString(it->contact->getLastName()+" "+it->contact->getFirstName()));
-};
+
+}
 
 MainWindow::~MainWindow(){
     delete ui;
