@@ -46,7 +46,7 @@ class FindContact : public QWidget{
         std::list<ContactID> loadedContacts;
         int currentAttribute;
         std::string currentAttributeValue;
-        Contact * selectedContact;
+        ContactID * selectedContact;
 
 
 

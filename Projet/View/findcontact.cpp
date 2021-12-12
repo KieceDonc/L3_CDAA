@@ -183,7 +183,7 @@ void FindContact::onResultViewClicked(const QModelIndex &index)
 
     for (it = this->loadedContacts.begin(); it != this->loadedContacts.end(); ++it) {
         if(it->id == i){
-            selectedContact = it->contact;
+            selectedContact = &(*it);
             break;
         }
     }
