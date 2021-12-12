@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <Model/contact.h>
-#include <Model/structID.h>
+#include <Model/structid.h>
 
 namespace Ui {
 class InfoContact;
@@ -16,6 +16,9 @@ class InfoContact : public QWidget
 public:
     explicit InfoContact(QWidget *parent = nullptr, ContactID * c = nullptr);
     ~InfoContact();
+
+public slots :
+    void displayInteractions();
 
 private:
     Ui::InfoContact *ui;

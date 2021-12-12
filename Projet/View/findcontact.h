@@ -7,7 +7,7 @@
 #include <QCalendarWidget>
 #include <QLineEdit>
 
-#include "../Model/structID.h"
+#include "../Model/structid.h"
 #include "../Others/sqlinterface.h"
 #include "../View/infocontact.h"
 

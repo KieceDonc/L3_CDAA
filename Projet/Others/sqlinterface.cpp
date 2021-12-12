@@ -1,5 +1,5 @@
 #include "sqlinterface.h"
-#include "../Model/structID.h"
+#include "../Model/structid.h"
 #include "../Model/date.h"
 
 #include <QtSql/QSqlDatabase>
@@ -47,13 +47,34 @@ SQLInterface::~SQLInterface(){
  */
 Contact* SQLInterface::getContactFromQuery(const QSqlQuery& query){
 
-    return new Contact(query.value(1).toString().toStdString(),
+    qDebug() << "Création du contact " << query.value(1).toString();
+
+    //Filling a list with all the contact interactions
+    QSqlQuery query2;
+    query2.prepare("SELECT interactiondate,interactioncontent FROM contact NATURAL JOIN contactinteraction NATURAL JOIN interaction WHERE contactid = :i;");
+    query2.bindValue(":i",query.value(0).toString());
+    std::list<Interaction *> lst;
+    if(!query2.exec())
+        qDebug()<<"Interaction insertion query failed";
+    else{
+        qDebug()<<"Interaction insertion query successful";
+        while(query2.next()){
+            lst.push_back(new Interaction(Date(query2.value(0).toString().toStdString()),query2.value(1).toString().toStdString()));
+        }
+    }
+    qDebug() << "------------";
+
+    //Creating the contact with those 2 queries
+    Contact * c = new Contact(query.value(1).toString().toStdString(),
                        query.value(2).toString().toStdString(),
                        query.value(3).toString().toStdString(),
                        query.value(4).toString().toStdString(),
                        query.value(5).toString().toStdString(),
                        Photo(),
                        Date(query.value(6).toString().toStdString()));
+    c->setInteractions(lst);
+
+    return c;
 }
 
 /**
@@ -93,9 +114,9 @@ void SQLInterface::insertContact(Contact & c, std::list<ContactID> * lst){
         query.bindValue(":doc",QString::fromStdString(c.getDateOfCreation().toString()));
 
         if(!query.exec())
-            qDebug()<<"Requête d'insertion impossible";
+            qDebug()<<"Requête d'insertion de contact impossible";
         else{
-            qDebug()<<"Requête d'insertion réussie";
+            qDebug()<<"Requête d'insertion de contact réussie";
             // To add a contact in the ContactID list, we need its ID, which is the most recent record in the contact table
             if(lst != nullptr){
                 QSqlQuery query("SELECT contactid FROM contact ORDER BY contactid DESC LIMIT 1;");

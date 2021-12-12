@@ -38,12 +38,20 @@
    </property>
    <widget class="QMenu" name="menuFormulaire">
     <property name="title">
-     <string>Formulaire</string>
+     <string>Contact</string>
     </property>
     <addaction name="actionInteraction"/>
     <addaction name="actionContact"/>
    </widget>
+   <widget class="QMenu" name="menuInteractions">
+    <property name="title">
+     <string>Interactions</string>
+    </property>
+    <addaction name="actionDisplayInteractions"/>
+    <addaction name="actionDisplayTodos"/>
+   </widget>
    <addaction name="menuFormulaire"/>
+   <addaction name="menuInteractions"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionInteraction">
@@ -53,7 +61,17 @@
   </action>
   <action name="actionContact">
    <property name="text">
-    <string>Ajouter contact</string>
+    <string>Add contact</string>
+   </property>
+  </action>
+  <action name="actionDisplayInteractions">
+   <property name="text">
+    <string>Display interactions</string>
+   </property>
+  </action>
+  <action name="actionDisplayTodos">
+   <property name="text">
+    <string>Display todos</string>
    </property>
   </action>
  </widget>

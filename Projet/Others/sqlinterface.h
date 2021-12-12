@@ -7,7 +7,7 @@
 #include <QtSql/QSqlQuery>
 
 #include "../Model/contact.h"
-#include "../Model/structID.h"
+#include "../Model/structid.h"
 
 /**
  * @brief The SQLInterface class allows interactions between the user and the database using QObjects

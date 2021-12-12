@@ -73,7 +73,11 @@ void MainWindow::onQActionInteractionClicked(){
 }
 
 void MainWindow::loadContacts(){
+    qDebug() << "ICI";
     this->sqli.getAllContacts(this->loadedContacts);
+    auto l_front = loadedContacts.begin();
+    std::advance(l_front,1);
+    qDebug() <<"TAILLE : " << l_front->contact->getInteractions().size();
     emit onContactListUpdate();
 }
 

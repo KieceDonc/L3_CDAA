@@ -120,7 +120,12 @@ void Contact::setPhone(const std::string& phone, Logs * logs){
  * @param dateOfCreation
  */
 void Contact::setDateOfCreation(const Date& date){
-  this->dateOfCreation = date;
+    this->dateOfCreation = date;
+}
+
+void Contact::setInteractions(std::list<Interaction *> lst)
+{
+    this->interactions = lst;
 }
 
 /**
