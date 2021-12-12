@@ -48,12 +48,13 @@ class FindContact : public QWidget{
         std::string currentAttributeValue;
         Contact * selectedContact;
 
-
-
-
         void loadListOfContact();
         void deleteContact();
         void updateResultView();
+
+
+    protected:
+        void resizeEvent(QResizeEvent *event);
 
 
 };

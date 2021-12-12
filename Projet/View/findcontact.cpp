@@ -35,6 +35,7 @@ FindContact::FindContact(QWidget *parent) : QWidget(parent), ui(new Ui::FindCont
     this->model = new QStandardItemModel();
     this->ui->resultView->setModel(model);
     this->ui->resultView->setSortingEnabled(true);
+    //this->ui->resultView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch); // auto resize
 
     // Disabling more info button
     this->ui->buttonInfo->setEnabled(false);
@@ -46,11 +47,10 @@ FindContact::FindContact(QWidget *parent) : QWidget(parent), ui(new Ui::FindCont
 
     loadListOfContact();
     updateResultView();
-
 }
 
 void FindContact::updateResultView(){
-    this->model->clear();
+    this->model->setRowCount(0); // https://stackoverflow.com/a/15849800
 
     this->model->setHorizontalHeaderItem(0, new QStandardItem("First Name"));
     this->model->setHorizontalHeaderItem(1, new QStandardItem("Last Name"));
@@ -224,6 +224,23 @@ void FindContact::deleteContact(){
     for (it = this->loadedContacts.begin(); it != this->loadedContacts.end(); ++it){
         delete it->contact;
     }
+}
+
+void FindContact::resizeEvent(QResizeEvent *event){
+    QWidget::resizeEvent(event);
+    int size0 = this->ui->resultView->width()*0.15;
+    int size1 = this->ui->resultView->width()*0.25;
+    this->ui->resultView->setColumnWidth(0, size0);
+    this->ui->resultView->setColumnWidth(1, size0);
+    this->ui->resultView->setColumnWidth(2, size0);
+    this->ui->resultView->setColumnWidth(3, size1);
+    this->ui->resultView->setColumnWidth(4, size0);
+
+    // size2 = size1 + int to compensate rounded divisions and avoid scrollbar
+    int size2 = this->ui->resultView->width()-size0*4-size1-2;
+    this->ui->resultView->setColumnWidth(5, size2);
+
+    qDebug() << this->ui->resultView->width();
 }
 
 
