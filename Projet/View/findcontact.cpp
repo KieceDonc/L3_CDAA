@@ -44,8 +44,10 @@ FindContact::FindContact(QWidget *parent) : QWidget(parent), ui(new Ui::FindCont
     connect(this->ui->buttonInfo,SIGNAL(clicked()),this,SLOT(onMoreInfoClicked()));
 
     this->currentAttribute=0;
+}
 
-    loadListOfContact();
+void FindContact::init(std::list<ContactID>* lst){
+    this->loadedContacts = lst;
     updateResultView();
 }
 
@@ -67,7 +69,7 @@ void FindContact::updateResultView(){
     QDate begin(QDate::fromString(this->ui->lineDate1->text(),QString("dd-MM-yyyy")));
     QDate end(QDate::fromString(this->ui->lineDate2->text(),QString("dd-MM-yyyy")));
 
-    for (it = this->loadedContacts.begin(); it != this->loadedContacts.end(); ++it){
+    for (it = this->loadedContacts->begin(); it != this->loadedContacts->end(); ++it){
         Contact* contact = it->contact;
         int id = it->id;
 
@@ -141,8 +143,6 @@ void FindContact::updateResultView(){
 }
 
 void FindContact::onContactListUpdate(){
-    this->deleteContact();
-    this->loadListOfContact();
     this->updateResultView();
 }
 
@@ -181,7 +181,7 @@ void FindContact::onResultViewClicked(const QModelIndex &index)
     int i = model->index(index.row(), 6).data().toString().toInt();
     std::list<ContactID>::iterator it;
 
-    for (it = this->loadedContacts.begin(); it != this->loadedContacts.end(); ++it) {
+    for (it = this->loadedContacts->begin(); it != this->loadedContacts->end(); ++it) {
         if(it->id == i){
             selectedContact = it->contact;
             break;
@@ -215,17 +215,6 @@ void FindContact::onInputChanged(){
     this->updateResultView();
 }
 
-void FindContact::loadListOfContact(){
-    this->sqli.getAllContacts(this->loadedContacts);
-}
-
-void FindContact::deleteContact(){
-    std::list<ContactID>::iterator it;
-    for (it = this->loadedContacts.begin(); it != this->loadedContacts.end(); ++it){
-        delete it->contact;
-    }
-}
-
 void FindContact::resizeEvent(QResizeEvent *event){
     QWidget::resizeEvent(event);
     int size0 = this->ui->resultView->width()*0.15;
@@ -244,7 +233,6 @@ void FindContact::resizeEvent(QResizeEvent *event){
 
 
 FindContact::~FindContact(){
-    deleteContact();
     delete this->ui;
     delete this->model;
 }

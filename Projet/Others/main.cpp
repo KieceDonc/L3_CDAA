@@ -1,4 +1,4 @@
-#include "./View/mainwindow.h"
+    #include "./View/mainwindow.h"
 
 #include <QApplication>
 #include "./Model/contact.h"
