@@ -239,8 +239,6 @@ void FindContact::resizeEvent(QResizeEvent *event){
     // size2 = size1 + int to compensate rounded divisions and avoid scrollbar
     int size2 = this->ui->resultView->width()-size0*4-size1-2;
     this->ui->resultView->setColumnWidth(5, size2);
-
-    qDebug() << this->ui->resultView->width();
 }
 
 
