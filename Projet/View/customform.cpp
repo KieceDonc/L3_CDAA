@@ -71,7 +71,7 @@ void CustomForm::onButtonOkPush(){
     }
 
     if(canBeSend){
-        this->onDataReady();
+        emit onDataReady();
         this->close();
     }
 }

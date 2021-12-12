@@ -35,6 +35,7 @@ FindContact::FindContact(QWidget *parent) : QWidget(parent), ui(new Ui::FindCont
     this->model = new QStandardItemModel();
     this->ui->resultView->setModel(model);
     this->ui->resultView->setSortingEnabled(true);
+    //this->ui->resultView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch); // auto resize
 
     // Disabling more info button
     this->ui->buttonInfo->setEnabled(false);
@@ -43,14 +44,15 @@ FindContact::FindContact(QWidget *parent) : QWidget(parent), ui(new Ui::FindCont
     connect(this->ui->buttonInfo,SIGNAL(clicked()),this,SLOT(onMoreInfoClicked()));
 
     this->currentAttribute=0;
+}
 
-    loadListOfContact();
+void FindContact::init(std::list<ContactID>* lst){
+    this->loadedContacts = lst;
     updateResultView();
-
 }
 
 void FindContact::updateResultView(){
-    this->model->clear();
+    this->model->setRowCount(0); // https://stackoverflow.com/a/15849800
 
     this->model->setHorizontalHeaderItem(0, new QStandardItem("First Name"));
     this->model->setHorizontalHeaderItem(1, new QStandardItem("Last Name"));
@@ -67,7 +69,7 @@ void FindContact::updateResultView(){
     QDate begin(QDate::fromString(this->ui->lineDate1->text(),QString("dd-MM-yyyy")));
     QDate end(QDate::fromString(this->ui->lineDate2->text(),QString("dd-MM-yyyy")));
 
-    for (it = this->loadedContacts.begin(); it != this->loadedContacts.end(); ++it){
+    for (it = this->loadedContacts->begin(); it != this->loadedContacts->end(); ++it){
         Contact* contact = it->contact;
         int id = it->id;
 
@@ -141,8 +143,6 @@ void FindContact::updateResultView(){
 }
 
 void FindContact::onContactListUpdate(){
-    this->deleteContact();
-    this->loadListOfContact();
     this->updateResultView();
 }
 
@@ -181,7 +181,7 @@ void FindContact::onResultViewClicked(const QModelIndex &index)
     int i = model->index(index.row(), 6).data().toString().toInt();
     std::list<ContactID>::iterator it;
 
-    for (it = this->loadedContacts.begin(); it != this->loadedContacts.end(); ++it) {
+    for (it = this->loadedContacts->begin(); it != this->loadedContacts->end(); ++it) {
         if(it->id == i){
             selectedContact = &(*it);
             break;
@@ -215,21 +215,24 @@ void FindContact::onInputChanged(){
     this->updateResultView();
 }
 
-void FindContact::loadListOfContact(){
-    this->sqli.getAllContacts(this->loadedContacts);
-}
+void FindContact::resizeEvent(QResizeEvent *event){
+    QWidget::resizeEvent(event);
+    int size0 = this->ui->resultView->width()*0.15;
+    int size1 = this->ui->resultView->width()*0.25;
+    this->ui->resultView->setColumnWidth(0, size0);
+    this->ui->resultView->setColumnWidth(1, size0);
+    this->ui->resultView->setColumnWidth(2, size0);
+    this->ui->resultView->setColumnWidth(3, size1);
+    this->ui->resultView->setColumnWidth(4, size0);
 
-void FindContact::deleteContact(){
-    std::list<ContactID>::iterator it;
-    for (it = this->loadedContacts.begin(); it != this->loadedContacts.end(); ++it){
-        delete it->contact;
-    }
+    // size2 = size1 + int to compensate rounded divisions and avoid scrollbar
+    int size2 = this->ui->resultView->width()-size0*4-size1-2;
+    this->ui->resultView->setColumnWidth(5, size2);
 }
 
 
 
 FindContact::~FindContact(){
-    deleteContact();
     delete this->ui;
     delete this->model;
 }

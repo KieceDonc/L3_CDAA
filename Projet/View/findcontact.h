@@ -22,6 +22,8 @@ class FindContact : public QWidget{
         explicit FindContact(QWidget *parent = nullptr);
         ~FindContact();
 
+        void init(std::list<ContactID>* lst);
+
 
     public slots:
         void onComboBoxItemChanged();
@@ -43,17 +45,16 @@ class FindContact : public QWidget{
         InfoContact * ic;
         QLineEdit * currentQLE;
         SQLInterface sqli;
-        std::list<ContactID> loadedContacts;
+        std::list<ContactID>* loadedContacts;
         int currentAttribute;
         std::string currentAttributeValue;
         ContactID * selectedContact;
 
-
-
-
-        void loadListOfContact();
-        void deleteContact();
         void updateResultView();
+
+
+    protected:
+        void resizeEvent(QResizeEvent *event);
 
 
 };

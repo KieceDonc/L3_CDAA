@@ -19,7 +19,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     findcontact = new FindContact(this);
     this->ui->middleLayout->addWidget(findcontact);
-
+    findcontact->init(&this->loadedContacts);
+    connect(this,SIGNAL(onContactListUpdate()),this->findcontact,SLOT(onContactListUpdate()));
 
 }
 
@@ -35,7 +36,7 @@ void MainWindow::onContactFormComplete(){
 
     Contact c(contactFirstName.toStdString(),contactLastName.toStdString(),contactEntreprise.toStdString(),contactEmail.toStdString(),contactPhone.toStdString(),Photo());
     this->sqli.insertContact(c,&(this->loadedContacts));
-    this->findcontact->onContactListUpdate();
+    emit onContactListUpdate();
     //this->refreshContactList();
 }
 
@@ -73,7 +74,7 @@ void MainWindow::onQActionInteractionClicked(){
 
 void MainWindow::loadContacts(){
     this->sqli.getAllContacts(this->loadedContacts);
-
+    emit onContactListUpdate();
 }
 
 /*void MainWindow::refreshContactList(){

@@ -46,6 +46,9 @@ public slots:
 
     void loadContacts();
     //void refreshContactList();
+
+signals:
+    void onContactListUpdate();
 };
 
 #endif // MAINWINDOW_H
