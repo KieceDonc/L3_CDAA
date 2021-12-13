@@ -1,6 +1,8 @@
 #include "findcontact.h"
 #include "ui_findcontact.h"
 
+#include <QTableWidgetItem>
+
 FindContact::FindContact(QWidget *parent) : QWidget(parent), ui(new Ui::FindContact){
     this->ui->setupUi(this);
 
@@ -127,7 +129,7 @@ void FindContact::updateResultView(){
                 shouldBeShow = toCompare.find(this->currentAttributeValue) != std::string::npos;
             }
         }
-
+        QDate d = QDate::fromString("15-05-2000","dd-MM-yyyy");
         if(shouldBeShow){
             rowData.clear();
             rowData << new QStandardItem(QString::fromUtf8(contact->getFirstName().c_str()));

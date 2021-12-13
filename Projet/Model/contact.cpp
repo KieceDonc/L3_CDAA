@@ -218,7 +218,7 @@ std::list<Interaction *> Contact::getInteractions(){
  * @param Interaction *
  */
 void Contact::addInteraction(Interaction * interaction, Logs * logs){
-    this->getInteractions().push_back(interaction);
+    this->interactions.push_back(interaction);
     if(logs != nullptr)
         logs->add(Log(this,Log::ADD_INTERACTION));
 }
@@ -229,10 +229,11 @@ void Contact::addInteraction(Interaction * interaction, Logs * logs){
  * @param i
  */
 void Contact::removeInteraction(int i, Logs * logs){
-  if(i < (int)this->getInteractions().size()){
-    std::list<Interaction *>::iterator index = this->getInteractions().begin();
+  std::list<Interaction *>::iterator index;
+  index = this->interactions.begin();
+  if(i < (int)this->interactions.size()){
     std::advance(index,i);
-    index = this->getInteractions().erase(index);
+    this->interactions.erase(index);
     if(logs != nullptr)
         logs->add(Log(this,Log::REMOVE_INTERACTION));
   }

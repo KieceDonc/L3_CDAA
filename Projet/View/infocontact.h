@@ -1,6 +1,7 @@
 #ifndef INFOCONTACT_H
 #define INFOCONTACT_H
 
+#include <QSignalMapper>
 #include <QWidget>
 #include <Model/contact.h>
 #include <Model/structid.h>
@@ -19,10 +20,17 @@ public:
 
 public slots :
     void displayInteractions();
+    void onApplyClicked();
+    void onDeleteButtonClicked(int);
+    void onAddInteractionClicked();
+
+signals :
+    void clicked(int);
 
 private:
     Ui::InfoContact *ui;
     ContactID * currentContact;
+    QSignalMapper *signalMapper;
 };
 
 #endif // INFOCONTACT_H

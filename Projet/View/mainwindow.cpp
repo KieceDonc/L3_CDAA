@@ -34,7 +34,7 @@ void MainWindow::onContactFormComplete(){
     QString contactPhone = data.at("Téléphone");
     QString contactPhoto = data.at("Photo");
 
-    Contact c(contactFirstName.toStdString(),contactLastName.toStdString(),contactEntreprise.toStdString(),contactEmail.toStdString(),contactPhone.toStdString(),Photo());
+    Contact c = Contact(contactFirstName.toStdString(),contactLastName.toStdString(),contactEntreprise.toStdString(),contactEmail.toStdString(),contactPhone.toStdString(),Photo(),Date());
     this->sqli.insertContact(c,&(this->loadedContacts));
     emit onContactListUpdate();
     //this->refreshContactList();
