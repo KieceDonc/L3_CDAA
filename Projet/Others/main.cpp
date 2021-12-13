@@ -47,6 +47,16 @@
 
 int main(int argc, char *argv[]){
 
+
+    Interaction * i = new Interaction(Date(),"ok @TODO todo1 @DATE 25-05-2000 @TODO todo2");
+    MapInteractionTodo mp;
+    mp.insert(i);
+
+    std::list<Todo *> lst = mp.at(i);
+    std::list<Todo *>::iterator it;
+    for(it = lst.begin() ; it != lst.end() ; it++)
+        std::cout << *(*it) << std::endl;
+
     QString s = "dd-MM-yyyy";
     QDate d(QDate::fromString("25-05-2000",s));
     std::cout<< d.toString().toStdString() << std::endl;

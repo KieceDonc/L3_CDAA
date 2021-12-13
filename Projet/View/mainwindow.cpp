@@ -6,21 +6,26 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
 
 
-    // Initialisation de la liste de contacts et de l'interface sql
+    // Initializing the contacts list with sql interface
     this->loadedContacts = std::list<ContactID>();
+    this->mapInteractionTodo = MapInteractionTodo();
+    this->loadContacts();
 
+    // Connecting actions
     connect(this->ui->actionContact,SIGNAL(triggered()),this,SLOT(onQActionContactClicked()));
     connect(this->ui->actionInteraction,SIGNAL(triggered()),this,SLOT(onQActionInteractionClicked()));
+    connect(this->ui->actionDisplayInteractions,SIGNAL(triggered()),this,SLOT(onDisplayInteractionClicked()));
 
 
 
-    this->loadContacts();
+
     //this->refreshContactList();
 
     findcontact = new FindContact(this);
     this->ui->middleLayout->addWidget(findcontact);
     findcontact->init(&this->loadedContacts);
     connect(this,SIGNAL(onContactListUpdate()),this->findcontact,SLOT(onContactListUpdate()));
+
 
 }
 
@@ -36,6 +41,16 @@ void MainWindow::onContactFormComplete(){
 
     Contact c = Contact(contactFirstName.toStdString(),contactLastName.toStdString(),contactEntreprise.toStdString(),contactEmail.toStdString(),contactPhone.toStdString(),Photo(),Date());
     this->sqli.insertContact(c,&(this->loadedContacts));
+
+    this->loadedContacts = std::list<ContactID>();
+    this->loadContacts();
+
+    for(std::list<ContactID>::iterator it = this->loadedContacts.begin() ; it != this->loadedContacts.end() ; it++){
+        qDebug() << (*it).id;
+        qDebug() << QString::fromStdString((*it).contact->getFirstName());
+    }
+
+
     emit onContactListUpdate();
     //this->refreshContactList();
 }
@@ -72,9 +87,17 @@ void MainWindow::onQActionInteractionClicked(){
     this->currentForm = this->interactionForm;
 }
 
+void MainWindow::onDisplayInteractionClicked()
+{
+    InfoInteractions * ii = new InfoInteractions(nullptr,&(this->loadedContacts),&(this->mapInteractionTodo));
+    ii->setAttribute(Qt::WA_DeleteOnClose);
+    ii->setWindowModality(Qt::ApplicationModal);
+    ii->show();
+}
+
 void MainWindow::loadContacts(){
     qDebug() << "ICI";
-    this->sqli.getAllContacts(this->loadedContacts);
+    this->sqli.getAllContacts(this->loadedContacts, this->mapInteractionTodo);
     auto l_front = loadedContacts.begin();
     std::advance(l_front,1);
     qDebug() <<"TAILLE : " << l_front->contact->getInteractions().size();

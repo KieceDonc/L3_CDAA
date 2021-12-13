@@ -5,6 +5,8 @@
 #include <QDebug>
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
+#include <Model/mapinteractiontodo.h>
+#include <Model/todo.h>
 
 #include "../Model/contact.h"
 #include "../Model/structid.h"
@@ -28,9 +30,10 @@ public:
     explicit SQLInterface(QObject *parent = nullptr);
     ~SQLInterface();
 
-    Contact* getContactFromQuery(const QSqlQuery& query);
+    Contact* getContact(const QSqlQuery& query);
 
-    void getAllContacts(std::list<ContactID>&);
+    void getAllContacts(std::list<ContactID>&, MapInteractionTodo&);
+
     void insertContact(Contact & c, std::list<ContactID> * = nullptr);
 
 signals:

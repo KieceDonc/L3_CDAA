@@ -128,7 +128,19 @@ std::string Date::getDebugValues(int nbTabulations){
 }
 
 std::string Date::toString(){
-    return std::to_string(this->day)+"-"+std::to_string(this->month)+"-"+std::to_string(this->year);
+    std::string sRes = "";
+
+    if(this->day <10)
+        sRes += "0";
+    sRes += std::to_string(this->day);
+    sRes+="-";
+
+    if(this->month <10)
+        sRes += "0";
+    sRes += std::to_string(this->month);
+    sRes+="-";
+    sRes+= std::to_string(this->year);
+    return sRes;
 }
 
 /**

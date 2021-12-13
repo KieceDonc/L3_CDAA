@@ -129,7 +129,6 @@ void FindContact::updateResultView(){
                 shouldBeShow = toCompare.find(this->currentAttributeValue) != std::string::npos;
             }
         }
-        QDate d = QDate::fromString("15-05-2000","dd-MM-yyyy");
         if(shouldBeShow){
             rowData.clear();
             rowData << new QStandardItem(QString::fromUtf8(contact->getFirstName().c_str()));
@@ -186,10 +185,11 @@ void FindContact::onResultViewClicked(const QModelIndex &index)
     for (it = this->loadedContacts->begin(); it != this->loadedContacts->end(); ++it) {
         if(it->id == i){
             selectedContact = &(*it);
+            this->ui->buttonInfo->setEnabled(true);
             break;
         }
     }
-    this->ui->buttonInfo->setEnabled(true);
+
 }
 
 void FindContact::onClearClicked()
@@ -202,6 +202,8 @@ void FindContact::onClearClicked()
 void FindContact::onMoreInfoClicked()
 {
     InfoContact * ic = new InfoContact(nullptr,this->selectedContact);
+    ic->setAttribute(Qt::WA_DeleteOnClose);
+    ic->setWindowModality(Qt::ApplicationModal);
     ic->show();
 }
 

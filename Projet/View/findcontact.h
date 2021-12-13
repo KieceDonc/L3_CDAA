@@ -23,6 +23,7 @@ class FindContact : public QWidget{
         ~FindContact();
 
         void init(std::list<ContactID>* lst);
+        std::list<ContactID>* loadedContacts;
 
 
     public slots:
@@ -37,6 +38,8 @@ class FindContact : public QWidget{
         void onMoreInfoClicked();
 
 
+
+
     private:
         Ui::FindContact *ui;
         QStandardItemModel* model;
@@ -45,7 +48,6 @@ class FindContact : public QWidget{
         InfoContact * ic;
         QLineEdit * currentQLE;
         SQLInterface sqli;
-        std::list<ContactID>* loadedContacts;
         int currentAttribute;
         std::string currentAttributeValue;
         ContactID * selectedContact;

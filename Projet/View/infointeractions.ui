@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>InfoInteractions</class>
+ <widget class="QWidget" name="InfoInteractions">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="0">
+    <widget class="QPushButton" name="buttonSwitch">
+     <property name="text">
+      <string>Display Todos</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <layout class="QVBoxLayout" name="viewLayout"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

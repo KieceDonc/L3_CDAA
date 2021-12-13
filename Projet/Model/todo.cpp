@@ -49,22 +49,29 @@ Todo::Todo(const Date& date, const std::string& content) {
  */
 Todo::Todo(const std::string& content){
 
-    // Content is set to content, Date is set to date.
+    // Content is set to parameter, Date is set to today.
     this->setContent(content);
     this->setDate(Date());
 
+    // Lift this flag if the date is NOT correct
     bool flag = false;
 
     std::string s = content;
     std::string dateStr;
     Date date;
+
+    // Date is correct as long as it is after 1970
     const std::regex DATEPATTERN("^([0-2][0-9]|[3][0|1])[-/]([0][1-9]|[1][0-2])[-/]([1][9][7-9][0-9]|[2][0-2][0-9][0-9])$");
 
     int match = s.find("@DATE");
+
+    // If a @DATE tag is found, then we can remove it and check if the date is correct
     if(match != std::string::npos){
         s.erase(match,6);
         dateStr = s.substr(match,10);
+        s.erase(match,10);
 
+        // Compare the date to the regex DATEPATERN. If it doesn't match, we lift a flag and the date is not removed
         if(std::regex_match(dateStr,DATEPATTERN)){
             date = Date(std::stoi(dateStr.substr(0,2)),std::stoi(dateStr.substr(3,2)),std::stoi(dateStr.substr(6,4)));
         }

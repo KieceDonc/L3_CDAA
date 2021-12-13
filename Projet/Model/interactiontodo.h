@@ -13,6 +13,7 @@
 class InteractionTodo{
 
     private:
+
         Todo * t;
         Interaction * i;
 

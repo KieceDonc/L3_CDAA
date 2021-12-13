@@ -7,10 +7,13 @@
 #include <map>
 #include <QCalendarWidget>
 
+#include <Model/todo.h>
+
 #include "customform.h"
 #include "./Model/structid.h"
 #include "./Others/sqlinterface.h"
 #include "findcontact.h"
+#include "infointeractions.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -29,6 +32,7 @@ public:
     FindContact* findcontact;
 
     std::list<ContactID> loadedContacts;
+    MapInteractionTodo mapInteractionTodo;
     SQLInterface sqli;
 
 
@@ -43,6 +47,8 @@ public slots:
 
     void onQActionContactClicked();
     void onQActionInteractionClicked();
+
+    void onDisplayInteractionClicked();
 
     void loadContacts();
     //void refreshContactList();

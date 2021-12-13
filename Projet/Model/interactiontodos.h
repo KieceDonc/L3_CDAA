@@ -23,6 +23,7 @@ class InteractionTodos{
 
         void addInteraction(Interaction *);
         void addInteractionTodo(Interaction *);
+        void addInteractionTodo(Interaction *, Todo *);
 
         ///@private hiding the debug func from doxygen
         std::string getDebugValues(int nbTabulations);

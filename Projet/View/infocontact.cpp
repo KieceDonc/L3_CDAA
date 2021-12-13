@@ -33,7 +33,7 @@ void InfoContact::displayInteractions(){
     std::list<Interaction *> lst = this->currentContact->contact->getInteractions();
     int iButton = 0;
     signalMapper = new QSignalMapper(this);
-    connect(signalMapper, SIGNAL(mapped(int)), this, SLOT(clicked(int)));
+    connect(signalMapper, SIGNAL(mapped(int)), this, SIGNAL(clicked(int)));
 
     //emit(emptyInteractionsLayout());
 

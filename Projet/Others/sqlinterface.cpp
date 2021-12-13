@@ -45,7 +45,7 @@ SQLInterface::~SQLInterface(){
  * @param query
  * @return Contact*
  */
-Contact* SQLInterface::getContactFromQuery(const QSqlQuery& query){
+Contact* SQLInterface::getContact(const QSqlQuery& query){
 
     qDebug() << "Création du contact " << query.value(1).toString();
 
@@ -62,7 +62,6 @@ Contact* SQLInterface::getContactFromQuery(const QSqlQuery& query){
             lst.push_back(new Interaction(Date(query2.value(0).toString().toStdString()),query2.value(1).toString().toStdString()));
         }
     }
-    qDebug() << "------------";
 
     //Creating the contact with those 2 queries
     Contact * c = new Contact(query.value(1).toString().toStdString(),
@@ -78,11 +77,11 @@ Contact* SQLInterface::getContactFromQuery(const QSqlQuery& query){
 }
 
 /**
- * @brief Fills an empty contact list with all the contacts from the DB. EMPTIES THE LIST!
+ * @brief Fills an empty contact list with all the contacts from the DB, and adds the Interactions and Todos to MapInteractionTodo. EMPTIES THE LIST!
  * @param lst a list of contacts
  */
-void SQLInterface::getAllContacts(std::list<ContactID> & lst){
-    lst.clear();
+void SQLInterface::getAllContacts(std::list<ContactID> & lstContacts, MapInteractionTodo & mp){
+    lstContacts.clear();
 
 
     if(DBOpen){
@@ -94,11 +93,51 @@ void SQLInterface::getAllContacts(std::list<ContactID> & lst){
         else{
             qDebug() << "Requête de lecture réussie : " << queryString;
             while(query.next()){
-                lst.push_back(ContactID{query.value(0).toInt(),getContactFromQuery(query)});
+
+                // Making a list for the contact interactions and for the todos
+                QSqlQuery query2;
+                query2.prepare("SELECT interactiondate,interactioncontent,interactionid FROM contact NATURAL JOIN contactinteraction NATURAL JOIN interaction WHERE contactid = :c;");
+                query2.bindValue(":c",query.value(0).toString());
+                std::list<Interaction *> lst;
+                if(!query2.exec())
+                    qDebug()<<"Interaction insertion query failed";
+                else{
+                    qDebug()<<"Interaction insertion query successful";
+                    while(query2.next()){
+                        // Add the interaction to the Contact interaction
+                        lst.push_back(new Interaction(Date(query2.value(0).toString().toStdString()),query2.value(1).toString().toStdString()));
+
+                        // And then add the correponding Todos
+                        QSqlQuery queryTodos;
+                        queryTodos.prepare("SELECT tododate,todocontent FROM interaction NATURAL JOIN interactiontodo NATURAL JOIN todo WHERE interactionid = :i");
+                        queryTodos.bindValue(":i",query2.value(2));
+                        if(!queryTodos.exec())
+                            qDebug() << "Todo insertion query failed";
+                        else{
+                            qDebug() << "Todo insertion query successful";
+                            while(queryTodos.next()){
+                                mp.insert(lst.back(),new Todo(Date(queryTodos.value(0).toString().toStdString()),queryTodos.value(1).toString().toStdString()));
+                            }
+                        }
+                    }
+                }
+                //Creating the contact with those 2 queries
+                Contact * c = new Contact(query.value(1).toString().toStdString(),
+                                   query.value(2).toString().toStdString(),
+                                   query.value(3).toString().toStdString(),
+                                   query.value(4).toString().toStdString(),
+                                   query.value(5).toString().toStdString(),
+                                   Photo(),
+                                   Date(query.value(6).toString().toStdString()));
+                c->setInteractions(lst);
+
+
+                lstContacts.push_back(ContactID{query.value(0).toInt(),c});
             }
         }
     }
 }
+
 
 void SQLInterface::insertContact(Contact & c, std::list<ContactID> * lst){
 

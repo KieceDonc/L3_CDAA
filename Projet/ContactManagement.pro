@@ -12,6 +12,7 @@ CONFIG += c++11
 SOURCES += \
     Model/log.cpp \
     Model/logs.cpp \
+    Model/mapinteractiontodo.cpp \
     Model/todo.cpp \
     Model/photo.cpp \
     Model/contact.cpp \
@@ -22,6 +23,7 @@ SOURCES += \
     View/customform.cpp \
     View/findcontact.cpp \
     View/infocontact.cpp \
+    View/infointeractions.cpp \
     View/mainwindow.cpp \
     Others/main.cpp \
     Others/sqlinterface.cpp
@@ -30,6 +32,7 @@ SOURCES += \
 HEADERS += \
     Model/log.h \
     Model/logs.h \
+    Model/mapinteractiontodo.h \
     Model/structid.h \
     Model/todo.h \
     Model/photo.h \
@@ -41,12 +44,14 @@ HEADERS += \
     View/customform.h \
     View/findcontact.h \
     View/infocontact.h \
+    View/infointeractions.h \
     View/mainwindow.h \
     Others/sqlinterface.h
 
 FORMS += \
     View/findcontact.ui \
     View/infocontact.ui \
+    View/infointeractions.ui \
     View/mainwindow.ui
 
 # Default rules for deployment.
