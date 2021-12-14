@@ -32,6 +32,9 @@ private:
     Ui::InfoInteractions *ui;
     QTableWidget * viewInteractions;
     QTableWidget * viewTodos;
+
+protected:
+    void resizeEvent(QResizeEvent *event);
 };
 
 #endif // INFOINTERACTIONS_H
