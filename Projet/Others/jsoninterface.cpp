@@ -1,11 +1,22 @@
 #include "jsoninterface.h"
 
-JSONInterface::JSONInterface(){
+#include "QDebug"
 
+JSONInterface::JSONInterface(){
+    //this->writeInFile("/mnt/3822CDE622CDA8E8/Coding_workplace/L3_CDAA/Projet/JSONExport","test");
 }
 
-void JSONInterface::addContact(Contact& contact){
+void JSONInterface::addContact(std::list<ContactID>* contactList){
+    for (auto it = contactList->begin(); it != contactList->end(); ++it){
+        this->addContact(*(it));
+    }
+}
+
+void JSONInterface::addContact(ContactID& contactID){
     QJsonObject contactObject;
+    Contact contact = *(contactID.contact);
+
+    contactObject.insert("ID",contactID.id);
     contactObject.insert("Prénom",convertStringToQJsonValue(contact.getFirstName()));
     contactObject.insert("Nom",convertStringToQJsonValue(contact.getLastName()));
     contactObject.insert("Entreprise",convertStringToQJsonValue(contact.getEnterprise()));
@@ -13,40 +24,58 @@ void JSONInterface::addContact(Contact& contact){
     contactObject.insert("Téléphone",convertStringToQJsonValue(contact.getPhone()));
     //contactObject.insert("Photo",convertStringToQJsonValue(contact.()));
     contactObject.insert("Date de création",convertStringToQJsonValue(contact.getDateOfCreation().toString()));
-    contactObject.insert("Intéraction",convertStringToQJsonValue(contact.getFirstName()));
 
     QJsonArray interactionListJSON;
     std::list<Interaction*> interactionList = contact.getInteractions();
-    for (int x=0 ;x<interactionList.size();x++){
+    for (auto it = interactionList.begin(); it != interactionList.end(); ++it){
         QJsonObject currentInteractionJSON;
-        Interaction * currentInteraction = std::advance(interactionList.begin(), x);
+        currentInteractionJSON.insert("Contenu",convertStringToQJsonValue((*it)->getContent()));
+        currentInteractionJSON.insert("Date",convertStringToQJsonValue((*it)->getDate().toString()));
         interactionListJSON.push_back(currentInteractionJSON);
     }
-    contactObject.insert("Intéractions",interactionList);
+    contactObject.insert("Intéractions",interactionListJSON);
 
-    Photo photo;
-    std::list<Interaction *> interactions;
-    this->contactList.push_back(contactObject);
+    this->contactListJSON.push_back(contactObject);
 }
 
-/*void JSONInterface::addContactinteraction( contactid , interactionid ){
-
-}
-void JSONInterface::addInteraction( interactionid , interactioncontent , interactiondate ){
-
-}
-
-void JSONInterface::addInteractiontodo( interactionid , todoid ){
-
+void JSONInterface::addInteractionTodos(InteractionTodos& interactions){
+    for (auto it = interactions.getItList()->begin(); it != interactions.getItList()->end(); ++it){
+        this->addContact(*(it));
+    }
 }
 
-void JSONInterface::addTodo( todoid , todocontent , tododate ){
+void JSONInterface::addInteractionTodo(InteractionTodo& interaction){
+    QJsonObject interactionTodoJSON;
 
+    QJsonObject currentInteractionJSON;
+    QJsonObject currentTodoJSON;
+    currentInteractionJSON.insert("Contenu",convertStringToQJsonValue(interaction.getI()->getContent()));
+    currentInteractionJSON.insert("Date",convertStringToQJsonValue(interaction.getI()->getDate().toString()));
+    currentInteractionJSON.insert("Contenu",convertStringToQJsonValue(interaction.getT()->getContent()));
+    currentInteractionJSON.insert("Date",convertStringToQJsonValue(interaction.getT()->getDate().toString()));
+
+    interactionTodoJSON.insert("Todo",currentTodoJSON);
+    interactionTodoJSON.insert("Intéraction",currentInteractionJSON);
+    this->interactionTodoListJSON.push_back(interactionTodoJSON);
 }
 
-void JSONInterface::export(){
+void JSONInterface::writeInFile(const QString& path,const QString& name){
+    QJsonObject root;
+    root.insert("Contact",this->contactListJSON);
+    root.insert("IntéractionsTodo",this->interactionTodoListJSON);
+    this->doc.setObject(root);
 
-}*/
+    QFile file(path+"/"+name+".json");
+        if(!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            qDebug() << "File open error";
+        } else {
+            qDebug() <<"File open!";
+        }
+
+    file.resize(0);
+    file.write(this->doc.toJson());
+    file.close();
+}
 
 QJsonValue JSONInterface::convertStringToQJsonValue(std::string s){
    return QString::fromStdString(s);
