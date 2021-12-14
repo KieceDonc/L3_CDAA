@@ -20,6 +20,7 @@ FindContact::FindContact(QWidget *parent) : QWidget(parent), ui(new Ui::FindCont
     this->ui->resultView->setSelectionBehavior( QAbstractItemView::SelectRows );
     this->ui->resultView->setSelectionMode( QAbstractItemView::SingleSelection );
     this->ui->resultView->verticalHeader()->hide();
+    this->ui->resultView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     connect(this->ui->findByComboBox,SIGNAL(currentIndexChanged(QString)),this,SLOT(onComboBoxItemChanged()));
     connect(this->ui->userInput,SIGNAL(textChanged(QString)),this,SLOT(onInputChanged()));
     connect(this->ui->resultView,SIGNAL(clicked(const QModelIndex &)),this,SLOT(onResultViewClicked(const QModelIndex &)));
@@ -230,7 +231,7 @@ void FindContact::resizeEvent(QResizeEvent *event){
     this->ui->resultView->setColumnWidth(4, size0);
 
     // size2 = size1 + int to compensate rounded divisions and avoid scrollbar
-    int size2 = this->ui->resultView->width()-size0*4-size1-2;
+    int size2 = this->ui->resultView->width()-size0*4-size1;
     this->ui->resultView->setColumnWidth(5, size2);
 }
 

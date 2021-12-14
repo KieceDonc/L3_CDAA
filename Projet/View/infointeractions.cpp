@@ -30,6 +30,7 @@ void InfoInteractions::fillInteractions()
     int taille = this->loadedContacts->size();
     std::list<ContactID> * lstContacts = this->loadedContacts;
     this->viewInteractions = new QTableWidget(taille,4);
+    this->viewInteractions->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     this->viewInteractions->setRowCount(0);
 
     QStringList labels;
@@ -109,6 +110,18 @@ void InfoInteractions::fillTodos()
     }
 
     this->ui->viewLayout->replaceWidget(this->viewInteractions,this->viewTodos);
+
+}
+
+void InfoInteractions::resizeEvent(QResizeEvent *event){
+    QWidget::resizeEvent(event);
+    int size0 = 100;
+    int size1 =  this->viewInteractions->width()*3-size0;
+
+    this->viewInteractions->setColumnWidth(0, size0);
+    this->viewInteractions->setColumnWidth(1, size0);
+    this->viewInteractions->setColumnWidth(2, size0);
+    this->viewInteractions->setColumnWidth(3, size1);
 
 }
 
