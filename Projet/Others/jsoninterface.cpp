@@ -1,6 +1,5 @@
 #include "jsoninterface.h"
 
-#include "QDebug"
 
 JSONInterface::JSONInterface(){
     //this->writeInFile("/mnt/3822CDE622CDA8E8/Coding_workplace/L3_CDAA/Projet/JSONExport","test");
@@ -51,8 +50,8 @@ void JSONInterface::addInteractionTodo(InteractionTodo& interaction){
     QJsonObject currentTodoJSON;
     currentInteractionJSON.insert("Contenu",convertStringToQJsonValue(interaction.getI()->getContent()));
     currentInteractionJSON.insert("Date",convertStringToQJsonValue(interaction.getI()->getDate().toString()));
-    currentInteractionJSON.insert("Contenu",convertStringToQJsonValue(interaction.getT()->getContent()));
-    currentInteractionJSON.insert("Date",convertStringToQJsonValue(interaction.getT()->getDate().toString()));
+    currentTodoJSON.insert("Contenu",convertStringToQJsonValue(interaction.getT()->getContent()));
+    currentTodoJSON.insert("Date",convertStringToQJsonValue(interaction.getT()->getDate().toString()));
 
     interactionTodoJSON.insert("Todo",currentTodoJSON);
     interactionTodoJSON.insert("Intéraction",currentInteractionJSON);
