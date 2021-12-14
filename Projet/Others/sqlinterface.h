@@ -31,10 +31,10 @@ public:
     ~SQLInterface();
 
     Contact* getContact(const QSqlQuery& query);
-
     void getAllContacts(std::list<ContactID>&, MapInteractionTodo&);
-
     void insertContact(Contact & c, std::list<ContactID> * = nullptr);
+    void deleteAllInteractions(ContactID & c);
+    void addInteraction(ContactID &c, Interaction * i , std::list<Todo *> lstT);
 
 signals:
 

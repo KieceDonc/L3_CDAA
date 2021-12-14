@@ -173,6 +173,57 @@ void SQLInterface::insertContact(Contact & c, std::list<ContactID> * lst){
 
 }
 
+void SQLInterface::deleteAllInteractions(ContactID &c)
+{
+
+    QSqlQuery queryDeleteContactInteractions;
+    QSqlQuery queryDeleteInteractionTodos;
+    QSqlQuery queryDeleteInteractions;
+    QSqlQuery queryDeleteTodos;
+
+    QString queryStringDeleteContactInteractions = "DELETE FROM contactinteraction WHERE contactid = :cid";
+    QString queryStringDeleteInteractionTodos = "DELETE FROM interactiontodo WHERE interactionid NOT IN (SELECT interactionid FROM contactinteraction)";
+    QString queryStringDeleteInteractions = "DELETE FROM interaction WHERE interactionid NOT IN (SELECT interactionid FROM contactinteraction)";
+    QString queryStringDeleteTodos = "DELETE FROM todo WHERE todoid NOT IN (SELECT todoid FROM interactiontodo);";
+
+    queryDeleteContactInteractions.prepare(queryStringDeleteContactInteractions);
+    queryDeleteContactInteractions.bindValue(":cid",c.id);
+    queryDeleteInteractionTodos.prepare(queryStringDeleteInteractionTodos);
+    queryDeleteInteractions.prepare(queryStringDeleteInteractions);
+    queryDeleteTodos.prepare(queryStringDeleteTodos);
+
+    if(!queryDeleteContactInteractions.exec())
+        qDebug()<<"contactinteraction deletion query faiiled";
+    else
+        qDebug()<<"contactinteraction deletion query successful";
+
+    if(!queryDeleteInteractionTodos.exec())
+        qDebug()<<"interactiontodo deletion query faiiled";
+    else
+        qDebug()<<"interactiontodo deletion query successful";
+
+    if(!queryDeleteInteractions.exec())
+        qDebug()<<"interaction deletion query faiiled";
+    else
+        qDebug()<<"interaction deletion query successful";
+
+    if(!queryDeleteTodos.exec())
+        qDebug()<<"todo deletion query faiiled";
+    else
+        qDebug()<<"todo deletion query successful";
+}
+
+void SQLInterface::addInteraction(ContactID &c, Interaction * i , std::list<Todo *> lstT)
+{
+
+    QSqlQuery queryDeleteContactInteractions;
+    QSqlQuery queryDeleteInteractionTodos;
+    QSqlQuery queryDeleteInteractions;
+    QSqlQuery queryDeleteTodos;
+
+
+}
+
 
 
 
