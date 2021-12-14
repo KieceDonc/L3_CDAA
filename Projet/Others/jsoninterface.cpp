@@ -40,7 +40,7 @@ void JSONInterface::addContact(ContactID& contactID){
 
 void JSONInterface::addInteractionTodos(InteractionTodos& interactions){
     for (auto it = interactions.getItList()->begin(); it != interactions.getItList()->end(); ++it){
-        this->addContact(*(it));
+        this->addInteractionTodo(*(it));
     }
 }
 
