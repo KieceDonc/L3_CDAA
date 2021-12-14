@@ -20,20 +20,17 @@ InfoContact::InfoContact(QWidget *parent, ContactID * c) :
     ui->linePhone->setText(QString::fromStdString(c->contact->getPhone()));
     ui->label_i->setFixedHeight((40));
     emit(displayInteractions());
+
     connect(this->ui->buttonSave,SIGNAL(clicked()),this,SLOT(onApplyClicked()));
-    connect(signalMapper, SIGNAL(mapped(int)),this, SIGNAL(clicked(int)));
     connect(this,SIGNAL(clicked(int)),this,SLOT(onDeleteButtonClicked(int)));
     connect(this->ui->buttonAddInteraction,SIGNAL(clicked()),this,SLOT(onAddInteractionClicked()));
-
-
-
 }
 
 void InfoContact::displayInteractions(){
     std::list<Interaction *> lst = this->currentContact->contact->getInteractions();
     int iButton = 0;
     signalMapper = new QSignalMapper(this);
-    connect(signalMapper, SIGNAL(mapped(int)), this, SIGNAL(clicked(int)));
+    connect(this->signalMapper, SIGNAL(mapped(int)), this, SIGNAL(clicked(int)));
 
     //emit(emptyInteractionsLayout());
 
@@ -50,7 +47,7 @@ void InfoContact::displayInteractions(){
             std::list<QHBoxLayout> lstInteractionLayout;
 
             // Delete button properties
-            b->setText("✕");
+            b->setText("✕"); // "✕"
             b->setFixedWidth(20);
             b->setFixedHeight(20);
 
@@ -67,7 +64,6 @@ void InfoContact::displayInteractions(){
 
             signalMapper->setMapping(b, iButton);
             connect(b, SIGNAL(clicked()), signalMapper, SLOT(map()));
-
 
             this->ui->interactionLayout->addLayout(qhb);
             qDebug() << this->ui->interactionLayout->count();
@@ -93,6 +89,8 @@ void InfoContact::onApplyClicked()
         if(d->isEnabled())
             this->currentContact->contact->addInteraction(new Interaction(d->date().toString("dd-MM-yyyy").toStdString(),t->toPlainText().toStdString()));
     }
+
+    emit updateContact();
 }
 
 void InfoContact::onDeleteButtonClicked(int i)
@@ -101,6 +99,7 @@ void InfoContact::onDeleteButtonClicked(int i)
     //this->currentContact->contact->removeInteraction(i);
     //emit(displayInteractions());
     QHBoxLayout * qhb = dynamic_cast<QHBoxLayout *>(this->ui->interactionLayout->itemAt(i));
+    qDebug() << "nb elements " << qhb->count();
     QPushButton * b = dynamic_cast<QPushButton *>(qhb->itemAt(0)->widget());
     QDateEdit * d = dynamic_cast<QDateEdit *>(qhb->itemAt(1)->widget());
     QPlainTextEdit * t = dynamic_cast<QPlainTextEdit *>(qhb->itemAt(2)->widget());

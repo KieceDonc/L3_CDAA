@@ -46,6 +46,7 @@ FindContact::FindContact(QWidget *parent) : QWidget(parent), ui(new Ui::FindCont
     // More information button connect
     connect(this->ui->buttonInfo,SIGNAL(clicked()),this,SLOT(onMoreInfoClicked()));
 
+
     this->currentAttribute=0;
 }
 
@@ -202,10 +203,23 @@ void FindContact::onClearClicked()
 
 void FindContact::onMoreInfoClicked()
 {
-    InfoContact * ic = new InfoContact(nullptr,this->selectedContact);
+    this->ic = new InfoContact(nullptr,this->selectedContact);
+    connect(this->ic,SIGNAL(updateContact()),this,SLOT(onUpdateContact()));
     ic->setAttribute(Qt::WA_DeleteOnClose);
     ic->setWindowModality(Qt::ApplicationModal);
     ic->show();
+}
+
+void FindContact::onUpdateContact()
+{
+    qDebug() << "DANS UPDATE CONTACT " << this->ic->currentContact->contact->getInteractions().size();
+
+    // Mapping the new interactions with according Todos
+    std::list<Interaction *> lst = this->ic->currentContact->contact->getInteractions();
+    std::list<Interaction *>::iterator itInter;
+    for(itInter = lst.begin() ; itInter != lst.end() ; itInter++)
+        this->mp->insert( *itInter );
+    this->sqli.addAllInteractions(*(this->ic->currentContact),*(this->mp));
 }
 
 void FindContact::onComboBoxItemChanged(){

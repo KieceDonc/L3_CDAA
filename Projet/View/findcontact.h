@@ -24,6 +24,7 @@ class FindContact : public QWidget{
 
         void init(std::list<ContactID>* lst);
         std::list<ContactID>* loadedContacts;
+        MapInteractionTodo * mp;
 
 
     public slots:
@@ -36,6 +37,7 @@ class FindContact : public QWidget{
         void onResultViewClicked(const QModelIndex &index);
         void onClearClicked();
         void onMoreInfoClicked();
+        void onUpdateContact();
 
 
 

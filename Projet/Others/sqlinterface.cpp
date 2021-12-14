@@ -188,6 +188,7 @@ void SQLInterface::deleteAllInteractions(ContactID &c)
 
     queryDeleteContactInteractions.prepare(queryStringDeleteContactInteractions);
     queryDeleteContactInteractions.bindValue(":cid",c.id);
+
     queryDeleteInteractionTodos.prepare(queryStringDeleteInteractionTodos);
     queryDeleteInteractions.prepare(queryStringDeleteInteractions);
     queryDeleteTodos.prepare(queryStringDeleteTodos);
@@ -213,15 +214,93 @@ void SQLInterface::deleteAllInteractions(ContactID &c)
         qDebug()<<"todo deletion query successful";
 }
 
-void SQLInterface::addInteraction(ContactID &c, Interaction * i , std::list<Todo *> lstT)
+void SQLInterface::addAllInteractions(ContactID &c, MapInteractionTodo &mp)
 {
 
-    QSqlQuery queryDeleteContactInteractions;
-    QSqlQuery queryDeleteInteractionTodos;
-    QSqlQuery queryDeleteInteractions;
-    QSqlQuery queryDeleteTodos;
+    std::list<Interaction *> lstInter = c.contact->getInteractions();
+    std::list<Todo *> lstTodo;
+    std::list<Interaction *>::iterator itInter;
+    std::list<Interaction *>::iterator itTodo;
+
+    deleteAllInteractions(c);
+
+    for(itInter = lstInter.begin() ; itInter != lstInter.end() ; itInter++){
+        lstTodo = mp.at(*itInter);
+        qDebug() << "TAILLE LST TODO"<<lstTodo.size();
+        this->insertInteraction(c,(*itInter),lstTodo);
+    }
+}
+
+void SQLInterface::insertInteraction(ContactID &c , Interaction *i, std::list<Todo *> & lstTodo)
+{
+    QSqlQuery queryInsertInteraction;
+    QSqlQuery queryInsertContactInteraction;
+    QSqlQuery queryInsertTodo;
+    QSqlQuery queryInsertInteractionTodo;
+    QSqlQuery queryLastInteractionID;
+    QSqlQuery queryLastTotoID;
+
+    QString queryStringInsertInteraction = "INSERT INTO interaction(interactiondate,interactioncontent) VALUES (:idate,:icont);";
+    QString queryStringInsertContactInteraction = "INSERT INTO contactinteraction(contactid,interactionid) SELECT :cid,lastinsert.lastid FROM lastinsert WHERE name = \"interactionid\";";
+    QString queryStringInsertTodo = "INSERT INTO todo(tododate,todocontent) VALUES (:tdate,:tcont);";
+    QString queryStringInteractionTodo = "INSERT INTO InteractionTodo VALUES(:iid,:tid);";
+    QString queryStringLastInteractionID = "SELECT lastid FROM lastinsert WHERE name=\"interactionid\";";
+    QString queryStringLastTotoID = "SELECT lastid FROM lastinsert WHERE name=\"todoid\";";
 
 
+    queryInsertInteraction.prepare(queryStringInsertInteraction);
+    queryInsertInteraction.bindValue(":idate",QString::fromStdString(i->getDate().toString()));
+    queryInsertInteraction.bindValue(":icont",QString::fromStdString(i->getContent()));
+
+    queryInsertContactInteraction.prepare(queryStringInsertContactInteraction);
+    queryInsertContactInteraction.bindValue(":cid",QString::number(c.id));
+
+    std::list<Todo *>::iterator itTodo;
+    QString interactionID;
+    QString todoID;
+
+    if(!queryInsertInteraction.exec())
+        qDebug()<<"insert interaction : interaction insertion query failed";
+    else{
+        qDebug()<<"insert interaction : interaction insertion query successful";
+        if(!queryInsertContactInteraction.exec())
+            qDebug()<<"insert interaction : contactinteractioninteraction insertion query failed";
+        else{
+            qDebug()<<"insert interaction : contactinteraction insertion query successful";
+            for(itTodo = lstTodo.begin() ; itTodo != lstTodo.end() ; itTodo++){
+                qDebug() << "ouaiiiiiiiis";
+                queryInsertTodo.prepare(queryStringInsertTodo);
+                queryInsertTodo.bindValue(":tdate",QString::fromStdString((*itTodo)->getDate().toString()));
+                queryInsertTodo.bindValue(":tcont",QString::fromStdString((*itTodo)->getContent()));
+
+
+                if(!queryInsertTodo.exec())
+                    qDebug()<<"insert interaction : todo insertion query failed";
+                else{
+                    qDebug()<<"insert interaction : todo insertion query successful";
+                    queryLastInteractionID.prepare(queryStringLastInteractionID);
+                    queryLastInteractionID.exec();
+                    queryLastInteractionID.next();
+                    interactionID = queryLastInteractionID.value(0).toString();
+
+                    queryLastTotoID.prepare(queryStringLastTotoID);
+                    queryLastTotoID.exec();
+                    queryLastTotoID.next();
+                    todoID = queryLastTotoID.value(0).toString();
+
+                    queryInsertInteractionTodo.prepare(queryStringInteractionTodo);
+                    queryInsertInteractionTodo.bindValue(":iid",interactionID);
+                    queryInsertInteractionTodo.bindValue(":tid",todoID);
+                    qDebug() << queryStringInteractionTodo << " | InteractionID:" << interactionID << " | todoID:" << todoID;
+                    if(!queryInsertInteractionTodo.exec())
+                        qDebug()<<"insert interaction : interactiontodo insertion query failed";
+                    else{
+                        qDebug()<<"insert interaction : interactiontodo insertion query successful";
+                    }
+                }
+            }
+        }
+    }
 }
 
 

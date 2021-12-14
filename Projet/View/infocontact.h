@@ -5,6 +5,7 @@
 #include <QWidget>
 #include <Model/contact.h>
 #include <Model/structid.h>
+#include <Others/sqlinterface.h>
 
 namespace Ui {
 class InfoContact;
@@ -18,6 +19,8 @@ public:
     explicit InfoContact(QWidget *parent = nullptr, ContactID * c = nullptr);
     ~InfoContact();
 
+    ContactID * currentContact;
+
 public slots :
     void displayInteractions();
     void onApplyClicked();
@@ -26,10 +29,10 @@ public slots :
 
 signals :
     void clicked(int);
+    void updateContact();
 
 private:
     Ui::InfoContact *ui;
-    ContactID * currentContact;
     QSignalMapper *signalMapper;
 };
 

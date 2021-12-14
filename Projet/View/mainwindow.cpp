@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     //this->refreshContactList();
 
     findcontact = new FindContact(this);
+    this->findcontact->mp = &(this->mapInteractionTodo);
     this->ui->middleLayout->addWidget(findcontact);
     findcontact->init(&this->loadedContacts);
     connect(this,SIGNAL(onContactListUpdate()),this->findcontact,SLOT(onContactListUpdate()));

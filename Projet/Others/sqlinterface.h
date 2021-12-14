@@ -34,7 +34,8 @@ public:
     void getAllContacts(std::list<ContactID>&, MapInteractionTodo&);
     void insertContact(Contact & c, std::list<ContactID> * = nullptr);
     void deleteAllInteractions(ContactID & c);
-    void addInteraction(ContactID &c, Interaction * i , std::list<Todo *> lstT);
+    void addAllInteractions(ContactID &c, MapInteractionTodo & mp);
+    void insertInteraction(ContactID &c , Interaction * , std::list<Todo *> &);
 
 signals:
 
