@@ -19,8 +19,7 @@ void JSONInterface::addContact(Contact& contact){
     std::list<Interaction*> interactionList = contact.getInteractions();
     for (int x=0 ;x<interactionList.size();x++){
         QJsonObject currentInteractionJSON;
-        std::list<Interaction*>::iterator it = interactionList.begin();
-        Interaction * currentInteraction = std::advance(it, x);
+        Interaction * currentInteraction = std::advance(interactionList.begin(), x);
         interactionListJSON.push_back(currentInteractionJSON);
     }
     contactObject.insert("Intéractions",interactionList);
