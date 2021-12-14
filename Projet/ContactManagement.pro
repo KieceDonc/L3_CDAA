@@ -26,7 +26,8 @@ SOURCES += \
     View/infointeractions.cpp \
     View/mainwindow.cpp \
     Others/main.cpp \
-    Others/sqlinterface.cpp
+    Others/sqlinterface.cpp \
+    Others/jsoninterface.cpp
 
 
 HEADERS += \
@@ -46,7 +47,8 @@ HEADERS += \
     View/infocontact.h \
     View/infointeractions.h \
     View/mainwindow.h \
-    Others/sqlinterface.h
+    Others/sqlinterface.h \
+    Others/jsoninterface.h
 
 FORMS += \
     View/findcontact.ui \
