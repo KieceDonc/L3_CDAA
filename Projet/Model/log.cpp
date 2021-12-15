@@ -7,16 +7,10 @@
  * \subsection actype Action types
  * The Action enum defines the type of action that has been perfomed on the contact with enum constants as follows :
  * <table><tr><td><b>ACTION_TYPE</b><td><b>Integer value</b></td><td>Corresponding action</td></tr>
- * <tr><td>ACTION_CREATION_CONTACT</td><td>0</td><td>The contact has been edited</td></tr>
- * <tr><td>ACTION_EDIT_PHOTO_CONTACT</td><td>1</td><td>Photo attribute has been edited</td></tr>
- * <tr><td>ACTION_EDIT_ENTERPRISE</td><td>2</td><td>Entreprise attribute has been edited</td></tr>
- * <tr><td>ACTION_EDIT_MAIL</td><td>3</td><td>Mail attribute has been edited</td></tr>
- * <tr><td>ACTION_EDIT_PHONT</td><td>4</td><td>Phone attribute has been edited</td></tr>
- * <tr><td>ACTION_DELETE_CONTACT</td><td>5</td><td>Contact has been deleted</td></tr>
- * <tr><td>ACTION_CREATION_INTERACTION</td><td>6</td><td>Interaction has been added</td></tr>
- * <tr><td>ACTION_DELETE_INTERACTION</td><td>7</td><td>Interaction has been deleted</td></tr>
- * <tr><td>ACTION_EDIT_INTERACTION</td><td>8</td><td>Interaction has been edited</td></tr>
- * <table>
+ * <tr><td>ACTION_CREATION_CONTACT</td><td>0</td><td>The contact has been made</td></tr>
+ * <tr><td>ACTION_UPDATE_CONTACT/td><td>1</td><td>The contact has been updated</td></tr>
+ * <tr><td>ACTION_DELETE_ENTERPRISE</td><td>2</td><td>The contact has been deleted</td></tr>
+ * </table>
  *
  */
 
@@ -69,14 +63,8 @@ Date Log::getDateOfAction(){
  * @brief Returns an int corresponding to the action done on the contact.
  *
  * @return int = 0  Contact creation
- * @return int = 1  Photo has been edited
- * @return int = 2  Enterprise has been edited
- * @return int = 3  Mail has been edited
- * @return int = 4  Phone number has been edited
- * @return int = 5  Contact has been deleted
- * @return int = 6  Interaction has been added
- * @return int = 7  Interaction has been edited
- * @return int = 8  Interaction has been deleted
+ * @return int = 1  Contact update
+ * @return int = 2  Contact deletion
  */
 Log::ActionType Log::getACTION_TYPE(){
   return this->ACTION_TYPE;
@@ -89,47 +77,21 @@ std::string Log::toString(){
             out+= "[CREATED CONTACT] ";
             break;
         }
-        case Log::EDIT_FIRST_NAME : {
-            out+= "[EDITED FIRST NAME] on ";
-            break;
-        }
-        case Log::EDIT_LAST_NAME : {
-            out+= "[EDITED LAST NAME] on ";
-            break;
-        }
-        case Log::EDIT_PHOTO : {
-            out+= "[EDITED PHOTO] on ";
-            break;
-        }
-        case Log::EDIT_ENTREPRISE : {
-            out+= "[EDITED ENTREPRISE] on ";
-            break;
-        }
-        case Log::EDIT_MAIL : {
-            out+= "[EDITED MAIL] on ";
-            break;
-        }
-        case Log::EDIT_PHONE : {
-            out+= "[EDITED PHONE] on ";
+        case Log::UPDATE_CONTACT : {
+            out+= "[UPDATED CONTACT]   ";
             break;
         }
         case Log::DELETE_CONTACT : {
-            return "[DELETED CONTACT]";
-        }
-        case Log::ADD_INTERACTION : {
-            out+= "[ADDED INTERACTION] on ";
-            break;
-        }
-        case Log::REMOVE_INTERACTION : {
-            out+= "[REMOVED INTERACTION] on ";
-            break;
-        }
-        case Log::EDIT_INTERACTION : {
-            out+= "[EDITED INTERACTION] on ";
-            break;
+            return "[DELETED CONTACT] ";
         }
     }
-    return out+this->getContact()->getFirstName()+" "+this->getContact()->getLastName();
+    std::string name;
+    if(this->getContact() == nullptr)
+        name = "-----";
+    else
+        name = this->getContact()->getFirstName()+" "+this->getContact()->getLastName();
+
+    return out+name;
 }
 
 /**

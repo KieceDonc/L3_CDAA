@@ -35,6 +35,8 @@ public:
     MapInteractionTodo mapInteractionTodo;
     SQLInterface sqli;
 
+    void makeJson();
+
 
 
 private:
@@ -44,9 +46,8 @@ private:
 public slots:
     void onContactFormComplete();
     void onQActionContactClicked();
-
+    void onActionExportJsonClicked();
     void onDisplayInteractionClicked();
-
     void loadContacts();
     //void refreshContactList();
 

@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "findcontact.h"
+#include "jsonform.h"
+
+#include <Others/jsoninterface.h>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow){
     ui->setupUi(this);
@@ -14,17 +17,18 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     // Connecting actions
     connect(this->ui->actionContact,SIGNAL(triggered()),this,SLOT(onQActionContactClicked()));
     connect(this->ui->actionDisplayInteractions,SIGNAL(triggered()),this,SLOT(onDisplayInteractionClicked()));
+    connect(this->ui->actionExport_JSON,SIGNAL(triggered()),this,SLOT(onActionExportJsonClicked()));
 
 
 
-
-    //this->refreshContactList();
 
     findcontact = new FindContact(this);
     this->findcontact->mp = &(this->mapInteractionTodo);
     this->ui->middleLayout->addWidget(findcontact);
     findcontact->init(&this->loadedContacts);
     connect(this,SIGNAL(onContactListUpdate()),this->findcontact,SLOT(onContactListUpdate()));
+
+    makeJson();
 
 
 }
@@ -51,11 +55,11 @@ void MainWindow::onContactFormComplete(){
 
 
 void MainWindow::onQActionContactClicked(){
-    if(!this->contactForm){
+    if(!this->contactForm)
         delete this->contactForm;
-    }
-
     this->contactForm = new CustomForm();
+    contactForm->setAttribute(Qt::WA_DeleteOnClose);
+    contactForm->setWindowModality(Qt::ApplicationModal);
     connect(this->contactForm,SIGNAL(onDataReady()),this,SLOT(onContactFormComplete()));
     this->contactForm->init({"Prénom","Nom","Entreprise","Email","Téléphone","Photo"});
 
@@ -63,8 +67,12 @@ void MainWindow::onQActionContactClicked(){
     this->currentForm = this->contactForm;
 }
 
-void MainWindow::onDisplayInteractionClicked()
-{
+void MainWindow::onActionExportJsonClicked(){
+    JsonForm * jsf = new JsonForm();
+    jsf->show();
+}
+
+void MainWindow::onDisplayInteractionClicked(){
     InfoInteractions * ii = new InfoInteractions(nullptr,&(this->loadedContacts),&(this->mapInteractionTodo));
     ii->setAttribute(Qt::WA_DeleteOnClose);
     ii->setWindowModality(Qt::ApplicationModal);
@@ -87,12 +95,16 @@ void MainWindow::loadContacts(){
 
 MainWindow::~MainWindow(){
     delete ui;
-
-    if(!this->contactForm){
+    if(!this->contactForm)
         delete this->contactForm;
-    }
-
-    if(!this->interactionForm){
+    if(!this->interactionForm)
         delete this->interactionForm;
-    }
+
+}
+
+void MainWindow::makeJson()
+{
+    /*JSONInterface jsi = JSONInterface();
+    jsi.addContact(&(this->loadedContacts));
+    jsi.writeInFile("/home/stinky/Bureau","test");*/
 }

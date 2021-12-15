@@ -93,6 +93,12 @@ void CustomForm::onButtonOkPush(){
 void CustomForm::onButtonPhotoClicked()
 {
     fileDialog = new QFileDialog();
+    QStringList filters;
+    fileDialog->setAttribute(Qt::WA_DeleteOnClose);
+    fileDialog->setWindowModality(Qt::ApplicationModal);
+    //filters << "*.png" << "*.jpg" << "*.bmp";
+    //QDir fileInfoList = dir.entryInfoList(filters, QDir::Files|QDir::NoDotAndDotDot);
+    //fileDialog->setFilter(filters);
     fileDialog->show();
     connect(this->fileDialog,SIGNAL(fileSelected(const QString &)),this,SLOT(onFileSelected(const QString &)));
 

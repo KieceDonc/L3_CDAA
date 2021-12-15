@@ -23,7 +23,6 @@ class JSONInterface{
     private:
         QJsonDocument doc;
         QJsonArray contactListJSON;
-        QJsonArray interactionTodoListJSON;
 };
 
 #endif // JSONINTERFACE_H

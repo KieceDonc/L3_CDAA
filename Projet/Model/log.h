@@ -17,16 +17,8 @@ class Log{
 
         enum ActionType{
             CREATION_CONTACT,
-            EDIT_FIRST_NAME,
-            EDIT_LAST_NAME,
-            EDIT_PHOTO,
-            EDIT_ENTREPRISE,
-            EDIT_MAIL,
-            EDIT_PHONE,
+            UPDATE_CONTACT,
             DELETE_CONTACT,
-            REMOVE_INTERACTION,
-            ADD_INTERACTION,
-            EDIT_INTERACTION
         };
 
         Log(Contact*, const ActionType);

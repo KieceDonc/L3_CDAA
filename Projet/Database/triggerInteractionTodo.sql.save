@@ -1,0 +1,1 @@
+QString queryStringInsertContactInteraction = "INSERT INTO contactinteraction VALUES (:cid,:iid);";

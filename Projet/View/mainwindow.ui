@@ -36,7 +36,15 @@
     <addaction name="actionContact"/>
     <addaction name="actionDisplayInteractions"/>
    </widget>
+   <widget class="QMenu" name="menuExport">
+    <property name="title">
+     <string>Export</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionExport_JSON"/>
+   </widget>
    <addaction name="menuFormulaire"/>
+   <addaction name="menuExport"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionInteraction">
@@ -57,6 +65,11 @@
   <action name="actionDisplayTodos">
    <property name="text">
     <string>Display todos</string>
+   </property>
+  </action>
+  <action name="actionExport_JSON">
+   <property name="text">
+    <string>Export JSON</string>
    </property>
   </action>
  </widget>

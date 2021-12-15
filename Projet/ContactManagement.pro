@@ -22,6 +22,7 @@ SOURCES += \
     View/findcontact.cpp \
     View/infocontact.cpp \
     View/infointeractions.cpp \
+    View/jsonform.cpp \
     View/mainwindow.cpp \
     Others/main.cpp \
     Others/sqlinterface.cpp \
@@ -42,6 +43,7 @@ HEADERS += \
     View/findcontact.h \
     View/infocontact.h \
     View/infointeractions.h \
+    View/jsonform.h \
     View/mainwindow.h \
     Others/sqlinterface.h \
     Others/jsoninterface.h
@@ -50,6 +52,7 @@ FORMS += \
     View/findcontact.ui \
     View/infocontact.ui \
     View/infointeractions.ui \
+    View/jsonform.ui \
     View/mainwindow.ui
 
 # Default rules for deployment.

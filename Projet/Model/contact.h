@@ -27,14 +27,14 @@ class Contact{
     void setDateOfCreation();
 
   public:
-    Contact(const std::string&, const std::string&, const std::string&, const std::string&, const std::string&, const std::string&, const Date& = Date(), Logs * = nullptr);
+    Contact(const std::string&, const std::string&, const std::string&, const std::string&, const std::string&, const std::string&, const Date& = Date());
 
-    void setFirstName(const std::string&, Logs * = nullptr);
-    void setLastName(const std::string&, Logs * = nullptr);
-    void setEnterprise(const std::string&, Logs * = nullptr);
-    void setMail(const std::string&, Logs * = nullptr);
-    void setPhone(const std::string&, Logs * = nullptr);
-    void setPhoto(const std::string&, Logs * = nullptr);
+    void setFirstName(const std::string&);
+    void setLastName(const std::string&);
+    void setEnterprise(const std::string&);
+    void setMail(const std::string&);
+    void setPhone(const std::string&);
+    void setPhoto(const std::string&);
     void setDateOfCreation(const Date& = Date());
     void setInteractions(std::list<Interaction *>);
 
@@ -48,8 +48,8 @@ class Contact{
     Date getDateOfCreation();
     std::list<Interaction *> getInteractions();
 
-    void addInteraction(Interaction*, Logs * = nullptr);
-    void removeInteraction(int, Logs * = nullptr);
+    void addInteraction(Interaction*);
+    void removeInteraction(int);
 
     ///@private hiding the debug func from doxygen
     std::string getDebugValues(int nbTabulations);

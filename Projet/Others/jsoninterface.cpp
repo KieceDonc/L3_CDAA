@@ -2,7 +2,8 @@
 
 
 JSONInterface::JSONInterface(){
-    //this->writeInFile("/mnt/3822CDE622CDA8E8/Coding_workplace/L3_CDAA/Projet/JSONExport","test");
+    //this->writeInFile("/home/stinky/Bureau","test");
+
 }
 
 void JSONInterface::addContact(std::list<ContactID>* contactList){
@@ -16,23 +17,23 @@ void JSONInterface::addContact(ContactID& contactID){
     Contact contact = *(contactID.contact);
 
     contactObject.insert("ID",contactID.id);
-    contactObject.insert("Prénom",convertStringToQJsonValue(contact.getFirstName()));
-    contactObject.insert("Nom",convertStringToQJsonValue(contact.getLastName()));
+    contactObject.insert("First Name",convertStringToQJsonValue(contact.getFirstName()));
+    contactObject.insert("Last Name",convertStringToQJsonValue(contact.getLastName()));
     contactObject.insert("Entreprise",convertStringToQJsonValue(contact.getEnterprise()));
     contactObject.insert("Mail",convertStringToQJsonValue(contact.getMail()));
-    contactObject.insert("Téléphone",convertStringToQJsonValue(contact.getPhone()));
+    contactObject.insert("Phone",convertStringToQJsonValue(contact.getPhone()));
     //contactObject.insert("Photo",convertStringToQJsonValue(contact.()));
-    contactObject.insert("Date de création",convertStringToQJsonValue(contact.getDateOfCreation().toString()));
+    contactObject.insert("Date",convertStringToQJsonValue(contact.getDateOfCreation().toString()));
 
     QJsonArray interactionListJSON;
     std::list<Interaction*> interactionList = contact.getInteractions();
     for (auto it = interactionList.begin(); it != interactionList.end(); ++it){
         QJsonObject currentInteractionJSON;
-        currentInteractionJSON.insert("Contenu",convertStringToQJsonValue((*it)->getContent()));
+        currentInteractionJSON.insert("Content",convertStringToQJsonValue((*it)->getContent()));
         currentInteractionJSON.insert("Date",convertStringToQJsonValue((*it)->getDate().toString()));
         interactionListJSON.push_back(currentInteractionJSON);
     }
-    contactObject.insert("Intéractions",interactionListJSON);
+    contactObject.insert("Interactions",interactionListJSON);
 
     this->contactListJSON.push_back(contactObject);
 }
@@ -40,7 +41,6 @@ void JSONInterface::addContact(ContactID& contactID){
 void JSONInterface::writeInFile(const QString& path,const QString& name){
     QJsonObject root;
     root.insert("Contact",this->contactListJSON);
-    root.insert("IntéractionsTodo",this->interactionTodoListJSON);
     this->doc.setObject(root);
 
     QFile file(path+"/"+name+".json");
