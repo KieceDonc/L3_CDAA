@@ -152,11 +152,17 @@ void InfoContact::showPhoto()
     QImage photo = QImage(path);
            if(!photo.isNull())
            {
-               QImage photoScaled = photo.scaled(ui->viewPhoto->rect().width(), ui->viewPhoto->rect().height());
+               QImage photoScaled;
+               if(photo.width() > photo.height()){
+                   photoScaled = photo.scaledToWidth(600);
+               }else{
+                   photoScaled = photo.scaledToHeight(600);
+               }
                QGraphicsScene* scene = new QGraphicsScene(this);
                scene->addPixmap(QPixmap::fromImage(photoScaled));
                delete ui->viewPhoto->scene();
                ui->viewPhoto->setScene(scene);
+               ui->viewPhoto->setMinimumSize(photoScaled.width()*1.2,photoScaled.height()*1.2);
            }
 }
 
