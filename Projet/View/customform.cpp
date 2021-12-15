@@ -1,5 +1,7 @@
 #include "customform.h"
 
+#include <QFileDialog>
+
 CustomForm::CustomForm(QWidget *parent) : QWidget(parent){
 
 }
@@ -32,6 +34,14 @@ void CustomForm::init(std::vector<QString> fieldNameList){
         this->fieldsLayout->addRow(this->labelList[index],this->lineEditList[index]);
     }
 
+    // Initializing file dialog
+    //QFileDialog * qf = new QFileDialog();
+
+    // On initialise le bouton pour le choix d'une photo
+    QPushButton * bPhoto = new QPushButton();
+    bPhoto->setText("Chose a picture");
+    connect(bPhoto,SIGNAL(clicked()),this,SLOT(onButtonPhotoClicked()));
+
     // On initialise le bouton ok
     this->pushButtonOK = new QPushButton();
     this->pushButtonOK->setText("OK");
@@ -40,6 +50,10 @@ void CustomForm::init(std::vector<QString> fieldNameList){
     // On ajoute le layout des champs + le boutton ok au layout principal
     this->mainLayout->addItem(this->fieldsLayout);
     this->mainLayout->addWidget(this->pushButtonOK);
+    this->mainLayout->addWidget(bPhoto);
+
+    // Disabling photo field
+    lineEditList[5]->setEnabled(false);
 
     // On décrit que le layout de ce widget est le mainLayout
     this->setLayout(this->mainLayout);
@@ -74,6 +88,20 @@ void CustomForm::onButtonOkPush(){
         emit onDataReady();
         this->close();
     }
+}
+
+void CustomForm::onButtonPhotoClicked()
+{
+    fileDialog = new QFileDialog();
+    fileDialog->show();
+    connect(this->fileDialog,SIGNAL(fileSelected(const QString &)),this,SLOT(onFileSelected(const QString &)));
+
+}
+
+void CustomForm::onFileSelected(const QString & path)
+{
+    //QString filePath = fileDialog->selectedFiles().at(0);
+    lineEditList[5]->setText(path);
 }
 
 CustomForm::~CustomForm(){

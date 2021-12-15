@@ -22,16 +22,20 @@ public:
     MapInteractionTodo * mapInterationTodo;
 
     void fillInteractions();
+    void fillTodos();
 
 
 public slots :
-    void fillTodos();
-
+    void switchViews();
+    void sortViews();
 
 private:
     Ui::InfoInteractions *ui;
     QTableWidget * viewInteractions;
     QTableWidget * viewTodos;
+
+signals:
+    void triggerSortViews();
 
 protected:
     void resizeEvent(QResizeEvent *event);

@@ -13,7 +13,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     // Connecting actions
     connect(this->ui->actionContact,SIGNAL(triggered()),this,SLOT(onQActionContactClicked()));
-    connect(this->ui->actionInteraction,SIGNAL(triggered()),this,SLOT(onQActionInteractionClicked()));
     connect(this->ui->actionDisplayInteractions,SIGNAL(triggered()),this,SLOT(onDisplayInteractionClicked()));
 
 
@@ -40,28 +39,16 @@ void MainWindow::onContactFormComplete(){
     QString contactPhone = data.at("Téléphone");
     QString contactPhoto = data.at("Photo");
 
-    Contact c = Contact(contactFirstName.toStdString(),contactLastName.toStdString(),contactEntreprise.toStdString(),contactEmail.toStdString(),contactPhone.toStdString(),Photo(),Date());
+    Contact c = Contact(contactFirstName.toStdString(),contactLastName.toStdString(),contactEntreprise.toStdString(),contactEmail.toStdString(),contactPhone.toStdString(),contactPhoto.toStdString(),Date());
     this->sqli.insertContact(c,&(this->loadedContacts));
 
     this->loadedContacts = std::list<ContactID>();
     this->loadContacts();
 
-    for(std::list<ContactID>::iterator it = this->loadedContacts.begin() ; it != this->loadedContacts.end() ; it++){
-        qDebug() << (*it).id;
-        qDebug() << QString::fromStdString((*it).contact->getFirstName());
-    }
-
-
     emit onContactListUpdate();
     //this->refreshContactList();
 }
 
-void MainWindow::onInteractionFormComplete(){
-    std::map<QString,QString> data = this->currentForm->getData();
-
-    QString contactFirstName = data.at("Date");
-
-}
 
 void MainWindow::onQActionContactClicked(){
     if(!this->contactForm){
@@ -76,18 +63,6 @@ void MainWindow::onQActionContactClicked(){
     this->currentForm = this->contactForm;
 }
 
-void MainWindow::onQActionInteractionClicked(){
-    if(!this->interactionForm){
-        delete this->interactionForm;
-    }
-
-    this->interactionForm = new CustomForm();
-    connect(this->interactionForm,SIGNAL(onDataReady()),this,SLOT(onInteractionFormComplete()));
-    this->interactionForm->init({"Date","Contenu"});
-
-    this->currentForm = this->interactionForm;
-}
-
 void MainWindow::onDisplayInteractionClicked()
 {
     InfoInteractions * ii = new InfoInteractions(nullptr,&(this->loadedContacts),&(this->mapInteractionTodo));
@@ -97,11 +72,9 @@ void MainWindow::onDisplayInteractionClicked()
 }
 
 void MainWindow::loadContacts(){
-    qDebug() << "ICI";
     this->sqli.getAllContacts(this->loadedContacts, this->mapInteractionTodo);
     auto l_front = loadedContacts.begin();
     std::advance(l_front,1);
-    qDebug() <<"TAILLE : " << l_front->contact->getInteractions().size();
     emit onContactListUpdate();
 }
 

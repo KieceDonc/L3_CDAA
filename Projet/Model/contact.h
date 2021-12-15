@@ -21,20 +21,20 @@ class Contact{
     std::string enterprise;
     std::string mail;
     std::string phone;
-    Photo photo;
+    std::string photo;
     Date dateOfCreation;
     std::list<Interaction *> interactions;
     void setDateOfCreation();
 
   public:
-    Contact(const std::string&, const std::string&, const std::string&, const std::string&, const std::string&, const Photo&, const Date& = Date(), Logs * = nullptr);
+    Contact(const std::string&, const std::string&, const std::string&, const std::string&, const std::string&, const std::string&, const Date& = Date(), Logs * = nullptr);
 
     void setFirstName(const std::string&, Logs * = nullptr);
     void setLastName(const std::string&, Logs * = nullptr);
     void setEnterprise(const std::string&, Logs * = nullptr);
     void setMail(const std::string&, Logs * = nullptr);
     void setPhone(const std::string&, Logs * = nullptr);
-    void setPhoto(const Photo&, Logs * = nullptr);
+    void setPhoto(const std::string&, Logs * = nullptr);
     void setDateOfCreation(const Date& = Date());
     void setInteractions(std::list<Interaction *>);
 
@@ -44,7 +44,7 @@ class Contact{
     std::string getEnterprise();
     std::string getMail();
     std::string getPhone();
-    Photo getPhoto();
+    std::string getPhoto();
     Date getDateOfCreation();
     std::list<Interaction *> getInteractions();
 

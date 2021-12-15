@@ -26,10 +26,12 @@ public slots :
     void onApplyClicked();
     void onDeleteButtonClicked(int);
     void onAddInteractionClicked();
+    void showPhoto();
 
 signals :
     void clicked(int);
     void updateContact();
+    void triggerShowPhoto();
 
 private:
     Ui::InfoContact *ui;

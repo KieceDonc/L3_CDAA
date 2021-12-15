@@ -3,8 +3,10 @@
 #include <QDateEdit>
 #include <QDebug>
 #include <QDir>
+#include <QGraphicsScene>
 #include <QPlainTextEdit>
 #include <QPushButton>
+#include <QGraphicsScene>
 
 InfoContact::InfoContact(QWidget *parent, ContactID * c) :
     QWidget(parent),
@@ -12,7 +14,6 @@ InfoContact::InfoContact(QWidget *parent, ContactID * c) :
 {
     ui->setupUi(this);
     this->currentContact = c;
-    this->ui->labelPhoto->setText(QDir::currentPath() );
     ui->lineFirstName->setText(QString::fromStdString(c->contact->getFirstName()));
     ui->lineLastName->setText(QString::fromStdString(c->contact->getLastName()));
     ui->lineEntreprise->setText(QString::fromStdString(c->contact->getEnterprise()));
@@ -24,6 +25,8 @@ InfoContact::InfoContact(QWidget *parent, ContactID * c) :
     connect(this->ui->buttonSave,SIGNAL(clicked()),this,SLOT(onApplyClicked()));
     connect(this,SIGNAL(clicked(int)),this,SLOT(onDeleteButtonClicked(int)));
     connect(this->ui->buttonAddInteraction,SIGNAL(clicked()),this,SLOT(onAddInteractionClicked()));
+    connect(this,SIGNAL(triggerShowPhoto()),this,SLOT(showPhoto()));
+    emit(triggerShowPhoto());
 }
 
 void InfoContact::displayInteractions(){
@@ -37,7 +40,6 @@ void InfoContact::displayInteractions(){
     if(!lst.empty()){
 
         std::list<Interaction *>::iterator it;
-        qDebug() << QString::fromStdString(lst.front()->getContent());
         for(it = lst.begin() ; it != lst.end() ; it++){
 
             QHBoxLayout * qhb = new QHBoxLayout();
@@ -66,7 +68,6 @@ void InfoContact::displayInteractions(){
             connect(b, SIGNAL(clicked()), signalMapper, SLOT(map()));
 
             this->ui->interactionLayout->addLayout(qhb);
-            qDebug() << this->ui->interactionLayout->count();
             iButton++;
         }
     }
@@ -99,7 +100,6 @@ void InfoContact::onDeleteButtonClicked(int i)
     //this->currentContact->contact->removeInteraction(i);
     //emit(displayInteractions());
     QHBoxLayout * qhb = dynamic_cast<QHBoxLayout *>(this->ui->interactionLayout->itemAt(i));
-    qDebug() << "nb elements " << qhb->count();
     QPushButton * b = dynamic_cast<QPushButton *>(qhb->itemAt(0)->widget());
     QDateEdit * d = dynamic_cast<QDateEdit *>(qhb->itemAt(1)->widget());
     QPlainTextEdit * t = dynamic_cast<QPlainTextEdit *>(qhb->itemAt(2)->widget());
@@ -144,6 +144,20 @@ void InfoContact::onAddInteractionClicked()
 
 
     this->ui->interactionLayout->addLayout(qhb);
+}
+
+void InfoContact::showPhoto()
+{
+    QString path = QString::fromStdString(this->currentContact->contact->getPhoto());
+    QImage photo = QImage(path);
+           if(!photo.isNull())
+           {
+               QImage photoScaled = photo.scaled(ui->viewPhoto->rect().width(), ui->viewPhoto->rect().height());
+               QGraphicsScene* scene = new QGraphicsScene(this);
+               scene->addPixmap(QPixmap::fromImage(photoScaled));
+               delete ui->viewPhoto->scene();
+               ui->viewPhoto->setScene(scene);
+           }
 }
 
 InfoContact::~InfoContact()

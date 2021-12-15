@@ -33,9 +33,12 @@ public:
     Contact* getContact(const QSqlQuery& query);
     void getAllContacts(std::list<ContactID>&, MapInteractionTodo&);
     void insertContact(Contact & c, std::list<ContactID> * = nullptr);
+    void updateContact(ContactID & c);
+    void deleteContact(ContactID & c);
     void deleteAllInteractions(ContactID & c);
     void addAllInteractions(ContactID &c, MapInteractionTodo & mp);
     void insertInteraction(ContactID &c , Interaction * , std::list<Todo *> &);
+
 
 signals:
 

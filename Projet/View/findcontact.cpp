@@ -26,6 +26,10 @@ FindContact::FindContact(QWidget *parent) : QWidget(parent), ui(new Ui::FindCont
     connect(this->ui->resultView,SIGNAL(clicked(const QModelIndex &)),this,SLOT(onResultViewClicked(const QModelIndex &)));
     connect(this->ui->buttonClear,SIGNAL(clicked()),this,SLOT(onClearClicked()));
 
+    // Delete contact button
+    connect(this,SIGNAL(triggerClear()),this,SLOT(onClearClicked()));
+    connect(this->ui->buttonDelete,SIGNAL(clicked()),this,SLOT(onDeleteClicked()));
+
     // Setting calendar widget to pickdates
     qc = new QCalendarWidget();
     this->ui->lineDate1->setText("01-01-1970");
@@ -45,6 +49,7 @@ FindContact::FindContact(QWidget *parent) : QWidget(parent), ui(new Ui::FindCont
 
     // More information button connect
     connect(this->ui->buttonInfo,SIGNAL(clicked()),this,SLOT(onMoreInfoClicked()));
+
 
 
     this->currentAttribute=0;
@@ -210,16 +215,24 @@ void FindContact::onMoreInfoClicked()
     ic->show();
 }
 
+void FindContact::onDeleteClicked()
+{
+    this->sqli.deleteContact(*(this->selectedContact));
+    this->loadedContacts->remove(*(this->selectedContact));
+    emit triggerClear();
+    this->updateResultView();
+}
+
 void FindContact::onUpdateContact()
 {
-    qDebug() << "DANS UPDATE CONTACT " << this->ic->currentContact->contact->getInteractions().size();
-
     // Mapping the new interactions with according Todos
     std::list<Interaction *> lst = this->ic->currentContact->contact->getInteractions();
     std::list<Interaction *>::iterator itInter;
     for(itInter = lst.begin() ; itInter != lst.end() ; itInter++)
         this->mp->insert( *itInter );
     this->sqli.addAllInteractions(*(this->ic->currentContact),*(this->mp));
+    this->sqli.updateContact(*(this->ic->currentContact));
+    this->updateResultView();
 }
 
 void FindContact::onComboBoxItemChanged(){

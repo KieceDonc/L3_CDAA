@@ -37,27 +37,6 @@ void JSONInterface::addContact(ContactID& contactID){
     this->contactListJSON.push_back(contactObject);
 }
 
-void JSONInterface::addInteractionTodos(InteractionTodos& interactions){
-    for (auto it = interactions.getItList()->begin(); it != interactions.getItList()->end(); ++it){
-        this->addInteractionTodo(*(it));
-    }
-}
-
-void JSONInterface::addInteractionTodo(InteractionTodo& interaction){
-    QJsonObject interactionTodoJSON;
-
-    QJsonObject currentInteractionJSON;
-    QJsonObject currentTodoJSON;
-    currentInteractionJSON.insert("Contenu",convertStringToQJsonValue(interaction.getI()->getContent()));
-    currentInteractionJSON.insert("Date",convertStringToQJsonValue(interaction.getI()->getDate().toString()));
-    currentTodoJSON.insert("Contenu",convertStringToQJsonValue(interaction.getT()->getContent()));
-    currentTodoJSON.insert("Date",convertStringToQJsonValue(interaction.getT()->getDate().toString()));
-
-    interactionTodoJSON.insert("Todo",currentTodoJSON);
-    interactionTodoJSON.insert("Intéraction",currentInteractionJSON);
-    this->interactionTodoListJSON.push_back(interactionTodoJSON);
-}
-
 void JSONInterface::writeInFile(const QString& path,const QString& name){
     QJsonObject root;
     root.insert("Contact",this->contactListJSON);

@@ -129,7 +129,14 @@
      <item>
       <widget class="QPushButton" name="buttonInfo">
        <property name="text">
-        <string>Plus d'informations</string>
+        <string>More Information</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="buttonDelete">
+       <property name="text">
+        <string>Delete Contact</string>
        </property>
       </widget>
      </item>

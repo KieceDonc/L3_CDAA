@@ -69,7 +69,7 @@ Contact* SQLInterface::getContact(const QSqlQuery& query){
                        query.value(3).toString().toStdString(),
                        query.value(4).toString().toStdString(),
                        query.value(5).toString().toStdString(),
-                       Photo(),
+                       query.value(7).toString().toStdString(),
                        Date(query.value(6).toString().toStdString()));
     c->setInteractions(lst);
 
@@ -127,7 +127,7 @@ void SQLInterface::getAllContacts(std::list<ContactID> & lstContacts, MapInterac
                                    query.value(3).toString().toStdString(),
                                    query.value(4).toString().toStdString(),
                                    query.value(5).toString().toStdString(),
-                                   Photo(),
+                                   query.value(7).toString().toStdString(),
                                    Date(query.value(6).toString().toStdString()));
                 c->setInteractions(lst);
 
@@ -142,7 +142,7 @@ void SQLInterface::getAllContacts(std::list<ContactID> & lstContacts, MapInterac
 void SQLInterface::insertContact(Contact & c, std::list<ContactID> * lst){
 
     if(DBOpen){
-        QString queryString = "INSERT INTO contact (firstname,lastname,entreprise,mail,phone,dateofcreation,photo) VALUES (:fn,:ln,:entr,:mail,:phone,:doc,NULL)";
+        QString queryString = "INSERT INTO contact (firstname,lastname,entreprise,mail,phone,dateofcreation,photo) VALUES (:fn,:ln,:entr,:mail,:phone,:doc,:photo)";
         QSqlQuery query;
         query.prepare(queryString);
         query.bindValue(":fn",QString::fromStdString(c.getFirstName()));
@@ -151,6 +151,7 @@ void SQLInterface::insertContact(Contact & c, std::list<ContactID> * lst){
         query.bindValue(":mail",QString::fromStdString(c.getMail()));
         query.bindValue(":phone",QString::fromStdString(c.getPhone()));
         query.bindValue(":doc",QString::fromStdString(c.getDateOfCreation().toString()));
+        query.bindValue(":photo",QString::fromStdString(c.getPhoto()));
 
         if(!query.exec())
             qDebug()<<"Requête d'insertion de contact impossible";
@@ -170,6 +171,43 @@ void SQLInterface::insertContact(Contact & c, std::list<ContactID> * lst){
 
 
 
+
+}
+
+void SQLInterface::updateContact(ContactID &c)
+{
+    QSqlQuery queryUpdate;
+    QString queryStringUpdate = "UPDATE contact SET firstname = :fn, lastname = :ln, entreprise = :ent, mail = :mail, phone = :phone, dateofcreation = :date WHERE ContactID = :cid";
+    //QString queryStringUpdate = "UPDATE contact SET firstname = \"aaa\", lastname = \"aaa\", entreprise = \"aaa\", mail = \"aaa\", phone = \"aaa\", dateofcreation = \"25-05-2000\" WHERE ContactID = 19";
+    queryUpdate.prepare(queryStringUpdate);
+    queryUpdate.bindValue(":fn",QString::fromStdString(c.contact->getFirstName()));
+    queryUpdate.bindValue(":ln",QString::fromStdString(c.contact->getLastName()));
+    queryUpdate.bindValue(":ent",QString::fromStdString(c.contact->getEnterprise()));
+    queryUpdate.bindValue(":mail",QString::fromStdString(c.contact->getMail()));
+    queryUpdate.bindValue(":phone",QString::fromStdString(c.contact->getPhone()));
+    queryUpdate.bindValue(":date",QString::fromStdString(c.contact->getDateOfCreation().toString()));
+    queryUpdate.bindValue(":cid",c.id);
+
+    if(!queryUpdate.exec())
+        qDebug()<<"Contact update query faiiled";
+    else
+        qDebug()<<"Contact update query successful";
+}
+
+void SQLInterface::deleteContact(ContactID & c)
+{
+    deleteAllInteractions(c);
+
+    QSqlQuery queryDelete;
+    QString queryStringDelete = "DELETE FROM contact WHERE contactid = :cid";
+    queryDelete.prepare(queryStringDelete);
+    queryDelete.bindValue(":cid",c.id);
+    std::list<ContactID>::iterator itContact;
+
+    if(!queryDelete.exec())
+        qDebug()<<"Contact deletion query faiiled";
+    else
+        qDebug()<<"Contact deletion query successful";
 
 }
 

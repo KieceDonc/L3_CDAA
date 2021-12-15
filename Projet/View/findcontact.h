@@ -21,26 +21,27 @@ class FindContact : public QWidget{
     public:
         explicit FindContact(QWidget *parent = nullptr);
         ~FindContact();
-
+        void updateResultView();
         void init(std::list<ContactID>* lst);
+
         std::list<ContactID>* loadedContacts;
         MapInteractionTodo * mp;
 
 
     public slots:
-        void onComboBoxItemChanged();
-        void onInputChanged();
         void onContactListUpdate();
+        void onUpdateContact();
+
         void pickDateBegin();
         void pickDateEnd();
         void setDate();
-        void onResultViewClicked(const QModelIndex &index);
+
+        void onComboBoxItemChanged();
+        void onInputChanged();
         void onClearClicked();
         void onMoreInfoClicked();
-        void onUpdateContact();
-
-
-
+        void onDeleteClicked();
+        void onResultViewClicked(const QModelIndex &index);
 
     private:
         Ui::FindContact *ui;
@@ -54,7 +55,8 @@ class FindContact : public QWidget{
         std::string currentAttributeValue;
         ContactID * selectedContact;
 
-        void updateResultView();
+    signals:
+        void triggerClear();
 
 
     protected:

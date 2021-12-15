@@ -17,8 +17,6 @@ SOURCES += \
     Model/photo.cpp \
     Model/contact.cpp \
     Model/interaction.cpp \
-    Model/interactiontodo.cpp \
-    Model/interactiontodos.cpp \
     Model/date.cpp \
     View/customform.cpp \
     View/findcontact.cpp \
@@ -39,8 +37,6 @@ HEADERS += \
     Model/photo.h \
     Model/contact.h \
     Model/interaction.h \
-    Model/interactiontodo.h \
-    Model/interactiontodos.h \
     Model/date.h \
     View/customform.h \
     View/findcontact.h \

@@ -10,13 +10,32 @@ InfoInteractions::InfoInteractions(QWidget *parent,std::list<ContactID> * lst, M
 {
     ui->setupUi(this);
 
-    connect(this->ui->buttonSwitch,SIGNAL(clicked()),this,SLOT(fillTodos()));
-
+    connect(this->ui->buttonSwitch,SIGNAL(clicked()),this,SLOT(switchViews()));
+    this->ui->buttonSwitch->setText("Switch for Todos");
     this->loadedContacts = lst;
     this->mapInterationTodo = map;
 
 
+    this->ui->dateEdit1->setDate(QDate::fromString("01-01-1970","dd-MM-yyyy"));
+    this->ui->dateEdit2->setDate(QDate::fromString("31-12-2500","dd-MM-yyyy"));
+    connect(this->ui->dateEdit1,SIGNAL(editingFinished()),this,SLOT(sortViews()));
+    connect(this->ui->dateEdit2,SIGNAL(editingFinished()),this,SLOT(sortViews()));
+    connect(this->ui->lineFirstName,SIGNAL(editingFinished()),this,SLOT(sortViews()));
+    connect(this->ui->lineLastName,SIGNAL(editingFinished()),this,SLOT(sortViews()));
+    connect(this->ui->lineContent,SIGNAL(editingFinished()),this,SLOT(sortViews()));
+    connect(this,SIGNAL(triggerSortViews()),this,SLOT(sortViews()));
+
+
     this->fillInteractions();
+    this->fillTodos();
+    this->ui->viewLayout->addWidget(this->viewInteractions);
+
+    this->ui->viewLayout->addWidget(this->viewInteractions);
+    this->ui->viewLayout->addWidget(this->viewTodos);
+    this->viewTodos->hide();
+    this->viewInteractions->show();
+
+
 
 }
 
@@ -32,6 +51,8 @@ void InfoInteractions::fillInteractions()
     this->viewInteractions = new QTableWidget(taille,4);
     this->viewInteractions->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     this->viewInteractions->setRowCount(0);
+
+
 
     QStringList labels;
     labels << "First name" << "Last Name" << "Date" << "Interaction";
@@ -59,22 +80,21 @@ void InfoInteractions::fillInteractions()
                 rowIndex++;
         }
     }
-
-    this->ui->viewLayout->addWidget(this->viewInteractions);
+    this->viewInteractions->setSortingEnabled(true);
 
 }
 
 void InfoInteractions::fillTodos()
 {
-    qDebug() << "test";
-    int taille = this->loadedContacts->size();
     std::list<ContactID> * lstContacts = this->loadedContacts;
     this->viewTodos = new QTableWidget(0,4);
     this->viewTodos->setRowCount(0);
+    this->viewTodos->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
 
     QStringList labels;
-    labels << "First name" << "Last Name" << "Date" << "Interaction";
-    //this->viewInteractions->setHorizontalHeaderLabels(labels);
+    labels << "First name" << "Last Name" << "Date" << "Todo";
+    this->viewTodos->setHorizontalHeaderLabels(labels);
 
 
 
@@ -91,7 +111,6 @@ void InfoInteractions::fillTodos()
             if(this->mapInterationTodo->hasKey(*itInteraction) && !( this->mapInterationTodo->at(*itInteraction).empty() ) ){
                 std::list<Todo *> lstTodos = this->mapInterationTodo->at(*itInteraction);
                 for(itTodo = lstTodos.begin(); itTodo != lstTodos.end() ; itTodo++){
-                    qDebug() << QString::fromStdString((*itTodo)->getDate().toString());
                     QDate date = QDate::fromString(QString::fromStdString((*itTodo)->getDate().toString()),"dd-MM-yyyy");
                     QTableWidgetItem * itemFirstName = new QTableWidgetItem(QString::fromStdString((*itContact).contact->getFirstName()));
                     QTableWidgetItem * itemLastName = new QTableWidgetItem(QString::fromStdString((*itContact).contact->getLastName()));
@@ -108,21 +127,78 @@ void InfoInteractions::fillTodos()
             }
         }
     }
+    this->viewTodos->setSortingEnabled(true);
+}
 
-    this->ui->viewLayout->replaceWidget(this->viewInteractions,this->viewTodos);
+void InfoInteractions::switchViews()
+{
+    if(this->ui->buttonSwitch->text() == "Switch for Todos"){
+        this->ui->buttonSwitch->setText("Switch for Interactions");
+        this->viewInteractions->hide();
+        this->viewTodos->show();
+        this->resize(this->geometry().width(), this->geometry().height());
+    }else{
+        this->ui->buttonSwitch->setText("Switch for Todos");
+        this->viewTodos->hide();
+        this->viewInteractions->show();
+        this->resize(this->geometry().width(), this->geometry().height());
+    }
 
+    emit triggerSortViews();
+}
+
+void InfoInteractions::sortViews()
+{
+    QTableWidget * view;
+    if(this->ui->buttonSwitch->text() == "Switch for Todos")
+        view = this->viewInteractions;
+    else
+        view = this->viewTodos;
+
+    QDate dateBegin = this->ui->dateEdit1->date();
+    QDate dateEnd = this->ui->dateEdit2->date();
+    QString firstNameLine(this->ui->lineFirstName->text());
+    QString lastNameLine(this->ui->lineLastName->text());
+    QString contentLine(this->ui->lineContent->text());
+
+    int rowCount = view->rowCount();
+
+    for(int index = 0 ; index < rowCount ; index++){
+
+        QString firstName = view->item(index,0)->text();
+        QString lastName = view->item(index,1)->text();
+        QString content = view->item(index,3)->text();
+        QDate date = QDate::fromString(view->item(index,2)->text(),"yyyy-MM-dd");
+
+        bool isFirstNameOk = ( firstNameLine == "" ) || ( firstName.contains(firstNameLine , Qt::CaseInsensitive) ) ;
+        bool isLastNameOk = ( lastNameLine == "" ) || ( lastName.contains(lastNameLine , Qt::CaseInsensitive) ) ;
+        bool isContent = ( contentLine == "" ) || ( content.contains(contentLine , Qt::CaseInsensitive) ) ;
+
+        if(date > dateBegin && date < dateEnd && isFirstNameOk && isLastNameOk && isContent )
+            view->showRow(index);
+        else
+            view->hideRow(index);
+
+
+    }
 }
 
 void InfoInteractions::resizeEvent(QResizeEvent *event){
-    QWidget::resizeEvent(event);
     int size0 = 100;
-    int size1 =  this->viewInteractions->width()*3-size0;
+    int size1;
+    if(this->ui->buttonSwitch->text() == "Switch for Todos")
+        size1 =  this->viewInteractions->width()-(3*size0)-20;
+    else
+        size1 =  this->viewTodos->width()-(3*size0)-20;
 
     this->viewInteractions->setColumnWidth(0, size0);
     this->viewInteractions->setColumnWidth(1, size0);
     this->viewInteractions->setColumnWidth(2, size0);
     this->viewInteractions->setColumnWidth(3, size1);
-
+    this->viewTodos->setColumnWidth(0, size0);
+    this->viewTodos->setColumnWidth(1, size0);
+    this->viewTodos->setColumnWidth(2, size0);
+    this->viewTodos->setColumnWidth(3, size1);
 }
 
 

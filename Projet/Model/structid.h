@@ -7,6 +7,9 @@ struct ContactID
 {
     int id;
     Contact * contact;
+    bool operator==(ContactID const & toCompare) const {
+            return this->id == toCompare.id;
+    }
 };
 
 struct InteractionID

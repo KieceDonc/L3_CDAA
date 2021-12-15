@@ -20,7 +20,7 @@
  * @param photo
  * @param interactions The interaction list of the contact.
  */
-Contact::Contact(const std::string& firstName, const std::string& lastName, const std::string& enterprise, const std::string& mail, const std::string& phone, const Photo& photo, const Date& date, Logs * logs){
+Contact::Contact(const std::string& firstName, const std::string& lastName, const std::string& enterprise, const std::string& mail, const std::string& phone, const std::string& photo, const Date& date, Logs * logs){
     this->setFirstName(firstName);
     this->setLastName(lastName);
     this->setEnterprise(enterprise);
@@ -133,7 +133,7 @@ void Contact::setInteractions(std::list<Interaction *> lst)
  *
  * @param photo
  */
-void Contact::setPhoto(const Photo& photo, Logs * logs){
+void Contact::setPhoto(const std::string& photo, Logs * logs){
     this->photo = photo;
     if(logs != nullptr)
         logs->add(Log(this,Log::EDIT_PHOTO));
@@ -190,7 +190,7 @@ std::string Contact::getPhone(){
  *
  * @return Photo
  */
-Photo Contact::getPhoto(){
+std::string Contact::getPhoto(){
   return this->photo;
 }
 
@@ -259,7 +259,6 @@ std::string Contact::getDebugValues(int nbTabulations){
   "\n  "+tabulations+"Mail = "+this->mail+
   "\n  "+tabulations+"Phone = "+this->phone+
   "\n  "+tabulations+"Date of creation = "+this->dateOfCreation.getDebugValues(nbTabulations+1)+
-  "\n  "+tabulations+"Photo = "+this->photo.getDebugValues(nbTabulations+1)+
   "\n"+tabulations+"}\n";
 }
 
@@ -282,5 +281,6 @@ bool Contact::operator==(const Contact &toCompare){
 
 std::ostream& operator<<(std::ostream& os, Contact& c){
     os << c.getDebugValues(0);
+    return os;
 }
 

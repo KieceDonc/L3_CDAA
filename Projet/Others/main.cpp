@@ -3,7 +3,6 @@
 #include <QApplication>
 #include "./Model/contact.h"
 #include "./Model/logs.h"
-#include "./Model/interactiontodos.h"
 #include "./Others/sqlinterface.h"
 #include "./View/findcontact.h"
 

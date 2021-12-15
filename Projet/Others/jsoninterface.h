@@ -9,8 +9,6 @@
 
 #include "../Model/structid.h"
 #include "../Model/contact.h"
-#include "../Model/interactiontodo.h"
-#include "../Model/interactiontodos.h"
 #include "../Model/todo.h"
 
 class JSONInterface{
@@ -19,8 +17,6 @@ class JSONInterface{
         JSONInterface();
         void addContact(std::list<ContactID>* contactList);
         void addContact(ContactID& contact);
-        void addInteractionTodos(InteractionTodos& interactions);
-        void addInteractionTodo(InteractionTodo& interaction);
         void writeInFile(const QString& path,const QString& name);
         QJsonValue convertStringToQJsonValue(std::string s);
 

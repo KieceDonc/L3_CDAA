@@ -7,6 +7,8 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QDebug>
+#include <QFileDialog>
 
 #include <vector>
 #include <map>
@@ -32,9 +34,13 @@ private:
     std::vector<QString> fieldNameList;
     std::map<QString,QString> data;
 
+    QFileDialog *fileDialog;
+
 
 public slots:
     void onButtonOkPush();
+    void onButtonPhotoClicked();
+    void onFileSelected(const QString &);
 
 signals:
     void onDataReady();

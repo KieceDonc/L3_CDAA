@@ -43,10 +43,7 @@ private:
 
 public slots:
     void onContactFormComplete();
-    void onInteractionFormComplete();
-
     void onQActionContactClicked();
-    void onQActionInteractionClicked();
 
     void onDisplayInteractionClicked();
 
