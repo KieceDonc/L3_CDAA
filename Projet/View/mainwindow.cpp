@@ -69,6 +69,7 @@ void MainWindow::onQActionContactClicked(){
 
 void MainWindow::onActionExportJsonClicked(){
     JsonForm * jsf = new JsonForm();
+    connect(jsf,SIGNAL(makeJson(const QString & path)),this,SLOT(makeJson(const QString & path)));
     jsf->show();
 }
 
@@ -102,9 +103,9 @@ MainWindow::~MainWindow(){
 
 }
 
-void MainWindow::makeJson()
+void MainWindow::makeJson(const QString & path)
 {
-    /*JSONInterface jsi = JSONInterface();
+    JSONInterface jsi = JSONInterface();
     jsi.addContact(&(this->loadedContacts));
-    jsi.writeInFile("/home/stinky/Bureau","test");*/
+    jsi.writeInFile(path,"ContactManagement.json");
 }

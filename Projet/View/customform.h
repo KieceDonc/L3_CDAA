@@ -40,7 +40,6 @@ private:
 public slots:
     void onButtonOkPush();
     void onButtonPhotoClicked();
-    void onFileSelected(const QString &);
 
 signals:
     void onDataReady();

@@ -7,22 +7,27 @@ JsonForm::JsonForm(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(this->ui->buttonChoose,SIGNAL(clicked()),this,SLOT(onButtonChooseClicked()));
+    this->ui->buttonOk->setEnabled(false);
 
 
-}
-
-JsonForm::~JsonForm()
-{
-    delete ui;
 }
 
 void JsonForm::onButtonChooseClicked()
 {
     this->fileDialog = new QFileDialog();
-    fileDialog->setFileMode(QFileDialog::Directory);
-    fileDialog->setOption(QFileDialog::ShowDirsOnly);
     fileDialog->setAttribute(Qt::WA_DeleteOnClose);
     fileDialog->setWindowModality(Qt::ApplicationModal);
-    fileDialog->show();
+    this->ui->linePath->setText(QFileDialog::getExistingDirectory(this, tr("Open Directory"), QDir::homePath() , QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks));
+    if(!this->ui->linePath->text().isEmpty())
+        this->ui->buttonOk->setEnabled(true);
+}
 
+void JsonForm::onButtonOkClicked()
+{
+    emit makeJson(this->ui->linePath->text());
+}
+
+JsonForm::~JsonForm()
+{
+    delete ui;
 }

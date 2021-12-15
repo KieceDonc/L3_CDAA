@@ -49,7 +49,7 @@ public slots:
     void onActionExportJsonClicked();
     void onDisplayInteractionClicked();
     void loadContacts();
-    //void refreshContactList();
+    void makeJson(const QString & path);
 
 signals:
     void onContactListUpdate();

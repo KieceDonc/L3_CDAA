@@ -5,6 +5,7 @@
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QFile>
+#include <QDebug>
 
 
 #include "../Model/structid.h"

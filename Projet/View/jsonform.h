@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <qfiledialog.h>
 
+
 namespace Ui {
 class JsonForm;
 }
@@ -20,6 +21,10 @@ public:
 
 public slots:
     void onButtonChooseClicked();
+    void onButtonOkClicked();
+
+signals:
+    void makeJson(const QString &);
 
 
 private:
