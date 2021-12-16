@@ -4,6 +4,20 @@
 
 #include <QDate>
 
+/**
+ * @class InfoInteractions
+ * This window allows the user to view, sort (by clicking on the columns), and search (from keywords or between two dates) interactions or todos in QTableWidgets, like in a spreadsheet.<br>
+ * This operation is read only, and pretty fast since no query is made to the Database. The QTableWidget has great methods, espacially for sorting.<br>
+ * Switching between Todos and Interactions can be done by clicking on the button at the bottom of the window.
+ * <img src="../assets/DisplayInteractions.png">
+ */
+
+/**
+ * <p></p>
+ * @brief Constructor taking a ContactID list and a MapInteractionTodo maping their interactions. Calls the functions fillInteractions and fillTodos to fill the QTableWidgets.
+ * @param std::list<ContactID>
+ * @param MapInteractionTodo
+ */
 InfoInteractions::InfoInteractions(QWidget *parent,std::list<ContactID> * lst, MapInteractionTodo * map) :
     QWidget(parent),
     ui(new Ui::InfoInteractions)
@@ -20,9 +34,9 @@ InfoInteractions::InfoInteractions(QWidget *parent,std::list<ContactID> * lst, M
     this->ui->dateEdit2->setDate(QDate::fromString("31-12-2500","dd-MM-yyyy"));
     connect(this->ui->dateEdit1,SIGNAL(editingFinished()),this,SLOT(sortViews()));
     connect(this->ui->dateEdit2,SIGNAL(editingFinished()),this,SLOT(sortViews()));
-    connect(this->ui->lineFirstName,SIGNAL(editingFinished()),this,SLOT(sortViews()));
-    connect(this->ui->lineLastName,SIGNAL(editingFinished()),this,SLOT(sortViews()));
-    connect(this->ui->lineContent,SIGNAL(editingFinished()),this,SLOT(sortViews()));
+    connect(this->ui->lineFirstName,SIGNAL(textChanged(QString)),this,SLOT(sortViews()));
+    connect(this->ui->lineLastName,SIGNAL(textChanged(QString)),this,SLOT(sortViews()));
+    connect(this->ui->lineContent,SIGNAL(textChanged(QString)),this,SLOT(sortViews()));
     connect(this,SIGNAL(triggerSortViews()),this,SLOT(sortViews()));
 
 
@@ -39,11 +53,18 @@ InfoInteractions::InfoInteractions(QWidget *parent,std::list<ContactID> * lst, M
 
 }
 
+/**
+ * <p></p>
+ * @brief Generic destructor.
+ */
 InfoInteractions::~InfoInteractions()
 {
     delete ui;
 }
 
+/**
+ * @brief Fills the viewInteractions QTableWidget with every interactions from every contacts. Also displays the first name and last name of its owner.
+ */
 void InfoInteractions::fillInteractions()
 {
     int taille = this->loadedContacts->size();
@@ -84,6 +105,10 @@ void InfoInteractions::fillInteractions()
 
 }
 
+/**
+ * <p></p>
+ * @brief Fills the viewTodos QTableWidget with every todos from every interactions (in the MapInteractionTodo) from every contacts. Also displays the first name and last name of its owner.
+ */
 void InfoInteractions::fillTodos()
 {
     std::list<ContactID> * lstContacts = this->loadedContacts;
@@ -130,6 +155,11 @@ void InfoInteractions::fillTodos()
     this->viewTodos->setSortingEnabled(true);
 }
 
+
+/**
+ * <p></p>
+ * @brief Switches the displayed widget between viewTodos and viewInteractions. Sets their size to the current window, and emits a triggerSortViews signal to sort.
+ */
 void InfoInteractions::switchViews()
 {
     if(this->ui->buttonSwitch->text() == "Switch for Todos"){
@@ -147,6 +177,10 @@ void InfoInteractions::switchViews()
     emit triggerSortViews();
 }
 
+/**
+ * Loops over each QTableWidget elements, checking if they should be displayed. If not, hides them.
+ * @brief Sorts the current view according to criterias : LineEdits and 2 dates.
+ */
 void InfoInteractions::sortViews()
 {
     QTableWidget * view;
@@ -183,6 +217,11 @@ void InfoInteractions::sortViews()
     }
 }
 
+/**
+ * <p></p>
+ * @brief Called when the window is resized. Ensures the content column is always large enough.
+ * @param event
+ */
 void InfoInteractions::resizeEvent(QResizeEvent *event){
     int size0 = 100;
     int size1;

@@ -10,6 +10,9 @@ namespace Ui {
 class InfoInteractions;
 }
 
+/**
+ * @brief Displays ALL the interactions and todos from the database in QTableWidgets (Better version of QTableViews). Allows sorting and searching.
+ */
 class InfoInteractions : public QWidget
 {
     Q_OBJECT
@@ -18,21 +21,18 @@ public:
     explicit InfoInteractions(QWidget *parent = nullptr, std::list<ContactID> * = nullptr, MapInteractionTodo * = nullptr);
     ~InfoInteractions();
 
+    Ui::InfoInteractions *ui;
     std::list<ContactID> * loadedContacts;
     MapInteractionTodo * mapInterationTodo;
+    QTableWidget * viewInteractions;
+    QTableWidget * viewTodos;
 
     void fillInteractions();
     void fillTodos();
 
-
 public slots :
     void switchViews();
     void sortViews();
-
-private:
-    Ui::InfoInteractions *ui;
-    QTableWidget * viewInteractions;
-    QTableWidget * viewTodos;
 
 signals:
     void triggerSortViews();

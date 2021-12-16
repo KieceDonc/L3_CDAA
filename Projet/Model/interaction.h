@@ -6,7 +6,7 @@
 #include "date.h"
 
 /**
- * @brief An interaction is a block of text tagged with @TODO and @DATE to indicate tasks and sets the date of said todos.
+ * @brief An interaction is a block of text tagged with @TODO and @DATE to indicate tasks to perform and sets the date of said tasks (the todos).
  */
 class Interaction{
 

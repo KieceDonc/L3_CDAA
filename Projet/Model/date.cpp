@@ -7,7 +7,7 @@
  * @class Date
  *
  * Custom interface built from the tm struct<br>
- * It allows easy management of dates using only three parameters, day, month and year.<br>
+ * It allows easy management of dates using only three parameters : day, month and year.<br>
  * Therefore, the class is easily adjustable so we can later include hours, minutes, seconds if necessary.
  */
 
@@ -26,6 +26,7 @@ template<class T> std::string toString(const T &value) {
 }
 
 /**
+ * <p></p>
  * @brief Constructor of Date initialized with current date
  *
  */
@@ -55,6 +56,10 @@ Date::Date(const int day,const int month,const int year){
     this->setYear(year);
 }
 
+/**
+ * @brief Constructor of date using string parameter. If the date does not correspond to the dd-/MM-/yyyy format, calls the parameterless constructor.
+ * @param date
+ */
 Date::Date(const std::string & date){
     const std::regex DATEPATTERN("^([0-2][0-9]|[3][0|1])[-/]([0][1-9]|[1][0-2])[-/]([1][9][7-9][0-9]|[2][0-2][0-9][0-9])$");
     if(std::regex_match(date,DATEPATTERN)){
@@ -62,10 +67,13 @@ Date::Date(const std::string & date){
         this->setMonth(std::stoi(date.substr(3,2)));
         this->setYear(std::stoi(date.substr(6,4)));
     }
+    else
+        Date();
+
 }
 
 /**
- * @brief
+ * @brief Sets the day
  *
  * @param day must be between 1 and 31
  * @throw invalid_argument day isn't between 1 and 31
@@ -79,7 +87,7 @@ void Date::setDay(const int day){
 }
 
 /**
- * @brief
+ * @brief Sets the month
  *
  * @param month must be between 1 and 12
  * @throw invalid_argument month isn't between 1 and 12
@@ -93,7 +101,7 @@ void Date::setMonth(const int month){
 }
 
 /**
- * @brief
+ * @brief Sets the year
  *
  * @param year must be higher than 1970
  * @throw invalid_argument year before 1970
@@ -127,6 +135,10 @@ std::string Date::getDebugValues(int nbTabulations){
   "\n"+tabulations+"}\n";
 }
 
+/**
+ * @brief Returns a string as dd-MM-yyyy format
+ * @return std::string
+ */
 std::string Date::toString(){
     std::string sRes = "";
 
@@ -144,7 +156,7 @@ std::string Date::toString(){
 }
 
 /**
- * @brief Compares Date objects and determines if they're equals
+ * @brief Compares Date objects, returns a boolean if they're equal
  *
  * @param toCompare
  * @return bool
@@ -154,7 +166,7 @@ bool Date::operator==(const Date &toCompare){
 }
 
 /**
- * @brief
+ * @brief Overloading the << operator, inserting the date's toString in the ostream.
  *
  * @param os
  * @param date

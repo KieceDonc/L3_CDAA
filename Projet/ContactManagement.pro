@@ -10,11 +10,8 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Model/log.cpp \
-    Model/logs.cpp \
     Model/mapinteractiontodo.cpp \
     Model/todo.cpp \
-    Model/photo.cpp \
     Model/contact.cpp \
     Model/interaction.cpp \
     Model/date.cpp \
@@ -30,12 +27,9 @@ SOURCES += \
 
 
 HEADERS += \
-    Model/log.h \
-    Model/logs.h \
     Model/mapinteractiontodo.h \
     Model/structid.h \
     Model/todo.h \
-    Model/photo.h \
     Model/contact.h \
     Model/interaction.h \
     Model/date.h \

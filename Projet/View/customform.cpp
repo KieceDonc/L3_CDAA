@@ -2,10 +2,23 @@
 
 #include <QFileDialog>
 
+/**
+ * @class CustomForm
+ * <img src="../assets/CustomForm.png"><br>
+ * <i>This is what a custom form with 6 parameters (First Name, Last Name...) looks like</i><br>
+ * A custom form is a form that can be called passing a few QStrings as arguments to get different kinds of values.<br>
+ * Although it was planned to have many uses...  We used it only once : To make a contact, when clicking on an action in the MainWindow.
+ */
+
 CustomForm::CustomForm(QWidget *parent) : QWidget(parent){
 
 }
 
+/**
+ * <p></p>
+ * @brief Fills the widget with all the different elements passed in parameter.
+ * @param std::vector<QString>
+ */
 void CustomForm::init(std::vector<QString> fieldNameList){
     this->fieldNameList=fieldNameList;
 
@@ -61,10 +74,19 @@ void CustomForm::init(std::vector<QString> fieldNameList){
     this->show();
 }
 
+/**
+ * <p></p>
+ * @brief Retrieves the data inputed by the user.
+ */
 std::map<QString,QString> CustomForm::getData(){
     return this->data;
 }
 
+/**
+ * <p></p>
+ * @brief Gets the amount of fields.
+ * @return int
+ */
 int CustomForm::getSizeOfFieldNameList(){
     return (int)(this->fieldNameList.size());
 }
@@ -76,9 +98,9 @@ void CustomForm::onButtonOkPush(){
     for(int index = 0; index < this->getSizeOfFieldNameList(); index++){
         QLineEdit* currentLineEdit = this->lineEditList[index];
         QString currentText = currentLineEdit->text();
-        if(currentText.size()==0 || currentText=="Vous devez compléter cette information"){
+        if(currentText.size()==0 || currentText=="Please fill this field"){
             canBeSend = false;
-            currentLineEdit->setText("Vous devez compléter cette information");
+            currentLineEdit->setText("Please fill this field.");
         }else{
             this->data[this->fieldNameList.at(index)]=currentText;
         }
@@ -90,6 +112,12 @@ void CustomForm::onButtonOkPush(){
     }
 }
 
+/**
+ * Slot running when the signal clicked() on the "Choose picture" button has been triggered..
+ * Calls a QFileDialog with a filter to show .png and .jpg files only.
+ * <img src="../assets/QFileDialogPhoto.png">
+ * @brief Slot opening a dialog to select a picture.
+ */
 void CustomForm::onButtonPhotoClicked()
 {
     fileDialog = new QFileDialog();
@@ -100,6 +128,10 @@ void CustomForm::onButtonPhotoClicked()
     lineEditList[5]->setText(fileDialog->getOpenFileName(this,"Open file",QDir::homePath(),filter));
 }
 
+/**
+ * <p></p>
+ * @brief Basic destructor
+ */
 CustomForm::~CustomForm(){
     delete this->mainLayout;
 

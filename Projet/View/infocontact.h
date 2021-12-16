@@ -11,6 +11,9 @@ namespace Ui {
 class InfoContact;
 }
 
+/**
+ * @brief Widget that displays all of a contact's attributes, including its picture. Dynamically allows Interactions edition, creation and deletion.
+ */
 class InfoContact : public QWidget
 {
     Q_OBJECT
@@ -20,6 +23,8 @@ public:
     ~InfoContact();
 
     ContactID * currentContact;
+    Ui::InfoContact *ui;
+    QSignalMapper *signalMapper;
 
 public slots :
     void displayInteractions();
@@ -33,9 +38,6 @@ signals :
     void updateContact();
     void triggerShowPhoto();
 
-private:
-    Ui::InfoContact *ui;
-    QSignalMapper *signalMapper;
 };
 
 #endif // INFOCONTACT_H

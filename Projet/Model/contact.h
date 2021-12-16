@@ -1,8 +1,6 @@
 #ifndef CONTACT_H
 #define CONTACT_H
-#include "photo.h"
 #include "date.h"
-#include "logs.h"
 #include "interaction.h"
 
 #include <string>
@@ -10,7 +8,7 @@
 #include <list>
 
 /**
- * @brief A contact object represents an entity any user can interact with
+ * @brief A contact object represents an entity any user can interact with.
  *
  */
 class Contact{

@@ -15,6 +15,9 @@ namespace Ui {
     class FindContact;
 }
 
+/**
+ * @brief Mainwindow's main widget : Shows the list of contact attributes as a spreadsheet, using QTableViews. Allow sorting, searching, and selection to perform different actions.
+ */
 class FindContact : public QWidget{
     Q_OBJECT
 
@@ -24,9 +27,19 @@ class FindContact : public QWidget{
         void updateResultView();
         void init(std::list<ContactID>* lst);
 
-        std::list<ContactID>* loadedContacts;
+        Ui::FindContact *ui;
+        QStandardItemModel* model;
+        QList<QStandardItem*> rowData;
+        std::string currentAttributeValue;
+        QLineEdit * currentQLE;
+        QCalendarWidget * qc;
+        InfoContact * ic;
+        SQLInterface sqli;
         MapInteractionTodo * mp;
+        ContactID * selectedContact;
+        std::list<ContactID>* loadedContacts;
 
+        int currentAttribute;
 
     public slots:
         void onContactListUpdate();
@@ -42,18 +55,6 @@ class FindContact : public QWidget{
         void onMoreInfoClicked();
         void onDeleteClicked();
         void onResultViewClicked(const QModelIndex &index);
-
-    private:
-        Ui::FindContact *ui;
-        QStandardItemModel* model;
-        QList<QStandardItem*> rowData;
-        QCalendarWidget * qc;
-        InfoContact * ic;
-        QLineEdit * currentQLE;
-        SQLInterface sqli;
-        int currentAttribute;
-        std::string currentAttributeValue;
-        ContactID * selectedContact;
 
     signals:
         void triggerClear();

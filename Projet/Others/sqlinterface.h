@@ -12,7 +12,7 @@
 #include "../Model/structid.h"
 
 /**
- * @brief The SQLInterface class allows interactions between the user and the database using QObjects
+ * @brief The SQLInterface class allows interactions between the user and the database. Both writing into the database and reading from it.
  */
 class SQLInterface : public QObject
 {

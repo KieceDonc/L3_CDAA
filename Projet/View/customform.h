@@ -13,28 +13,28 @@
 #include <vector>
 #include <map>
 
+/**
+ * @brief Widget allowing the user to create a new contact by typing its different values (First name, etc...) and chosing a picture file.
+ */
 class CustomForm : public QWidget{
     Q_OBJECT
 public:
     explicit CustomForm(QWidget *parent = nullptr);
     ~CustomForm();
 
-    void init(std::vector<QString> fieldNameList);
-    std::map<QString,QString> getData();
-    int getSizeOfFieldNameList();
-
-private:
     QVBoxLayout* mainLayout;
     QFormLayout* fieldsLayout;
+    QPushButton* pushButtonOK;
+    QFileDialog *fileDialog;
 
     std::vector<QLabel*> labelList;
     std::vector<QLineEdit*> lineEditList;
-    QPushButton* pushButtonOK;
-
     std::vector<QString> fieldNameList;
     std::map<QString,QString> data;
 
-    QFileDialog *fileDialog;
+    void init(std::vector<QString> fieldNameList);
+    std::map<QString,QString> getData();
+    int getSizeOfFieldNameList();
 
 
 public slots:

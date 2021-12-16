@@ -12,6 +12,9 @@
 #include "../Model/contact.h"
 #include "../Model/todo.h"
 
+/**
+ * @brief The JSONInterface class allows production of JSON files from contact lists.
+ */
 class JSONInterface{
 
     public:

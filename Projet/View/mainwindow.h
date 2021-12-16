@@ -19,6 +19,10 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
+/**
+ * @brief The MainWindow allows two actions : Chosing an action in the action bar on the top, and displaying its central widget : A FindContact widget.
+ * Contains most model objects, and shares pointers on them to other widgets.
+ */
 class MainWindow : public QMainWindow{
     Q_OBJECT
 
@@ -34,14 +38,7 @@ public:
     std::list<ContactID> loadedContacts;
     MapInteractionTodo mapInteractionTodo;
     SQLInterface sqli;
-
-    void makeJson();
-
-
-
-private:
     Ui::MainWindow *ui;
-
 
 public slots:
     void onContactFormComplete();

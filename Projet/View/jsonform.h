@@ -9,6 +9,9 @@ namespace Ui {
 class JsonForm;
 }
 
+/**
+ * @brief Widget allowing the user to chose a directory location to export a JSON file containing the informations about the contacts and their interactions.
+ */
 class JsonForm : public QWidget
 {
     Q_OBJECT
@@ -18,6 +21,7 @@ public:
     ~JsonForm();
 
     QFileDialog * fileDialog;
+    Ui::JsonForm *ui;
 
 public slots:
     void onButtonChooseClicked();
@@ -25,11 +29,6 @@ public slots:
 
 signals:
     void makeJson(const QString &);
-
-
-private:
-    Ui::JsonForm *ui;
-
 };
 
 #endif // JSONFORM_H

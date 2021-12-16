@@ -7,7 +7,7 @@
 #include <time.h>
 
 /**
- * @brief Simplifies the use of C++ tm struct to represent dates. Uses the dd/mm/yyyy format.
+ * @brief Simplifies the use of C++ tm struct to represent dates. Uses the dd-MM-yyyy or dd/MM/yyyy formats.
  *
  *
  */

@@ -6,9 +6,10 @@
 #include "date.h"
 
 /**
- * @brief Represents a task from an interaction for a contact. Linked to Interaction objects using an InteractionTodo object.
+ * @brief Represents a task from an interaction for a contact. Linked to Interaction objects thanks to a MapInteractionTodo object.
  *
  */
+
 class Todo{
 
     private:

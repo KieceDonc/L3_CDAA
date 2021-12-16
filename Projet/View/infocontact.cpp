@@ -8,6 +8,22 @@
 #include <QPushButton>
 #include <QGraphicsScene>
 
+/**
+ * @class InfoContact
+ * Window that allows the user to edit most informations but the picture about any contact.<br>
+ * The user can change each attributes using lineEdits.<br>
+ * The list of interactions is shown, each of them consists of a layout containing : a button to delete it, a QDateEdit to change its date, and a QPlainTextEdit to change the interaction content.<br>
+ * Clicking on "Add interaction" dynamically generates a layout for a new interaction.<br>
+ * Clicking on save updates the application and the database with new data.<br>
+ * Clicking on the button to delete an interaction doesn't exactly delete it. As long as the window has not been closed, the user can retrieving by clicking the button again, as seen on this screenshot :<br>
+ * <img src="../assets/InfoContact.png">
+ */
+
+/**
+ * Emits displayInteractions() signal to fill de interactions.
+ * @brief Constructor taking a contact pointer as parameter, and fills all the fields with the contact values.
+ * @param ContactID *
+ */
 InfoContact::InfoContact(QWidget *parent, ContactID * c) :
     QWidget(parent),
     ui(new Ui::InfoContact)
@@ -27,8 +43,15 @@ InfoContact::InfoContact(QWidget *parent, ContactID * c) :
     connect(this->ui->buttonAddInteraction,SIGNAL(clicked()),this,SLOT(onAddInteractionClicked()));
     connect(this,SIGNAL(triggerShowPhoto()),this,SLOT(showPhoto()));
     emit(triggerShowPhoto());
+
+    //this->ui->interactionLayout->
 }
 
+/**
+ * For each interaction, creates a layout containing widgets allowing editing of interactions : A delete button, a QDateEdit and a QPlainTextEdit.<br>
+ * A QSignalMapper maps the signal clicked() of each dynamically generated buttons to an int. Therefore on click, we know which button has been clicked.<br>
+ * @brief Displays the lists of interactions at the bottom of the window.
+ */
 void InfoContact::displayInteractions(){
     std::list<Interaction *> lst = this->currentContact->contact->getInteractions();
     int iButton = 0;
@@ -73,6 +96,12 @@ void InfoContact::displayInteractions(){
     }
 }
 
+/**
+ * Sets the currentContact values to the field values.<br>
+ * Deletes all of the currentContact interactions, and replaces them with the new ones. ( Deleting + Adding = Update).
+ * Emits updatContact() to also update the Database.
+ * @brief Slot called when the Save button has been clicked().
+ */
 void InfoContact::onApplyClicked()
 {
     this->currentContact->contact->setFirstName(this->ui->lineFirstName->text().toStdString());
@@ -94,6 +123,13 @@ void InfoContact::onApplyClicked()
     emit updateContact();
 }
 
+/**
+ * Displays the interaction as deleted : As in, the delete button icon '✕'  turns into '↺' showing the user he can still retrieve it.<br>
+ * The QLineEdit and QPlainTextEdit are disabled.<br>
+ * If clicked again, the interaction goes back to normal.
+ * @brief Thanks to the SignalMapper, this slot can take an int as parameter, telling it which delete button has been clicked.
+ * @param
+ */
 void InfoContact::onDeleteButtonClicked(int i)
 {
 
@@ -115,6 +151,10 @@ void InfoContact::onDeleteButtonClicked(int i)
     }
 }
 
+/**
+ * <p></p>
+ * @brief Slots called when Add Interaction button has been clicked. Adds a new interaction to currentContact and refreshes the view.
+ */
 void InfoContact::onAddInteractionClicked()
 {
     QHBoxLayout * qhb = new QHBoxLayout();
@@ -142,10 +182,14 @@ void InfoContact::onAddInteractionClicked()
     signalMapper->setMapping(b, this->ui->interactionLayout->count());
     connect(b, SIGNAL(clicked()), signalMapper, SLOT(map()));
 
-
     this->ui->interactionLayout->addLayout(qhb);
+
 }
 
+/**
+ * <p></p>
+ * @brief Shows the photo of the contact from its path in a QGraphicsView. Slot called on interface generation, and resize event.
+ */
 void InfoContact::showPhoto()
 {
     QString path = QString::fromStdString(this->currentContact->contact->getPhoto());
@@ -154,9 +198,9 @@ void InfoContact::showPhoto()
            {
                QImage photoScaled;
                if(photo.width() > photo.height()){
-                   photoScaled = photo.scaledToWidth(600);
+                   photoScaled = photo.scaledToWidth(300);
                }else{
-                   photoScaled = photo.scaledToHeight(600);
+                   photoScaled = photo.scaledToHeight(300);
                }
                QGraphicsScene* scene = new QGraphicsScene(this);
                scene->addPixmap(QPixmap::fromImage(photoScaled));
@@ -166,6 +210,10 @@ void InfoContact::showPhoto()
            }
 }
 
+/**
+ * <p></p>
+ * @brief Generic destructor.
+ */
 InfoContact::~InfoContact()
 {
     delete ui;

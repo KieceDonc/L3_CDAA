@@ -2,10 +2,33 @@
 
 #include <qdebug.h>
 
+/**
+ * <p></p>
+ * @class MapInteractionTodo This class encapsulates a std::map.
+ * The keys are Interaction pointers.
+ * The values are std::lists of Todo pointers.
+ * Therefore, it links an interaction to its corresponding Todos. Without the @TODO and @DATE tags.
+ *
+ * <img src="../assets/MapITRepresentation.png">
+ */
+
+/**
+ * <p></p>
+ * @brief The constructor initializes the object with an empty map.
+ */
 MapInteractionTodo::MapInteractionTodo(){
     map = std::map<Interaction *, std::list<Todo *>>();
 }
 
+/**
+ * This methods works in three steps :<br>
+ * <b>1 :</b> Split the interaction content in multiple substrings between each "@TODO", and put those substrings in a list.<br>
+ * For example, the string [aaaaa@TODObbbbb@TODOccccc] will be split into 3 strings : [aaaaa],[@TODObbbbb],[@TODOccccc].<br><br>
+ * <b>2 :</b>If the first string did not contain @TODO, remove it from the substrings list.<br>
+ * <b>3 :</b>Get the list<todo *> into the map at key(Interaction *), push new Todos made with those substrings into it. <br><br>
+ * @brief The insert function takes an interaction as parameter. Its goal is to insert a list containing the Todos of this interaction and link it to the key : a Pointer on this interaction.
+ * @param interaction
+ */
 void MapInteractionTodo::insert(Interaction * interaction){
     // 1 - Let's split the interaction between the TODO tags and push the substrings in a list. For self-harm purposes, we will use regex and according smatch.
     std::list<std::string> splits = std::list<std::string>();
@@ -36,12 +59,23 @@ void MapInteractionTodo::insert(Interaction * interaction){
     }
 }
 
+/**
+ * <p></p>
+ * @brief Pushes a todo * in the list<todo *> at key passed in parameter.
+ * @param interaction
+ * @param todo
+ */
 void MapInteractionTodo::insert(Interaction * interaction, Todo * todo){
     if ( this->map.find(interaction) == this->map.end() )
         this->map[interaction] = std::list<Todo *>();
     this->map.at(interaction).push_back(todo);
 }
 
+/**
+ * <p></p>
+ * @brief Deletes all the todos at the key passed in paramater, then erases the key.
+ * @param interaction
+ */
 void MapInteractionTodo::remove(Interaction * interaction){
     std::list<Todo *>::iterator it;
     while(!this->map.at(interaction).empty())
@@ -49,10 +83,22 @@ void MapInteractionTodo::remove(Interaction * interaction){
     this->map.erase(interaction);
 }
 
+/**
+ * <p></p>
+ * @brief Returns true if the map has the key passed in parameter, else returns false.
+ * @param interaction
+ * @return bool
+ */
 bool MapInteractionTodo::hasKey(Interaction * interaction){
     return !(this->map.find(interaction) == map.end());
 }
 
+/**
+ * <p></p>
+ * @brief Return the list<Todo *> at the key passed in parameter.
+ * @param interaction
+ * @return std::list<Todo *>
+ */
 std::list<Todo *> MapInteractionTodo::at(Interaction * interaction){
     return this->map.at(interaction);
 }

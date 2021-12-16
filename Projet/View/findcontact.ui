@@ -65,31 +65,45 @@
    </item>
    <item>
     <layout class="QFormLayout" name="formLayout">
-     <item row="0" column="1">
+     <item row="1" column="1">
       <widget class="QLineEdit" name="lineDate1">
        <property name="enabled">
         <bool>false</bool>
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
+     <item row="2" column="1">
       <widget class="QLineEdit" name="lineDate2">
        <property name="enabled">
         <bool>false</bool>
        </property>
       </widget>
      </item>
-     <item row="0" column="0">
+     <item row="1" column="0">
       <widget class="QPushButton" name="buttonDate1">
        <property name="text">
         <string>From :</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
+     <item row="2" column="0">
       <widget class="QPushButton" name="buttonDate2">
        <property name="text">
         <string>To :</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Amount of contacts :</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="labelCount">
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>

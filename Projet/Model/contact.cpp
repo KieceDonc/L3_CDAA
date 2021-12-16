@@ -5,12 +5,13 @@
  * A contact represents an entity akin to a person, a group of persons, a service, a company...<br>
  * It is the main element of the class - Or at least the one that will be iterated onto the most along Interactions.<br>
  * A contact stores all of its basic informations (names, mail, etc...), a list of interactions.<br>
+ *
+ * <img src="../assets/ContactRepresentation.png">
  */
 
 /**
- * @brief Constructs a new Contact object from all its parameters. Because the Date() constructor allows it, it sets the creation date of the contact to the current date.
+ * @brief Constructs a new Contact object from all its parameters.
  *
- * @param logs Contains all actions / logs applied on this contact
  * @param firstName
  * @param lastName
  * @param entreprise
@@ -21,14 +22,18 @@
  * @param interactions The interaction list of the contact.
  */
 Contact::Contact(const std::string& firstName, const std::string& lastName, const std::string& enterprise, const std::string& mail, const std::string& phone, const std::string& photo, const Date& date){
-    this->setFirstName(firstName);
-    this->setLastName(lastName);
-    this->setEnterprise(enterprise);
-    this->setMail(mail);
-    this->setPhone(phone);
-    this->setDateOfCreation(date);
-    this->setPhoto(photo);
-    this->interactions = std::list<Interaction *>();
+    try{
+        this->setFirstName(firstName);
+        this->setLastName(lastName);
+        this->setEnterprise(enterprise);
+        this->setMail(mail);
+        this->setPhone(phone);
+        this->setDateOfCreation(date);
+        this->setPhoto(photo);
+        this->interactions = std::list<Interaction *>();
+    }catch(...){
+        throw std::invalid_argument("Error in contact constructor");
+    }
 }
 
 /**
@@ -46,7 +51,7 @@ void Contact::setFirstName(const std::string& firstName){
 }
 
 /**
- * @brief Sets the lastname of a contact. Must at least contain one character
+ * @brief Sets the lastname of a contact. Must at least contain one character.
  *
  * @throw invalid_argument lastName length must be higher than 0
  * @param lastName
@@ -59,7 +64,7 @@ void Contact::setLastName(const std::string& lastName){
 }
 
 /**
- * @brief Sets the Company of a contact. Must at least have one character
+ * @brief Sets the Company of a contact. Must at least have one character.
  *
  * @throw invalid_argument enterprise length must be higher than 0
  * @param enterprise
@@ -79,7 +84,7 @@ void Contact::setEnterprise(const std::string& enterprise){
  * @param mail
  */
 void Contact::setMail(const std::string& mail){
-    if(mail.length() == 0 && !mail.find('@') && !mail.find('.'))
+    if(mail.length() == 0 || !mail.find('@') || !mail.find('.'))
         // We check if mail isn't empty, if it contains an @ and a .
         throw std::invalid_argument("Error in method setMail of class Contact :\n\nmail is invalid\n"+this->getDebugValues(0));
     else
@@ -88,7 +93,7 @@ void Contact::setMail(const std::string& mail){
 }
 
 /**
- * @brief set phone of a contact. Must at least have one character
+ * @brief set phone of a contact. Must at least have one character.
  *
  * @throw invalid_argument phone length must be higher than 0
  * @param lastName
@@ -101,7 +106,7 @@ void Contact::setPhone(const std::string& phone){
 }
 
 /**
- * @brief Set the date of creation of the contact. Represent when he was created
+ * @brief Set the date of creation of the contact. Represent when he was created.
  *
  * @param dateOfCreation
  */
@@ -115,7 +120,7 @@ void Contact::setInteractions(std::list<Interaction *> lst)
 }
 
 /**
- * @brief
+ * @brief Sets the path of the contact's photo as a std::string.
  *
  * @param photo
  */
@@ -125,7 +130,7 @@ void Contact::setPhoto(const std::string& photo){
 
 
 /**
- * @brief Return firstname of client
+ * @brief Returns the firstname of a contact.
  *
  * @return std::string
  */
@@ -134,7 +139,7 @@ std::string Contact::getFirstName(){
 }
 
 /**
- * @brief Return lastname of client
+ * @brief Return the lastname of a contact.
  *
  * @return std::string
  */
@@ -143,7 +148,7 @@ std::string Contact::getLastName(){
 }
 
 /**
- * @brief Return enterprise of client
+ * @brief Return the enterprise of a contact.
  *
  * @return std::string
  */
@@ -152,7 +157,7 @@ std::string Contact::getEnterprise(){
 }
 
 /**
- * @brief Return mail of client
+ * @brief Returns the mail of a contact.
  *
  * @return std::string
  */
@@ -161,7 +166,7 @@ std::string Contact::getMail(){
 }
 
 /**
- * @brief Return the phone number of client
+ * @brief Returns the phone number of contact.
  *
  * @return std::string
  */
@@ -170,16 +175,16 @@ std::string Contact::getPhone(){
 }
 
 /**
- * @brief Return Photo which contain path to real image
+ * @brief Returns the path to the contact's picture as a string.
  *
- * @return Photo
+ * @return std::string
  */
 std::string Contact::getPhoto(){
   return this->photo;
 }
 
 /**
- * @brief Return Date which represent when the contact was created
+ * @brief Returns the date of creation of this contact.
  *
  * @return Date
  */
@@ -197,7 +202,7 @@ std::list<Interaction *> Contact::getInteractions(){
 }
 
 /**
- * @brief Adds an interaction to the list from a pointer. If the action is performed correctly, adds the creation to the logs.
+ * @brief Adds an interaction to the list from a pointer.
  *
  * @param Interaction *
  */
@@ -206,7 +211,7 @@ void Contact::addInteraction(Interaction * interaction){
 }
 
 /**
- * @brief Removes an interaction from its index in the list using iterators. If the action is performed correctly, adds the deletion to the logs.
+ * @brief Removes an interaction from its index in the list using iterators.
  *
  * @param i
  */
@@ -220,9 +225,9 @@ void Contact::removeInteraction(int i){
 }
 
 /**
- * @brief returns Contact values ( firstname, lastname, mail ... ), which is suitable for debugging
+ * @brief returns Contact values ( firstname, lastname, mail ... ), suitable for debugging.
  *
- * @param nbTabulations Number of tabulations you want before showing informations.
+ * @param nbTabulations Amount of tabulations needed to showing informations, allowing recursive calls.
  * If you call outside of getDebugValues function you should set this value to 0.
  * Also if you're inside DebugValues you should set this value to nbTabulations+1 for others getDebugsValues()
  * @return std::string

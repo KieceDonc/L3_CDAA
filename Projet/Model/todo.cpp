@@ -12,7 +12,7 @@
  * \subsection ex Examples
  * Consider the following interaction object :<br><br>
  * <dl><dt>Interaction{ </dt>
- * <dd>content = "Please Valentin we really need to finish this school project. @TODO Brew some coffee @TODO Rush the remaining work tomorrow (the @DATE 26/10/2021)"</dd><br>
+ * <dd>content = "Please Valentin we really need to finish this school project. @TODO Brew some coffee @TODO Rush the remaining work tomorrow @DATE 26/10/2021"</dd><br>
  * <dd>date = Date(23/10/2021)</dd><br>}</dl><br><br>
  *
  * The todo objects we want to build here are :<br><br>
@@ -20,7 +20,7 @@
  * <dd>content = "Brew some coffee"</dd><br>
  * <dd>date = Date(23/10/2021)</dd><br>}</dl><br></br>
  * <dl><dt>Todo{ </dt>
- * <dd>content = " Rush the remaining work tomorrow (the 26/10/2021)"</dd><br>
+ * <dd>content = " Rush the remaining work tomorrow"</dd><br>
  * <dd>date = Date(26/10/2021)</dd><br>}</dl><br><br>
  *
  * \subsection err Errors
@@ -29,6 +29,7 @@
  */
 
 /**
+ * <p></p>
  * @brief Constructs a new Todo object from both parameters. Does not parse any tags.
  *
  * @param date
@@ -40,6 +41,7 @@ Todo::Todo(const Date& date, const std::string& content) {
 }
 
 /**
+ * <p></p>
  * @brief Construct a new Todo object from its content. <b>PARSES @DATE TAGS.</b><br>
  * Looks for the first occurence of @DATE and checks if the following word is a date to the dd/mm/yyyy format with regex.<br>
  * It then sets the todo date to that.<br>
@@ -87,6 +89,7 @@ Todo::Todo(const std::string& content){
 }
 
 /**
+ * <p></p>
  * @brief Sets the content of a todo without parsing any tags.
  *
  * @param content
@@ -96,6 +99,7 @@ void Todo::setContent(const std::string& content) {
 }
 
 /**
+ * <p></p>
  * @brief Sets the date using a date object. Must be valid.
  *
  * @param date
@@ -105,6 +109,7 @@ void Todo::setDate(const Date& date) {
 }
 
 /**
+ * <p></p>
  * @brief Returns the content of a todo as a string
  *
  * @return std::string
@@ -114,6 +119,7 @@ std::string Todo::getContent() {
 }
 
 /**
+ * <p></p>
  * @brief Returns the date of the todo as a Date object
  *
  * @return Date
@@ -123,6 +129,7 @@ Date Todo::getDate() {
 }
 
 /**
+ * <p></p>
  * @brief returns Todo values( date, content ), suitable for debugging
  *
  * @param nbTabulations Number of tabulations needed to show informations.
@@ -142,6 +149,7 @@ std::string Todo::getDebugValues(int nbTabulations){
 }
 
 /**
+ * <p></p>
  * @brief Compares Todo objects and determines if they're equals
  *
  * @param toCompare
@@ -155,6 +163,7 @@ bool Todo::operator==(Todo &toCompare){
 }
 
 /**
+ * <p></p>
  * @brief Overloading of the << operator. Redirects the following string in the output stream :
  * <i> [ TODO : dd/mm/yyyy ] content </i>
  *

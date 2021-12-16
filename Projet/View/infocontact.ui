@@ -10,11 +10,11 @@
     <x>0</x>
     <y>0</y>
     <width>518</width>
-    <height>413</height>
+    <height>492</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Edit a contact</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="0">
@@ -131,7 +131,11 @@
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="interactionLayout"/>
+      <layout class="QVBoxLayout" name="interactionLayout">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetMaximumSize</enum>
+       </property>
+      </layout>
      </item>
     </layout>
    </item>

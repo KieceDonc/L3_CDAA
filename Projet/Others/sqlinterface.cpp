@@ -9,11 +9,19 @@
 
 /**
  * @class SQLInterface
- * Data Schema is as follows :
+ * Data Scheme is as follows :
  *
- * Contact
+ * <img src="../assets/DBDiagram.png">
+ *
+ * The attributes ID for Contact, Interaction and Todo are auto incrementing.<br>
+ *
+ * The database used is SQLite.
  */
 
+/**
+ * <p></p>
+ * @brief Sets the path of the database, and calls connect to open the database.
+ */
 SQLInterface::SQLInterface(QObject *parent) : QObject(parent)
 {
     this->DBOpen = false;
@@ -21,6 +29,12 @@ SQLInterface::SQLInterface(QObject *parent) : QObject(parent)
     connectDB(DBPath);
 }
 
+/**
+ * <p></p>
+ * @brief Tries to open the database.
+ * @throw std::invalid_argument If the connection is impossible.
+ * @param Path of the database.
+ */
 void SQLInterface::connectDB(const QString & uri)
 {
     database = QSqlDatabase::addDatabase("QSQLITE");
@@ -32,22 +46,30 @@ void SQLInterface::connectDB(const QString & uri)
     }else{
         qDebug() << "DB non ouverte";
         DBOpen = false;
+        throw std::invalid_argument("Impossible de se connecter à la base de données");
     }
 }
 
+/**
+ * <p></p>
+ * @brief The destructor closes the database.
+ */
 SQLInterface::~SQLInterface(){
     database.close();
     DBOpen = false;
 }
 
 /**
- * @brief Create a pointer of contact from query. Don't forget to delete it
- * @param query
+ * Gathers all the informations about a contact, including their interactions.<br>
+ * The values retrieved by the query are the id, the first name, the last name, the mail, the phone, the photo path and the date of creation.<br>
+ * The query for retrieving interactions are :
+ * <i>SELECT interactiondate,interactioncontent FROM contact NATURAL JOIN contactinteraction NATURAL JOIN interaction WHERE contactid = <b>[CONTACT ID]</b></i><br>
+ * And add to the contact's interactions list as many interactions as rows returned by this query.
+ * @brief Creates a pointer on contact from query.
+ * @param QSqlQuery
  * @return Contact*
  */
 Contact* SQLInterface::getContact(const QSqlQuery& query){
-
-    qDebug() << "Création du contact " << query.value(1).toString();
 
     //Filling a list with all the contact interactions
     QSqlQuery query2;
@@ -77,13 +99,23 @@ Contact* SQLInterface::getContact(const QSqlQuery& query){
 }
 
 /**
+ * <i>"SELECT * FROM contact"</i> retrieves all the contacts from the Database. Then, for each contacts :<br>
+ * With the query : <i>"SELECT interactiondate,interactioncontent,interactionid FROM contact NATURAL JOIN contactinteraction NATURAL JOIN interaction WHERE contactid = [CONTACT ID];"</i>
+ * gather all the interactions of this contact, including its id.<br>
+ * For each of those interactions, we can get its todos with the query : <i>"SELECT tododate,todocontent FROM interaction NATURAL JOIN interactiontodo NATURAL JOIN todo WHERE interactionid = [INTERACTION ID]"</i><br><br>
+ *
+ * Once all those informations are gathered, we can map each interactions to its todos using the MapInteractionTodo passed in parameter, and push all the contacts in the ContactID list passed in parameter.
+ *
+ * Calls getContact on each contact of the database.<br>
+ *
  * @brief Fills an empty contact list with all the contacts from the DB, and adds the Interactions and Todos to MapInteractionTodo. EMPTIES THE LIST!
- * @param lst a list of contacts
+ * @param list<ContactID>
+ * @param MapInteractionTodo
  */
 void SQLInterface::getAllContacts(std::list<ContactID> & lstContacts, MapInteractionTodo & mp){
     lstContacts.clear();
 
-
+    // Get all contacts from database
     if(DBOpen){
         QString queryString = "SELECT * FROM contact";
         QSqlQuery query(queryString);
@@ -94,7 +126,7 @@ void SQLInterface::getAllContacts(std::list<ContactID> & lstContacts, MapInterac
             qDebug() << "Requête de lecture réussie : " << queryString;
             while(query.next()){
 
-                // Making a list for the contact interactions and for the todos
+                // Making a list for the contact interactions and for the todos from the database
                 QSqlQuery query2;
                 query2.prepare("SELECT interactiondate,interactioncontent,interactionid FROM contact NATURAL JOIN contactinteraction NATURAL JOIN interaction WHERE contactid = :c;");
                 query2.bindValue(":c",query.value(0).toString());
@@ -138,7 +170,11 @@ void SQLInterface::getAllContacts(std::list<ContactID> & lstContacts, MapInterac
     }
 }
 
-
+/**
+ * @brief Inserts a contact from the database from a contact object. We also add it in the contactID list passed in parameter once the database gave it its ID.
+ * @param std::list<ContactID>
+ * @param Contact
+ */
 void SQLInterface::insertContact(Contact & c, std::list<ContactID> * lst){
 
     if(DBOpen){
@@ -174,6 +210,11 @@ void SQLInterface::insertContact(Contact & c, std::list<ContactID> * lst){
 
 }
 
+/**
+ * Makes an UPDATE SET query in the database from the ContactID passed in parameter, using the ID to check.
+ * @brief Updates a contact in the database.
+ * @param ContactID
+ */
 void SQLInterface::updateContact(ContactID &c)
 {
     QSqlQuery queryUpdate;
@@ -194,6 +235,11 @@ void SQLInterface::updateContact(ContactID &c)
         qDebug()<<"Contact update query successful";
 }
 
+/**
+ * Makes an DELETE FROM TABLE query in the database from the ContactID passed in parameter, using the ID to check.
+ * @brief Deletes a contact in the database.
+ * @param ContactID
+ */
 void SQLInterface::deleteContact(ContactID & c)
 {
     deleteAllInteractions(c);
@@ -211,6 +257,12 @@ void SQLInterface::deleteContact(ContactID & c)
 
 }
 
+/**
+ * Since there are foreign keys on InteractionTodo and ContactInteraction, we need to delete from these columns first.<br>
+ * Once done, we can delete all of the contacts interactions and todos.
+ * @brief Deletes all of a contacts interactions in the database.
+ * @param ContactID
+ */
 void SQLInterface::deleteAllInteractions(ContactID &c)
 {
 
@@ -252,6 +304,11 @@ void SQLInterface::deleteAllInteractions(ContactID &c)
         qDebug()<<"todo deletion query successful";
 }
 
+/**
+ * @brief Adds all the interactions of a contact in the database. Uses the MapInteractionTodo to also insert the todos.
+ * @param ContactID
+ * @param MapInteractionTodo
+ */
 void SQLInterface::addAllInteractions(ContactID &c, MapInteractionTodo &mp)
 {
 
@@ -264,11 +321,16 @@ void SQLInterface::addAllInteractions(ContactID &c, MapInteractionTodo &mp)
 
     for(itInter = lstInter.begin() ; itInter != lstInter.end() ; itInter++){
         lstTodo = mp.at(*itInter);
-        qDebug() << "TAILLE LST TODO"<<lstTodo.size();
         this->insertInteraction(c,(*itInter),lstTodo);
     }
 }
 
+/**
+ * @brief Inserts an interaction into the database for the corresponding ContactID passed in parameter. Also adds the todos to the interaction.
+ * @param ContactID
+ * @param Interaction *
+ * @param lstTodo
+ */
 void SQLInterface::insertInteraction(ContactID &c , Interaction *i, std::list<Todo *> & lstTodo)
 {
     QSqlQuery queryInsertInteraction;
@@ -306,7 +368,6 @@ void SQLInterface::insertInteraction(ContactID &c , Interaction *i, std::list<To
         else{
             qDebug()<<"insert interaction : contactinteraction insertion query successful";
             for(itTodo = lstTodo.begin() ; itTodo != lstTodo.end() ; itTodo++){
-                qDebug() << "ouaiiiiiiiis";
                 queryInsertTodo.prepare(queryStringInsertTodo);
                 queryInsertTodo.bindValue(":tdate",QString::fromStdString((*itTodo)->getDate().toString()));
                 queryInsertTodo.bindValue(":tcont",QString::fromStdString((*itTodo)->getContent()));
@@ -329,7 +390,6 @@ void SQLInterface::insertInteraction(ContactID &c , Interaction *i, std::list<To
                     queryInsertInteractionTodo.prepare(queryStringInteractionTodo);
                     queryInsertInteractionTodo.bindValue(":iid",interactionID);
                     queryInsertInteractionTodo.bindValue(":tid",todoID);
-                    qDebug() << queryStringInteractionTodo << " | InteractionID:" << interactionID << " | todoID:" << todoID;
                     if(!queryInsertInteractionTodo.exec())
                         qDebug()<<"insert interaction : interactiontodo insertion query failed";
                     else{

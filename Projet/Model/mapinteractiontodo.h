@@ -7,7 +7,9 @@
 #include <list>
 #include <map>
 
-
+/**
+ * @brief An object that encapsulates a c++ map container. Maps an interaction pointer to a list of its todo pointers.
+ */
 
 class MapInteractionTodo
 {
