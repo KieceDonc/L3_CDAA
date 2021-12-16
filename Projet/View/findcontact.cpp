@@ -166,6 +166,7 @@ void FindContact::updateResultView(){
                 shouldBeShow = toCompare.find(this->currentAttributeValue) != std::string::npos;
             }
         }
+
         if(shouldBeShow){
             rowData.clear();
             rowData << new QStandardItem(QString::fromUtf8(contact->getFirstName().c_str()));
@@ -173,7 +174,7 @@ void FindContact::updateResultView(){
             rowData << new QStandardItem(QString::fromUtf8(contact->getEnterprise().c_str()));
             rowData << new QStandardItem(QString::fromUtf8(contact->getMail().c_str()));
             rowData << new QStandardItem(QString::fromUtf8(contact->getPhone().c_str()));
-            rowData << new QStandardItem(QString::fromUtf8(contact->getDateOfCreation().toString().c_str()));
+            rowData << new QStandardItem(QString::fromUtf8(contact->getDateOfCreation().toLexicalString().c_str()));
             rowData << new QStandardItem(QString::number(id));
             model->appendRow(rowData);
             count++;

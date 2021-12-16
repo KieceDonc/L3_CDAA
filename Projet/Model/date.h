@@ -29,6 +29,7 @@ class Date{
     ///@private hiding the debug func from doxygen
     std::string getDebugValues(int nbTabulations);
     std::string toString();
+    std::string toLexicalString();
 
     bool operator==(const Date &toCompare);
     friend std::ostream& operator<<(std::ostream& , Date);

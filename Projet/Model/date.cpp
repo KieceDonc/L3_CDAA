@@ -156,6 +156,30 @@ std::string Date::toString(){
 }
 
 /**
+ * @brief Returns a string as yyyy-MM-dd format
+ * @return std::string
+ */
+std::string Date::toLexicalString()
+{
+    std::string sRes = "";
+
+    sRes+= std::to_string(this->year);
+    sRes+="-";
+    if(this->month <10)
+        sRes += "0";
+    sRes += std::to_string(this->month);
+
+    sRes+="-";
+
+    if(this->day <10)
+        sRes += "0";
+    sRes += std::to_string(this->day);
+
+
+    return sRes;
+}
+
+/**
  * @brief Compares Date objects, returns a boolean if they're equal
  *
  * @param toCompare
